@@ -1,0 +1,1 @@
+export const DATA_PER_VIEW = 20;
