@@ -17,7 +17,7 @@ describe("EditableSkillItem", () => {
     );
   };
 
-  test("should render skill item correctly", () => {
+  test("should render table correctly", () => {
     renderComponent();
 
     expect(screen.getByTestId(/search/i)).toBeInTheDocument();
