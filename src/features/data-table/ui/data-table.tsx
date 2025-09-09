@@ -27,13 +27,11 @@ import { DATA_PER_VIEW } from "../consts";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  searchColumn: keyof TData extends string ? keyof TData : never;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
-  searchColumn,
 }: DataTableProps<TData, TValue>) {
   const searchParams = useSearchParams();
   const search = searchParams?.get("search") ?? "";
@@ -50,20 +48,18 @@ export function DataTable<TData, TValue>({
   const [sorting, setSorting] = useState<SortingState>(
     searchParams.has("sortBy") ? sort : []
   );
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([
-    { id: searchColumn, value: search },
-  ]);
+  const [globalFilter, setGlobalFilter] = useState<string>(search);
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
-    onColumnFiltersChange: setColumnFilters,
+    onGlobalFilterChange: setGlobalFilter,
     getFilteredRowModel: getFilteredRowModel(),
     state: {
       sorting,
-      columnFilters,
+      globalFilter,
     },
   });
   const hasMoreData = offset < table.getRowModel().rows.length;
@@ -80,7 +76,7 @@ export function DataTable<TData, TValue>({
 
   function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
     const searchValue = e.target.value;
-    table.getColumn(searchColumn)?.setFilterValue(searchValue);
+    table.setGlobalFilter(searchValue);
     router.push(pathname + "?" + createQueryString("search", searchValue));
   }
 
@@ -95,9 +91,7 @@ export function DataTable<TData, TValue>({
       <div className="flex items-center py-4">
         <Input
           placeholder="Search"
-          value={
-            (table.getColumn(searchColumn)?.getFilterValue() as string) ?? ""
-          }
+
           onChange={handleSearch}
           className="max-w-sm"
           data-testid="search-input"

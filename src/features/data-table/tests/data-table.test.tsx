@@ -13,7 +13,7 @@ describe("EditableSkillItem", () => {
 
   const renderComponent = () => {
     return render(
-      <DataTable data={dataMock} columns={columnsMock} searchColumn={"email"} />
+      <DataTable data={dataMock} columns={columnsMock} />
     );
   };
 
