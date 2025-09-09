@@ -3,7 +3,7 @@ import { render } from "vitest-browser-react";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { SkillItem } from "../ui/skill-item";
 import { categoriesMock } from "../mocks/categories.mock";
-import { Mastery } from "@/shared/lib/types/skill";
+import { Mastery } from "@/shared/types/skill";
 import { onChangeMock } from "../mocks/skill-item.mock";
 import { userEvent } from "@vitest/browser/context";
 import { SkillItemProps } from "../types";

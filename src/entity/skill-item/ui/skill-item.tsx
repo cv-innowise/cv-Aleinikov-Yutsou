@@ -1,5 +1,5 @@
 import { Slider } from "@/shared/components/ui/slider";
-import { MASTERY_LENGTH } from "@/shared/lib/types/skill";
+import { MASTERY_LENGTH } from "@/shared/types/skill";
 import { SkillItemProps } from "../types";
 import { MASTERY_BG_COLOR } from "../consts";
 import { Button } from "@/shared/components/ui/button";

@@ -1,4 +1,4 @@
-import { Mastery } from "@/shared/lib/types/skill";
+import { Mastery } from "@/shared/types/skill";
 
 export const MASTERY_BG_COLOR: Record<Mastery, string> = {
   [Mastery.NOVICE]: "bg-gray-700",

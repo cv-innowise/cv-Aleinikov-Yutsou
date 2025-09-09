@@ -1,4 +1,4 @@
-import { Mastery, Skill } from "@/shared/lib/types/skill";
+import { Mastery, Skill } from "@/shared/types/skill";
 
 export type SkillCategory = {
     name: string;

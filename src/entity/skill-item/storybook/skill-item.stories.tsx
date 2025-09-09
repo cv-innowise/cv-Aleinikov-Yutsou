@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { SkillItem } from "../ui/skill-item";
 import { categoriesMock } from "../mocks/categories.mock";
-import { Mastery } from "@/shared/lib/types/skill";
+import { Mastery } from "@/shared/types/skill";
 
 const meta = {
   title: "Example/SkillItem",

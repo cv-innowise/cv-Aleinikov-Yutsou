@@ -3,7 +3,7 @@ import { render } from "vitest-browser-react";
 import { describe, expect, test } from "vitest";
 import { SkillItem } from "../ui/skill-item";
 import { categoriesMock } from "../mocks/categories.mock";
-import { Mastery } from "@/shared/lib/types/skill";
+import { Mastery } from "@/shared/types/skill";
 
 describe("SkillItem", () => {
   const renderComponent = () => {
