@@ -1,0 +1,286 @@
+export type PaymentMock = {
+  id: string;
+  email: string;
+  department: string;
+  position: string;
+};
+
+export const dataMock: PaymentMock[] = [
+  {
+    id: "436",
+    email: "daniil.beniash@innowise.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "709",
+    email: "duncanmacleod@gmail.com",
+    department: "Global",
+    position: "Data Architect",
+  },
+  {
+    id: "427",
+    email: "maxim.goncharov@gmail.com",
+    department: "Global",
+    position: "Data Analyst",
+  },
+  {
+    id: "492",
+    email: "daniil.kurilo@innowise.com",
+    department: "Employee",
+    position: "Network Engineer",
+  },
+  {
+    id: "617",
+    email: "asd@asd.asd",
+    department: "Python",
+    position: "Network Engineer",
+  },
+  {
+    id: "634",
+    email: "qwert@gmail.com",
+    department: "Vue",
+    position: "Database Administrator",
+  },
+  {
+    id: "567",
+    email: "agaton615@gmail.com",
+    department: "Node",
+    position: "UX Designer",
+  },
+  {
+    id: "568",
+    email: "nwwwat312@nat.mail.ru",
+    department: "Angular",
+    position: "UX Designer",
+  },
+  {
+    id: "592",
+    email: "test1@test.com",
+    department: "Vue",
+    position: "Database Administrator",
+  },
+  {
+    id: "680",
+    email: "1111111111@gmail.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "273",
+    email: "alex@mail.ru",
+    department: "Quality Assurance",
+    position: "Database Administrator",
+  },
+  {
+    id: "662",
+    email: "user158@OpenMail.pro",
+    department: "Vue",
+    position: "Database Administrator",
+  },
+  {
+    id: "447",
+    email: "bicod5786013@iteradev.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "684",
+    email: "abcs@gmail.com",
+    department: "React",
+    position: "Data Architect",
+  },
+
+  {
+    id: "419",
+    email: "1abc@gmail.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "459",
+    email: "thorn_pear+6@icloud.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "444",
+    email: "bicod578601@iteradev.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "689",
+    email: "email@mail.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "400",
+    email: "ferdik@mail.ruf",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "473",
+    email: "ya+3@gmail.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "636",
+    email: "test@exa1mplte.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "595",
+    email: "222nwwwat312@nat.mail.ru",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "426",
+    email: "kkk@k.nkk",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "412",
+    email: "ferdik@maile.ru",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "741",
+    email: "nomorelove@gmail.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "15",
+    email: "dksm@mail.ru",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "474",
+    email: "ya+4@gmail.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "687",
+    email: "sl.pavutin@gmail.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "631",
+    email: "user123@InboxOrigin.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "56",
+    email: "maks@icloud.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "590",
+    email: "1@2.com",
+    department: "Node",
+    position: "Software Engineer",
+  },
+  {
+    id: "729",
+    email: "b1ebr111@bht1234y.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "468",
+    email: "aboba@gmail.test",
+    department: "Blockchain",
+    position: "Software Engineer",
+  },
+  {
+    id: "730",
+    email: "nata@naya.ru",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "575",
+    email: "agaton315@gmail.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "484",
+    email: "ya+10@gmail.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "569",
+    email: "sasha@test.test",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "404",
+    email: "vintagee@google.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "507",
+    email: "test6@gmail.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "547",
+    email: "natad222nata@mail.ru",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "578",
+    email: "a@a.aaAA",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "556",
+    email: "qwqwe@qwqw.ru",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "723",
+    email: "bebr@bht123y.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "13",
+    email: "dar@gmail.com",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "515",
+    email: "nat@nat.mail.ru",
+    department: "React",
+    position: "Software Engineer",
+  },
+  {
+    id: "566",
+    email: "11@a.aa",
+    department: "React",
+    position: "Software Engineer",
+  },
+];
