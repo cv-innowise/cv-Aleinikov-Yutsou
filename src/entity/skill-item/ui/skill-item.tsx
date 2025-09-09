@@ -15,7 +15,7 @@ export const SkillItem = (props: SkillItemProps) => {
   }
 
   return (
-    <div className="relative flex space-x-2">
+    <div className="min-w-[200px] w-min px-4 py-2 flex justify-center items-center space-x-2 rounded-full transition-colors hover:bg-black/5">
       <Slider
         value={[mastery + 1]}
         max={MASTERY_LENGTH + 1}
@@ -29,7 +29,6 @@ export const SkillItem = (props: SkillItemProps) => {
         disabled
         size="sm"
         role="combobox"
-        className="w-[150px] justify-between"
         data-testid="skill-button"
       >
         {skill}

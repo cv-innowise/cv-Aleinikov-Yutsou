@@ -48,7 +48,7 @@ export const EditableSkillItem = ({
   };
 
   return (
-    <div className="relative flex space-x-2">
+    <div className="min-w-[200px] w-min px-4 py-2 flex justify-center items-center space-x-2 rounded-full transition-colors hover:bg-black/5">
       <Slider
         value={[selectedMastery + 1]}
         onValueChange={([val]) => setSelectedMastery(val ? val - 1 : 0)}
