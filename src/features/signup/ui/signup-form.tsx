@@ -7,7 +7,7 @@ import { cn } from "@/shared/lib/utils";
 import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";
 import Link from "next/link";
-import { useSignup } from "../lib/useRegister";
+import { useSignup } from "../lib/useSignup";
 
 export const SignupForm = () => {
   const {

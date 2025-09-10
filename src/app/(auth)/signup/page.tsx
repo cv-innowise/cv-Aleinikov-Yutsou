@@ -1,4 +1,4 @@
-import { SignupForm } from "@/features/register/ui/register-form";
+import { SignupForm } from "@/features/signup";
 import { cn } from "@/shared/lib/utils";
 
 const SignupPage = () => {
