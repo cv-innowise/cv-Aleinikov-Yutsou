@@ -2,26 +2,26 @@
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "../validation/login.validation";
-import { useLogin } from "../lib/useLogin";
+import { registerSchema } from "../validation/register.validation";
 import { cn } from "@/shared/lib/utils";
 import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";
 import Link from "next/link";
+import { useSignup } from "../lib/useRegister";
 
-export const LoginForm = () => {
+export const SignupForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(loginSchema),
+    resolver: yupResolver(registerSchema),
   });
 
-  const { loginUser, loading } = useLogin();
+  const { signupUser, loading } = useSignup();
 
   return (
-    <form className={cn("max-w-[35rem] w-full")} onSubmit={handleSubmit(loginUser)}>
+    <form className={cn("max-w-[35rem] w-full")} onSubmit={handleSubmit(signupUser)}>
       <div className="grid gap-5 mb-14">
         <div>
           <Input {...register("email")} type="email" placeholder="Email" />
@@ -34,10 +34,10 @@ export const LoginForm = () => {
       </div>
       <div className={cn("grid justify-items-center gap-2")}>
         <Button loading={loading} variant="default" type="submit">
-          Log in
+          Create accoutn
         </Button>
         <Button asChild variant="link">
-          <Link href="/forgot-password">Forgot password</Link>
+          <Link href="/login">I have an accout</Link>
         </Button>
       </div>
     </form>

@@ -1,4 +1,4 @@
-import { LOGIN_QUERY } from "@/shared/graphql/auth.gql";
+import { LOGIN_QUERY } from "@/shared/graphql/auth/auth.queries";
 
 export const loginMock = {
   request: {

@@ -1,4 +1,4 @@
-import { UPDATE_TOKEN_MUTATION } from "@/shared/graphql/auth.gql";
+import { UPDATE_TOKEN_MUTATION } from "@/shared/graphql/auth/auth.queries";
 import { useMutation } from "@apollo/client/react";
 import { UpdateTokenResult } from "cv-graphql";
 
