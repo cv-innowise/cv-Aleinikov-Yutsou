@@ -23,8 +23,9 @@ export const useSignup = () => {
       const message = error?.message || "Something went wrong. Try it later";
       toast.error(message);
       return false;
-    } catch (e: any) {
-      toast.error(e?.message || "Network error. Try it later");
+    } catch (e: unknown) {
+      const message = e instanceof Error ? e.message : String(e);
+      toast.error(message || "Network error. Try it later");
       return false;
     }
   };

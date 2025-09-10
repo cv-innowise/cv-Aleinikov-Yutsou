@@ -8,7 +8,7 @@ import { MockedProvider } from "@apollo/client/testing/react";
 
 vi.mock("next/link", () => ({
   __esModule: true,
-  default: (props: any) => <a {...props} />,
+  default: (props: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) => <a {...props} />,
 }));
 
 function renderWithApollo(ui: React.ReactElement) {

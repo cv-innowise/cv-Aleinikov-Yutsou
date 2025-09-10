@@ -6,7 +6,7 @@ import { LoginForm } from "../ui/login-form";
 
 vi.mock("next/link", () => ({
   __esModule: true,
-  default: (props: any) => <a {...props} />,
+  default: (props: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) => <a {...props} />,
 }));
 
 const loginUserMock = vi.fn();
