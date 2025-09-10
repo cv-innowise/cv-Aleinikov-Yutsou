@@ -10,6 +10,7 @@ import { cn } from "@/shared/lib/utils";
 import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";
 import Link from "next/link";
+import { toast } from "sonner";
 
 export const LoginForm = () => {
   const router = useRouter();
@@ -24,12 +25,23 @@ export const LoginForm = () => {
   const [login, { data, loading, error }] = useLogin();
 
   const onSubmit = async (data: LoginArgs["auth"]) => {
-    const res = await login({ variables: { auth: data } });
-    if (res.data?.login.access_token) {
-      localStorage.setItem("access_token", res.data.login.access_token);
-      localStorage.setItem("refresh_token", res.data.login.refresh_token);
-      localStorage.setItem("user_id", res.data.login.user.id);
-      router.push("/");
+    try {
+      const { data: res } = await login({
+        variables: { auth: data },
+      });
+
+      if (res?.login?.access_token) {
+        localStorage.setItem("access_token", res.login.access_token);
+        localStorage.setItem("refresh_token", res.login.refresh_token);
+        localStorage.setItem("user_id", res.login.user.id);
+        router.push("/");
+        return;
+      }
+
+      const message = error?.message || "Something went wrong.Try it later";
+      toast.error(message);
+    } catch (e: any) {
+      toast.error(e?.message || "Network error.Try it later");
     }
   };
 
