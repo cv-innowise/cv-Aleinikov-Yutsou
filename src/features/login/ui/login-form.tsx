@@ -8,6 +8,7 @@ import { cn } from "@/shared/lib/utils";
 import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";
 import Link from "next/link";
+import { PasswordField } from "@/shared/components/ui/password-field";
 
 export const LoginForm = () => {
   const {
@@ -28,7 +29,7 @@ export const LoginForm = () => {
           {errors.email && <span className="text-destructive text-sm">{errors.email.message}</span>}
         </div>
         <div>
-          <Input {...register("password")} type="password" placeholder="Password" />
+          <PasswordField {...register("password")} type="password" placeholder="Password" />
           {errors.password && <span className="text-destructive text-sm">{errors.password.message}</span>}
         </div>
       </div>
