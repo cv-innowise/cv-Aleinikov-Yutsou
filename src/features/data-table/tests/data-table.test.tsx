@@ -12,10 +12,14 @@ describe("EditableSkillItem", () => {
   });
 
   const renderComponent = () => {
-    return render(<DataTable data={dataMock} columns={columnsMock} searchColumn={"email"} />);
+
+    return render(
+      <DataTable data={dataMock} columns={columnsMock} />
+    );
+
   };
 
-  test("should render skill item correctly", () => {
+  test("should render table correctly", () => {
     renderComponent();
 
     expect(screen.getByTestId(/search/i)).toBeInTheDocument();

@@ -2,7 +2,6 @@
 
 import {
   ColumnDef,
-  ColumnFiltersState,
   SortingState,
   flexRender,
   getFilteredRowModel,
@@ -23,17 +22,17 @@ import { useCallback, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { DATA_PER_VIEW } from "../consts";
+import { Skeleton } from "@/shared/components/ui/skeleton";
+import { Spinner } from "@/shared/components/ui/spinner";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  searchColumn: keyof TData extends string ? keyof TData : never;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
-  searchColumn,
 }: DataTableProps<TData, TValue>) {
   const searchParams = useSearchParams();
   const search = searchParams?.get("search") ?? "";
@@ -50,20 +49,18 @@ export function DataTable<TData, TValue>({
   const [sorting, setSorting] = useState<SortingState>(
     searchParams.has("sortBy") ? sort : []
   );
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([
-    { id: searchColumn, value: search },
-  ]);
+  const [globalFilter, setGlobalFilter] = useState<string>(search);
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
-    onColumnFiltersChange: setColumnFilters,
+    onGlobalFilterChange: setGlobalFilter,
     getFilteredRowModel: getFilteredRowModel(),
     state: {
       sorting,
-      columnFilters,
+      globalFilter,
     },
   });
   const hasMoreData = offset < table.getRowModel().rows.length;
@@ -80,7 +77,7 @@ export function DataTable<TData, TValue>({
 
   function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
     const searchValue = e.target.value;
-    table.getColumn(searchColumn)?.setFilterValue(searchValue);
+    table.setGlobalFilter(searchValue);
     router.push(pathname + "?" + createQueryString("search", searchValue));
   }
 
@@ -95,9 +92,6 @@ export function DataTable<TData, TValue>({
       <div className="flex items-center py-4">
         <Input
           placeholder="Search"
-          value={
-            (table.getColumn(searchColumn)?.getFilterValue() as string) ?? ""
-          }
           onChange={handleSearch}
           className="max-w-sm"
           data-testid="search-input"
@@ -171,3 +165,29 @@ export function DataTable<TData, TValue>({
     </div>
   );
 }
+
+DataTable.Skeleton = () => {
+  return (
+    <div>
+      <div className="py-4">
+        <Skeleton className="w-[300px] h-[36px]" />
+      </div>
+      <div className="overflow-hidden rounded-md border">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <Skeleton className="w-full h-[40px]" />
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow className="h-[80vh] flex items-center justify-center">
+              <Spinner />
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+    </div>
+  );
+};
+
+DataTable.Skeleton.displayName = "DataTable.Skeleton";
