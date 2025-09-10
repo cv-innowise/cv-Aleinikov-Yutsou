@@ -22,6 +22,8 @@ import { useCallback, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { DATA_PER_VIEW } from "../consts";
+import { Skeleton } from "@/shared/components/ui/skeleton";
+import { Spinner } from "@/shared/components/ui/spinner";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -90,7 +92,6 @@ export function DataTable<TData, TValue>({
       <div className="flex items-center py-4">
         <Input
           placeholder="Search"
-
           onChange={handleSearch}
           className="max-w-sm"
           data-testid="search-input"
@@ -164,3 +165,29 @@ export function DataTable<TData, TValue>({
     </div>
   );
 }
+
+DataTable.Skeleton = () => {
+  return (
+    <div>
+      <div className="py-4">
+        <Skeleton className="w-[300px] h-[36px]" />
+      </div>
+      <div className="overflow-hidden rounded-md border">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <Skeleton className="w-full h-[40px]" />
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow className="h-[80vh] flex items-center justify-center">
+              <Spinner />
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+    </div>
+  );
+};
+
+DataTable.Skeleton.displayName = "DataTable.Skeleton";
