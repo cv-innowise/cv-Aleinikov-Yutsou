@@ -25,6 +25,5 @@ export const PaymentsTable: Story = {
   args: {
     data: dataMock,
     columns: columnsMock,
-    searchColumn: "email",
   },
 };
