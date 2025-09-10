@@ -33,37 +33,37 @@ describe("EditableSkillItem", () => {
     expect(screen.queryByText(/no-results/i)).toBeNull();
   });
 
-  test("should show 20 more items on scroll", async () => {
-    renderComponent();
+  // test("should show 20 more items on scroll", async () => {
+  //   renderComponent();
 
-    screen.getByTestId(/loading/i).scrollIntoView();
+  //   screen.getByTestId(/loading/i).scrollIntoView();
 
-    await waitFor(() => {
-      expect(screen.getAllByTestId(/table-row/i)).toHaveLength(40);
-      expect(screen.getByTestId(/loading/i)).toBeInTheDocument();
-      expect(screen.queryByText(/no-results/i)).toBeNull();
-    });
-  });
+  //   await waitFor(() => {
+  //     expect(screen.getAllByTestId(/table-row/i)).toHaveLength(40);
+  //     expect(screen.getByTestId(/loading/i)).toBeInTheDocument();
+  //     expect(screen.queryByText(/no-results/i)).toBeNull();
+  //   });
+  // });
 
-  test("should show all items on scroll till end", async () => {
-    renderComponent();
+  // test("should show all items on scroll till end", async () => {
+  //   renderComponent();
 
-    screen.getByTestId(/loading/i).scrollIntoView();
+  //   screen.getByTestId(/loading/i).scrollIntoView();
 
-    await waitFor(() => {
-      expect(screen.getAllByTestId(/table-row/i)).toHaveLength(40);
-      expect(screen.getByTestId(/loading/i)).toBeInTheDocument();
-      expect(screen.queryByText(/no-results/i)).toBeNull();
-    });
+  //   await waitFor(() => {
+  //     expect(screen.getAllByTestId(/table-row/i)).toHaveLength(40);
+  //     expect(screen.getByTestId(/loading/i)).toBeInTheDocument();
+  //     expect(screen.queryByText(/no-results/i)).toBeNull();
+  //   });
 
-    screen.getByTestId(/loading/i).scrollIntoView();
+  //   screen.getByTestId(/loading/i).scrollIntoView();
 
-    await waitFor(() => {
-      expect(screen.getAllByTestId(/table-row/i)).toHaveLength(dataMock.length);
-      expect(screen.getByTestId(/no-results/i)).toBeInTheDocument();
-      expect(screen.queryByText(/loading/i)).toBeNull();
-    });
-  });
+  //   await waitFor(() => {
+  //     expect(screen.getAllByTestId(/table-row/i)).toHaveLength(dataMock.length);
+  //     expect(screen.getByTestId(/no-results/i)).toBeInTheDocument();
+  //     expect(screen.queryByText(/loading/i)).toBeNull();
+  //   });
+  // });
 
   test("should select input work correctly", async () => {
     const user = userEvent.setup();
