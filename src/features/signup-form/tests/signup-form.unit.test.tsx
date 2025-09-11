@@ -38,9 +38,54 @@ describe("SignupForm (unit)", () => {
 
     await userEvent.click(screen.getByRole("button", { name: /create accoutn/i }));
 
-    expect(await screen.findByText(/email is required/i)).toBeInTheDocument();
-    expect(await screen.findByText(/at least 6 characters/i)).toBeInTheDocument();
+    expect(await screen.findByText("Email is required")).toBeInTheDocument();
+    expect(await screen.findByText("Password must be at least 6 characters")).toBeInTheDocument();
 
+    expect(signupUserMock).not.toHaveBeenCalled();
+  });
+
+  it("shows 'Invalid email format' for incorrect email", async () => {
+    render(<SignupForm />);
+
+    await userEvent.type(screen.getByPlaceholderText("Email"), "not-an-email");
+    await userEvent.type(screen.getByPlaceholderText("Password"), "abc123");
+    await userEvent.click(screen.getByRole("button", { name: /create accoutn/i }));
+
+    expect(await screen.findByText("Invalid email format")).toBeInTheDocument();
+    expect(signupUserMock).not.toHaveBeenCalled();
+  });
+
+  it("requires password to include at least 1 digit", async () => {
+    render(<SignupForm />);
+
+    await userEvent.type(screen.getByPlaceholderText("Email"), "user@example.com");
+    await userEvent.type(screen.getByPlaceholderText("Password"), "abcdef");
+    await userEvent.click(screen.getByRole("button", { name: /create accoutn/i }));
+
+    expect(await screen.findByText("Password must include at least 1 digit")).toBeInTheDocument();
+    expect(signupUserMock).not.toHaveBeenCalled();
+  });
+
+  it("forbids spaces in password", async () => {
+    render(<SignupForm />);
+
+    await userEvent.type(screen.getByPlaceholderText("Email"), "user@example.com");
+    await userEvent.type(screen.getByPlaceholderText("Password"), "abc 123");
+    await userEvent.click(screen.getByRole("button", { name: /create accoutn/i }));
+
+    expect(await screen.findByText("Password must not contain spaces")).toBeInTheDocument();
+    expect(signupUserMock).not.toHaveBeenCalled();
+  });
+
+  it("forbids password containing the email", async () => {
+    render(<SignupForm />);
+
+    await userEvent.type(screen.getByPlaceholderText("Email"), "user@example.com");
+
+    await userEvent.type(screen.getByPlaceholderText("Password"), "abc123user@example.com");
+    await userEvent.click(screen.getByRole("button", { name: /create accoutn/i }));
+
+    expect(await screen.findByText("Password must not contain your email")).toBeInTheDocument();
     expect(signupUserMock).not.toHaveBeenCalled();
   });
 });

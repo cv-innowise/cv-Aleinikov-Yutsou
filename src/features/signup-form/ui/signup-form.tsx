@@ -7,6 +7,7 @@ import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";
 import Link from "next/link";
 import { useSignup } from "../lib/use-signup";
+import { PasswordField } from "@/shared/components/ui/password-field";
 
 export const SignupForm = () => {
   const {
@@ -20,14 +21,14 @@ export const SignupForm = () => {
   const { signupUser, loading } = useSignup();
 
   return (
-    <form className="max-w-lg w-full" onSubmit={handleSubmit(signupUser)}>
+    <form className="max-w-lg w-full" noValidate onSubmit={handleSubmit(signupUser)}>
       <div className="space-y-5 mb-14">
         <div>
           <Input {...register("email")} type="email" placeholder="Email" />
           {errors.email && <span className="text-destructive text-sm">{errors.email.message}</span>}
         </div>
         <div>
-          <Input {...register("password")} type="password" placeholder="Password" />
+          <PasswordField {...register("password")} placeholder="Password" />
           {errors.password && <span className="text-destructive text-sm">{errors.password.message}</span>}
         </div>
       </div>

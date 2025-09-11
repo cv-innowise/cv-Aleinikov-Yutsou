@@ -21,14 +21,14 @@ export const LoginForm = () => {
   const { loginUser, loading } = useLogin();
 
   return (
-    <form className="max-w-lg w-full" onSubmit={handleSubmit(loginUser)}>
+    <form className="max-w-lg w-full" noValidate onSubmit={handleSubmit(loginUser)}>
       <div className="space-y-5 mb-14">
         <div>
           <Input {...register("email")} type="email" placeholder="Email" />
           {errors.email && <span className="text-destructive text-sm">{errors.email.message}</span>}
         </div>
         <div>
-          <PasswordField {...register("password")} type="password" placeholder="Password" />
+          <PasswordField {...register("password")} placeholder="Password" />
           {errors.password && <span className="text-destructive text-sm">{errors.password.message}</span>}
         </div>
       </div>
