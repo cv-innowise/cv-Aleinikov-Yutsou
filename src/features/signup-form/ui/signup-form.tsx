@@ -2,43 +2,41 @@
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "../validation/login.validation";
-import { useLogin } from "../lib/useLogin";
-import { cn } from "@/shared/lib/utils";
+import { signupSchema } from "../validation/signup.validation";
 import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";
 import Link from "next/link";
-import { PasswordField } from "@/shared/components/ui/password-field";
+import { useSignup } from "../lib/use-signup";
 
-export const LoginForm = () => {
+export const SignupForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(loginSchema),
+    resolver: yupResolver(signupSchema),
   });
 
-  const { loginUser, loading } = useLogin();
+  const { signupUser, loading } = useSignup();
 
   return (
-    <form className={cn("max-w-[35rem] w-full")} onSubmit={handleSubmit(loginUser)}>
-      <div className="grid gap-5 mb-14">
+    <form className="max-w-lg w-full" onSubmit={handleSubmit(signupUser)}>
+      <div className="space-y-5 mb-14">
         <div>
           <Input {...register("email")} type="email" placeholder="Email" />
           {errors.email && <span className="text-destructive text-sm">{errors.email.message}</span>}
         </div>
         <div>
-          <PasswordField {...register("password")} type="password" placeholder="Password" />
+          <Input {...register("password")} type="password" placeholder="Password" />
           {errors.password && <span className="text-destructive text-sm">{errors.password.message}</span>}
         </div>
       </div>
-      <div className={cn("grid justify-items-center gap-2")}>
-        <Button loading={loading} variant="default" type="submit">
-          Log in
+      <div className="grid justify-items-center gap-2">
+        <Button loading={loading} type="submit">
+          Create accoutn
         </Button>
         <Button asChild variant="link">
-          <Link href="/forgot-password">Forgot password</Link>
+          <Link href="/login">I have an accout</Link>
         </Button>
       </div>
     </form>

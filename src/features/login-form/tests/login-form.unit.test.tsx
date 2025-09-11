@@ -10,7 +10,7 @@ vi.mock("next/link", () => ({
 }));
 
 const loginUserMock = vi.fn();
-vi.mock("../lib/useLogin", () => ({
+vi.mock("../lib/use-login", () => ({
   useLogin: () => ({ loginUser: loginUserMock, loading: false, error: undefined }),
 }));
 
@@ -33,10 +33,15 @@ describe("LoginForm (unit)", () => {
     await userEvent.type(password, "dGtImvQhQI0yPi");
     await userEvent.click(screen.getByRole("button", { name: /log in/i }));
 
-    await waitFor(() => expect(loginUserMock).toHaveBeenCalledTimes(1));
-
-    const payload = loginUserMock.mock.calls[0][0];
-    expect(payload).toEqual({ email: "tosogif653@evoxury.com", password: "dGtImvQhQI0yPi" });
+    await waitFor(() =>
+      expect(loginUserMock).toHaveBeenCalledWith(
+        {
+          email: "tosogif653@evoxury.com",
+          password: "dGtImvQhQI0yPi",
+        },
+        expect.anything()
+      )
+    );
   });
 
   it("does not call loginUser on invalid form and shows validation errors", async () => {

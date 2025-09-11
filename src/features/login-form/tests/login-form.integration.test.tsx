@@ -11,8 +11,12 @@ vi.mock("next/link", () => ({
   default: (props: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) => <a {...props} />,
 }));
 
-function renderWithApollo(ui: React.ReactElement) {
-  return render(<MockedProvider mocks={[loginMock]}>{ui}</MockedProvider>);
+function renderLoginForm() {
+  return render(
+    <MockedProvider mocks={[loginMock]}>
+      <LoginForm />
+    </MockedProvider>
+  );
 }
 
 beforeEach(() => {
@@ -25,12 +29,12 @@ afterEach(() => {
 
 describe("LoginForm", () => {
   it("renders email and password fields", () => {
-    renderWithApollo(<LoginForm />);
+    renderLoginForm();
     expect(screen.getByPlaceholderText("Email")).toBeInTheDocument();
     expect(screen.getByPlaceholderText("Password")).toBeInTheDocument();
   });
   it("shows validation errors for empty fields", async () => {
-    renderWithApollo(<LoginForm />);
+    renderLoginForm();
     await userEvent.click(screen.getByRole("button", { name: /log in/i }));
     expect(await screen.findByText(/email is required/i)).toBeInTheDocument();
     // Current schema returns min length error for empty password
@@ -38,7 +42,7 @@ describe("LoginForm", () => {
   });
 
   it("logs in with correct credentials", async () => {
-    renderWithApollo(<LoginForm />);
+    renderLoginForm();
     await userEvent.type(screen.getByPlaceholderText("Email"), "test@mail.com");
     await userEvent.type(screen.getByPlaceholderText("Password"), "123456");
     await userEvent.click(screen.getByRole("button", { name: /log in/i }));

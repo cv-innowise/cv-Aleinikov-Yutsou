@@ -1,10 +1,12 @@
 "use client";
 
-import { useUpdateToken } from "@/shared/lib/hooks/useUpdateToken";
+import { useUpdateToken } from "@/shared/lib/hooks/use-update-token";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+type RootLayoutProps = React.PropsWithChildren;
+
+const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   const router = useRouter();
   const [updateToken] = useUpdateToken();
 
@@ -38,4 +40,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   }, [router, updateToken]);
 
   return <>{children}</>;
-}
+};
+
+export default RootLayout;
