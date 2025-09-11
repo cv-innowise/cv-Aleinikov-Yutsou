@@ -1,14 +1,14 @@
 import { useMutation } from "@apollo/client/react";
-import { SignupResult, AuthArgs } from "@/shared/graphql/auth/auth.types";
-import { SIGNUP_MUTATION } from "@/shared/graphql/auth/auth.queries";
+import { SignupResponse, AuthRequest } from "@/shared/graphql/auth/auth.types";
+import { SIGNUP_MUTATION } from "@/shared/graphql/auth/auth.mutations";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 export const useSignup = () => {
   const router = useRouter();
-  const [signupMutation, { loading, error }] = useMutation<SignupResult, AuthArgs>(SIGNUP_MUTATION);
+  const [signupMutation, { loading, error }] = useMutation<SignupResponse, AuthRequest>(SIGNUP_MUTATION);
 
-  const signupUser = async (authData: AuthArgs["auth"]) => {
+  const signupUser = async (authData: AuthRequest["auth"]) => {
     try {
       const { data: res } = await signupMutation({ variables: { auth: authData } });
 

@@ -2,7 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { signupSchema } from "../validation/signup.validation";
+import { signupSchema } from "../validation/signup.schema";
 import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";
 import Link from "next/link";
@@ -34,10 +34,10 @@ export const SignupForm = () => {
       </div>
       <div className="grid justify-items-center gap-2">
         <Button loading={loading} type="submit">
-          Create accoutn
+          Create account
         </Button>
         <Button asChild variant="link">
-          <Link href="/login">I have an accout</Link>
+          <Link href="/login">I have an account</Link>
         </Button>
       </div>
     </form>

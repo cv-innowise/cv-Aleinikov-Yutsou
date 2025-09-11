@@ -1,5 +1,5 @@
 import React from "react";
-import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { loginMock } from "../mocks/login.mocks";
 import { render, screen, cleanup, waitFor } from "@testing-library/react";
 import { LoginForm } from "../ui/login-form";
@@ -21,9 +21,6 @@ function renderLoginForm() {
 
 beforeEach(() => {
   localStorage.clear();
-});
-
-afterEach(() => {
   cleanup();
 });
 
@@ -37,7 +34,6 @@ describe("LoginForm", () => {
     renderLoginForm();
     await userEvent.click(screen.getByRole("button", { name: /log in/i }));
     expect(await screen.findByText(/email is required/i)).toBeInTheDocument();
-    // Current schema returns min length error for empty password
     expect(await screen.findByText(/at least 6 characters/i)).toBeInTheDocument();
   });
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Header } from "@/widgets/header/ui/header";
+import { AuthNav } from "@/widgets/auth-nav";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
@@ -19,7 +19,9 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <header className="w-full flex justify-center items-center px-4">
+        <AuthNav />
+      </header>
       <main className="flex-1 flex flex-col justify-center items-center px-4">{children}</main>
     </div>
   );

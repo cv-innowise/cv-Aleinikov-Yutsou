@@ -8,7 +8,7 @@ const httpLink = new HttpLink({
 const authLink = new ApolloLink((operation, forward) => {
   const isUpdateToken = operation.operationName === "UpdateToken";
 
-  const token = typeof window !== "undefined" ? localStorage.getItem(isUpdateToken ? "refresh_token" : "access_token") : "";
+  const token = localStorage.getItem(isUpdateToken ? "refresh_token" : "access_token");
   operation.setContext({
     headers: {
       Authorization: token ? `Bearer ${token}` : "",

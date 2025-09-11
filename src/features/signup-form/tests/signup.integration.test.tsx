@@ -25,7 +25,7 @@ describe("SignupForm (integration)", () => {
 
     await userEvent.type(screen.getByPlaceholderText("Email"), "new@mail.com");
     await userEvent.type(screen.getByPlaceholderText("Password"), "123456");
-    await userEvent.click(screen.getByRole("button", { name: /create accoutn/i }));
+    await userEvent.click(screen.getByRole("button", { name: /create account/i }));
 
     await waitFor(() => {
       expect(localStorage.getItem("access_token")).toBe("mock_access_token");

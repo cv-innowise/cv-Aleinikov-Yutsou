@@ -1,11 +1,15 @@
 import type { AuthInput, AuthResult } from "cv-graphql";
 
-export interface AuthArgs {
+interface AuthRequest {
   auth: AuthInput;
 }
-export interface LoginResult {
+
+interface LoginResponse {
   login: AuthResult;
 }
-export interface SignupResult {
+
+interface SignupResponse {
   signup: AuthResult;
 }
+
+export type { AuthRequest, LoginResponse, SignupResponse };

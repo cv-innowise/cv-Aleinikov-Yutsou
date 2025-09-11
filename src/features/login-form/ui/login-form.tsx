@@ -2,7 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "../validation/login.validation";
+import { loginSchema } from "../validation/login.schema";
 import { useLogin } from "../lib/use-login";
 import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";

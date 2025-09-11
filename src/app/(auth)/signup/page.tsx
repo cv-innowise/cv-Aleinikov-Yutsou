@@ -1,5 +1,4 @@
 import { SignupForm } from "@/features/signup-form";
-import { cn } from "@/shared/lib/utils";
 
 const SignupPage = () => {
   return (

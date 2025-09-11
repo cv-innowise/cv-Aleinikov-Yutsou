@@ -1,4 +1,4 @@
-import { SIGNUP_MUTATION } from "@/shared/graphql/auth/auth.queries";
+import { SIGNUP_MUTATION } from "@/shared/graphql/auth/auth.mutations";
 
 export const signupMock = {
   request: {
