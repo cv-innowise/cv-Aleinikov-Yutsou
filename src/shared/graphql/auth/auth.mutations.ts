@@ -12,12 +12,3 @@ export const SIGNUP_MUTATION = gql`
     }
   }
 `;
-
-export const UPDATE_TOKEN_MUTATION = gql`
-  mutation UpdateToken {
-    updateToken {
-      access_token
-      refresh_token
-    }
-  }
-`;

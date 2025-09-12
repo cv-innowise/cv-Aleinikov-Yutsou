@@ -8,38 +8,57 @@ import { Button } from "@/shared/components/ui/button";
 import Link from "next/link";
 import { useSignup } from "../lib/use-signup";
 import { PasswordField } from "@/shared/components/ui/password-field";
+import { InferType } from "yup";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/shared/components/ui/form";
+
+type FormValues = InferType<typeof signupSchema>;
 
 export const SignupForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const form = useForm<FormValues>({
     resolver: yupResolver(signupSchema),
+    defaultValues: { email: "", password: "" },
   });
 
   const { signupUser, loading } = useSignup();
 
   return (
-    <form className="max-w-lg w-full" noValidate onSubmit={handleSubmit(signupUser)}>
-      <div className="space-y-5 mb-14">
-        <div>
-          <Input {...register("email")} type="email" placeholder="Email" />
-          {errors.email && <span className="text-destructive text-sm">{errors.email.message}</span>}
+    <Form {...form}>
+      <form className="max-w-lg w-full" noValidate onSubmit={form.handleSubmit(signupUser)}>
+        <div className="space-y-5 mb-14">
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input type="email" placeholder="Email" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <PasswordField placeholder="Password" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
-        <div>
-          <PasswordField {...register("password")} placeholder="Password" />
-          {errors.password && <span className="text-destructive text-sm">{errors.password.message}</span>}
+        <div className="grid justify-items-center gap-2">
+          <Button loading={loading} type="submit">
+            Create account
+          </Button>
+          <Button asChild variant="link">
+            <Link href="/login">I have an account</Link>
+          </Button>
         </div>
-      </div>
-      <div className="grid justify-items-center gap-2">
-        <Button loading={loading} type="submit">
-          Create account
-        </Button>
-        <Button asChild variant="link">
-          <Link href="/login">I have an account</Link>
-        </Button>
-      </div>
-    </form>
+      </form>
+    </Form>
   );
 };

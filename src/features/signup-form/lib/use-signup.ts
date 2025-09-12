@@ -1,34 +1,42 @@
-import { useMutation } from "@apollo/client/react";
-import { SignupResponse, AuthRequest } from "@/shared/graphql/auth/auth.types";
-import { SIGNUP_MUTATION } from "@/shared/graphql/auth/auth.mutations";
+"use client";
+
+import { useMutation, useApolloClient } from "@apollo/client/react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { SIGNUP_MUTATION } from "@/shared/graphql/auth/auth.mutations";
+import type { SignupResponse, AuthRequest } from "@/shared/graphql/auth/auth.types";
+import { setTokens } from "@/shared/auth";
 
 export const useSignup = () => {
   const router = useRouter();
+  const client = useApolloClient();
+
   const [signupMutation, { loading, error }] = useMutation<SignupResponse, AuthRequest>(SIGNUP_MUTATION);
 
-  const signupUser = async (authData: AuthRequest["auth"]) => {
-    try {
-      const { data: res } = await signupMutation({ variables: { auth: authData } });
+  const signupUser = (authData: AuthRequest["auth"]) =>
+    signupMutation({ variables: { auth: authData } })
+      .then(({ data }) => {
+        const tokens = data?.signup.access_token && data.signup.refresh_token ? { access_token: data.signup.access_token, refresh_token: data.signup.refresh_token } : undefined;
+        if (tokens) {
+          setTokens(tokens);
+        }
 
-      if (res?.signup?.access_token) {
-        localStorage.setItem("access_token", res.signup.access_token);
-        localStorage.setItem("refresh_token", res.signup.refresh_token);
-        localStorage.setItem("user_id", res.signup.user.id);
-        router.push("/");
-        return true;
-      }
+        const userId = data?.signup?.user?.id;
+        if (userId) {
+          localStorage.setItem("user_id", String(userId));
+        }
 
-      const message = error?.message || "Something went wrong. Try it later";
-      toast.error(message);
-      return false;
-    } catch (e: unknown) {
-      const message = e instanceof Error ? e.message : String(e);
-      toast.error(message || "Network error. Try it later");
-      return false;
-    }
-  };
+        return client
+          .resetStore()
+          .catch(() => {})
+          .finally(() => {
+            router.replace("/");
+          });
+      })
+      .catch((e) => {
+        const message = e instanceof Error ? e.message : String(e);
+        toast.error(message || "Network error. Try it later");
+      });
 
   return { signupUser, loading, error };
 };

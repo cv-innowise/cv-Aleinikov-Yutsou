@@ -2,44 +2,64 @@
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import type { InferType } from "yup";
 import { loginSchema } from "../validation/login.schema";
 import { useLogin } from "../lib/use-login";
 import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";
 import Link from "next/link";
 import { PasswordField } from "@/shared/components/ui/password-field";
+import { Form, FormField, FormItem, FormControl, FormMessage } from "@/shared/components/ui/form";
+
+type FormValues = InferType<typeof loginSchema>;
 
 export const LoginForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const form = useForm<FormValues>({
     resolver: yupResolver(loginSchema),
+    defaultValues: { email: "", password: "" },
   });
 
   const { loginUser, loading } = useLogin();
 
   return (
-    <form className="max-w-lg w-full" noValidate onSubmit={handleSubmit(loginUser)}>
-      <div className="space-y-5 mb-14">
-        <div>
-          <Input {...register("email")} type="email" placeholder="Email" />
-          {errors.email && <span className="text-destructive text-sm">{errors.email.message}</span>}
+    <Form {...form}>
+      <form className="max-w-lg w-full" noValidate onSubmit={form.handleSubmit(loginUser)}>
+        <div className="space-y-5 mb-14">
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input type="email" placeholder="Email" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <PasswordField placeholder="Password" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
-        <div>
-          <PasswordField {...register("password")} placeholder="Password" />
-          {errors.password && <span className="text-destructive text-sm">{errors.password.message}</span>}
+
+        <div className="grid justify-items-center gap-2">
+          <Button loading={loading} type="submit">
+            Log in
+          </Button>
+          <Button asChild variant="link">
+            <Link href="/forgot-password">Forgot password</Link>
+          </Button>
         </div>
-      </div>
-      <div className="grid justify-items-center gap-2">
-        <Button loading={loading} type="submit">
-          Log in
-        </Button>
-        <Button asChild variant="link">
-          <Link href="/forgot-password">Forgot password</Link>
-        </Button>
-      </div>
-    </form>
+      </form>
+    </Form>
   );
 };

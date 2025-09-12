@@ -1,21 +1,14 @@
 "use client";
 
+import { useRouteGuard } from "@/shared/auth";
 import { AuthNav } from "@/widgets/auth-nav";
-import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React from "react";
 
 type AuthLayoutProps = React.PropsWithChildren;
 
 const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
-  const router = useRouter();
-
-  useEffect(() => {
-    const accessToken = localStorage.getItem("access_token");
-    const refreshToken = localStorage.getItem("refresh_token");
-    if (accessToken && refreshToken) {
-      router.push("/");
-    }
-  }, [router]);
+  const ready = useRouteGuard("guest-only", "/");
+  if (!ready) return null;
 
   return (
     <div className="flex flex-col min-h-screen">
