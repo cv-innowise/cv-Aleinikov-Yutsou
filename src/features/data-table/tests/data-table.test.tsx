@@ -1,4 +1,4 @@
-import { screen, waitFor } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { render } from "vitest-browser-react";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { DataTable } from "../ui/data-table";
@@ -12,11 +12,7 @@ describe("EditableSkillItem", () => {
   });
 
   const renderComponent = () => {
-
-    return render(
-      <DataTable data={dataMock} columns={columnsMock} />
-    );
-
+    return render(<DataTable data={dataMock} columns={columnsMock} />);
   };
 
   test("should render table correctly", () => {

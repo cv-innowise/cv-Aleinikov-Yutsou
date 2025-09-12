@@ -69,37 +69,44 @@ async function performTokenRefresh(): Promise<{ access_token: string; refresh_to
   return tokens;
 }
 
-type ErrorHandler = ConstructorParameters<typeof ErrorLink>[0];
+type ErrorHandlerArg = {
+  graphQLErrors?: ReadonlyArray<{ extensions?: Record<string, unknown> }>;
+  networkError?: unknown;
+  operation: import("@apollo/client").ApolloLink.Operation;
+  forward: (op: import("@apollo/client").ApolloLink.Operation) => Observable<ApolloLink.Result>;
+};
 
-const errorHandler: ErrorHandler = (arg) => {
-  const e = arg as any;
+function hasStatusCode(err: unknown): err is { statusCode: number } {
+  return typeof err === "object" && err !== null && "statusCode" in err && typeof (err as { statusCode?: unknown }).statusCode === "number";
+}
 
-  const operation = e.operation as { operationName?: string };
-  const forward = e.forward as (op: any) => any;
-  const graphQLErrors = e.graphQLErrors as Array<{ extensions?: Record<string, unknown> }> | undefined;
-  const networkError = e.networkError as unknown;
+const errorHandler = ({ graphQLErrors, networkError, operation, forward }: ErrorHandlerArg): Observable<ApolloLink.Result> | void => {
+  if (operation.operationName === "UpdateToken") return;
 
-  if (operation?.operationName === "UpdateToken") return;
+  const hasUnauthenticatedGql = !!graphQLErrors?.some((err) => {
+    const code = (err.extensions ?? {}).code;
+    return code === "UNAUTHENTICATED";
+  });
 
-  const hasUnauthenticatedGql = Array.isArray(graphQLErrors) && graphQLErrors.some((err) => (err?.extensions as any)?.code === "UNAUTHENTICATED");
-
-  const is401 = !!networkError && typeof networkError === "object" && "statusCode" in (networkError as object) && typeof (networkError as any).statusCode === "number" && (networkError as any).statusCode === 401;
+  const is401 = hasStatusCode(networkError) && networkError.statusCode === 401;
 
   const unauthenticated = hasUnauthenticatedGql || is401;
   if (!unauthenticated) return;
 
   return new Observable<ApolloLink.Result>((observer) => {
+    const retryWithToken = (newAccessToken: string | null) => {
+      if (!newAccessToken) {
+        observer.error(new Error("Failed to refresh token"));
+        return;
+      }
+      operation.setContext(({ headers = {} }) => ({
+        headers: { ...headers, Authorization: `Bearer ${newAccessToken}` },
+      }));
+      forward(operation).subscribe(observer);
+    };
+
     if (isRefreshing) {
-      addPendingRequest((newAccessToken) => {
-        if (!newAccessToken) {
-          observer.error(new Error("Failed to refresh token"));
-          return;
-        }
-        e.operation.setContext(({ headers = {} }) => ({
-          headers: { ...headers, Authorization: `Bearer ${newAccessToken}` },
-        }));
-        forward(e.operation).subscribe(observer);
-      });
+      addPendingRequest(retryWithToken);
       return;
     }
 
@@ -109,11 +116,7 @@ const errorHandler: ErrorHandler = (arg) => {
       .then((tokens) => {
         setTokens(tokens);
         resolvePendingRequests(tokens.access_token);
-
-        e.operation.setContext(({ headers = {} }) => ({
-          headers: { ...headers, Authorization: `Bearer ${tokens.access_token}` },
-        }));
-        forward(e.operation).subscribe(observer);
+        retryWithToken(tokens.access_token);
       })
       .catch((err) => {
         resolvePendingRequests(null);
