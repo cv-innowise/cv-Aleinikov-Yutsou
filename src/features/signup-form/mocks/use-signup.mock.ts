@@ -1,6 +1,5 @@
-// Factory to create a mock module for "../lib/use-signup"
-// Place mocks in this folder to keep tests clean and consistent.
+type MockFn = (...args: unknown[]) => unknown;
 
-export const createUseSignupMock = (signupUserMock: (...args: any[]) => any) => ({
+export const createUseSignupMock = (signupUserMock: MockFn) => ({
   useSignup: () => ({ signupUser: signupUserMock, loading: false, error: undefined }),
 });

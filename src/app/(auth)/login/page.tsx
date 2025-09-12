@@ -1,5 +1,4 @@
 import { LoginForm } from "@/features/login-form";
-import { cn } from "@/shared/lib/utils";
 
 const LoginPage = () => {
   return (
