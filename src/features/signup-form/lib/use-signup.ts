@@ -11,32 +11,35 @@ export const useSignup = () => {
   const router = useRouter();
   const client = useApolloClient();
 
-  const [signupMutation, { loading, error }] = useMutation<SignupResponse, AuthRequest>(SIGNUP_MUTATION);
+  const [signupMutation, { loading, error }] = useMutation<SignupResponse, AuthRequest>(SIGNUP_MUTATION, {
+    onCompleted: (data) => {
+      const signup = data?.signup;
 
-  const signupUser = (authData: AuthRequest["auth"]) =>
-    signupMutation({ variables: { auth: authData } })
-      .then(({ data }) => {
-        const tokens = data?.signup.access_token && data.signup.refresh_token ? { access_token: data.signup.access_token, refresh_token: data.signup.refresh_token } : undefined;
-        if (tokens) {
-          setTokens(tokens);
-        }
+      const access = signup?.access_token;
+      const refresh = signup?.refresh_token;
+      const userId = signup?.user?.id;
+      if (!access || !refresh || !userId) {
+        toast.error("Invalid signup response");
+        return;
+      }
 
-        const userId = data?.signup?.user?.id;
-        if (userId) {
-          localStorage.setItem("user_id", String(userId));
-        }
+      setTokens({ access_token: access, refresh_token: refresh });
+      localStorage.setItem("user_id", String(userId));
 
-        return client
-          .resetStore()
-          .catch(() => {})
-          .finally(() => {
-            router.replace("/");
-          });
-      })
-      .catch((e) => {
-        const message = e instanceof Error ? e.message : String(e);
-        toast.error(message || "Network error. Try it later");
-      });
+      client
+        .resetStore()
+        .catch(() => {})
+        .finally(() => {
+          router.replace("/");
+        });
+    },
+    onError: (e) => {
+      const message = e instanceof Error ? e.message : String(e);
+      toast.error(message || "Network error. Try it later");
+    },
+  });
+
+  const signupUser = (authData: AuthRequest["auth"]) => signupMutation({ variables: { auth: authData } });
 
   return { signupUser, loading, error };
 };
