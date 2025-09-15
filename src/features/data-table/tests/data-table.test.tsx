@@ -1,4 +1,4 @@
-import { screen, waitFor } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { render } from "vitest-browser-react";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { DataTable } from "../ui/data-table";
@@ -12,9 +12,7 @@ describe("EditableSkillItem", () => {
   });
 
   const renderComponent = () => {
-    return render(
-      <DataTable data={dataMock} columns={columnsMock} />
-    );
+    return render(<DataTable data={dataMock} columns={columnsMock} />);
   };
 
   test("should render table correctly", () => {
@@ -75,15 +73,15 @@ describe("EditableSkillItem", () => {
     expect(screen.getByText(dataMock[4].email)).toBeInTheDocument();
   });
 
-    test("should render empty list correctly", async () => {
-      const user = userEvent.setup();
-      renderComponent();
+  test("should render empty list correctly", async () => {
+    const user = userEvent.setup();
+    renderComponent();
 
-      await user.type(screen.getByTestId(/search/i), "@@@");
+    await user.type(screen.getByTestId(/search/i), "@@@");
 
-      expect(screen.queryAllByTestId(/table-row/i)).toHaveLength(0);
-      expect(screen.getByTestId(/no-results/i)).toBeInTheDocument();
-    });
+    expect(screen.queryAllByTestId(/table-row/i)).toHaveLength(0);
+    expect(screen.getByTestId(/no-results/i)).toBeInTheDocument();
+  });
 
   test("should sorting work correctly", async () => {
     const user = userEvent.setup();
@@ -95,8 +93,6 @@ describe("EditableSkillItem", () => {
 
     await user.click(screen.getByTestId(/sort-email/i));
 
-    expect(screen.getAllByText(/@/i)[0]).toHaveTextContent(
-      "1111111111@gmail.com"
-    );
+    expect(screen.getAllByText(/@/i)[0]).toHaveTextContent("1111111111@gmail.com");
   });
 });
