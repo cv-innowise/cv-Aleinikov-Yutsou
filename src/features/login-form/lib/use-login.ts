@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { LOGIN_QUERY } from "@/shared/graphql/auth/auth.queries";
 import type { LoginResponse, AuthRequest } from "@/shared/graphql/auth/auth.types";
-import { setTokens } from "@/shared/auth";
+import { setTokens } from "@/shared/lib/cookies";
+// import { setTokens } from "@/shared/auth";
 
 export const useLogin = () => {
   const router = useRouter();
@@ -18,10 +19,11 @@ export const useLogin = () => {
   const loginUser = (authData: AuthRequest["auth"]) =>
     loginQuery({ variables: { auth: authData } })
       .then(({ data }) => {
-        const tokens = data?.login?.access_token && data.login.refresh_token ? { access_token: data.login.access_token, refresh_token: data.login.refresh_token } : undefined;
+        const accessToken = data?.login?.access_token;
+        const refreshToken = data?.login?.refresh_token;
 
-        if (tokens) {
-          setTokens(tokens);
+        if (accessToken && refreshToken) {
+          setTokens(accessToken, refreshToken);
         }
 
         const userId = data?.login?.user?.id;
@@ -29,12 +31,7 @@ export const useLogin = () => {
           localStorage.setItem("user_id", String(userId));
         }
 
-        return client
-          .resetStore()
-          .catch(() => {})
-          .finally(() => {
-            router.replace("/");
-          });
+        toast.success("Login successful");
       })
       .catch((e) => {
         const message = e instanceof Error ? e.message : String(e);
