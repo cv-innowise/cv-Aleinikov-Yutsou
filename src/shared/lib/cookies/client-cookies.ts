@@ -1,18 +1,19 @@
 import { Session } from "./types";
 
+const hasDOM = typeof document !== "undefined";
+
 const setCookie = (name: string, value: string | object, days = 7) => {
+  if (!hasDOM) return;
   const expires = new Date(Date.now() + days * 864e5).toUTCString();
   const cookieValue = typeof value === "object" ? JSON.stringify(value) : value;
   document.cookie = `${name}=${encodeURIComponent(cookieValue)}; expires=${expires}; path=/`;
 };
 
 const getCookie = (name: string): object | string | undefined => {
+  if (!hasDOM) return undefined;
   const cookieRow = document.cookie.split("; ").find((row) => row.startsWith(name + "="));
-
   if (!cookieRow) return undefined;
-
   const cookieValue = decodeURIComponent(cookieRow.split("=")[1]);
-
   try {
     return JSON.parse(cookieValue);
   } catch {
@@ -21,6 +22,7 @@ const getCookie = (name: string): object | string | undefined => {
 };
 
 const deleteCookie = (name: string) => {
+  if (!hasDOM) return;
   document.cookie = `${name}=; max-age=0; path=/`;
 };
 

@@ -9,6 +9,15 @@ function makeClient() {
   return new ApolloClient({
     cache: new InMemoryCache(),
     link: ApolloLink.from([clientAuthLink, errorLink, httpLink]),
+    defaultOptions: {
+      watchQuery: {
+        fetchPolicy: "cache-first",
+        nextFetchPolicy: "cache-first",
+      },
+      query: {
+        fetchPolicy: "cache-first",
+      },
+    },
   });
 }
 

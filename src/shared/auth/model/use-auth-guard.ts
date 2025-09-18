@@ -2,28 +2,40 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { getAccessTokenClientSide } from "@/shared/lib/cookies";
+import { getAccessToken } from "./token-service";
 
 type Mode = "require-auth" | "guest-only";
 
 export function useRouteGuard(mode: Mode, redirectTo: string) {
   const router = useRouter();
   const [ready, setReady] = useState(false);
-  const access = typeof window !== "undefined" ? getAccessTokenClientSide() : null;
 
   useEffect(() => {
-    if (mode === "require-auth") {
-      if (!access) {
-        router.replace(redirectTo);
-        return;
+    let cancelled = false;
+
+    (async () => {
+      if (typeof window === "undefined") return;
+
+      const access = await getAccessToken();
+
+      if (mode === "require-auth") {
+        if (!access) {
+          if (!cancelled) router.replace(redirectTo);
+          return;
+        }
+      } else {
+        if (access) {
+          if (!cancelled) router.replace(redirectTo);
+          return;
+        }
       }
-    } else {
-      if (access) {
-        router.replace(redirectTo);
-        return;
-      }
-    }
-    setReady(true);
+
+      if (!cancelled) setReady(true);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
   }, [mode, redirectTo, router]);
 
   return ready;
