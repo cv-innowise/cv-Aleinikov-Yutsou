@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { getAccessToken } from "./token-service";
+import { getAccessToken } from "./client-token-service";
 
 type Mode = "require-auth" | "guest-only";
 

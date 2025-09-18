@@ -87,3 +87,31 @@ export const getAccessToken = async (): Promise<string | null> => {
 
   return await refreshPromise;
 };
+
+async function updateTokenRequestServer(refresh_token?: string): Promise<UpdateTokenResult | null> {
+  if (!refresh_token) return null;
+
+  const res = await fetch(process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? "https://cv-project-js.inno.ws/api/graphql", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${refresh_token}`,
+    },
+    body: JSON.stringify({
+      query: `
+        mutation UpdateToken {
+          updateToken {
+            access_token
+            refresh_token
+          }
+        }
+      `,
+    }),
+    cache: "no-store",
+  });
+
+  if (!res.ok) return null;
+  const json = await res.json().catch(() => null);
+  const tokens = json?.data?.updateToken as UpdateTokenResult | undefined;
+  return tokens ?? null;
+}
