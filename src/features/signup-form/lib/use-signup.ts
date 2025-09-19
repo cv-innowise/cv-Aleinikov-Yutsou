@@ -1,15 +1,14 @@
 "use client";
 
-import { useMutation, useApolloClient } from "@apollo/client/react";
+import { useMutation } from "@apollo/client/react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { SIGNUP_MUTATION } from "@/shared/graphql/auth/auth.mutations";
 import type { SignupResponse, AuthRequest } from "@/shared/graphql/auth/auth.types";
-import { setTokens } from "@/shared/auth";
+import { successAuth } from "@/features/auth/model/auth-service";
 
 export const useSignup = () => {
   const router = useRouter();
-  const client = useApolloClient();
 
   const [signupMutation, { loading, error }] = useMutation<SignupResponse, AuthRequest>(SIGNUP_MUTATION, {
     onCompleted: (data) => {
@@ -23,15 +22,9 @@ export const useSignup = () => {
         return;
       }
 
-      setTokens({ access_token: access, refresh_token: refresh });
-      localStorage.setItem("user_id", String(userId));
+      successAuth(signup);
 
-      client
-        .resetStore()
-        .catch(() => {})
-        .finally(() => {
-          router.replace("/");
-        });
+      router.push("/");
     },
     onError: (e) => {
       const message = e instanceof Error ? e.message : String(e);

@@ -1,4 +1,4 @@
-import { clearTokens, getAccessTokenClientSide, getRefreshTokenClientSide, setAccessTokenClientSide, setTokens } from "@/shared/lib/cookies";
+import { clearTokens, getAccessTokenClientSide, getRefreshTokenClientSide, setTokens } from "@/shared/lib/cookies";
 import { UpdateTokenResult } from "cv-graphql";
 import { jwtDecode } from "jwt-decode";
 
@@ -88,7 +88,7 @@ export const getAccessToken = async (): Promise<string | null> => {
   return await refreshPromise;
 };
 
-async function updateTokenRequestServer(refresh_token?: string): Promise<UpdateTokenResult | null> {
+export async function updateTokenRequestServer(refresh_token?: string): Promise<UpdateTokenResult | null> {
   if (!refresh_token) return null;
 
   const res = await fetch(process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? "https://cv-project-js.inno.ws/api/graphql", {

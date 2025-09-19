@@ -3,7 +3,7 @@ import { LOGIN_QUERY } from "@/shared/graphql/auth/auth.queries";
 export const loginMock = {
   request: {
     query: LOGIN_QUERY,
-    variables: { auth: { email: "test@mail.com", password: "123456" } },
+    variables: { auth: { email: "test@mail.com", password: "passworD123" } },
   },
   result: {
     data: {

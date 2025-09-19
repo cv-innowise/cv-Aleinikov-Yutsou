@@ -3,7 +3,7 @@ import { SIGNUP_MUTATION } from "@/shared/graphql/auth/auth.mutations";
 export const signupMock = {
   request: {
     query: SIGNUP_MUTATION,
-    variables: { auth: { email: "new@mail.com", password: "123456" } },
+    variables: { auth: { email: "new@mail.com", password: "passworD123" } },
   },
   result: {
     data: {
