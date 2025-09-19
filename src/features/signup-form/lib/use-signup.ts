@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { SIGNUP_MUTATION } from "@/shared/graphql/auth/auth.mutations";
 import type { SignupResponse, AuthRequest } from "@/shared/graphql/auth/auth.types";
-import { successAuth } from "@/features/auth/model/auth-service";
+import { successAuth } from "@/features/auth";
 
 export const useSignup = () => {
   const router = useRouter();

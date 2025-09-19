@@ -1,5 +1,3 @@
-"use client";
-
 import { getAccessToken } from "@/shared/auth";
 import { SetContextLink } from "@apollo/client/link/context";
 

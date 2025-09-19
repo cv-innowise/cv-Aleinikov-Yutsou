@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 
 type JwtPayload = { exp?: number };
 
-export const isTokenExpired = (token?: string): boolean => {
+const isTokenExpired = (token?: string): boolean => {
   try {
     if (!token) return true;
     const { exp } = jwtDecode<JwtPayload>(token);
@@ -15,7 +15,7 @@ export const isTokenExpired = (token?: string): boolean => {
   }
 };
 
-export const isTokenExpiring = (token?: string, skewSec = 30): boolean => {
+const isTokenExpiring = (token?: string, skewSec = 30): boolean => {
   try {
     if (!token) return true;
     const { exp } = jwtDecode<JwtPayload>(token);
@@ -27,7 +27,7 @@ export const isTokenExpiring = (token?: string, skewSec = 30): boolean => {
   }
 };
 
-export const updateTokenRequest = async (refresh_token: string | undefined): Promise<UpdateTokenResult | null> => {
+const updateTokenRequest = async (refresh_token: string | undefined): Promise<UpdateTokenResult | null> => {
   if (!refresh_token) return null;
 
   const res = await fetch("https://cv-project-js.inno.ws/api/graphql", {
@@ -57,7 +57,7 @@ export const updateTokenRequest = async (refresh_token: string | undefined): Pro
 
 let refreshPromise: Promise<string | null> | null = null;
 
-export const getAccessToken = async (): Promise<string | null> => {
+const getAccessToken = async (): Promise<string | null> => {
   const isServer = typeof window === "undefined";
   if (isServer) return null;
 
@@ -88,7 +88,7 @@ export const getAccessToken = async (): Promise<string | null> => {
   return await refreshPromise;
 };
 
-export async function updateTokenRequestServer(refresh_token?: string): Promise<UpdateTokenResult | null> {
+async function updateTokenRequestServer(refresh_token?: string): Promise<UpdateTokenResult | null> {
   if (!refresh_token) return null;
 
   const res = await fetch(process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? "https://cv-project-js.inno.ws/api/graphql", {
@@ -115,3 +115,5 @@ export async function updateTokenRequestServer(refresh_token?: string): Promise<
   const tokens = json?.data?.updateToken as UpdateTokenResult | undefined;
   return tokens ?? null;
 }
+
+export { getAccessToken, getAccessTokenClientSide, getRefreshTokenClientSide, updateTokenRequestServer, clearTokens, setTokens };

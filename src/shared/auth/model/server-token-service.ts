@@ -55,7 +55,7 @@ async function updateTokenRequestServer(refresh_token?: string): Promise<UpdateT
   return json?.data?.updateToken ?? null;
 }
 
-export async function ensureServerAccessToken({ skewSec = 30, mutateCookies = false }: { skewSec?: number; mutateCookies?: boolean } = {}): Promise<string | null> {
+async function ensureServerAccessToken({ skewSec = 30, mutateCookies = false }: { skewSec?: number; mutateCookies?: boolean } = {}): Promise<string | null> {
   const c = await cookies();
   const access = c.get("access_token")?.value;
   if (access && !isTokenExpiring(access, skewSec)) return access;
@@ -86,8 +86,10 @@ export async function ensureServerAccessToken({ skewSec = 30, mutateCookies = fa
   return tokens.access_token;
 }
 
-export async function refreshTokensServerAction(): Promise<boolean> {
+async function refreshTokensServerAction(): Promise<boolean> {
   "use server";
   const t = await ensureServerAccessToken({ mutateCookies: true });
   return !!t;
 }
+
+export { ensureServerAccessToken, refreshTokensServerAction, isTokenExpired, isTokenExpiring };

@@ -12,18 +12,6 @@ vi.mock("next/link", () => ({
   default: (props: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) => <a {...props} />,
 }));
 
-vi.mock("next/headers", () => ({
-  __esModule: true,
-  headers: () => new Headers(),
-  cookies: () => ({
-    get: () => undefined,
-    getAll: () => [],
-    set: () => {},
-    delete: () => {},
-  }),
-  draftMode: () => ({ isEnabled: false }),
-}));
-
 beforeEach(() => {
   clearCookies();
 });
