@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { getAccessToken, getRefreshToken } from "./tokens";
+import { getAccessToken } from "./client-token-service";
 
 type Mode = "require-auth" | "guest-only";
 
@@ -11,19 +11,31 @@ export function useRouteGuard(mode: Mode, redirectTo: string) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const isAuthed = Boolean(getAccessToken() && getRefreshToken());
-    if (mode === "require-auth") {
-      if (!isAuthed) {
-        router.replace(redirectTo);
-        return;
+    let cancelled = false;
+
+    (async () => {
+      if (typeof window === "undefined") return;
+
+      const access = await getAccessToken();
+
+      if (mode === "require-auth") {
+        if (!access) {
+          if (!cancelled) router.replace(redirectTo);
+          return;
+        }
+      } else {
+        if (access) {
+          if (!cancelled) router.replace(redirectTo);
+          return;
+        }
       }
-    } else {
-      if (isAuthed) {
-        router.replace(redirectTo);
-        return;
-      }
-    }
-    setReady(true);
+
+      if (!cancelled) setReady(true);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
   }, [mode, redirectTo, router]);
 
   return ready;

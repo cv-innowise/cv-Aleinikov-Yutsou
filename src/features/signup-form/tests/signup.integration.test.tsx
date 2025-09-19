@@ -5,6 +5,7 @@ import { userEvent } from "@vitest/browser/context";
 import { MockedProvider } from "@apollo/client/testing/react";
 import { signupMock } from "../mocks/signup.mocks";
 import { SignupForm } from "../ui/signup-form";
+import { clearCookies, getCookie } from "../mocks/cookies.mocks";
 
 vi.mock("next/link", () => ({
   __esModule: true,
@@ -12,7 +13,7 @@ vi.mock("next/link", () => ({
 }));
 
 beforeEach(() => {
-  localStorage.clear();
+  clearCookies();
 });
 
 describe("SignupForm (integration)", () => {
@@ -24,12 +25,12 @@ describe("SignupForm (integration)", () => {
     );
 
     await userEvent.type(screen.getByPlaceholderText("Email"), "new@mail.com");
-    await userEvent.type(screen.getByPlaceholderText("Password"), "123456");
+    await userEvent.type(screen.getByPlaceholderText("Password"), "passworD123");
     await userEvent.click(screen.getByRole("button", { name: /create account/i }));
 
     await waitFor(() => {
-      expect(localStorage.getItem("access_token")).toBe("mock_access_token");
-      expect(localStorage.getItem("refresh_token")).toBe("mock_refresh_token");
+      expect(getCookie("access_token")).toBe("mock_access_token");
+      expect(getCookie("refresh_token")).toBe("mock_refresh_token");
     });
   });
 });

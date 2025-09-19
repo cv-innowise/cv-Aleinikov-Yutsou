@@ -14,7 +14,8 @@
     "test:browser": "vitest --config=vitest.browser.config.ts"
   },
   "dependencies": {
-    "@apollo/client": "^4.0.4",
+    "@apollo/client": "^4.0.5",
+    "@apollo/client-integration-nextjs": "^0.13.1",
     "@hookform/resolvers": "^5.2.1",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-label": "^2.1.7",
@@ -28,6 +29,7 @@
     "cmdk": "^1.1.1",
     "cv-graphql": "^2.13.2",
     "graphql": "^16.11.0",
+    "jwt-decode": "^4.0.0",
     "lucide-react": "^0.542.0",
     "next": "15.5.2",
     "next-themes": "^0.4.6",

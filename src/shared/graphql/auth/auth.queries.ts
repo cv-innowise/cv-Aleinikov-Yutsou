@@ -8,6 +8,7 @@ export const LOGIN_QUERY = gql`
       user {
         id
         email
+        role
       }
     }
   }
