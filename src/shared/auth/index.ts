@@ -1,3 +1,4 @@
-export { useRouteGuard } from "./model/use-auth-guard";
+export { RouteGuard } from "./model/route-guard";
 export * from "./model/client-token-service";
 export * from "./model/server-token-service";
+export * from "./model/token-utils";

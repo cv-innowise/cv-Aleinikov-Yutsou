@@ -19,7 +19,7 @@ export const useLogin = () => {
       .then(({ data }) => {
         if (data?.login) {
           successAuth(data.login);
-          router.push("/");
+          router.push("/users");
         }
       })
       .catch((e) => {
