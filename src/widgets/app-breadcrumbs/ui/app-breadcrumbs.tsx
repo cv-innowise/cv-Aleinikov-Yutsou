@@ -4,6 +4,7 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/shared/components/ui/breadcrumb";
 import { UserCrumb } from "@/entity/user";
+import { CvCrumb } from "@/entity/cv";
 
 export const AppBreadcrumbs = () => {
   const pathname = usePathname();
@@ -18,6 +19,10 @@ export const AppBreadcrumbs = () => {
           if (parts[idx - 1] === "users") {
             return <UserCrumb key={href} id={part} href={href} />;
           }
+          if (parts[idx - 1] === "cvs") {
+            return <CvCrumb key={href} id={part} href={href} />;
+          }
+
           return (
             <React.Fragment key={href}>
               {idx > 0 && <BreadcrumbSeparator />}
