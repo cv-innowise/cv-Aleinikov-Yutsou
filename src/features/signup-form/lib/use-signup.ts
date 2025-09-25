@@ -3,8 +3,7 @@
 import { useMutation } from "@apollo/client/react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { SIGNUP_MUTATION } from "@/shared/graphql/auth/auth.mutations";
-import type { SignupResponse, AuthRequest } from "@/shared/graphql/auth/auth.types";
+import { SIGNUP_MUTATION, SignupResponse, AuthRequest } from "@/shared/graphql/auth";
 import { successAuth } from "@/features/auth";
 
 export const useSignup = () => {

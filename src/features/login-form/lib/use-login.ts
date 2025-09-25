@@ -3,8 +3,7 @@
 import { useLazyQuery } from "@apollo/client/react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { LOGIN_QUERY } from "@/shared/graphql/auth/auth.queries";
-import type { LoginResponse, AuthRequest } from "@/shared/graphql/auth/auth.types";
+import { LOGIN_QUERY, LoginResponse, AuthRequest } from "@/shared/graphql/auth";
 import { successAuth } from "@/features/auth";
 
 export const useLogin = () => {

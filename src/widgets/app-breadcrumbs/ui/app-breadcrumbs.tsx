@@ -3,6 +3,7 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/shared/components/ui/breadcrumb";
+import { UserCrumb } from "@/entity/user";
 
 export const AppBreadcrumbs = () => {
   const pathname = usePathname();
@@ -13,6 +14,10 @@ export const AppBreadcrumbs = () => {
       <BreadcrumbList>
         {parts.map((part, idx) => {
           const href = "/" + parts.slice(0, idx + 1).join("/");
+
+          if (parts[idx - 1] === "users") {
+            return <UserCrumb key={href} id={part} href={href} />;
+          }
           return (
             <React.Fragment key={href}>
               {idx > 0 && <BreadcrumbSeparator />}

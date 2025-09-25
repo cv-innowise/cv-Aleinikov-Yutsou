@@ -3,29 +3,13 @@ import { NavMenu } from "./nav-menu";
 import { getSessionServerSide } from "@/shared/lib/cookies";
 import { getClient } from "@/shared/lib/apollo/apollo-client";
 import { UserPopover } from "@/features/user-popover";
-import { gql } from "@apollo/client";
-import { User } from "cv-graphql";
-
-interface UserResponse {
-  user: User;
-}
+import { UserResponse, USER_BY_ID } from "@/shared/graphql/users";
 
 export const Navbar = async () => {
   const session = await getSessionServerSide();
 
   const { data } = await getClient().query<UserResponse>({
-    query: gql`
-      query QetUserById($userId: ID!) {
-        user(userId: $userId) {
-          id
-          email
-          profile {
-            avatar
-            full_name
-          }
-        }
-      }
-    `,
+    query: USER_BY_ID,
     variables: { userId: session?.id },
   });
 
