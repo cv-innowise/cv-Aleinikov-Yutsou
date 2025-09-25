@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ApolloWrapper } from "@/shared/providers/apollo-client-provider";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "./providers/theme/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,12 +26,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ApolloWrapper>
-          {children}
-          <Toaster position="top-right" />
-        </ApolloWrapper>
+        <ThemeProvider>
+          <ApolloWrapper>
+            {children}
+            <Toaster position="top-right" />
+          </ApolloWrapper>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 import { RouteGuard } from "@/shared/auth/model/route-guard";
 import { SidebarProvider, SidebarTrigger } from "@/shared/components/ui/sidebar";
+import { AppBreadcrumbs } from "@/widgets/app-breadcrumbs";
 import { Navbar } from "@/widgets/navbar";
 import React from "react";
 
@@ -11,12 +12,13 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
       <SidebarProvider>
         <Navbar />
         <div>
-          <header>
+          <header className="flex items-center gap-4 p-2.5">
             <SidebarTrigger />
+
+            <AppBreadcrumbs />
           </header>
-          <main>{children}</main>
+          <main className="p-2.5">{children}</main>
         </div>
-        {children}
       </SidebarProvider>
     </RouteGuard>
   );

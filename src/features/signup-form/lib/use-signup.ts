@@ -24,7 +24,7 @@ export const useSignup = () => {
 
       successAuth(signup);
 
-      router.push("/");
+      router.push(`/users/${signup.user.id}`);
     },
     onError: (e) => {
       const message = e instanceof Error ? e.message : String(e);

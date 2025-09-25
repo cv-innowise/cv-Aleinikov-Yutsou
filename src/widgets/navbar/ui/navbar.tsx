@@ -1,4 +1,4 @@
-import { Sidebar, SidebarContent, SidebarFooter } from "@/shared/components/ui/sidebar";
+import { Sidebar, SidebarContent, SidebarFooter, SidebarRail } from "@/shared/components/ui/sidebar";
 import { NavMenu } from "./nav-menu";
 import { links } from "../model/links";
 import { getSessionServerSide } from "@/shared/lib/cookies";
@@ -38,6 +38,7 @@ export const Navbar = async () => {
       <SidebarFooter>
         <UserPopover user={data?.user} />
       </SidebarFooter>
+      <SidebarRail />
     </Sidebar>
   );
 };

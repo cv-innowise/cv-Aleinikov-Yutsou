@@ -26,7 +26,7 @@ export const NavMenu: React.FC<NavMenuProps> = ({ links }) => {
       <SidebarMenu>
         {links.map((link) => {
           const Icon = icons[link.icon as keyof typeof icons];
-          const isActive = pathname === link.url;
+          const isActive = link.url === "/" ? pathname === "/" : pathname === link.url || pathname.startsWith(link.url + "/");
           return (
             <SidebarMenuItem key={link.title}>
               <SidebarMenuButton asChild isActive={isActive} tooltip={link.title}>
