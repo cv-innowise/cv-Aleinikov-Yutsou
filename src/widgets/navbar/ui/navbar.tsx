@@ -1,6 +1,5 @@
 import { Sidebar, SidebarContent, SidebarFooter, SidebarRail } from "@/shared/components/ui/sidebar";
 import { NavMenu } from "./nav-menu";
-import { links } from "../model/links";
 import { getSessionServerSide } from "@/shared/lib/cookies";
 import { getClient } from "@/shared/lib/apollo/apollo-client";
 import { UserPopover } from "@/features/user-popover";
@@ -33,7 +32,7 @@ export const Navbar = async () => {
   return (
     <Sidebar collapsible="icon">
       <SidebarContent className="pt-11">
-        <NavMenu links={links} />
+        <NavMenu />
       </SidebarContent>
       <SidebarFooter>
         <UserPopover user={data?.user} />

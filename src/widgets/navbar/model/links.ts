@@ -1,30 +1,30 @@
 import { type LucideIcon, Users, TrendingUp, FileUser, Languages } from "lucide-react";
 
-export type linkItem = {
+type LinkItem = {
   title: string;
   url: string;
-  icon?: string;
+  icon?: LucideIcon;
 };
 
-export const links: linkItem[] = [
+export const links: LinkItem[] = [
   {
     title: "Employees",
     url: "/users",
-    icon: "Users",
+    icon: Users,
   },
   {
     title: "Skills",
     url: "/skills",
-    icon: "TrendingUp",
+    icon: TrendingUp,
   },
   {
     title: "Languages",
     url: "/languages",
-    icon: "Languages",
+    icon: Languages,
   },
   {
     title: "CVs",
     url: "/cvs",
-    icon: "FileUser",
+    icon: FileUser,
   },
 ];
