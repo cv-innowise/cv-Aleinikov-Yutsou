@@ -5,9 +5,11 @@ import { SidebarGroup, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { links } from "../model/links";
+import { useTranslations } from "next-intl";
 
 export const NavMenu = () => {
   const pathname = usePathname();
+  const t = useTranslations("sidebar");
 
   return (
     <SidebarGroup>
@@ -15,12 +17,13 @@ export const NavMenu = () => {
         {links.map((link) => {
           const isActive = link.url === "/" ? pathname === "/" : pathname === link.url || pathname.startsWith(link.url + "/");
           const Icon = link.icon;
+          const title = t(link.titleKey);
           return (
-            <SidebarMenuItem key={link.title}>
-              <SidebarMenuButton asChild isActive={isActive} tooltip={link.title}>
+            <SidebarMenuItem key={title}>
+              <SidebarMenuButton asChild isActive={isActive} tooltip={title}>
                 <Link href={link.url}>
                   {Icon && <Icon />}
-                  <span>{link.title}</span>
+                  <span>{title}</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>

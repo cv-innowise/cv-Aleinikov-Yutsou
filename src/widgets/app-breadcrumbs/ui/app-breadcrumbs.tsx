@@ -5,10 +5,12 @@ import { usePathname } from "next/navigation";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/shared/components/ui/breadcrumb";
 import { UserCrumb } from "@/entity/user";
 import { CvCrumb } from "@/entity/cv";
+import { useTranslations } from "next-intl";
 
 export const AppBreadcrumbs = () => {
   const pathname = usePathname();
   const parts = pathname.split("/").filter(Boolean);
+  const t = useTranslations("breadcrumbs");
 
   return (
     <Breadcrumb>
@@ -28,7 +30,7 @@ export const AppBreadcrumbs = () => {
               {idx > 0 && <BreadcrumbSeparator />}
               <BreadcrumbItem>
                 <BreadcrumbLink className="capitalize" href={href}>
-                  {decodeURIComponent(part)}
+                  {t(part) || part}
                 </BreadcrumbLink>
               </BreadcrumbItem>
             </React.Fragment>

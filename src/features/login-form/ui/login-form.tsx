@@ -10,10 +10,13 @@ import { Button } from "@/shared/components/ui/button";
 import Link from "next/link";
 import { PasswordField } from "@/shared/components/ui/password-field";
 import { Form, FormField, FormItem, FormControl, FormMessage } from "@/shared/components/ui/form";
+import { useTranslations } from "next-intl";
 
 type FormValues = InferType<typeof loginSchema>;
 
 export const LoginForm = () => {
+  const t = useTranslations("auth.login");
+
   const form = useForm<FormValues>({
     resolver: yupResolver(loginSchema),
     defaultValues: { email: "", password: "" },
@@ -31,7 +34,7 @@ export const LoginForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input type="email" placeholder="Email" {...field} />
+                  <Input type="email" placeholder={t("emailPlaceholder")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -43,7 +46,7 @@ export const LoginForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <PasswordField placeholder="Password" {...field} />
+                  <PasswordField placeholder={t("passwordPlaceholder")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -53,10 +56,10 @@ export const LoginForm = () => {
 
         <div className="grid justify-items-center gap-2">
           <Button loading={loading} type="submit">
-            Log in
+            {t("submit")}
           </Button>
           <Button asChild variant="link">
-            <Link href="/forgot-password">Forgot password</Link>
+            <Link href="/forgot-password">{t("forgotPassword")}</Link>
           </Button>
         </div>
       </form>

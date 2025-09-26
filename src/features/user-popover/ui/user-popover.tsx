@@ -10,6 +10,7 @@ import { clearTokens, removeSession } from "@/shared/lib/cookies";
 import { useRouter } from "next/navigation";
 import { cn } from "@/shared/lib/utils";
 import type { User as UserType } from "cv-graphql";
+import { useTranslations } from "next-intl";
 
 interface UserPopoverProps {
   user: UserType | undefined;
@@ -17,6 +18,7 @@ interface UserPopoverProps {
 
 export const UserPopover: React.FC<UserPopoverProps> = ({ user }) => {
   const router = useRouter();
+  const t = useTranslations("sidebar");
 
   const onLogout = () => {
     clearTokens();
@@ -42,15 +44,15 @@ export const UserPopover: React.FC<UserPopoverProps> = ({ user }) => {
       <PopoverContent side="top" align="start" className="flex flex-col gap-2.5 p-2">
         <Link className={itemCls} href={`/users/${user?.id}`}>
           <User size={24} />
-          Profile
+          {t("profile")}
         </Link>
         <Link className={itemCls} href="/settings">
           <Settings size={24} />
-          Settings
+          {t("settings")}
         </Link>
         <button onClick={onLogout} className={cn(itemCls, "cursor-pointer")}>
           <LogOut className="text-primary" size={24} />
-          Logout
+          {t("logout")}
         </button>
       </PopoverContent>
     </Popover>

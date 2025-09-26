@@ -4,6 +4,7 @@ import userEvent from "@testing-library/user-event";
 import type React from "react";
 import { UserPopover } from "@/features/user-popover";
 import { mockUser, mockUserWithoutAvatar } from "@/features/user-popover/mocks/user";
+import { NextIntlClientProvider } from "next-intl";
 
 vi.mock("next/link", () => ({
   __esModule: true,

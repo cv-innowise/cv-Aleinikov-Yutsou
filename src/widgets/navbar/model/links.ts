@@ -1,29 +1,29 @@
 import { type LucideIcon, Users, TrendingUp, FileUser, Languages } from "lucide-react";
 
 type LinkItem = {
-  title: string;
+  titleKey: string;
   url: string;
   icon?: LucideIcon;
 };
 
 export const links: LinkItem[] = [
   {
-    title: "Employees",
+    titleKey: "users",
     url: "/users",
     icon: Users,
   },
   {
-    title: "Skills",
+    titleKey: "skills",
     url: "/skills",
     icon: TrendingUp,
   },
   {
-    title: "Languages",
+    titleKey: "languages",
     url: "/languages",
     icon: Languages,
   },
   {
-    title: "CVs",
+    titleKey: "cvs",
     url: "/cvs",
     icon: FileUser,
   },
