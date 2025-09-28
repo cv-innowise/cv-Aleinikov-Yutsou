@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 import { jwtDecode } from "jwt-decode";
-import type { UpdateTokenResult } from "cv-graphql";
+import type { UpdateTokenResult } from "@/shared/types/cv-graphql";
 
 type JwtPayload = { exp?: number };
 

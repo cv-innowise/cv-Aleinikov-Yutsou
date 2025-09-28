@@ -1,5 +1,5 @@
 import { clearTokens, getAccessTokenClientSide, getRefreshTokenClientSide, setTokens } from "@/shared/lib/cookies";
-import { UpdateTokenResult } from "cv-graphql";
+import { UpdateTokenResult } from "@/shared/types/cv-graphql";
 import { jwtDecode } from "jwt-decode";
 
 type JwtPayload = { exp?: number };
