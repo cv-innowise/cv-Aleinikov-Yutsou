@@ -1,4 +1,4 @@
-import { Mastery, Skill } from "@/shared/types/skill";
+import { Mastery, SkillMastery } from "@/shared/types/cv-graphql";
 
 export type SkillCategory = {
     name: string;
@@ -6,10 +6,10 @@ export type SkillCategory = {
 }
   
 export interface SkillItemProps {
-  categories: SkillCategory[];
-  skill?: string;
+  skillsByCategories: Record<string, { name: string, categoryId: string }[]>;
+  name?: string;
   mastery?: Mastery;
   isEditable: boolean;
   isDisabled: boolean;
-  onChange: ({ name, mastery }: Partial<Skill>) => void;
+  onChange: ({ name, mastery, categoryId }: Partial<SkillMastery>) => void;
 }

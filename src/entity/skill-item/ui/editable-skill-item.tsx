@@ -1,7 +1,8 @@
+"use client";
+
 import { Slider } from "@/shared/components/ui/slider";
-import { Mastery, MASTERY_LENGTH } from "@/shared/types/skill";
 import { SkillItemProps } from "../types";
-import { MASTERY_BG_COLOR } from "../consts";
+import { MASTERY_BG_COLOR, MasteryMappa } from "../consts";
 import { useState } from "react";
 import {
   Popover,
@@ -19,41 +20,42 @@ import {
   CommandList,
 } from "@/shared/components/ui/command";
 import { cn } from "@/shared/lib/utils";
+import { Mastery } from "@/shared/types/cv-graphql";
 
 export const EditableSkillItem = ({
-  categories,
-  skill,
+  skillsByCategories,
+  name,
   mastery,
   isDisabled,
   onChange,
 }: SkillItemProps) => {
   const [selectedSkill, setSelectedSkill] = useState<string>(
-    skill || "Add new skill..."
+    name || "Add new skill..."
   );
   const [selectedMastery, setSelectedMastery] = useState<Mastery>(
-    mastery || Mastery.NOVICE
+    mastery || Mastery.Novice
   );
   const [open, setOpen] = useState<boolean>(false);
 
-  const onSkillChage = (newSkill: string) => {
+  const onSkillChage = (categoryId: string) => (newSkill: string) => {
     if (newSkill !== selectedSkill) {
       setSelectedSkill(newSkill);
-      onChange({ name: newSkill });
+      onChange({ name: newSkill, categoryId });
     }
     setOpen(false);
   };
 
   const onMasteryChange = ([newMastery]: number[]) => {
-    onChange({ mastery: newMastery-1 });
+    onChange({ mastery: MasteryMappa[newMastery] });
   };
 
   return (
     <div className="min-w-[200px] w-min px-4 py-2 flex justify-center items-center space-x-2 rounded-full transition-colors hover:bg-black/5">
       <Slider
-        value={[selectedMastery + 1]}
-        onValueChange={([val]) => setSelectedMastery(val ? val - 1 : 0)}
+        value={[Object.keys(Mastery).indexOf(selectedMastery) + 1]}
+        onValueChange={([val]) => setSelectedMastery(MasteryMappa[val])}
         onValueCommit={onMasteryChange}
-        max={MASTERY_LENGTH + 1}
+        max={Object.keys(Mastery).length}
         disabled={isDisabled}
         color={
           isDisabled ? "bg-muted-foreground" : MASTERY_BG_COLOR[selectedMastery]
@@ -71,6 +73,7 @@ export const EditableSkillItem = ({
             aria-expanded={open}
             className="w-min min-w-[50px] justify-between"
             data-testid="skill-button"
+            disabled={isDisabled}
           >
             {selectedSkill || "Select skill..."}
             <ChevronsUpDown className="opacity-50" />
@@ -81,16 +84,16 @@ export const EditableSkillItem = ({
             <CommandInput placeholder="Search skills..." className="h-9" />
             <CommandList>
               <CommandEmpty>No skills found.</CommandEmpty>
-              {categories.map(({ name, skills }) => (
+              {Object.entries(skillsByCategories).map(([name, skills]) => (
                 <CommandGroup key={name}>
                   <span className="text-sm mx-1 text-muted-foreground">
                     {name}
                   </span>
-                  {skills.map((skillName) => (
+                  {skills.map(({ name: skillName, categoryId }) => (
                     <CommandItem
                       key={skillName}
                       value={skillName}
-                      onSelect={onSkillChage}
+                      onSelect={onSkillChage(categoryId)}
                     >
                       {skillName}
                       <Check
