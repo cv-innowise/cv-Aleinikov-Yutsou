@@ -22,17 +22,19 @@ import { useCallback, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { DATA_PER_VIEW } from "../consts";
-import { Skeleton } from "@/shared/components/ui/skeleton";
-import { Spinner } from "@/shared/components/ui/spinner";
 
 interface DataTableProps<TData, TValue> {
+  title: string;
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  children?: React.ReactNode;
 }
 
 export function DataTable<TData, TValue>({
+  title,
   columns,
   data,
+  children,
 }: DataTableProps<TData, TValue>) {
   const searchParams = useSearchParams();
   const search = searchParams?.get("search") ?? "";
@@ -88,15 +90,16 @@ export function DataTable<TData, TValue>({
   }, [isInView, data, hasMoreData]);
 
   return (
-    <div>
-      <div className="flex items-center py-4">
-        <Input
-          placeholder="Search"
-          onChange={handleSearch}
-          className="max-w-sm"
-          data-testid="search-input"
-        />
-      </div>
+    <div className="space-y-4">
+      <h2 className="text-6xl uppercase text-muted-foreground">{title}</h2>
+      {children}
+      <Input
+        placeholder="Search"
+        defaultValue={search}
+        onChange={handleSearch}
+        className="max-w-sm"
+        data-testid="search-input"
+      />
       <div className="overflow-hidden rounded-md border">
         <Table>
           <TableHeader>
@@ -165,29 +168,3 @@ export function DataTable<TData, TValue>({
     </div>
   );
 }
-
-DataTable.Skeleton = () => {
-  return (
-    <div>
-      <div className="py-4">
-        <Skeleton className="w-[300px] h-[36px]" />
-      </div>
-      <div className="overflow-hidden rounded-md border">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <Skeleton className="w-full h-[40px]" />
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <TableRow className="h-[80vh] flex items-center justify-center">
-              <Spinner />
-            </TableRow>
-          </TableBody>
-        </Table>
-      </div>
-    </div>
-  );
-};
-
-DataTable.Skeleton.displayName = "DataTable.Skeleton";
