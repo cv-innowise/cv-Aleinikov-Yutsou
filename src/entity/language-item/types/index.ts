@@ -1,10 +1,11 @@
-import { Language, Proficiency } from "@/shared/types/language";
+import { LanguageProficiency } from "@/shared/types/cv-graphql";
+
 
 export interface LanguageItemProps {
   languages: string[];
-  name?: string;
-  proficiency?: Proficiency;
+  name?: LanguageProficiency["name"];
+  proficiency?: LanguageProficiency["proficiency"];
   isEditable: boolean;
   isDisabled: boolean;
-  onChange: ({ name, proficiency }: Partial<Language>) => void;
+  onChange: ({ name, proficiency }: Partial<LanguageProficiency>) => void;
 }
