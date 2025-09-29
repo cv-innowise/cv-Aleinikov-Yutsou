@@ -10,10 +10,13 @@ import { useSignup } from "../lib/use-signup";
 import { PasswordField } from "@/shared/components/ui/password-field";
 import { InferType } from "yup";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/shared/components/ui/form";
+import { useTranslations } from "next-intl";
 
 type FormValues = InferType<typeof signupSchema>;
 
 export const SignupForm = () => {
+  const t = useTranslations("auth.signup");
+
   const form = useForm<FormValues>({
     resolver: yupResolver(signupSchema),
     defaultValues: { email: "", password: "" },
@@ -31,7 +34,7 @@ export const SignupForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input type="email" placeholder="Email" {...field} />
+                  <Input type="email" placeholder={t("emailPlaceholder")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -43,7 +46,7 @@ export const SignupForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <PasswordField placeholder="Password" {...field} />
+                  <PasswordField placeholder={t("passwordPlaceholder")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -52,10 +55,10 @@ export const SignupForm = () => {
         </div>
         <div className="grid justify-items-center gap-2">
           <Button loading={loading} type="submit">
-            Create account
+            {t("submit")}
           </Button>
           <Button asChild variant="link">
-            <Link href="/login">I have an account</Link>
+            <Link href="/login">{t("haveAccount")}</Link>
           </Button>
         </div>
       </form>
