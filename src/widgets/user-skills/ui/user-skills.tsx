@@ -10,6 +10,8 @@ import { addProfileSkill } from "../mutations/add-profile-skill";
 import { updateProfileSkill } from "../mutations/update-profile-skill";
 import { deleteProfileSkills } from "../mutations/delete-profile-skill";
 import { getSkillCategories } from "@/shared/lib/queries/get-skill-categories";
+import Link from "next/link";
+import { Button } from "@/shared/components/ui/button";
 
 interface UserSkillsProps {
   userId: User["id"];
@@ -24,7 +26,16 @@ export const UserSkills: FCWithSkeleton<UserSkillsProps> = async ({
   const skillCategories = await getSkillCategories();
 
   if (!profile) {
-    return <h2 className="text-4xl">Sorry, user not found.</h2>;
+    return (
+      <div className="w-full h-full flex flex-col justify-center items-center">
+        <h2 className="text-4xl">Sorry, user not found.</h2>
+        <Button variant="link" asChild>
+          <Link className="underline" href={`/users/${authUser.id}/skills`}>
+            Maybe you've ment to see your profile?
+          </Link>
+        </Button>
+      </div>
+    );
   }
   const { skills: userSkills } = profile;
   // eslint-disable-next-line react-hooks/rules-of-hooks

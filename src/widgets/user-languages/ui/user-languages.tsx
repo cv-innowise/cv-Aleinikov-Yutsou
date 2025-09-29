@@ -8,6 +8,8 @@ import { updateProfileLanguage } from "../mutations/update-profile-language";
 import { deleteProfileLanguages } from "../mutations/delete-profile-languages";
 import { LanguagesPreview } from "@/features/languages-preview/";
 import { getLanguages } from "@/shared/lib/queries/get-languages";
+import Link from "next/link";
+import { Button } from "@/shared/components/ui/button";
 
 interface UserLanguagesProps {
   userId: User["id"];
@@ -21,7 +23,16 @@ export const UserLanguages: FCWithSkeleton<UserLanguagesProps> = async ({
   const languages = await getLanguages();
 
   if (!profile) {
-    return <h2 className="text-4xl">Sorry, user not found.</h2>;
+    return (
+      <div className="w-full h-full flex flex-col justify-center items-center">
+        <h2 className="text-4xl">Sorry, user not found.</h2>
+        <Button variant="link" asChild>
+          <Link className="underline" href={`/users/${authUser.id}/languages`}>
+            Maybe you've ment to see your profile?
+          </Link>
+        </Button>
+      </div>
+    );
   }
 
   const { languages: userLanguages } = profile;
