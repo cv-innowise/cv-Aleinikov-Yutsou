@@ -3,8 +3,7 @@ import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type React from "react";
 import { UserPopover } from "@/features/user-popover";
-import { mockUser, mockUserWithoutAvatar } from "@/features/user-popover/mocks/user";
-import { NextIntlClientProvider } from "next-intl";
+import { mockUser } from "@/features/user-popover/mocks/user";
 
 vi.mock("next/link", () => ({
   __esModule: true,
@@ -39,7 +38,7 @@ describe("UserPopover", () => {
     expect(screen.getByText("John Doe")).toBeInTheDocument();
   });
   it("should render user popover with avatar fallback when avatar is missing", () => {
-    render(<UserPopover user={mockUserWithoutAvatar} />);
+    render(<UserPopover user={mockUser} />);
     expect(screen.getByText("John Doe")).toBeInTheDocument();
     expect(screen.getByText("J")).toBeInTheDocument();
   });

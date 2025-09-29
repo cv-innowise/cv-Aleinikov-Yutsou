@@ -1,11 +1,15 @@
 "use server";
 
-import { locales } from "@/i18n/locales";
+import { locales, type LocaleType } from "@/i18n/locales";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
+function isLocale(value: string): value is LocaleType {
+  return locales.some((l) => l === value);
+}
+
 export async function setLocale(locale: string) {
-  if (!locales.includes(locale as any)) throw new Error("Unsupported locale");
+  if (!isLocale(locale)) throw new Error("Unsupported locale");
 
   const myCookie = await cookies();
 
