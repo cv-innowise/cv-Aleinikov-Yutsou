@@ -43,7 +43,7 @@ describe("CvForm (unit)", () => {
 
     await vi.waitFor(() => {
       expect(createCvMock).toHaveBeenCalledWith({
-        userId: 1,
+        userId: "1",
         name: "newName",
         education: "newEducation",
         description: "newDescription",

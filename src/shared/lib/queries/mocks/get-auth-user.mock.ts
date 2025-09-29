@@ -2,7 +2,7 @@ import { vi } from "vitest";
 
 const { getAuthUserMock, userMock, adminUserMock } = vi.hoisted(() => ({
   userMock: {
-    id: 1,
+    id: "1",
     email: "test@test",
     profile: {
       created_at: "1756969416361",
@@ -16,7 +16,7 @@ const { getAuthUserMock, userMock, adminUserMock } = vi.hoisted(() => ({
     role: "Employee",
   },
   adminUserMock: {
-    id: 1,
+    id: "1",
     email: "test@test",
     profile: {
       created_at: "1756969416361",
