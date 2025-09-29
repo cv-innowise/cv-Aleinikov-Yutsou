@@ -1,6 +1,6 @@
 import { vi } from "vitest";
 
-export const { languagesMock } = vi.hoisted(() => ({
+const { languagesMock } = vi.hoisted(() => ({
   languagesMock: [
     {
       id: "1",
@@ -31,3 +31,5 @@ export const { languagesMock } = vi.hoisted(() => ({
 vi.mock("@/shared/lib/queries/get-languages", () => ({
   getLanguages: () => languagesMock,
 }));
+
+export { languagesMock };
