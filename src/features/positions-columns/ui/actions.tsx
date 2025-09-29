@@ -39,7 +39,7 @@ export const Actions: React.FC<ActionsProps> = ({
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const authUser = useGetAuthUser();
-  const isAuthUserAdmin = authUser.id === UserRole.Admin;
+  const isAuthUserAdmin = authUser.role === UserRole.Admin;
 
   const onDeletePosition = () => {
     startTransition(async () => {
