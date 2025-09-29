@@ -77,7 +77,7 @@ export const Actions: React.FC<ActionsProps> = ({ project }) => {
           <Dialog>
             <DialogTrigger
               disabled={!isAuthUserAdmin || isPending}
-              data-testid="update-skill-button"
+              data-testid="update-project-button"
               className="hover:bg-accent hover:text-accent-foreground w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50"
             >
               Update Project

@@ -85,7 +85,7 @@ export const Actions: React.FC<ActionsProps> = ({ cv }) => {
         <DropdownMenuItem asChild>
           <AlertDialog>
             <AlertDialogTrigger
-              data-testid="delete-skill-button"
+              data-testid="delete-cv-button"
               className="text-destructive hover:bg-destructive/10 dark:hover:bg-destructive/20 hover:text-destructive w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50"
               disabled={isPending}
             >
