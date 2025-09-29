@@ -6,7 +6,7 @@ const { usersMock } = vi.hoisted(() => ({
       id: "1",
       email: "daniil.beniash@innowise.com",
       profile: {
-        first_name: "Daniil ",
+        first_name: "Daniil",
         last_name: "Beniash",
         avatar: null,
       },
@@ -173,7 +173,7 @@ const { usersMock } = vi.hoisted(() => ({
       position_name: "Data Architect",
     },
     {
-      id: "1",
+      id: "123",
       email: "thorn_pear@icloud.com",
       profile: {
         first_name: "Rostislav",
@@ -208,8 +208,8 @@ const { usersMock } = vi.hoisted(() => ({
     },
   ],
 }));
-vi.mock("../queries/use-get-users", () => ({
-  useGetUsers: () => usersMock,
+vi.mock("../queries/get-users", () => ({
+  getUsers: () => usersMock,
 }));
 
 export { usersMock };
