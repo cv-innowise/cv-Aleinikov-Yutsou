@@ -57,7 +57,10 @@ export const Actions: React.FC<ActionsProps> = ({ user }) => {
   if (!isAuthUserAdmin && authUser.id !== user.id) {
     return (
       <Button variant="ghost" className="h-8 w-8 p-0" asChild>
-        <Link href={`/users/${user.id}/profile`}>
+        <Link
+          href={`/users/${user.id}/profile`}
+          data-testid="profile-link-icon"
+        >
           <span className="sr-only">Open menu</span>
           <ChevronRight className="h-4 w-4" />
         </Link>
@@ -88,7 +91,7 @@ export const Actions: React.FC<ActionsProps> = ({ user }) => {
         <DropdownMenuItem asChild>
           <Dialog>
             <DialogTrigger
-              disabled={!isAuthUserAdmin || isPending}
+              disabled={isPending}
               data-testid="update-user-button"
               className="hover:bg-accent hover:text-accent-foreground w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50"
             >
