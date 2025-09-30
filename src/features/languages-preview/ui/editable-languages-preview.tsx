@@ -13,7 +13,6 @@ import { LanguagesPreviewProps } from "../types";
 import { toast } from "sonner";
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { T } from "vitest/dist/chunks/reporters.d.BFLkQcL6.js";
 import { useTranslations } from "next-intl";
 
 export const EditableLanguagesPreview: React.FC<LanguagesPreviewProps> = ({
