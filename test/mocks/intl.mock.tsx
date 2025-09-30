@@ -19,6 +19,26 @@ vi.mock("@testing-library/react", async () => {
   };
 });
 
+vi.mock("vitest-browser-react", async () => {
+  const actual = await vi.importActual<typeof import("vitest-browser-react")>(
+    "vitest-browser-react"
+  );
+
+  const Wrapper: React.FC<React.PropsWithChildren> = ({ children }) => (
+    <NextIntlClientProvider locale="en" messages={messages}>
+      {children}
+    </NextIntlClientProvider>
+  );
+
+  return {
+    ...actual,
+    render: (
+      ui: React.ReactElement,
+      options?: Parameters<typeof actual.render>[1]
+    ) => actual.render(ui, { wrapper: Wrapper, ...options }),
+  };
+});
+
 vi.mock("next-intl/server", () => ({
   getTranslations: vi.fn().mockImplementation(async (key) => {
     return createTranslator({
