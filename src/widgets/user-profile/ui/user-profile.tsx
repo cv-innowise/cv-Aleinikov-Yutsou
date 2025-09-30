@@ -12,6 +12,7 @@ import { getDepartments } from "@/shared/lib/queries/get-departments";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 import Link from "next/link";
 import { Button } from "@/shared/components/ui/button";
+import { getTranslations } from 'next-intl/server';
 
 interface UserProfileProps {
   userId: User["id"];
@@ -25,14 +26,16 @@ export const UserProfile: FCWithSkeleton<UserProfileProps> = async ({
   const profile = await getProfile(userId);
   const departments = await getDepartments();
   const positions = await getPositions();
+  const tNotFound = await getTranslations("not-found");
+  const tProfile = await getTranslations("user-profile");
 
   if (!user || !profile) {
     return (
       <div className="w-full h-full flex flex-col justify-center items-center">
-        <h2 className="text-4xl">Sorry, user not found.</h2>
+        <h2 className="text-4xl">{tNotFound("user-not-found")}</h2>
         <Button variant="link" asChild>
           <Link className="underline" href={`/users/${authUser.id}/profile`}>
-            Maybe you've ment to see your profile?
+            {tNotFound("your-profile")}
           </Link>
         </Button>
       </div>
@@ -62,7 +65,7 @@ export const UserProfile: FCWithSkeleton<UserProfileProps> = async ({
       >
         {user.email}
       </Link>
-      <span>A member since {formatedDate}</span>
+      <span>{tProfile("member-since")} {formatedDate}</span>
       <ProfileForm
         user={user}
         profile={profile}
