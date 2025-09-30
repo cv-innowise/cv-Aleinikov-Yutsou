@@ -1,6 +1,7 @@
 import { vi } from "vitest";
 import React from "react";
 import { NextIntlClientProvider } from "next-intl";
+import { createTranslator } from "next-intl";
 import messages from "@/i18n/messages/en.json";
 
 vi.mock("@testing-library/react", async () => {
@@ -17,3 +18,13 @@ vi.mock("@testing-library/react", async () => {
     render: (ui: React.ReactElement, options?: Parameters<typeof actual.render>[1]) => actual.render(ui, { wrapper: Wrapper, ...options }),
   };
 });
+
+vi.mock("next-intl/server", () => ({
+  getTranslations: vi.fn().mockImplementation(async (key) => {
+    return createTranslator({
+      locale: "en",
+      messages: messages,
+      namespace: key
+    });
+  }),
+}));
