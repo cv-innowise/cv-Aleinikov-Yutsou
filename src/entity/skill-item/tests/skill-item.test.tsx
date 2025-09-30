@@ -2,16 +2,16 @@ import { screen } from "@testing-library/react";
 import { render } from "vitest-browser-react";
 import { describe, expect, test } from "vitest";
 import { SkillItem } from "../ui/skill-item";
-import { categoriesMock } from "../mocks/categories.mock";
-import { Mastery } from "@/shared/lib/types/skill";
+import { skillsByCategoriesMock } from "../mocks/skills-by-categories.mock";
+import { Mastery } from "@/shared/types/cv-graphql";
 
 describe("SkillItem", () => {
   const renderComponent = () => {
     return render(
       <SkillItem
-        skill="TypeScript"
-        mastery={Mastery.EXPERT}
-        categories={categoriesMock}
+        name="TypeScript"
+        mastery={Mastery.Expert}
+        skillsByCategories={skillsByCategoriesMock}
         isEditable={false}
         isDisabled={false}
         onChange={() => {}}
