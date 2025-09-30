@@ -9,6 +9,9 @@ export default defineConfig({
   resolve: {
     alias: [{ find: "@", replacement: resolve(__dirname, "./src") }],
   },
+  define: {
+    'process.env': {}
+  },
   test: {
     environment: "jsdom",
     watch: false,
