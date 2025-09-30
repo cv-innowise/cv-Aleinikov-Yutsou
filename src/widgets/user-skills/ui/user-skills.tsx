@@ -8,7 +8,7 @@ import { SkillsPreview } from "@/features/skills-preview";
 import { getSkills } from "@/shared/lib/queries/get-skills";
 import { addProfileSkill } from "../mutations/add-profile-skill";
 import { updateProfileSkill } from "../mutations/update-profile-skill";
-import { deleteProfileSkills } from "../mutations/delete-profile-skill";
+import { deleteProfileSkills } from "../mutations/delete-profile-skills";
 import { getSkillCategories } from "@/shared/lib/queries/get-skill-categories";
 import Link from "next/link";
 import { Button } from "@/shared/components/ui/button";
