@@ -2,7 +2,6 @@
 
 import {
   ColumnDef,
-  ColumnFiltersState,
   SortingState,
   flexRender,
   getFilteredRowModel,
@@ -25,15 +24,17 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { DATA_PER_VIEW } from "../consts";
 
 interface DataTableProps<TData, TValue> {
+  title: string;
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  searchColumn: keyof TData extends string ? keyof TData : never;
+  children?: React.ReactNode;
 }
 
 export function DataTable<TData, TValue>({
+  title,
   columns,
   data,
-  searchColumn,
+  children,
 }: DataTableProps<TData, TValue>) {
   const searchParams = useSearchParams();
   const search = searchParams?.get("search") ?? "";
@@ -50,20 +51,18 @@ export function DataTable<TData, TValue>({
   const [sorting, setSorting] = useState<SortingState>(
     searchParams.has("sortBy") ? sort : []
   );
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([
-    { id: searchColumn, value: search },
-  ]);
+  const [globalFilter, setGlobalFilter] = useState<string>(search);
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
-    onColumnFiltersChange: setColumnFilters,
+    onGlobalFilterChange: setGlobalFilter,
     getFilteredRowModel: getFilteredRowModel(),
     state: {
       sorting,
-      columnFilters,
+      globalFilter,
     },
   });
   const hasMoreData = offset < table.getRowModel().rows.length;
@@ -80,7 +79,7 @@ export function DataTable<TData, TValue>({
 
   function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
     const searchValue = e.target.value;
-    table.getColumn(searchColumn)?.setFilterValue(searchValue);
+    table.setGlobalFilter(searchValue);
     router.push(pathname + "?" + createQueryString("search", searchValue));
   }
 
@@ -91,18 +90,16 @@ export function DataTable<TData, TValue>({
   }, [isInView, data, hasMoreData]);
 
   return (
-    <div>
-      <div className="flex items-center py-4">
-        <Input
-          placeholder="Search"
-          value={
-            (table.getColumn(searchColumn)?.getFilterValue() as string) ?? ""
-          }
-          onChange={handleSearch}
-          className="max-w-sm"
-          data-testid="search-input"
-        />
-      </div>
+    <div className="space-y-4">
+      <h2 className="text-6xl uppercase text-muted-foreground">{title}</h2>
+      {children}
+      <Input
+        placeholder="Search"
+        defaultValue={search}
+        onChange={handleSearch}
+        className="max-w-sm"
+        data-testid="search-input"
+      />
       <div className="overflow-hidden rounded-md border">
         <Table>
           <TableHeader>

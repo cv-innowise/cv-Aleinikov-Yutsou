@@ -2,11 +2,11 @@ import { screen } from "@testing-library/react";
 import { render } from "vitest-browser-react";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { SkillItem } from "../ui/skill-item";
-import { categoriesMock } from "../mocks/categories.mock";
-import { Mastery } from "@/shared/lib/types/skill";
+import { skillsByCategoriesMock } from "../mocks/skills-by-categories.mock";
 import { onChangeMock } from "../mocks/skill-item.mock";
 import { userEvent } from "@vitest/browser/context";
 import { SkillItemProps } from "../types";
+import { Mastery } from "@/shared/types/cv-graphql";
 
 describe("EditableSkillItem", () => {
   beforeEach(() => {
@@ -15,9 +15,9 @@ describe("EditableSkillItem", () => {
 
   const renderComponent = (props?: Partial<SkillItemProps>) => {
     const defaultProps: SkillItemProps = {
-      skill: "TypeScript",
-      mastery: Mastery.EXPERT,
-      categories: categoriesMock,
+      name: "TypeScript",
+      mastery: Mastery.Expert,
+      skillsByCategories: skillsByCategoriesMock,
       isEditable: true,
       isDisabled: false,
       onChange: onChangeMock,
@@ -49,12 +49,14 @@ describe("EditableSkillItem", () => {
     expect(
       screen.getByPlaceholderText(/search skills.../i)
     ).toBeInTheDocument();
-    expect(screen.getByText(categoriesMock[0].name)).toBeInTheDocument();
+    expect(
+      screen.getByText(skillsByCategoriesMock["Frontend"][0].name)
+    ).toBeInTheDocument();
   });
 
   test("should render add version, if no skill adn mastery provided", () => {
     renderComponent({
-      skill: undefined,
+      name: undefined,
       mastery: undefined,
     });
 
@@ -69,16 +71,19 @@ describe("EditableSkillItem", () => {
     renderComponent();
 
     await user.click(screen.getByTestId(/skill-button/i));
-    await user.click(screen.getByText(/java/i));
+    await user.click(
+      screen.getByText(skillsByCategoriesMock["Frontend"][0].name)
+    );
 
     await vi.waitFor(() => {
-      expect(screen.getByTestId(/skill-button/i)).toHaveTextContent(/java/i);
+      expect(screen.getByTestId(/skill-button/i)).toHaveTextContent(
+        skillsByCategoriesMock["Frontend"][0].name
+      );
       expect(onChangeMock).toBeCalledWith({
-        name: "Java",
+        "categoryId": skillsByCategoriesMock["Frontend"][0].categoryId,
+        name: skillsByCategoriesMock["Frontend"][0].name,
       });
-      expect(
-        screen.queryByPlaceholderText(/search skills.../i)
-        ).toBeNull();
+      expect(screen.queryByPlaceholderText(/search skills.../i)).toBeNull();
     });
   });
 
@@ -109,7 +114,7 @@ describe("EditableSkillItem", () => {
       },
     });
 
-    expect(onChangeMock).toHaveBeenCalledWith({ mastery: Mastery.NOVICE });
+    expect(onChangeMock).toHaveBeenCalledWith({ mastery: Mastery.Novice });
     expect(screen.getByText(/novice/i)).toBeInTheDocument();
   });
 
@@ -122,5 +127,5 @@ describe("EditableSkillItem", () => {
 
     expect(screen.getByText(/react/i)).toBeInTheDocument();
     expect(screen.getAllByText(/typescript/i)).length(1);
-  })
+  });
 });
