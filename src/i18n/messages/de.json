@@ -45,4 +45,10 @@
   },
   "user-profile": {
     "member-since": "Ein Mitglied seit"
+  },
+  "user-nav": {
+    "profile": "Profil",
+    "languages": "Sprachen",
+    "skills": "Fähigkeiten"
+  }
   }

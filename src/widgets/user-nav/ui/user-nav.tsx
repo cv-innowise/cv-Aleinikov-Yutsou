@@ -4,6 +4,7 @@ import { User } from "@/shared/graphql/users/users.types";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/shared/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface UserNavProps {
   userId: User["id"];
@@ -11,6 +12,7 @@ interface UserNavProps {
 
 export const UserNav: React.FC<UserNavProps> = ({ userId }) => {
   const pathname = usePathname();
+  const t = useTranslations("user-nav");
   const profileHref = `/users/${userId}/profile`;
   const languagesHref = `/users/${userId}/languages`;
   const skillsHref = `/users/${userId}/skills`;
@@ -24,7 +26,7 @@ export const UserNav: React.FC<UserNavProps> = ({ userId }) => {
           pathname === profileHref && "text-primary border-b"
         )}
       >
-        Profile
+        {t("profile")}
       </Link>
       <Link
         href={languagesHref}
@@ -33,7 +35,7 @@ export const UserNav: React.FC<UserNavProps> = ({ userId }) => {
           pathname === languagesHref && "text-primary border-b"
         )}
       >
-        Languages
+        {t("languages")}
       </Link>
       <Link
         href={skillsHref}
@@ -42,7 +44,7 @@ export const UserNav: React.FC<UserNavProps> = ({ userId }) => {
           pathname === skillsHref && "text-primary border-b"
         )}
       >
-        Skills
+        {t("skills")}
       </Link>
     </div>
   );

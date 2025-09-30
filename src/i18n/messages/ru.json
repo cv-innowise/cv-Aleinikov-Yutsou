@@ -46,5 +46,11 @@
   },
   "user-profile": {
     "member-since": "Пользователь с"
+  },
+  "user-nav": {
+    "profile": "Профиль",
+    "languages": "Языки",
+    "skills": "Навыки"
+  }
   }
 }
