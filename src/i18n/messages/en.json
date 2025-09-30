@@ -50,5 +50,20 @@
     "profile": "Profile",
     "languages": "Languages",
     "skills": "Skills"
+  },
+  "profile-form": {
+    "first-name": "First name",
+    "last-name": "Last name",
+    "department": "Department",
+    "select-department": "Select department",
+    "no-department": "No department",
+    "select-position": "Select position",
+    "no-position": "No position",
+    "position": "Position",
+    "update": "Update",
+    "profile-updated": "Profile was updated",
+    "nothing-changed": "Nothing was changed",
+    "error": "Something went wrong",
+    "loading": "Loading..."
   }
   }

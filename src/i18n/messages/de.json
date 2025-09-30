@@ -50,5 +50,20 @@
     "profile": "Profil",
     "languages": "Sprachen",
     "skills": "Fähigkeiten"
+  },
+  "profile-form": {
+    "first-name": "Vorname",
+    "last-name": "Nachname",
+    "department": "Abteilung",
+    "select-department": "Abteilung auswählen",
+    "no-department": "Keine Abteilung",
+    "select-position": "Position auswählen",
+    "no-position": "Keine Position",
+    "position": "Position",
+    "update": "Aktualisieren",
+    "profile-updated": "Profil wurde aktualisiert",
+    "nothing-changed": "Nichts wurde geändert",
+    "error": "Etwas lief schief",
+    "loading": "Laden..."
   }
   }

@@ -51,6 +51,21 @@
     "profile": "Профиль",
     "languages": "Языки",
     "skills": "Навыки"
+  },
+  "profile-form": {
+    "first-name": "Имя",
+    "last-name": "Фамилия",
+    "department": "Отделение",
+    "select-department": "Выберите отдел",
+    "no-department": "Нет отдела",
+    "select-position": "Выберите позицию",
+    "no-position": "Нет позиции",
+    "position": "Позиция",
+    "update": "Обновить",
+    "profile-updated": "Профиль был обновлен",
+    "nothing-changed": "Ничего не изменилось",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
   }
   }
 }
