@@ -7,7 +7,6 @@ import "../mocks/delete-profile-skills.mock";
 import "../mocks/update-profile-skill.mock";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { screen } from "@testing-library/react";
-import { render } from "vitest-browser-react";
 import { UserSkills } from "..";
 import {
   adminUserMock,

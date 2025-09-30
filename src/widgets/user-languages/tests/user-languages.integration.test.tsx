@@ -6,7 +6,6 @@ import "../mocks/delete-profile-languages.mock";
 import "../mocks/update-profile-language.mock";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { screen } from "@testing-library/react";
-import { render } from "vitest-browser-react";
 import { UserLanguages } from "..";
 import {
   adminUserMock,
