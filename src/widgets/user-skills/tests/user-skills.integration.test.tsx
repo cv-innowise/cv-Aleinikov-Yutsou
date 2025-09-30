@@ -14,7 +14,11 @@ import {
   userMock as authUserMock,
   getAuthUserMock,
 } from "@/shared/lib/queries/mocks/get-auth-user.mock";
-import { getProfileMock, profileMock } from "@/shared/lib/queries/mocks/get-profile.mock";
+import {
+  getProfileMock,
+  profileMock,
+} from "@/shared/lib/queries/mocks/get-profile.mock";
+import { renderServerComponent } from "@/shared/lib/render-server-side";
 
 vi.mock("");
 
@@ -25,20 +29,22 @@ describe("UserSkills (integration)", () => {
 
   const renderComponent = async () => {
     const jsx = await UserSkills({ userId: "1" });
-    return render(jsx);
+    return renderServerComponent(jsx);
   };
 
   test("should render user profile correctly for this user", async () => {
     await renderComponent();
 
-    expect(screen.getByText("Skills")).toBeInTheDocument();
-    expect(screen.getByText("Frontend technologies")).toBeInTheDocument();
-    expect(
-      screen.getByText(profileMock.skills[0].name)
-    ).toBeInTheDocument();
-    expect(screen.getByText("State management libraries")).toBeInTheDocument();
-    expect(screen.getByText(/add new skill.../i)).toBeInTheDocument();
-    expect(screen.getByText(/delete skills/i)).toBeInTheDocument();
+    await vi.waitFor(() => {
+      expect(screen.getByText("Skills")).toBeInTheDocument();
+      expect(screen.getByText("Frontend technologies")).toBeInTheDocument();
+      expect(screen.getByText(profileMock.skills[0].name)).toBeInTheDocument();
+      expect(
+        screen.getByText("State management libraries")
+      ).toBeInTheDocument();
+      expect(screen.getByText(/add new skill.../i)).toBeInTheDocument();
+      expect(screen.getByText(/delete skills/i)).toBeInTheDocument();
+    });
   });
 
   test("should render user profile correctly for another user", async () => {
@@ -50,9 +56,7 @@ describe("UserSkills (integration)", () => {
 
     expect(screen.getByText(/skills/i)).toBeInTheDocument();
     expect(screen.getByText("Frontend technologies")).toBeInTheDocument();
-    expect(
-      screen.getByText(profileMock.skills[0].name)
-    ).toBeDisabled();
+    expect(screen.getByText(profileMock.skills[0].name)).toBeDisabled();
     expect(screen.getByText("State management libraries")).toBeInTheDocument();
     expect(screen.queryByText(/add new skill.../i)).toBeNull();
     expect(screen.queryByText(/delete skills/i)).toBeNull();

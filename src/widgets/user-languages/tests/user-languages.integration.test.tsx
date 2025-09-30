@@ -14,6 +14,7 @@ import {
   getAuthUserMock,
 } from "@/shared/lib/queries/mocks/get-auth-user.mock";
 import { getProfileMock, profileMock } from "@/shared/lib/queries/mocks/get-profile.mock";
+import { renderServerComponent } from "@/shared/lib/render-server-side";
 
 vi.mock("");
 
@@ -24,7 +25,7 @@ describe("UserLanguages (integration)", () => {
 
   const renderComponent = async () => {
     const jsx = await UserLanguages({ userId: "1" });
-    return render(jsx);
+    return renderServerComponent(jsx);
   };
 
   test("should render user profile correctly for this user", async () => {

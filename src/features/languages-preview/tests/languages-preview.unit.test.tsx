@@ -16,22 +16,22 @@ describe("LanguagePreview (integration)", () => {
     vi.clearAllMocks();
   });
 
-  const renderComponent = () => {
-    render(
-      <LanguagesPreview
-        languages={languagesMock}
-        languagesWithProficiency={languagesWithProficiencyMock}
-        addLanguage={addLanguageMock}
-        updateLanguage={updateLanguageMock}
-        deleteLanguages={deleteLanguagesMock}
-        isEditable={true}
-      />
-    );
+  const renderComponent = async () => {
+    const jsx = await LanguagesPreview({
+      languages: languagesMock,
+      languagesWithProficiency: languagesWithProficiencyMock,
+      addLanguage: addLanguageMock,
+      updateLanguage: updateLanguageMock,
+      deleteLanguages: deleteLanguagesMock,
+      isEditable: true,
+    });
+
+    render(jsx);
   };
 
   test("Should change language name correctly", async () => {
     const user = userEvent.setup();
-    renderComponent();
+    await renderComponent();
 
     await user.click(screen.getByText(languagesWithProficiencyMock[0].name));
     await user.click(screen.getByText(/English/i));
@@ -49,7 +49,7 @@ describe("LanguagePreview (integration)", () => {
 
   test("Should change language proficiency correctly", async () => {
     const user = userEvent.setup();
-    renderComponent();
+    await renderComponent();
 
     await user.click(
       screen.getByText(languagesWithProficiencyMock[0].proficiency)
@@ -66,7 +66,7 @@ describe("LanguagePreview (integration)", () => {
 
   test("Should add language correctly", async () => {
     const user = userEvent.setup();
-    renderComponent();
+    await renderComponent();
 
     await user.click(screen.getByText(/a1/i));
     await user.click(screen.getByText(/a2/i));
@@ -89,7 +89,7 @@ describe("LanguagePreview (integration)", () => {
 
   test("Should delete language correctly", async () => {
     const user = userEvent.setup();
-    renderComponent();
+    await renderComponent();
 
     await user.click(screen.getAllByTestId(/delete-button/i)[0]);
     await user.click(screen.getByTestId(/confirm-deleting-button/i));
@@ -103,7 +103,7 @@ describe("LanguagePreview (integration)", () => {
 
   test("Should delete languages correctly", async () => {
     const user = userEvent.setup();
-    renderComponent();
+    await renderComponent();
 
     await user.click(screen.getByTestId(/start-selection-button/i));
     await user.click(screen.getAllByTestId(/select-button/i)[0]);

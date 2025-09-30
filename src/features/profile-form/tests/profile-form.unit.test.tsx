@@ -23,13 +23,13 @@ describe("ProfileForm (unit)", () => {
 
   const renderComponent = () => {
     render(
-      <ProfileForm
-        profile={profileMock}
-        user={userMock}
-        departments={departmentsMock}
-        positions={positionsMock}
-        isEditable={true}
-      />
+        <ProfileForm
+          profile={profileMock}
+          user={userMock}
+          departments={departmentsMock}
+          positions={positionsMock}
+          isEditable={true}
+        />
     );
   };
 

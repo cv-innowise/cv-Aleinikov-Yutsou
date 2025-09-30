@@ -6,7 +6,7 @@ import { LanguageProficiency, UserRole } from "@/shared/types/cv-graphql";
 import { addProfileLanguage } from "../mutations/add-profile-language";
 import { updateProfileLanguage } from "../mutations/update-profile-language";
 import { deleteProfileLanguages } from "../mutations/delete-profile-languages";
-import { LanguagesPreview } from "@/features/languages-preview/";
+import { LanguagesPreview } from "@/features/languages-preview";
 import { getLanguages } from "@/shared/lib/queries/get-languages";
 import Link from "next/link";
 import { Button } from "@/shared/components/ui/button";

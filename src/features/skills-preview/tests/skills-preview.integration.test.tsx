@@ -17,27 +17,25 @@ describe("LanguagePreview (integration)", () => {
     vi.clearAllMocks();
   });
 
-  const renderComponent = (isEditable: boolean = true) => {
-    render(
-      <SkillsPreview
-        skills={skillsMock}
-        skillsByCategories={skillsByCategoriesMock}
-        categories={categoriesMock}
-        addSkill={addSkillMock}
-        updateSkill={updateSkillMock}
-        deleteSkill={deleteSkillMock}
-        isEditable={isEditable}
-      />
-    );
+  const renderComponent = async (isEditable: boolean = true) => {
+    const jsx = await SkillsPreview({
+      skills: skillsMock,
+      skillsByCategories: skillsByCategoriesMock,
+      categories: categoriesMock,
+      addSkill: addSkillMock,
+      updateSkill: updateSkillMock,
+      deleteSkill: deleteSkillMock,
+      isEditable: isEditable,
+    });
+
+    render(jsx);
   };
 
-  test("Should render skills preview correctly in not editable mode", () => {
-    renderComponent(false);
+  test("Should render skills preview correctly in not editable mode", async () => {
+    await renderComponent(false);
 
     expect(screen.getByText(/skills/i)).toBeInTheDocument();
-    expect(
-      screen.getByText("Frontend technologies")
-    ).toBeInTheDocument();
+    expect(screen.getByText("Frontend technologies")).toBeInTheDocument();
     expect(
       screen.getByText(skillsByCategoriesMock["Programming languages"][0].name)
     ).toBeDisabled();
@@ -46,8 +44,8 @@ describe("LanguagePreview (integration)", () => {
     expect(screen.queryByText(/delete skills/i)).toBeNull();
   });
 
-  test("Should render skills preview correctly in editable mode", () => {
-    renderComponent();
+  test("Should render skills preview correctly in editable mode", async () => {
+    await renderComponent();
 
     expect(screen.getByText("Skills")).toBeInTheDocument();
     expect(screen.getByText("Frontend technologies")).toBeInTheDocument();
@@ -61,7 +59,7 @@ describe("LanguagePreview (integration)", () => {
 
   test("Should only show available skills in editable mode", async () => {
     const user = userEvent.setup();
-    renderComponent();
+    await renderComponent();
 
     await user.click(screen.getByText(/add new skill.../i));
 
