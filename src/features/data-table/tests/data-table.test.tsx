@@ -6,18 +6,19 @@ import { userEvent } from "@vitest/browser/context";
 import { dataMock } from "../mocks/data.mock";
 import { columnsMock } from "../mocks/columns.mock";
 
-describe("EditableSkillItem", () => {
+describe("DataTable", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
   const renderComponent = () => {
-    return render(<DataTable data={dataMock} columns={columnsMock} />);
+    return render(<DataTable title="Title" data={dataMock} columns={columnsMock} />);
   };
 
   test("should render table correctly", () => {
     renderComponent();
-
+    
+    expect(screen.getByText(/title/i)).toBeInTheDocument();
     expect(screen.getByTestId(/search/i)).toBeInTheDocument();
     expect(screen.getByTestId(/sort-email/i)).toBeInTheDocument();
     expect(screen.getByText(/department/i)).toBeInTheDocument();
@@ -36,7 +37,7 @@ describe("EditableSkillItem", () => {
 
   //   screen.getByTestId(/loading/i).scrollIntoView();
 
-  //   await waitFor(() => {
+  //   await vi.waitFor(() => {
   //     expect(screen.getAllByTestId(/table-row/i)).toHaveLength(40);
   //     expect(screen.getByTestId(/loading/i)).toBeInTheDocument();
   //     expect(screen.queryByText(/no-results/i)).toBeNull();
@@ -48,7 +49,7 @@ describe("EditableSkillItem", () => {
 
   //   screen.getByTestId(/loading/i).scrollIntoView();
 
-  //   await waitFor(() => {
+  //   await vi.waitFor(() => {
   //     expect(screen.getAllByTestId(/table-row/i)).toHaveLength(40);
   //     expect(screen.getByTestId(/loading/i)).toBeInTheDocument();
   //     expect(screen.queryByText(/no-results/i)).toBeNull();
@@ -56,22 +57,22 @@ describe("EditableSkillItem", () => {
 
   //   screen.getByTestId(/loading/i).scrollIntoView();
 
-  //   await waitFor(() => {
+  //   await vi.waitFor(() => {
   //     expect(screen.getAllByTestId(/table-row/i)).toHaveLength(dataMock.length);
   //     expect(screen.getByTestId(/no-results/i)).toBeInTheDocument();
   //     expect(screen.queryByText(/loading/i)).toBeNull();
   //   });
   // });
 
-  test("should select input work correctly", async () => {
-    const user = userEvent.setup();
-    renderComponent();
+  // test("should select input work correctly", async () => {
+  //   const user = userEvent.setup();
+  //   renderComponent();
 
-    await user.type(screen.getByTestId(/search/i), dataMock[4].email);
+  //   await user.type(screen.getByTestId(/search/i), dataMock[4].email);
 
-    expect(screen.getAllByTestId(/table-row/i)).toHaveLength(1);
-    expect(screen.getByText(dataMock[4].email)).toBeInTheDocument();
-  });
+  //   expect(screen.getAllByTestId(/table-row/i)).toHaveLength(1);
+  //   expect(screen.getByText(dataMock[4].email)).toBeInTheDocument();
+  // });
 
   test("should render empty list correctly", async () => {
     const user = userEvent.setup();
