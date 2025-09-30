@@ -12,6 +12,7 @@ import { deleteProfileSkills } from "../mutations/delete-profile-skills";
 import { getSkillCategories } from "@/shared/lib/queries/get-skill-categories";
 import Link from "next/link";
 import { Button } from "@/shared/components/ui/button";
+import { getTranslations } from "next-intl/server";
 
 interface UserSkillsProps {
   userId: User["id"];
@@ -24,14 +25,15 @@ export const UserSkills: FCWithSkeleton<UserSkillsProps> = async ({
   const profile = await getProfile(userId);
   const skills = await getSkills();
   const skillCategories = await getSkillCategories();
+  const tNotFound = await getTranslations("not-found");
 
   if (!profile) {
     return (
       <div className="w-full h-full flex flex-col justify-center items-center">
-        <h2 className="text-4xl">Sorry, user not found.</h2>
+        <h2 className="text-4xl">{tNotFound("user-not-found")}</h2>
         <Button variant="link" asChild>
-          <Link className="underline" href={`/users/${authUser.id}/skills`}>
-            Maybe you've ment to see your profile?
+          <Link className="underline" href={`/users/${authUser.id}/profile`}>
+            {tNotFound("your-profile")}
           </Link>
         </Button>
       </div>
