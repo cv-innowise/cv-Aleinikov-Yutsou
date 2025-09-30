@@ -13,6 +13,8 @@ import { LanguagesPreviewProps } from "../types";
 import { toast } from "sonner";
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { T } from "vitest/dist/chunks/reporters.d.BFLkQcL6.js";
+import { useTranslations } from "next-intl";
 
 export const EditableLanguagesPreview: React.FC<LanguagesPreviewProps> = ({
   languages,
@@ -23,6 +25,7 @@ export const EditableLanguagesPreview: React.FC<LanguagesPreviewProps> = ({
 }) => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
+  const t = useTranslations("languages-preview");
   const availableLanguages = languages
     .map((lang) =>
       languagesWithProficiency.find((langItem) => langItem.name === lang.name)
@@ -37,9 +40,9 @@ export const EditableLanguagesPreview: React.FC<LanguagesPreviewProps> = ({
 
       toast.promise(promise, {
         success:
-          names.length > 1 ? "Languages were deleted" : "Language was deleted",
-        error: "Something went wrong",
-        loading: "Loading...",
+          names.length > 1 ? t("languages-deleted") : t("language-deleted"),
+        error: t("error"),
+        loading: t("loading"),
       });
       router.refresh();
     });
@@ -65,9 +68,9 @@ export const EditableLanguagesPreview: React.FC<LanguagesPreviewProps> = ({
         }
 
         toast.promise(promise, {
-          success: "Language was updated",
-          error: "Something went wrong",
-          loading: "Loading...",
+          success: t("language-updated"),
+          error: t("error"),
+          loading: t("loading"),
         });
         router.refresh();
       });
@@ -86,9 +89,9 @@ export const EditableLanguagesPreview: React.FC<LanguagesPreviewProps> = ({
           });
 
           toast.promise(promise, {
-            success: "Language was added",
-            error: "Something went wrong",
-            loading: "Loading...",
+            success: t("language-added"),
+            error: t("error"),
+            loading: t("loading"),
           });
           router.refresh();
         });
@@ -100,7 +103,7 @@ export const EditableLanguagesPreview: React.FC<LanguagesPreviewProps> = ({
   return (
     <div className="w-full space-y-4">
       <h2 className="mb-6 uppercase font-black text-4xl tracking-widest">
-        Languages
+        {t("languages")}
       </h2>
       <Deletable onDeleteItems={onDeleteLanguages}>
         {!!availableLanguages.length && (
@@ -128,7 +131,7 @@ export const EditableLanguagesPreview: React.FC<LanguagesPreviewProps> = ({
         </DeletableContent>
 
         <DeletableTrigger className="ml-auto">
-          <Button disabled={isPending}>Delete languages</Button>
+          <Button disabled={isPending}>{t("delete")}</Button>
         </DeletableTrigger>
       </Deletable>
     </div>

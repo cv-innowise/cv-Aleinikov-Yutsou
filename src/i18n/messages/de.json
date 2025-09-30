@@ -75,5 +75,15 @@
     "skill-added": "Fähigkeit wurde hinzugefügt",
     "error": "Etwas lief schief",
     "loading": "Laden..."
+  },
+  "languages-preview": {
+    "languages": "Sprachen",
+    "delete": "Sprachen löschen",
+    "languages-deleted": "Sprachen wurden gelöscht",
+    "language-deleted": "Die Sprache wurde gelöscht",
+    "language-updated": "Die Sprache wurde aktualisiert",
+    "language-added": "Sprache wurde hinzugefügt",
+    "error": "Etwas lief schief",
+    "loading": "Laden..."
   }
-  }
+}

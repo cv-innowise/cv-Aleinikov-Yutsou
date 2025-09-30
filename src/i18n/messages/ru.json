@@ -76,6 +76,15 @@
     "skill-added": "Навык был добавлен",
     "error": "Что-то пошло не так",
     "loading": "Загрузка..."
-  }
+  },
+  "languages-preview": {
+    "languages": "Языки",
+    "delete": "Удалить языки",
+    "languages-deleted": "Языки были удалены",
+    "language-deleted": "Язык был удален",
+    "language-updated": "Язык был обновлен",
+    "language-added": "Язык был добавлен",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
   }
 }

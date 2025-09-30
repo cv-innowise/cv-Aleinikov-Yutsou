@@ -75,5 +75,15 @@
     "skill-added": "Skill was added",
     "error": "Something went wrong",
     "loading": "Loading..."
+  },
+  "languages-preview": {
+    "languages": "Languages",
+    "delete": "Delete languages",
+    "languages-deleted": "Languages were deleted",
+    "language-deleted": "Language was deleted",
+    "language-updated": "Language was updated",
+    "language-added": "Language was added",
+    "error": "Something went wrong",
+    "loading": "Loading..."
   }
-  }
+}
