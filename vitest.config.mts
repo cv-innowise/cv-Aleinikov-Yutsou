@@ -29,5 +29,10 @@ export default defineConfig({
       // at least one instance is required
       instances: [{ browser: "chromium" }],
     },
+    server: {
+      deps: {
+        inline: ["next-intl"],
+      },
+    },
   },
 });
