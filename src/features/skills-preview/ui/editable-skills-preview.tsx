@@ -15,6 +15,7 @@ import { SkillsPreviewProps } from "../types";
 import { toast } from "sonner";
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 export const EditableSkillsPreview: React.FC<SkillsPreviewProps> = ({
   skills,
@@ -26,6 +27,7 @@ export const EditableSkillsPreview: React.FC<SkillsPreviewProps> = ({
 }) => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
+  const t = useTranslations("skills-preview");
   const notAvailableSkills = Object.values(skillsByCategories)
     .flat(1)
     .map((skill) => skill.name);
@@ -41,9 +43,9 @@ export const EditableSkillsPreview: React.FC<SkillsPreviewProps> = ({
     startTransition(() => {
       const promise = deleteSkill({ name: names });
       toast.promise(promise, {
-        success: names.length > 1 ? "Skills were deleted" : "Skill was deleted",
-        error: "Something went wrong",
-        loading: "Loading...",
+        success: names.length > 1 ? t("skills-deleted") : t("skill-deleted"),
+        error: t("error"),
+        loading: t("loading"),
       });
       router.refresh();
     });
@@ -73,9 +75,9 @@ export const EditableSkillsPreview: React.FC<SkillsPreviewProps> = ({
           });
         }
         toast.promise(promise, {
-          success: "Skill was updated",
-          error: "Something went wrong",
-          loading: "Loading...",
+          success: t("skill-updated"),
+          error: t("error"),
+          loading: t("loading"),
         });
         router.refresh();
       });
@@ -93,9 +95,9 @@ export const EditableSkillsPreview: React.FC<SkillsPreviewProps> = ({
             mastery: oldMastery,
           });
           toast.promise(promise, {
-            success: "Skill was added",
-            error: "Something went wrong",
-            loading: "Loading...",
+            success: t("skill-added"),
+            error: t("error"),
+            loading: t("loading"),
           });
           router.refresh();
         } else if (mastery) {
@@ -107,7 +109,7 @@ export const EditableSkillsPreview: React.FC<SkillsPreviewProps> = ({
 
   return (
     <div className="w-full space-y-4">
-      <h2 className="mb-6 uppercase font-black text-4xl tracking-widest">Skills</h2>
+      <h2 className="mb-6 uppercase font-black text-4xl tracking-widest">{t("skills")}</h2>
       <Deletable onDeleteItems={onDeleteSkills}>
         <DeletableContent className="space-y-4">
           {!!availableSkills.length && (
@@ -144,7 +146,7 @@ export const EditableSkillsPreview: React.FC<SkillsPreviewProps> = ({
         </DeletableContent>
 
         <DeletableTrigger className="ml-auto">
-          <Button disabled={isPending}>Delete skills</Button>
+          <Button disabled={isPending}>{t("delete")}</Button>
         </DeletableTrigger>
       </Deletable>
     </div>

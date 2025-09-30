@@ -4,9 +4,13 @@ import { EditableSkillsPreview } from "./editable-skills-preview";
 import { Separator } from "@/shared/components/ui/separator";
 import { FCWithSkeleton } from "@/shared/types/fc-with-skeleton";
 import { Skeleton } from "@/shared/components/ui/skeleton";
+import { getTranslations } from "next-intl/server";
 
-export const SkillsPreview: FCWithSkeleton<SkillsPreviewProps> = (props) => {
+export const SkillsPreview: FCWithSkeleton<SkillsPreviewProps> = async (
+  props
+) => {
   const { skillsByCategories, isEditable } = props;
+  const t = await getTranslations("skills-preview");
 
   if (isEditable) {
     return <EditableSkillsPreview {...props} />;
@@ -15,7 +19,7 @@ export const SkillsPreview: FCWithSkeleton<SkillsPreviewProps> = (props) => {
   return (
     <div className="w-full space-y-4">
       <h2 className="mb-6 uppercase font-black text-4xl tracking-widest">
-        Skills
+        {t("skills")}
       </h2>
       <div className="space-y-4">
         {Object.entries(skillsByCategories).map(([catName, skills]) => (

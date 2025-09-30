@@ -65,5 +65,15 @@
     "nothing-changed": "Nichts wurde geändert",
     "error": "Etwas lief schief",
     "loading": "Laden..."
+  },
+  "skills-preview": {
+    "skills": "Fähigkeiten",
+    "delete": "Fähigkeiten löschen",
+    "skills-deleted": "Fähigkeiten wurden gelöscht",
+    "skill-deleted": "Fähigkeit wurde gelöscht",
+    "skill-updated": "Fähigkeit wurde aktualisiert",
+    "skill-added": "Fähigkeit wurde hinzugefügt",
+    "error": "Etwas lief schief",
+    "loading": "Laden..."
   }
   }
