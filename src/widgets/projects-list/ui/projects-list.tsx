@@ -7,15 +7,21 @@ import { Button } from "@/shared/components/ui/button";
 import { UserRole } from "@/shared/types/cv-graphql";
 import { ProjectForm } from "@/features/project-form";
 import { FCWithSkeleton } from "@/shared/types/fc-with-skeleton";
+import { getTranslations } from "next-intl/server";
 
 export const ProjectsList: FCWithSkeleton<unknown> = async () => {
   const projects = await getProjects();
   const authUser = await getAuthUser();
+  const t = await getTranslations("projects-list");
   const isAuthUserAdmin = authUser.role === UserRole.Admin;
 
   return (
     <div>
-      <DataTable title="Projects" columns={projectsColumns} data={projects}>
+      <DataTable
+        title={t("projects")}
+        columns={projectsColumns}
+        data={projects}
+      >
         {isAuthUserAdmin && (
           <Dialog>
             <DialogTrigger asChild>
@@ -23,7 +29,7 @@ export const ProjectsList: FCWithSkeleton<unknown> = async () => {
                 className="block ml-auto"
                 data-testid="create-project-button"
               >
-                Create Project
+                {t("create-project")}
               </Button>
             </DialogTrigger>
             <ProjectForm />

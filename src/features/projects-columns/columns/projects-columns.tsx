@@ -8,20 +8,20 @@ import { ProjectItem } from "@/shared/graphql/projects/projects.types";
 export const projectsColumns: ColumnDef<ProjectItem>[] = [
   {
     accessorKey: "name",
-    header: ({ column }) => <SortableColumn column={column} text="Name" />,
+    header: ({ column }) => <SortableColumn column={column} translateKey="name" />,
   },
 
   {
     accessorKey: "internal_name",
     header: ({ column }) => (
-      <SortableColumn column={column} text="Internal Name" />
+      <SortableColumn column={column} translateKey="internal-name" />
     ),
   },
 
   {
     accessorKey: "domain",
     enableGlobalFilter: false,
-    header: ({ column }) => <SortableColumn column={column} text="Domain" />,
+    header: ({ column }) => <SortableColumn column={column} translateKey="domain" />,
     cell: ({ row }) => <p data-testid="domain">{row.original.domain}</p>,
   },
 
@@ -29,14 +29,14 @@ export const projectsColumns: ColumnDef<ProjectItem>[] = [
     accessorKey: "start_date",
     enableGlobalFilter: false,
     header: ({ column }) => (
-      <SortableColumn column={column} text="Start Date" />
+      <SortableColumn column={column} translateKey="start-date" />
     ),
   },
 
   {
     accessorKey: "end_date",
     enableGlobalFilter: false,
-    header: ({ column }) => <SortableColumn column={column} text="End Date" />,
+    header: ({ column }) => <SortableColumn column={column} translateKey="end-date" />,
     cell: ({ row }) => <>{row.original.end_date ?? "Till now"}</>,
   },
 

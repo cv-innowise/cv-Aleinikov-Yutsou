@@ -29,6 +29,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useGetAuthUser } from "@/shared/lib/hooks/use-get-auth-user";
 import { UserRole } from "@/shared/types/cv-graphql";
+import { useTranslations } from "next-intl";
 
 interface ActionsProps {
   project: ProjectItem;
@@ -38,6 +39,7 @@ export const Actions: React.FC<ActionsProps> = ({ project }) => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const authUser = useGetAuthUser();
+    const t = useTranslations("projects-actions");
   const isAuthUserAdmin = authUser.role === UserRole.Admin;
 
   const onDeleteProject = () => {
@@ -45,9 +47,9 @@ export const Actions: React.FC<ActionsProps> = ({ project }) => {
       const promise = deleteProject({ projectId: project.id });
 
       toast.promise(promise, {
-        success: "Project was deleted",
-        error: "Something went wrong",
-        loading: "Loading...",
+        success: t("project-deleted"),
+        error: t("error"),
+        loading: t("loading"),
       });
       router.refresh();
     });
@@ -61,12 +63,12 @@ export const Actions: React.FC<ActionsProps> = ({ project }) => {
           className="h-8 w-8 p-0"
           data-testid="action-button"
         >
-          <span className="sr-only">Open menu</span>
+          <span className="sr-only">{t("open")}</span>
           <MoreHorizontal className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+        <DropdownMenuLabel>{t("actions")}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
           <Link href={`/projects/${project.id}`} data-testid="project-link">
@@ -80,7 +82,7 @@ export const Actions: React.FC<ActionsProps> = ({ project }) => {
               data-testid="update-project-button"
               className="hover:bg-accent hover:text-accent-foreground w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50"
             >
-              Update Project
+              {t("update")}
             </DialogTrigger>
             <Suspense>
               <ProjectForm projectId={project.id} />
@@ -94,25 +96,24 @@ export const Actions: React.FC<ActionsProps> = ({ project }) => {
               data-testid="delete-project-button"
               className="text-destructive hover:bg-destructive/10 dark:hover:bg-destructive/20 hover:text-destructive w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50"
             >
-              Delete Project
+              {t("delete")}
             </AlertDialogTrigger>
             <AlertDialogContent datat-testid="alert-dialog">
               <AlertDialogHeader>
-                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogTitle>{t("alert-title")}</AlertDialogTitle>
                 <AlertDialogDescription>
-                  This action cannot be undone. This will permanently delete
-                  this project and remove the data from our servers.
+                  {t("alert-description")}
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel data-testid="alert-dialog-close">
-                  Cancel
+                  {t("cancel")}
                 </AlertDialogCancel>
                 <AlertDialogAction
                   onClick={onDeleteProject}
                   data-testid="alert-dialog-confirm"
                 >
-                  Continue
+                  {t("continue")}
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>

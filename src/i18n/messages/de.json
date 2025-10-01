@@ -91,7 +91,11 @@
     "description": "Beschreibung",
     "employee": "Mitarbeiterin",
     "native-name": "Einheimischer Name",
-    "iso2": "ISO2"
+    "iso2": "ISO2",
+    "internal-name": "Interner Name",
+    "domain": "Domain",
+    "start-date": "Startdatum",
+    "end-date": "Enddatum"
   },
   "cvs-list": {
     "cvs": "Lebenslauf",
@@ -215,6 +219,23 @@
     "confirm": "Bestätigen",
     "position-updated": "Position wurde aktualisiert",
     "position-created": "Position wurde erstellt",
+    "error": "Etwas lief schief",
+    "loading": "Laden..."
+  },
+  "projects-list": {
+    "projects": "Projekte",
+    "create-project": "Projekt erstellen"
+  },
+  "project-actions": {
+    "open": "Öffnen Sie das Menü",
+    "actions": "Aktionen",
+    "update": "Projekt aktualisieren",
+    "delete": "Projekt löschen",
+    "alert-title": "Bist du absolut sicher?",
+    "alert-description": "Diese Aktion kann nicht rückgängig gemacht werden. Dadurch wird das Projekt \ndauerhaft gelöscht und die Daten von unseren Servern entfernen.",
+    "cancel": "Stornieren",
+    "continue": "Weitermachen",
+    "project-deleted": "Das Projekt wurde gelöscht",
     "error": "Etwas lief schief",
     "loading": "Laden..."
   }

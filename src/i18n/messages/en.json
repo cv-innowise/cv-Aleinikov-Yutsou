@@ -91,7 +91,11 @@
     "description": "Description",
     "employee": "Employee",
     "native-name": "Native Name",
-    "iso2": "ISO2"
+    "iso2": "ISO2",
+    "internal-name": "Internal Name",
+    "domain": "Domain",
+    "start-date": "Start Date",
+    "end-date": "End Date"
   },
   "cvs-list": {
     "cvs": "CVs",
@@ -215,6 +219,23 @@
     "confirm": "Confirm",
     "position-updated": "Position  was updated",
     "position-created": "Position was created",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "projects-list": {
+    "projects": "Projects",
+    "create-project": "Create Project"
+  },
+  "project-actions": {
+    "open": "Open menu",
+    "actions": "Actions",
+    "update": "Update Project",
+    "delete": "Delete Project",
+    "alert-title": "Are you absolutely sure?",
+    "alert-description": "This action cannot be undone. This will permanently delete \nthis project and remove the data from our servers.",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "project-deleted": "Project was deleted",
     "error": "Something went wrong",
     "loading": "Loading..."
   }
