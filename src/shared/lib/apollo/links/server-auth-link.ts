@@ -1,5 +1,5 @@
 import { SetContextLink } from "@apollo/client/link/context";
-import { ensureServerAccessToken } from "@/shared/auth/model/server-token-service";
+import { ensureServerAccessToken } from "@/shared/auth";
 
 export const serverAuthLink = new SetContextLink(async (prevContext) => {
   if (typeof window !== "undefined") {

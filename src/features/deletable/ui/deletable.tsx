@@ -1,26 +1,33 @@
-import React, { PropsWithChildren, useState } from 'react'
-import { DeletableContext } from '../context';
+"use client";
+
+import { useState } from "react";
+import { DeletableContext } from "../context";
+
 
 interface DeletableProps {
-  onDeleteItems: (ids: number[]) => void;
+  onDeleteItems: (ids: string[]) => void;
+  children: React.ReactNode;
 }
 
-export const Deletable: React.FC<PropsWithChildren<DeletableProps>> = ({onDeleteItems, children}) => {
-    const [isSelectable, setIsSelectable] = useState(false);
-    const [selectedItems, setSelectedItems] = useState<number[]>([]);
+export const Deletable = ({
+  onDeleteItems,
+  children,
+}: DeletableProps) => {
+  const [isSelectable, setIsSelectable] = useState(false);
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
 
-    const addSelectedItem = (id: number) => {
-      setSelectedItems([...selectedItems, id]);
-    };
+  const addSelectedItem = (id: string) => {
+    setSelectedItems([...selectedItems, id]);
+  };
 
-    const removeSelectedItem = (id: number) => {
-      setSelectedItems(selectedItems.filter((itemId) => id !== itemId));
-    };
+  const removeSelectedItem = (id: string) => {
+    setSelectedItems(selectedItems.filter((itemId) => id !== itemId));
+  };
 
-    const onSetIsSelectable = (isSelectable: boolean) => {
-      setSelectedItems([]);
-      setIsSelectable(isSelectable);
-    };
+  const onSetIsSelectable = (isSelectable: boolean) => {
+    setSelectedItems([]);
+    setIsSelectable(isSelectable);
+  };
   return (
     <DeletableContext
       value={{
@@ -35,4 +42,4 @@ export const Deletable: React.FC<PropsWithChildren<DeletableProps>> = ({onDelete
       {children}
     </DeletableContext>
   );
-}
+};

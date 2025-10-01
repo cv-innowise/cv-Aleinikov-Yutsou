@@ -1,12 +1,14 @@
+"use client";
+
 import { createContext } from "react";
 
 type DeletableContextValue = {
   isSelectable: boolean;
   setIsSelectable: (isSelectable: boolean) => void;
-  selectedItems: number[];
-  addSelectedItem: (id: number) => void;
-  removeSelectedItem: (id: number) => void;
-  onDeleteItems: (id: number[]) => void;
+  selectedItems: string[];
+  addSelectedItem: (id: string) => void;
+  removeSelectedItem: (id: string) => void;
+  onDeleteItems: (id: string[]) => void;
 };
 
 export const DeletableContext = createContext<DeletableContextValue>({
