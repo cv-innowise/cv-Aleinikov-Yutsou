@@ -13,7 +13,7 @@ const UserLayout: React.FC<React.PropsWithChildren<UserLayoutProps>> = async ({
   return (
     <div className="w-full h-full space-y-8">
       <UserNav userId={userId} />
-      <div className="flex justify-center items-center">{children}</div>
+      <div className="w-full h-full flex justify-center items-center">{children}</div>
     </div>
   );
 };
