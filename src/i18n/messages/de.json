@@ -278,5 +278,19 @@
     "skill-deleted": "Fähigkeit wurde gelöscht",
     "error": "Etwas lief schief",
     "loading": "Laden..."
+  },
+  "skill-form": {
+    "update": "Fähigkeiten aktualisieren",
+    "create": "Geschicklichkeit schaffen",
+    "name": "Fähigkeitsname",
+    "name-label": "Name",
+    "category": "Kategorie auswählen",
+    "category-label": "Kategorie",
+    "cancel": "Stornieren",
+    "confirm": "Bestätigen",
+    "skill-updated": "Fähigkeit wurde aktualisiert",
+    "skill-created": "Geschicklichkeit wurde geschaffen",
+    "error": "Etwas lief schief",
+    "loading": "Laden..."
   }
 }

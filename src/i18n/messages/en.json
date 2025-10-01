@@ -278,5 +278,19 @@
     "skill-deleted": "Skill was deleted",
     "error": "Something went wrong",
     "loading": "Loading..."
+  },
+  "skill-form": {
+    "update": "Update Skill",
+    "create": "Create Skill",
+    "name": "Skill Name",
+    "name-label": "Name",
+    "category": "Select Category",
+    "category-label": "Category",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "skill-updated": "Skill was updated",
+    "skill-created": "Skill was created",
+    "error": "Something went wrong",
+    "loading": "Loading..."
   }
 }

@@ -34,6 +34,7 @@ import { Input } from "@/shared/components/ui/input";
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 interface SkillFormProps {
   skillId?: Skill["id"];
@@ -42,6 +43,7 @@ interface SkillFormProps {
 export const SkillForm: React.FC<SkillFormProps> = ({ skillId }) => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
+    const t = useTranslations("skill-form");
   const skill = useGetSkill(skillId);
   const skillCategories = useGetSkillCategories();
   const skillCategoryId = skillCategories.find(
@@ -65,9 +67,9 @@ export const SkillForm: React.FC<SkillFormProps> = ({ skillId }) => {
       }
 
       toast.promise(promise, {
-        success: skill ? "Skill was updated" : "Skill was created",
-        error: "Something went wrong",
-        loading: "Loading...",
+        success: skill ? t("skill-updated") : t("skill-created"),
+        error: t("error"),
+        loading: t("loading"),
       });
       router.refresh();
     });
@@ -77,16 +79,16 @@ export const SkillForm: React.FC<SkillFormProps> = ({ skillId }) => {
     <DialogContent>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
-          <DialogTitle>{skill ? "Update Skill" : "Create Skill"}</DialogTitle>
+          <DialogTitle>{skill ? t("update") : t("create")}</DialogTitle>
           <div className="flex justify-between">
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Skill Name</FormLabel>
+                  <FormLabel>{t("name")}</FormLabel>
                   <FormControl>
-                    <Input placeholder="Skill name" {...field} />
+                    <Input placeholder={t("name")} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -97,7 +99,7 @@ export const SkillForm: React.FC<SkillFormProps> = ({ skillId }) => {
               name="categoryId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>{t("category-label")}</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
@@ -105,7 +107,7 @@ export const SkillForm: React.FC<SkillFormProps> = ({ skillId }) => {
                     <FormControl>
                       <SelectTrigger>
                         <SelectValue
-                          placeholder="Select category"
+                          placeholder={t("category")}
                           data-testid="select-category-value"
                         />
                       </SelectTrigger>
@@ -126,11 +128,11 @@ export const SkillForm: React.FC<SkillFormProps> = ({ skillId }) => {
           <div className="float-right space-x-4">
             <DialogClose asChild>
               <Button disabled={isPending} type="button" variant="outline">
-                Cancel
+                {t("cancel")}
               </Button>
             </DialogClose>
             <Button loading={isPending} type="submit">
-              Confirm
+              {t("confirm")}
             </Button>
           </div>
         </form>
