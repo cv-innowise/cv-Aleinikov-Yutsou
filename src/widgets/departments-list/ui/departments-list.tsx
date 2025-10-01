@@ -7,16 +7,18 @@ import { Dialog, DialogTrigger } from "@/shared/components/ui/dialog";
 import { Button } from "@/shared/components/ui/button";
 import { DepartmentForm } from "@/features/department-form";
 import { FCWithSkeleton } from "@/shared/types/fc-with-skeleton";
+import { getTranslations } from "next-intl/server";
 
 export const DepartmentsList: FCWithSkeleton<unknown> = async () => {
   const departments = await getDepartments();
   const authUser = await getAuthUser();
+  const t = await getTranslations("departments-list");
   const isAuthUserAdmin = authUser.role === UserRole.Admin;
 
   return (
     <div>
       <DataTable
-        title="Departments"
+        title={t("departments")}
         columns={departmentsColumns}
         data={departments}
       >
@@ -27,7 +29,7 @@ export const DepartmentsList: FCWithSkeleton<unknown> = async () => {
                 className="block ml-auto"
                 data-testid="create-department-button"
               >
-                Create Department
+                {t("create-department")}
               </Button>
             </DialogTrigger>
             <DepartmentForm />

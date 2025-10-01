@@ -28,6 +28,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useGetAuthUser } from "@/shared/lib/hooks/use-get-auth-user";
 import { UserRole } from "@/shared/types/cv-graphql";
+import { useTranslations } from "next-intl";
 
 interface ActionsProps {
   department: Department;
@@ -39,6 +40,7 @@ export const Actions: React.FC<ActionsProps> = ({
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const authUser = useGetAuthUser();
+  const t = useTranslations("department-actions");
   const isAuthUserAdmin = authUser.role === UserRole.Admin;
 
   const onDeleteDepartment = () => {
@@ -46,9 +48,9 @@ export const Actions: React.FC<ActionsProps> = ({
       const promise = deleteDepartment({ departmentId: department.id });
 
       toast.promise(promise, {
-        success: "Department was deleted",
-        error: "Something went wrong",
-        loading: "Loading...",
+        success: t("department-deleted"),
+        error: t("error"),
+        loading: t("loading"),
       });
       router.refresh();
     });
@@ -61,12 +63,12 @@ export const Actions: React.FC<ActionsProps> = ({
           className="h-8 w-8 p-0"
           data-testid="action-button"
         >
-          <span className="sr-only">Open menu</span>
+          <span className="sr-only">{t("open")}</span>
           <MoreHorizontal className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+        <DropdownMenuLabel>{t("actions")}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
           <Dialog>
@@ -75,7 +77,7 @@ export const Actions: React.FC<ActionsProps> = ({
               data-testid="update-department-button"
               className="hover:bg-accent hover:text-accent-foreground w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50"
             >
-              Update Department
+              {t("update")}
             </DialogTrigger>
             <Suspense>
               <DepartmentForm departmentId={department.id} />
@@ -89,25 +91,24 @@ export const Actions: React.FC<ActionsProps> = ({
               data-testid="delete-department-button"
               className="text-destructive hover:bg-destructive/10 dark:hover:bg-destructive/20 hover:text-destructive w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50"
             >
-              Delete department
+              {t("delete")}
             </AlertDialogTrigger>
             <AlertDialogContent datat-testid="alert-dialog">
               <AlertDialogHeader>
-                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogTitle>{t("alert-title")}</AlertDialogTitle>
                 <AlertDialogDescription>
-                  This action cannot be undone. This will permanently delete
-                  this department and remove the data from our servers.
+                  {t("alert-description")}
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel data-testid="alert-dialog-close">
-                  Cancel
+                  {t("cancel")}
                 </AlertDialogCancel>
                 <AlertDialogAction
                   onClick={onDeleteDepartment}
                   data-testid="alert-dialog-confirm"
                 >
-                  Continue
+                  {t("continue")}
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>

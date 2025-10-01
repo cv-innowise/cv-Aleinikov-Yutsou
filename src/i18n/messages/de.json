@@ -124,5 +124,22 @@
     "cv-created": "Lebenslauf wurde erstellt",
     "error": "Etwas lief schief",
     "loading": "Laden..."
+  },
+  "departments-list": {
+    "departments": "Abteilungen",
+    "create-department": "Abteilung erstellen"
+  },
+  "department-actions": {
+    "open": "Öffnen Sie das Menü",
+    "actions": "Aktionen",
+    "update": "Update -Abteilung",
+    "delete": "Abteilung löschen",
+    "alert-title": "Bist du absolut sicher?",
+    "alert-description": "Diese Aktion kann nicht rückgängig gemacht werden. Dadurch wird die Abteilung \ndauerhaft gelöscht und die Daten von unseren Servern entfernen.",
+    "cancel": "Stornieren",
+    "continue": "Weitermachen",
+    "department-deleted": "Department was deleted",
+    "error": "Something went wrong",
+    "loading": "Loading..."
   }
 }

@@ -8,7 +8,7 @@ import { Department } from "@/shared/graphql/departments/departments.types";
 export const departmentsColumns : ColumnDef<Department>[] = [
   {
     accessorKey: "name",
-    header: ({ column }) => <SortableColumn column={column} text="Name" />,
+    header: ({ column }) => <SortableColumn column={column} translateKey="name" />,
     cell: ({ row }) => <p data-testid="name">{row.original.name}</p>,
   },
   {
