@@ -39,7 +39,7 @@ export const Actions: React.FC<ActionsProps> = ({ project }) => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const authUser = useGetAuthUser();
-    const t = useTranslations("projects-actions");
+    const t = useTranslations("project-actions");
   const isAuthUserAdmin = authUser.role === UserRole.Admin;
 
   const onDeleteProject = () => {

@@ -231,7 +231,7 @@
   },
   "projects-list": {
     "projects": "Проекты",
-    "create-project": "Создать проект"
+    "create-skill": "Создать проект"
   },
   "project-actions": {
     "open": "Открыть меню",
@@ -272,7 +272,7 @@
     "skills": "Навыки",
     "create-project": "Создать навык"
   },
-  "skills-actions": {
+  "skill-actions": {
     "open": "Открыть меню",
     "actions": "Действия",
     "update": "Обновить навык",
@@ -301,7 +301,7 @@
   },
   "users-list": {
     "users": "Пользователи",
-    "create-project": "Создать пользователя"
+    "create-user": "Создать пользователя"
   },
   "user-actions": {
     "open": "Открыть меню",

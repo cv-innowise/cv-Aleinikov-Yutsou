@@ -258,7 +258,7 @@
     "pick-date": "Pick a date",
     "description": "Write something about this project...",
     "description-label": "Description",
-    "environment": "Project domain",
+    "environment": "Environment",
     "environment-label": "Press \"Enter\" to add environment",
     "cancel": "Cancel",
     "confirm": "Confirm",
@@ -269,9 +269,9 @@
   },
   "skills-list": {
     "skills": "Skills",
-    "create-project": "Create Skill"
+    "create-skill": "Create Skill"
   },
-  "skills-actions": {
+  "skill-actions": {
     "open": "Open menu",
     "actions": "Actions",
     "update": "Update Skill",
@@ -300,7 +300,7 @@
   },
   "users-list": {
     "users": "Users",
-    "create-project": "Create User"
+    "create-user": "Create User"
   },
   "user-actions": {
     "open": "Open menu",

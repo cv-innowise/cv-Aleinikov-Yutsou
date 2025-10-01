@@ -258,7 +258,7 @@
     "pick-date": "Wählen Sie ein Date",
     "description": "Schreiben Sie etwas über dieses Projekt...",
     "description-label": "Beschreibung",
-    "environment": "Projektdomäne",
+    "environment": "Umfeld",
     "environment-label": "Drücken Sie \"Eingeben\", um die Umgebung hinzuzufügen",
     "cancel": "Stornieren",
     "confirm": "Bestätigen",
@@ -269,9 +269,9 @@
   },
   "skills-list": {
     "skills": "Fähigkeiten",
-    "create-project": "Geschicklichkeit schaffen"
+    "create-skill": "Geschicklichkeit schaffen"
   },
-  "skills-actions": {
+  "skill-actions": {
     "open": "Öffnen Sie das Menü",
     "actions": "Aktionen",
     "update": "Fähigkeiten aktualisieren",
@@ -300,7 +300,7 @@
   },
   "users-list": {
     "users": "Benutzer",
-    "create-project": "Benutzer erstellen"
+    "create-user": "Benutzer erstellen"
   },
   "user-actions": {
     "open": "Öffnen Sie das Menü",
