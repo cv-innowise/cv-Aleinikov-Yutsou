@@ -205,5 +205,17 @@
     "position-deleted": "Position was deleted",
     "error": "Something went wrong",
     "loading": "Loading..."
+  },
+  "position-form": {
+    "update": "Update Position",
+    "create": "Create Position",
+    "name": "Position name",
+    "name-label": "Name",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "position-updated": "Position  was updated",
+    "position-created": "Position was created",
+    "error": "Something went wrong",
+    "loading": "Loading..."
   }
 }

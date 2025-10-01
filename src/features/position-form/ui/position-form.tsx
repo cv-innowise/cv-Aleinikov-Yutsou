@@ -26,6 +26,7 @@ import { positionSchema } from "../validation/position.schema";
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 interface PositionFormProps {
   positionId?: Position["id"];
@@ -35,6 +36,7 @@ export const PositionForm: React.FC<PositionFormProps> = ({ positionId }) => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const position = useGetPosition(positionId);
+    const t = useTranslations("position-form");
   const form = useForm<yup.InferType<typeof positionSchema>>({
     resolver: yupResolver(positionSchema),
     defaultValues: {
@@ -52,9 +54,9 @@ export const PositionForm: React.FC<PositionFormProps> = ({ positionId }) => {
       }
 
       toast.promise(promise, {
-        success: position ? "Position was updated" : "Position was created",
-        error: "Soething went wrong",
-        loading: "Loading...",
+        success: position ? t("position-updated") : t("position-created"),
+        error: t("error"),
+        loading: t("loading"),
       });
       router.refresh();
     });
@@ -64,17 +66,15 @@ export const PositionForm: React.FC<PositionFormProps> = ({ positionId }) => {
     <DialogContent>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
-          <DialogTitle>
-            {position ? "Update Position" : "Create Position"}
-          </DialogTitle>
+          <DialogTitle>{position ? t("update") : t("create")}</DialogTitle>
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>{t("name-label")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Position name" {...field} />
+                  <Input placeholder={t("name")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -83,11 +83,11 @@ export const PositionForm: React.FC<PositionFormProps> = ({ positionId }) => {
           <div className="float-right space-x-4">
             <DialogClose asChild>
               <Button disabled={isPending} type="button" variant="outline">
-                Cancel
+                {t("cancel")}
               </Button>
             </DialogClose>
             <Button loading={isPending} type="submit">
-              Confirm
+              {t("confirm")}
             </Button>
           </div>
         </form>
