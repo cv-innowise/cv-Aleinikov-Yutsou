@@ -85,5 +85,28 @@
     "language-added": "Sprache wurde hinzugefügt",
     "error": "Etwas lief schief",
     "loading": "Laden..."
+  },
+  "columns": {
+    "name": "Name",
+    "description": "Beschreibung",
+    "employee": "Mitarbeiterin"
+  },
+  "cvs-list": {
+    "cvs": "Lebenslauf",
+    "create-cv": "CV erstellen"
+  },
+  "cv-actions": {
+    "open": "Öffnen Sie das Menü",
+    "actions": "Aktionen",
+    "details": "Lebenslaufdetails",
+    "update": "CV aktualisieren",
+    "delete": "CV löschen",
+    "alert-title": "Bist du absolut sicher?",
+    "alert-description": "Diese Aktion kann nicht rückgängig gemacht werden. Dies wird dieses Projekt \ndauerhaft löschen und die Daten von unseren Servern entfernen.",
+    "cancel": "Stornieren",
+    "continue": "Weitermachen",
+    "cv-deleted": "Lebenslauf wurde gelöscht",
+    "error": "Etwas lief schief",
+    "loading": "Laden..."
   }
 }

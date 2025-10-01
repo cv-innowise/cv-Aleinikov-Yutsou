@@ -85,5 +85,28 @@
     "language-added": "Language was added",
     "error": "Something went wrong",
     "loading": "Loading..."
+  },
+  "columns": {
+    "name": "Name",
+    "description": "Description",
+    "employee": "Employee"
+  },
+  "cvs-list": {
+    "cvs": "CVs",
+    "create-cv": "Create CV"
+  },
+  "cv-actions": {
+    "open": "Open menu",
+    "actions": "Actions",
+    "details": "CV Details",
+    "update": "Update CV",
+    "delete": "Delete CV",
+    "alert-title": "Are you absolutely sure?",
+    "alert-description": "This action cannot be undone. This will permanently delete \nthis project and remove the data from our servers.",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "cv-deleted": "CV was deleted",
+    "error": "Something went wrong",
+    "loading": "Loading..."
   }
 }

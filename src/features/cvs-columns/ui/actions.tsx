@@ -27,6 +27,7 @@ import { CvForm } from "@/features/cv-form";
 import { toast } from "sonner";
 import { Suspense, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 interface ActionsProps {
   cv: CvItem;
@@ -35,15 +36,16 @@ interface ActionsProps {
 export const Actions: React.FC<ActionsProps> = ({ cv }) => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
+  const t = useTranslations("cv-actions");
 
   const onDeleteCv = () => {
     startTransition(() => {
       const promise = deleteCv({ cvId: cv.id });
 
       toast.promise(promise, {
-        success: "CV was deleted",
-        error: "Something went wrong",
-        loading: "Loading...",
+        success: t('cv-deleted'),
+        error: t("error"),
+        loading: t("loading"),
       });
       router.refresh();
     });
@@ -56,16 +58,16 @@ export const Actions: React.FC<ActionsProps> = ({ cv }) => {
           className="h-8 w-8 p-0"
           data-testid="action-button"
         >
-          <span className="sr-only">Open menu</span>
+          <span className="sr-only">{t("open")}</span>
           <MoreHorizontal className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+        <DropdownMenuLabel>{t("actions")}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
           <Link href={`/cvs/${cv.id}`} data-testid="cv-link">
-            CV Details
+            {t("details")}
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
@@ -75,7 +77,7 @@ export const Actions: React.FC<ActionsProps> = ({ cv }) => {
               className="hover:bg-accent hover:text-accent-foreground w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50"
               disabled={isPending}
             >
-              Update CV
+              {t("update")}
             </DialogTrigger>
             <Suspense>
               <CvForm cvId={cv.id} />
@@ -89,25 +91,24 @@ export const Actions: React.FC<ActionsProps> = ({ cv }) => {
               className="text-destructive hover:bg-destructive/10 dark:hover:bg-destructive/20 hover:text-destructive w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50"
               disabled={isPending}
             >
-              Delete CV
+              {t("delete")}
             </AlertDialogTrigger>
             <AlertDialogContent datat-testid="alert-dialog">
               <AlertDialogHeader>
-                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogTitle>{t("alert-title")}</AlertDialogTitle>
                 <AlertDialogDescription>
-                  This action cannot be undone. This will permanently delete
-                  this project and remove the data from our servers.
+                  {t("alert-description")}
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel data-testid="alert-dialog-close">
-                  Cancel
+                  {t("cancel")}
                 </AlertDialogCancel>
                 <AlertDialogAction
                   onClick={onDeleteCv}
                   data-testid="alert-dialog-confirm"
                 >
-                  Continue
+                  {t("continue")}
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>

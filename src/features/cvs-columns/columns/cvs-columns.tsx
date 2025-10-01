@@ -8,13 +8,13 @@ import { CvItem } from "@/shared/graphql/cvs/cvs.types";
 export const cvsColumns: ColumnDef<CvItem>[] = [
   {
     accessorKey: "name",
-    header: ({ column }) => <SortableColumn column={column} text="Name" />,
+    header: ({ column }) => <SortableColumn column={column} translateKey="name" />,
   },
 
   {
     accessorKey: "description",
     header: ({ column }) => (
-      <SortableColumn column={column} text="Description" />
+      <SortableColumn column={column} translateKey="description" />
     ),
     cell: ({ row }) => (
       <p
@@ -29,7 +29,7 @@ export const cvsColumns: ColumnDef<CvItem>[] = [
   {
     accessorKey: "user.email",
     enableGlobalFilter: false,
-    header: ({ column }) => <SortableColumn column={column} text="Employee" />,
+    header: ({ column }) => <SortableColumn column={column} translateKey="employee" />,
   },
 
   {

@@ -5,17 +5,19 @@ import { Dialog, DialogTrigger } from "@/shared/components/ui/dialog";
 import { Button } from "@/shared/components/ui/button";
 import { CvForm } from "@/features/cv-form";
 import { FCWithSkeleton } from "@/shared/types/fc-with-skeleton";
+import { getTranslations } from "next-intl/server";
 
 export const CvsList: FCWithSkeleton<unknown> = async () => {
   const cvs = await getCvs();
+  const t = await getTranslations("cvs-list");
 
   return (
     <div>
-      <DataTable title="CVs" columns={cvsColumns} data={cvs}>
+      <DataTable title={t("cvs")} columns={cvsColumns} data={cvs}>
         <Dialog>
           <DialogTrigger asChild>
             <Button className="block ml-auto" data-testid="create-cv-button">
-              Create CV
+              {t("create-cv")}
             </Button>
           </DialogTrigger>
           <CvForm />
