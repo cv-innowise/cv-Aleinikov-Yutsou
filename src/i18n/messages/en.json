@@ -188,5 +188,22 @@
     "language-created": "Language was created",
     "error": "Something went wrong",
     "loading": "Loading..."
+  },
+  "positions-list": {
+    "positions": "Positions",
+    "create-position": "Create Position"
+  },
+  "position-actions": {
+    "open": "Open menu",
+    "actions": "Actions",
+    "update": "Update Position",
+    "delete": "Delete Position",
+    "alert-title": "Are you absolutely sure?",
+    "alert-description": "This action cannot be undone. This will permanently delete \nthis position and remove the data from our servers.",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "position-deleted": "Position was deleted",
+    "error": "Something went wrong",
+    "loading": "Loading..."
   }
 }

@@ -8,7 +8,7 @@ import { Position } from "@/shared/graphql/positions/positions.types";
 export const positionsColumns: ColumnDef<Position>[] = [
   {
     accessorKey: "name",
-    header: ({ column }) => <SortableColumn column={column} text="Name" />,
+    header: ({ column }) => <SortableColumn column={column} translateKey="name" />,
     cell: ({ row }) => <p data-testid="name">{row.original.name}</p>,
   },
   {

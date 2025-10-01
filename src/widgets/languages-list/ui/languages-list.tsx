@@ -25,7 +25,7 @@ export const LanguagesList: FCWithSkeleton<unknown> = async () => {
                 className="block ml-auto"
                 data-testid="create-language-button"
               >
-                {t("create")}
+                {t("create-language")}
               </Button>
             </DialogTrigger>
             <LanguageForm />

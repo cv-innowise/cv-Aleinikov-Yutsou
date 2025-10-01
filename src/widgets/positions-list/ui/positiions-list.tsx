@@ -7,15 +7,17 @@ import { Dialog, DialogTrigger } from "@/shared/components/ui/dialog";
 import { Button } from "@/shared/components/ui/button";
 import { PositionForm } from "@/features/position-form";
 import { FCWithSkeleton } from "@/shared/types/fc-with-skeleton";
+import { getTranslations } from "next-intl/server";
 
 export const PositionsList: FCWithSkeleton<unknown> = async () => {
   const positions = await getPositions();
   const authUser = await getAuthUser();
+  const t = await getTranslations("positions-list");
   const isAuthUserAdmin = authUser.role === UserRole.Admin;
 
   return (
     <div>
-      <DataTable title="Positions" columns={positionsColumns} data={positions}>
+      <DataTable title={t("positions")} columns={positionsColumns} data={positions}>
         {isAuthUserAdmin && (
           <Dialog>
             <DialogTrigger asChild>
@@ -23,7 +25,7 @@ export const PositionsList: FCWithSkeleton<unknown> = async () => {
                 className="block ml-auto"
                 data-testid="create-position-button"
               >
-                Create Position
+                {t("create-position")}
               </Button>
             </DialogTrigger>
             <PositionForm />

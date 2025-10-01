@@ -188,5 +188,22 @@
     "language-created": "Sprache wurde erstellt",
     "error": "Etwas ging schief",
     "loading": "Laden..."
+  },
+  "positions-list": {
+    "positions": "Positionen",
+    "create-position": "Position erstellen"
+  },
+  "position-actions": {
+    "open": "Öffnen Sie das Menü",
+    "actions": "Aktionen",
+    "update": "Position aktualisieren",
+    "delete": "Position löschen",
+    "alert-title": "Bist du absolut sicher?",
+    "alert-description": "Diese Aktion kann nicht rückgängig gemacht werden. Dadurch wird die Position \ndauerhaft gelöscht und die Daten von unseren Servern entfernen.",
+    "cancel": "Stornieren",
+    "continue": "Weitermachen",
+    "position-deleted": "Position wurde gelöscht",
+    "error": "Etwas lief schief",
+    "loading": "Laden..."
   }
 }
