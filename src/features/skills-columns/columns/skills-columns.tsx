@@ -8,12 +8,12 @@ import { Skill } from "@/shared/graphql/skills/skills.types";
 export const skillsColumns: ColumnDef<Skill>[] = [
   {
     accessorKey: "name",
-    header: ({ column }) => <SortableColumn column={column} text="Name" />,
+    header: ({ column }) => <SortableColumn column={column} translateKey="name" />,
   },
   {
     accessorKey: "category_name",
     enableGlobalFilter: false,
-    header: ({ column }) => <SortableColumn column={column} text="Category" />,
+    header: ({ column }) => <SortableColumn column={column} translateKey="category" />,
     cell: ({ row }) => (
       <p data-testid="category-name">{row.original.category_name}</p>
     ),

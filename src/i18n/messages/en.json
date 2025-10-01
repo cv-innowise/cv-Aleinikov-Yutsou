@@ -95,7 +95,8 @@
     "internal-name": "Internal Name",
     "domain": "Domain",
     "start-date": "Start Date",
-    "end-date": "End Date"
+    "end-date": "End Date",
+    "category": "Category"
   },
   "cvs-list": {
     "cvs": "CVs",
@@ -258,6 +259,23 @@
     "confirm": "Confirm",
     "project-updated": "Project was updated",
     "project-created": "Project was created",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "skills-list": {
+    "skills": "Skills",
+    "create-project": "Create Skill"
+  },
+  "skills-actions": {
+    "open": "Open menu",
+    "actions": "Actions",
+    "update": "Update Skill",
+    "delete": "Delete Skill",
+    "alert-title": "Are you absolutely sure?",
+    "alert-description": "This action cannot be undone. This will permanently delete \nthis skill and remove the data from our servers.",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "skill-deleted": "Skill was deleted",
     "error": "Something went wrong",
     "loading": "Loading..."
   }

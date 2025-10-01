@@ -95,7 +95,8 @@
     "internal-name": "Interner Name",
     "domain": "Domain",
     "start-date": "Startdatum",
-    "end-date": "Enddatum"
+    "end-date": "Enddatum",
+    "category": "Kategorie"
   },
   "cvs-list": {
     "cvs": "Lebenslauf",
@@ -258,6 +259,23 @@
     "confirm": "Bestätigen",
     "project-updated": "Das Projekt wurde aktualisiert",
     "project-created": "Projekt wurde erstellt",
+    "error": "Etwas lief schief",
+    "loading": "Laden..."
+  },
+  "skills-list": {
+    "skills": "Fähigkeiten",
+    "create-project": "Geschicklichkeit schaffen"
+  },
+  "skills-actions": {
+    "open": "Öffnen Sie das Menü",
+    "actions": "Aktionen",
+    "update": "Fähigkeiten aktualisieren",
+    "delete": "Fähigkeiten löschen",
+    "alert-title": "Bist du absolut sicher?",
+    "alert-description": "Diese Aktion kann nicht rückgängig gemacht werden. Dadurch werden die Fähigkeiten \ndauerhaft gelöscht und die Daten von unseren Servern entfernen.",
+    "cancel": "Stornieren",
+    "continue": "Weitermachen",
+    "skill-deleted": "Fähigkeit wurde gelöscht",
     "error": "Etwas lief schief",
     "loading": "Laden..."
   }

@@ -7,15 +7,17 @@ import { Button } from "@/shared/components/ui/button";
 import { SkillForm } from "@/features/skill-form";
 import { getSkills } from "@/shared/lib/queries/get-skills";
 import { FCWithSkeleton } from "@/shared/types/fc-with-skeleton";
+import { getTranslations } from "next-intl/server";
 
 export const SkillsList: FCWithSkeleton<unknown> = async () => {
   const skills = await getSkills();
   const authUser = await getAuthUser();
+  const t = await getTranslations("skills-list");
   const isAuthUserAdmin = authUser.role === UserRole.Admin;
 
   return (
     <div>
-      <DataTable title="Skills" columns={skillsColumns} data={skills}>
+      <DataTable title={t("skills")} columns={skillsColumns} data={skills}>
         {isAuthUserAdmin && (
           <Dialog>
             <DialogTrigger asChild>
@@ -23,7 +25,7 @@ export const SkillsList: FCWithSkeleton<unknown> = async () => {
                 className="block ml-auto"
                 data-testid="create-skill-button"
               >
-                Create Skill
+                {t("create-skill")}
               </Button>
             </DialogTrigger>
             <SkillForm />
