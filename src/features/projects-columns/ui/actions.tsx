@@ -72,7 +72,7 @@ export const Actions: React.FC<ActionsProps> = ({ project }) => {
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
           <Link href={`/projects/${project.id}`} data-testid="project-link">
-            Project Details
+            {t("details")}
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>

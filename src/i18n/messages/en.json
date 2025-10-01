@@ -229,6 +229,7 @@
   "project-actions": {
     "open": "Open menu",
     "actions": "Actions",
+    "details": "Project Details",
     "update": "Update Project",
     "delete": "Delete Project",
     "alert-title": "Are you absolutely sure?",
