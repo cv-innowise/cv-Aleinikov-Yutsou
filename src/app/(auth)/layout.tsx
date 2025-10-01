@@ -1,6 +1,5 @@
 import { RouteGuard } from "@/shared/auth/model/route-guard";
 import { AuthNav } from "@/widgets/auth-nav";
-import { usePathname } from "next/navigation";
 import React from "react";
 
 type AuthLayoutProps = React.PropsWithChildren;
