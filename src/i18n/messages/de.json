@@ -141,5 +141,17 @@
     "department-deleted": "Department was deleted",
     "error": "Something went wrong",
     "loading": "Loading..."
+  },
+  "department-form": {
+    "update": "Update -Abteilung",
+    "create": "Abteilung erstellen",
+    "name": "Abteilungsname",
+    "name-label": "Name",
+    "cancel": "Stornieren",
+    "confirm": "Bestätigen",
+    "department-updated": "Die Abteilung wurde aktualisiert",
+    "department-created": "Die Abteilung wurde erstellt",
+    "error": "Etwas lief schief",
+    "loading": "Laden..."
   }
 }

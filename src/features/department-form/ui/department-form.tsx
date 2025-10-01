@@ -26,6 +26,7 @@ import { departmentSchema } from "../validation/department.schema";
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 interface DepartmentFormProps {
   departmentId?: Department["id"];
@@ -37,6 +38,7 @@ export const DepartmentForm: React.FC<DepartmentFormProps> = ({
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const department = useGetDepartment(departmentId);
+  const t = useTranslations("department-form");
   const form = useForm<yup.InferType<typeof departmentSchema>>({
     resolver: yupResolver(departmentSchema),
     defaultValues: {
@@ -58,10 +60,10 @@ export const DepartmentForm: React.FC<DepartmentFormProps> = ({
 
       toast.promise(promise, {
         success: department
-          ? "Department was updated"
-          : " Department was created",
-        error: "Something went wrong",
-        loading: "Loading...",
+          ? t("department-updated")
+          : t("department-created"),
+        error: t("error"),
+        loading: t("loading"),
       });
 
       router.refresh();
@@ -73,16 +75,16 @@ export const DepartmentForm: React.FC<DepartmentFormProps> = ({
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
           <DialogTitle>
-            {department ? "Update Department" : "Create Department"}
+            {department ? t("update") : t("create")}
           </DialogTitle>
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>{t("name-label")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Department name" {...field} />
+                  <Input placeholder={t("name")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -95,11 +97,11 @@ export const DepartmentForm: React.FC<DepartmentFormProps> = ({
                 type="button"
                 variant="outline"
               >
-                Cancel
+                {t("cancel")}
               </Button>
             </DialogClose>
             <Button loading={isPending} type="submit">
-              Confirm
+              {t("confirm")}
             </Button>
           </div>
         </form>

@@ -141,5 +141,17 @@
     "department-deleted": "Department was deleted",
     "error": "Something went wrong",
     "loading": "Loading..."
+  },
+  "department-form": {
+    "update": "Update Department",
+    "create": "Create Department",
+    "name": "Department name",
+    "name-label": "Name",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "department-updated": "Department  was updated",
+    "department-created": "Department  was created",
+    "error": "Something went wrong",
+    "loading": "Loading..."
   }
 }
