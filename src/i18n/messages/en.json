@@ -238,5 +238,26 @@
     "project-deleted": "Project was deleted",
     "error": "Something went wrong",
     "loading": "Loading..."
+  },
+  "project-form": {
+    "update": "Update Project",
+    "create": "Create Project",
+    "name": "Project name",
+    "name-label": "Name",
+    "domain": "Project domain",
+    "domain-label": "Domain",
+    "start-date-label": "Start Date",
+    "end-date-label": "End Date (optional)",
+    "pick-date": "Pick a date",
+    "description": "Write something about this project...",
+    "description-label": "Description",
+    "environment": "Project domain",
+    "environment-label": "Press \"Enter\" to add environment",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "project-updated": "Project was updated",
+    "project-created": "Project was created",
+    "error": "Something went wrong",
+    "loading": "Loading..."
   }
 }

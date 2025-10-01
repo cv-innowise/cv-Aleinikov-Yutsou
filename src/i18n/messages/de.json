@@ -238,5 +238,26 @@
     "project-deleted": "Das Projekt wurde gelöscht",
     "error": "Etwas lief schief",
     "loading": "Laden..."
+  },
+  "project-form": {
+    "update": "Projekt aktualisieren",
+    "create": "Projekt erstellen",
+    "name": "Projektname",
+    "name-label": "Name",
+    "domain": "Projektdomäne",
+    "domain-label": "Domain",
+    "start-date-label": "Startdatum",
+    "end-date-label": "Enddatum (optional)",
+    "pick-date": "Wählen Sie ein Date",
+    "description": "Schreiben Sie etwas über dieses Projekt...",
+    "description-label": "Beschreibung",
+    "environment": "Projektdomäne",
+    "environment-label": "Drücken Sie \"Eingeben\", um die Umgebung hinzuzufügen",
+    "cancel": "Stornieren",
+    "confirm": "Bestätigen",
+    "project-updated": "Das Projekt wurde aktualisiert",
+    "project-created": "Projekt wurde erstellt",
+    "error": "Etwas lief schief",
+    "loading": "Laden..."
   }
 }

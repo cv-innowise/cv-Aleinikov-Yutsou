@@ -239,5 +239,26 @@
     "project-deleted": "Проект был удален",
     "error": "Что-то пошло не так",
     "loading": "Загрузка..."
+  },
+  "project-form": {
+    "update": "Обновить проект",
+    "create": "Создать проект",
+    "name": "Название проекта",
+    "name-label": "Название",
+    "domain": "Домен проекта",
+    "domain-label": "Домен",
+    "start-date-label": "Дата начала",
+    "end-date-label": "Дата окончания (необязательно)",
+    "pick-date": "Выберите дату",
+    "description": "Напишите что-нибудь об этом проекте...",
+    "description-label": "Описание",
+    "environment": "Технологии",
+    "environment-label": "Нажмите \"Enter\", чтобы добавить технологию",
+    "cancel": "Отмена",
+    "confirm": "Подтверждать",
+    "project-updated": "Проект был обновлен",
+    "project-created": "Проект был создан",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
   }
 }

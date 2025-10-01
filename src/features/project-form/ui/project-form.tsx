@@ -37,6 +37,7 @@ import { Checkbox } from "@/shared/components/ui/checkbox";
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 interface ProjectFormProps {
   projectId?: Project["id"];
@@ -46,6 +47,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ projectId }) => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const project = useGetProject(projectId);
+  const t = useTranslations("project-form");
   const [environment, setEnvironment] = useState(project?.environment || []);
   const form = useForm<yup.InferType<typeof projectSchema>>({
     resolver: yupResolver(projectSchema),
@@ -100,9 +102,9 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ projectId }) => {
       }
 
       toast.promise(promise, {
-        success: project ? "Project was updated" : "Project was created",
-        error: "Somethin went wrong",
-        loading: "Loading...",
+        success: project ? t("project-updated") : t("project-created"),
+        error: t("error"),
+        loading: t("loading"),
       });
       router.refresh();
     });
@@ -120,9 +122,9 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ projectId }) => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>{t("name-label")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Project name" {...field} />
+                  <Input placeholder={t("name")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -133,9 +135,9 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ projectId }) => {
             name="domain"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Domain</FormLabel>
+                <FormLabel>{t("domain-label")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Project domain" {...field} />
+                  <Input placeholder={t("domain")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -148,7 +150,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ projectId }) => {
               render={({ field }) => {
                 return (
                   <FormItem className="flex flex-col">
-                    <FormLabel>Start Date</FormLabel>
+                    <FormLabel>{t("start-date-label")}</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
@@ -163,7 +165,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ projectId }) => {
                             {field.value ? (
                               format(field.value, "PPP")
                             ) : (
-                              <span>Pick a date</span>
+                              <span>{t("pick-date")}</span>
                             )}
                             <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                           </Button>
@@ -192,7 +194,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ projectId }) => {
               render={({ field }) => {
                 return (
                   <FormItem className="flex flex-col">
-                    <FormLabel>End Date (optional)</FormLabel>
+                    <FormLabel>{t("end-date-label")}</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
@@ -207,7 +209,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ projectId }) => {
                             {field.value ? (
                               format(field.value, "PPP")
                             ) : (
-                              <span>Pick a date</span>
+                              <span>{t("pick-date")}</span>
                             )}
                             <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                           </Button>
@@ -236,10 +238,10 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ projectId }) => {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Description</FormLabel>
+                <FormLabel>{t("description-label")}</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="Write something about this project..."
+                    placeholder={t("description")}
                     className="resize-none"
                     {...field}
                   />
@@ -249,12 +251,14 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ projectId }) => {
             )}
           />
           <div className="space-y-2">
-            <FormLabel htmlFor="environment-input">Environment</FormLabel>
+            <FormLabel htmlFor="environment-input">
+              {t("environment-label")}
+            </FormLabel>
             <Input
               onKeyDown={onAddEnvironment}
               id="environment-input"
               className="max-w-200px"
-              placeholder={"Press \"Enter\" to add environment"}
+              placeholder={t("environment")}
             />
             {form.getFieldState("environment").error && (
               <p className="text-destructive text-sm">
@@ -290,11 +294,11 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ projectId }) => {
           <div className="float-right space-x-4">
             <DialogClose asChild>
               <Button disabled={isPending} type="button" variant="outline">
-                Cancel
+                {t("cancel")}
               </Button>
             </DialogClose>
             <Button loading={isPending} type="submit">
-              Confirm
+              {t("confirm")}
             </Button>
           </div>
         </form>
