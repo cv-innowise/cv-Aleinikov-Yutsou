@@ -172,5 +172,21 @@
     "language-deleted": "Die Sprache wurde gelöscht",
     "error": "Etwas lief schief",
     "loading": "Laden..."
+  },
+  "language-form": {
+    "update": "Sprache aktualisieren",
+    "create": "Sprache erstellen",
+    "name": "Sprachname",
+    "name-label": "Name",
+    "native-name": "Sprache einheimischer Name",
+    "native-name-label": "Native Name (optional)",
+    "iso2": "Sprache ISO2 -Format",
+    "iso2-label": "ISO2",
+    "cancel": "Stornieren",
+    "confirm": "Bestätigen",
+    "language-updated": "Sprache wurde aktualisiert",
+    "language-created": "Sprache wurde erstellt",
+    "error": "Etwas ging schief",
+    "loading": "Laden..."
   }
 }

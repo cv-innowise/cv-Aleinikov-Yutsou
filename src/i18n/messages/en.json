@@ -172,5 +172,21 @@
     "language-deleted": "Language was deleted",
     "error": "Something went wrong",
     "loading": "Loading..."
+  },
+  "language-form": {
+    "update": "Update Language",
+    "create": "Create Language",
+    "name": "Language name",
+    "name-label": "Name",
+    "native-name": "Language native name",
+    "native-name-label": "Native Name (optional)",
+    "iso2": "Language iso2 format",
+    "iso2-label": "ISO2",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "language-updated": "Language was updated",
+    "language-created": "Language was created",
+    "error": "Something went wrong",
+    "loading": "Loading..."
   }
 }

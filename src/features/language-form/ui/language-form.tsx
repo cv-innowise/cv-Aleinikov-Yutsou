@@ -26,6 +26,7 @@ import { updateLanguage } from "../mutations/update-language";
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 interface LanguageFormProps {
   languageId?: Language["id"];
@@ -35,6 +36,7 @@ export const LanguageForm: React.FC<LanguageFormProps> = ({ languageId }) => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const language = useGetLanguage(languageId);
+  const t = useTranslations("language-form");
   const form = useForm<yup.InferType<typeof languageSchema>>({
     resolver: yupResolver(languageSchema),
     defaultValues: {
@@ -54,9 +56,9 @@ export const LanguageForm: React.FC<LanguageFormProps> = ({ languageId }) => {
       }
 
       toast.promise(promise, {
-        success: language ? "Language was updated" : "Language was created",
-        error: "Something went wrong",
-        loading: "Loading...",
+        success: language ? t("language-updated") : t("language-created"),
+        error: t("error"),
+        loading: t("loading"),
       });
       router.refresh();
     });
@@ -66,17 +68,15 @@ export const LanguageForm: React.FC<LanguageFormProps> = ({ languageId }) => {
     <DialogContent>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
-          <DialogTitle>
-            {language ? "Update Language" : "Create Language"}
-          </DialogTitle>
+          <DialogTitle>{language ? t("update") : t("create")}</DialogTitle>
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>{t("name-label")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Language name" {...field} />
+                  <Input placeholder={t("name")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -87,10 +87,10 @@ export const LanguageForm: React.FC<LanguageFormProps> = ({ languageId }) => {
             name="native_name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Native Name (optional)</FormLabel>
+                <FormLabel>{t("native-name-label")}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Language native name"
+                    placeholder={t("native-name")}
                     {...field}
                     value={field.value ?? ""}
                   />
@@ -104,9 +104,9 @@ export const LanguageForm: React.FC<LanguageFormProps> = ({ languageId }) => {
             name="iso2"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>ISO2</FormLabel>
+                <FormLabel>{t("iso2-label")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Language iso2 format" {...field} />
+                  <Input placeholder={t("iso2")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -114,16 +114,12 @@ export const LanguageForm: React.FC<LanguageFormProps> = ({ languageId }) => {
           />
           <div className="float-right space-x-4">
             <DialogClose asChild>
-              <Button
-                disabled={isPending}
-                type="button"
-                variant="outline"
-              >
-                Cancel
+              <Button disabled={isPending} type="button" variant="outline">
+                {t("cancel")}
               </Button>
             </DialogClose>
             <Button loading={isPending} type="submit">
-              Confirm
+              {t("confirm")}
             </Button>
           </div>
         </form>

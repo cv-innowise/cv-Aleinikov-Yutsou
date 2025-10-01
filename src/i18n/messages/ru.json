@@ -154,7 +154,7 @@
     "confirm": "Подтвердить",
     "department-updated": "Отдел был обновлен",
     "department-created": "Отдел был создан",
-    "error": "Что -то пошло не так",
+    "error": "Что-то пошло не так",
     "loading": "Загрузка..."
   },
   "languages-list": {
@@ -164,13 +164,29 @@
   "language-actions": {
     "open": "Открыть меню",
     "actions": "Действия",
-    "update": "Обновить языка",
+    "update": "Обновить язык",
     "delete": "Удалить язык",
     "alert-title": "Вы абсолютно уверен?",
     "alert-description": "Это действие не может быть отменено. Это навсегда удалит \nязык и удаляет данные с наших серверов.",
     "cancel": "Отмена",
     "continue": "Продолжить",
     "language-deleted": "Язык был удален",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "language-form": {
+    "update": "Обновить язык",
+    "create": "Создать язык",
+    "name": "Имя языка",
+    "name-label": "Имя",
+    "native-name": "Нативное имя языка",
+    "native-name-label": "Нативное имя (необязательное)",
+    "iso2": "Формат ISO2 Язык",
+    "iso2-label": "ISO2",
+    "cancel": "Отмена",
+    "confirm": "Подтвердить",
+    "language-updated": "Язык был обновлен",
+    "language-created": "Язык был создан",
     "error": "Что-то пошло не так",
     "loading": "Загрузка..."
   }
