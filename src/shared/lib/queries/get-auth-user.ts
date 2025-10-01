@@ -6,12 +6,13 @@ import {
 import { GET_USER } from "../../graphql/users/users.queries";
 import { query } from "../apollo/apollo-client";
 import { UserRole } from "@/shared/types/cv-graphql";
+import { getSessionServerSide } from "../cookies";
 
 export const getAuthUser = async (): Promise<User> => {
-  const { id } = { id: "760" }; //getSession() ;
+  const session = await getSessionServerSide() ;
   const { data } = await query<UserResponse, UserRequest>({
     query: GET_USER,
-    variables: { userId: id },
+    variables: { userId: session?.id },
   });
 
   if (!data?.user) {

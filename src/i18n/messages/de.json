@@ -1,0 +1,89 @@
+{
+  "auth": {
+    "login": {
+      "title": "Willkommen zurück",
+      "subtitle": "Hallo nochmal! Melden Sie sich an, um fortzufahren",
+      "emailPlaceholder": "E-Mail",
+      "passwordPlaceholder": "Passwort",
+      "forgotPassword": "Passwort vergessen?",
+      "submit": "Einloggen"
+    },
+    "signup": {
+      "title": "Registrieren Sie sich jetzt",
+      "subtitle": "Willkommen! Melden Sie sich an, um fortzufahren",
+      "emailPlaceholder": "E-Mail",
+      "passwordPlaceholder": "Passwort",
+      "submit": "Benutzerkonto erstellen",
+      "haveAccount": "Ich habe einen Account"
+    },
+    "navbar": {
+      "login": "Einloggen",
+      "signup": "Melden Sie sich an"
+    }
+  },
+  "sidebar": {
+    "users": "Mitarbeiter",
+    "skills": "Fähigkeiten",
+    "cvs": "Lebenslauf",
+    "languages": "Sprachen",
+
+    "profile": "Profil",
+    "settings": "Einstellungen",
+    "logout": "Abmelden"
+  },
+  "breadcrumbs": {
+    "users": "Mitarbeiter",
+    "skills": "Fähigkeiten",
+    "cvs": "Lebenslauf",
+    "languages": "Sprachen",
+    "settings": "Einstellungen",
+    "profile": "Profil"
+  },
+  "not-found": {
+    "user-not-found": "Entschuldigung, der Benutzer nicht gefunden.",
+    "your-profile": "Vielleicht haben Sie Ihr Profil sehen?"
+  },
+  "user-profile": {
+    "member-since": "Ein Mitglied seit"
+  },
+  "user-nav": {
+    "profile": "Profil",
+    "languages": "Sprachen",
+    "skills": "Fähigkeiten"
+  },
+  "profile-form": {
+    "first-name": "Vorname",
+    "last-name": "Nachname",
+    "department": "Abteilung",
+    "select-department": "Abteilung auswählen",
+    "no-department": "Keine Abteilung",
+    "select-position": "Position auswählen",
+    "no-position": "Keine Position",
+    "position": "Position",
+    "update": "Aktualisieren",
+    "profile-updated": "Profil wurde aktualisiert",
+    "nothing-changed": "Nichts wurde geändert",
+    "error": "Etwas lief schief",
+    "loading": "Laden..."
+  },
+  "skills-preview": {
+    "skills": "Fähigkeiten",
+    "delete": "Fähigkeiten löschen",
+    "skills-deleted": "Fähigkeiten wurden gelöscht",
+    "skill-deleted": "Fähigkeit wurde gelöscht",
+    "skill-updated": "Fähigkeit wurde aktualisiert",
+    "skill-added": "Fähigkeit wurde hinzugefügt",
+    "error": "Etwas lief schief",
+    "loading": "Laden..."
+  },
+  "languages-preview": {
+    "languages": "Sprachen",
+    "delete": "Sprachen löschen",
+    "languages-deleted": "Sprachen wurden gelöscht",
+    "language-deleted": "Die Sprache wurde gelöscht",
+    "language-updated": "Die Sprache wurde aktualisiert",
+    "language-added": "Sprache wurde hinzugefügt",
+    "error": "Etwas lief schief",
+    "loading": "Laden..."
+  }
+}

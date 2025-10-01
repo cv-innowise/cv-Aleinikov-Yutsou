@@ -1,32 +1,8 @@
 "use server";
 
 import { cookies } from "next/headers";
-import { jwtDecode } from "jwt-decode";
-import type { UpdateTokenResult } from "@/shared/types/cv-graphql";
-
-type JwtPayload = { exp?: number };
-
-const isTokenExpired = (token?: string): boolean => {
-  try {
-    if (!token) return true;
-    const { exp } = jwtDecode<JwtPayload>(token);
-    if (!exp) return true;
-    return Date.now() >= exp * 1000;
-  } catch {
-    return true;
-  }
-};
-
-const isTokenExpiring = (token?: string, skewSec = 30): boolean => {
-  try {
-    if (!token) return true;
-    const { exp } = jwtDecode<JwtPayload>(token);
-    if (!exp) return true;
-    return Date.now() >= exp * 1000 - skewSec * 1000;
-  } catch {
-    return true;
-  }
-};
+import type { UpdateTokenResult } from "cv-graphql";
+import { isTokenExpired, isTokenExpiring } from "./token-utils";
 
 async function updateTokenRequestServer(refresh_token?: string): Promise<UpdateTokenResult | null> {
   if (!refresh_token) return null;
@@ -92,4 +68,4 @@ async function refreshTokensServerAction(): Promise<boolean> {
   return !!t;
 }
 
-export { ensureServerAccessToken, refreshTokensServerAction, isTokenExpired, isTokenExpiring };
+export { updateTokenRequestServer, ensureServerAccessToken, refreshTokensServerAction };

@@ -18,23 +18,23 @@ describe("LanguagePreview (integration)", () => {
     vi.clearAllMocks();
   });
 
-  const renderComponent = () => {
-    render(
-      <SkillsPreview
-        skills={skillsMock}
-        skillsByCategories={skillsByCategoriesMock}
-        categories={categoriesMock}
-        addSkill={addSkillMock}
-        updateSkill={updateSkillMock}
-        deleteSkill={deleteSkillMock}
-        isEditable={true}
-      />
-    );
+  const renderComponent = async () => {
+    const jsx = await SkillsPreview({
+      skills: skillsMock,
+      skillsByCategories: skillsByCategoriesMock,
+      categories: categoriesMock,
+      addSkill: addSkillMock,
+      updateSkill: updateSkillMock,
+      deleteSkill: deleteSkillMock,
+      isEditable: true,
+    });
+
+    render(jsx);
   };
 
   test("Should change skill name correctly", async () => {
     const user = userEvent.setup();
-    renderComponent();
+    await renderComponent();
 
     await user.click(
       screen.getByText(
@@ -58,7 +58,7 @@ describe("LanguagePreview (integration)", () => {
 
   test("Should change skill proficieny correctly", async () => {
     const user = userEvent.setup();
-    renderComponent();
+    await renderComponent();
 
     await user.click(
       screen.getAllByTestId(/slider/i).at(-1)!.firstElementChild!,
@@ -82,7 +82,7 @@ describe("LanguagePreview (integration)", () => {
 
   test("Should add skill correctly", async () => {
     const user = userEvent.setup();
-    renderComponent();
+    await renderComponent();
 
     await user.click(screen.getByText(/add new skill.../i));
     await user.click(screen.getByText(skillsMock[3].name));
@@ -98,7 +98,7 @@ describe("LanguagePreview (integration)", () => {
 
   test("Should delete skill correctly", async () => {
     const user = userEvent.setup();
-    renderComponent();
+    await renderComponent();
 
     await user.click(screen.getAllByTestId(/delete-button/i)[0]);
     await user.click(screen.getByTestId(/confirm-deleting-button/i));
@@ -112,7 +112,7 @@ describe("LanguagePreview (integration)", () => {
 
   test("Should delete skills correctly", async () => {
     const user = userEvent.setup();
-    renderComponent();
+    await renderComponent();
 
     await user.click(screen.getByTestId(/start-selection-button/i));
     await user.click(screen.getAllByTestId(/select-button/i)[2]);
@@ -120,9 +120,7 @@ describe("LanguagePreview (integration)", () => {
 
     await vi.waitFor(() => {
       expect(deleteSkillMock).toHaveBeenCalledWith({
-        name: [
-          skillsByCategoriesMock["State management libraries"][1].name,
-        ],
+        name: [skillsByCategoriesMock["State management libraries"][1].name],
       });
     });
   });

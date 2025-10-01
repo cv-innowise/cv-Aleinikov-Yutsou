@@ -29,6 +29,7 @@ import { updateUser } from "../mutations/update-user";
 import { updateProfile } from "../mutations/update-profile";
 import { toast } from "sonner";
 import { Button } from "@/shared/components/ui/button";
+import { useTranslations } from "next-intl";
 
 interface ProfileFormProps {
   profile: Profile;
@@ -47,6 +48,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
 }) => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
+  const t = useTranslations("profile-form");
   const form = useForm<yup.InferType<typeof updateProfileSchema>>({
     defaultValues: {
       userId: user.id,
@@ -67,7 +69,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
     if (
       !form.formState.isDirty
     ) {
-      toast.error("Nothing was changed");
+      toast.error(t("nothing-changed"));
       return;
     }
 
@@ -85,9 +87,9 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
       const promise = Promise.all(promises);
 
       toast.promise(promise, {
-        success: "Profile was updated",
-        error: "Something went wrong",
-        loading: "Loading...",
+        success: t("profile-updated"),
+        error: t("error"),
+        loading: t("loading"),
       });
       router.refresh();
     });
@@ -129,11 +131,11 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
             disabled={!isEditable}
             render={({ field }) => (
               <FormItem>
-                <FormLabel>First name</FormLabel>
+                <FormLabel>{t("first-name")}</FormLabel>
                 <FormControl>
                   <Input
                     {...field}
-                    placeholder="First name"
+                    placeholder={t("first-name")}
                     value={field.value || ""}
                     data-testid="user-first-name-input"
                   />
@@ -148,11 +150,11 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
             disabled={!isEditable}
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Last name</FormLabel>
+                <FormLabel>{t("last-name")}</FormLabel>
                 <FormControl>
                   <Input
                     {...field}
-                    placeholder="Last name"
+                    placeholder={t("last-name")}
                     value={field.value || ""}
                     data-testid="user-last-name-input"
                   />
@@ -168,7 +170,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
             name="user.departmentId"
             render={({ field }) => (
               <FormItem className="grow w-1">
-                <FormLabel>Department</FormLabel>
+                <FormLabel>{t("department")}</FormLabel>
                 <Select
                   onValueChange={(val) =>
                     field.onChange(val === "none" ? "" : val)
@@ -185,7 +187,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="none">No department</SelectItem>
+                    <SelectItem value="none">{t("no-department")}</SelectItem>
                     {departments.map((dep) => (
                       <SelectItem key={dep.id} value={dep.id}>
                         {dep.name}
@@ -202,7 +204,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
             name="user.positionId"
             render={({ field }) => (
               <FormItem className="grow w-1">
-                <FormLabel>Position</FormLabel>
+                <FormLabel>{t("position")}</FormLabel>
                 <Select
                   onValueChange={(val) =>
                     field.onChange(val === "none" ? "" : val)
@@ -219,7 +221,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="none">No position</SelectItem>
+                    <SelectItem value="none">{t("no-position")}</SelectItem>
                     {positions.map((pos) => (
                       <SelectItem key={pos.id} value={pos.id}>
                         {pos.name}
@@ -239,7 +241,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
             className="block ml-auto"
             data-testid="update-button"
           >
-            Update
+            {t("update")}
           </Button>
         )}
       </form>

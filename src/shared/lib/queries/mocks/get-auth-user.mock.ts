@@ -38,4 +38,4 @@ vi.mock("@/shared/lib/hooks/use-get-auth-user", () => ({
   useGetAuthUser: getAuthUserMock,
 }));
 
-export { getAuthUserMock, userMock, adminUserMock }; 
+export { getAuthUserMock, userMock, adminUserMock };

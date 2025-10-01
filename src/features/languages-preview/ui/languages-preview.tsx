@@ -2,11 +2,13 @@ import { FCWithSkeleton } from "@/shared/types/fc-with-skeleton";
 import { LanguagesPreviewProps } from "../types";
 import { LanguageItem } from "@/entity/language-item";
 import { EditableLanguagesPreview } from "./editable-languages-preview";
+import { getTranslations } from "next-intl/server";
 
-export const LanguagesPreview: FCWithSkeleton<LanguagesPreviewProps> = (
+export const LanguagesPreview: FCWithSkeleton<LanguagesPreviewProps> = async (
   props
 ) => {
   const { languagesWithProficiency, isEditable } = props;
+  const t = await getTranslations("languages-preview");
 
   if (isEditable) {
     return <EditableLanguagesPreview {...props} />;
@@ -15,7 +17,7 @@ export const LanguagesPreview: FCWithSkeleton<LanguagesPreviewProps> = (
   return (
     <div className="w-full space-y-4">
       <h2 className="mb-6 uppercase font-black text-4xl tracking-widest">
-        Languages
+        {t("languages")}
       </h2>
       <div className="flex flex-wrap gap-4">
         {languagesWithProficiency.map((lang) => (

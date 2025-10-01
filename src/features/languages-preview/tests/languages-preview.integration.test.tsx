@@ -13,21 +13,21 @@ describe("LanguagePreview (integration)", () => {
     vi.clearAllMocks();
   });
 
-  const renderComponent = (isEditable: boolean = true) => {
-    render(
-      <LanguagesPreview
-        languages={languagesMock}
-        languagesWithProficiency={languagesWithProficiencyMock}
-        addLanguage={async () => {}}
-        updateLanguage={async () => {}}
-        deleteLanguages={async () => {}}
-        isEditable={isEditable}
-      />
-    );
+  const renderComponent = async (isEditable: boolean = true) => {
+    const jsx = await LanguagesPreview({
+      languages: languagesMock,
+      languagesWithProficiency: languagesWithProficiencyMock,
+      addLanguage: async () => {},
+      updateLanguage: async () => {},
+      deleteLanguages: async () => {},
+      isEditable: isEditable,
+    });
+
+    render(jsx);
   };
 
-  test("Should render create languages preview correctly in not editable mode", () => {
-    renderComponent(false);
+  test("Should render create languages preview correctly in not editable mode", async () => {
+    await renderComponent(false);
 
     expect(screen.getByText(/languages/i)).toBeInTheDocument();
     expect(
@@ -46,8 +46,8 @@ describe("LanguagePreview (integration)", () => {
     expect(screen.queryByText(/delete languages/i)).toBeNull();
   });
 
-  test("Should render create languages preview correctly in editable mode", () => {
-    renderComponent();
+  test("Should render create languages preview correctly in editable mode", async () => {
+    await renderComponent();
 
     expect(screen.getByText("Languages")).toBeInTheDocument();
     expect(
@@ -68,7 +68,7 @@ describe("LanguagePreview (integration)", () => {
 
   test("Should only show available languages in editable mode", async () => {
     const user = userEvent.setup();
-    renderComponent();
+    await renderComponent();
 
     await user.click(screen.getByText(/add new language.../i));
 
