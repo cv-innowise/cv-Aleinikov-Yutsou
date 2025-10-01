@@ -47,6 +47,7 @@ import { updateUser } from "../mutations/update-user";
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 interface UpdateUserFormProps {
   user: User;
@@ -63,6 +64,7 @@ export const UpdateUserForm: React.FC<UpdateUserFormProps> = ({
 }) => {
   const [isPenging, startTransition] = useTransition();
   const router = useRouter();
+  const t = useTranslations("user-form");
   const availableCvs: UserCv[] = [...(user.cvs || []), ...freeCvs];
   const form = useForm<yup.InferType<typeof updateUserSchema>>({
     resolver: yupResolver(updateUserSchema),
@@ -90,20 +92,20 @@ export const UpdateUserForm: React.FC<UpdateUserFormProps> = ({
   const onSubmit = (formData: yup.InferType<typeof updateUserSchema>) => {
     startTransition(async () => {
       const promise = updateUser(formData);
-    
+
       toast.promise(promise, {
-        success: "User was updated",
-        error: "Something went wrong",
-        loading: "Loading...",
+        success: t("user-updated"),
+        error: t("error"),
+        loading: t("loading"),
       });
       router.refresh();
-    })
+    });
   };
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
-        <DialogTitle>Update User</DialogTitle>
+        <DialogTitle>{t("update")}</DialogTitle>
         <FormField
           control={form.control}
           name="userId"
@@ -122,7 +124,7 @@ export const UpdateUserForm: React.FC<UpdateUserFormProps> = ({
           render={({ field }) => {
             return (
               <FormItem className="flex flex-col">
-                <FormLabel>CVs</FormLabel>
+                <FormLabel>{t("cvs-label")}</FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
                     <FormControl>
@@ -132,7 +134,7 @@ export const UpdateUserForm: React.FC<UpdateUserFormProps> = ({
                         className={cn("w-[200px] justify-between")}
                         data-testid="select-cvs-button"
                       >
-                        Select cvs
+                        {t("cvs")}
                         <ChevronsUpDown className="opacity-50" />
                       </Button>
                     </FormControl>
@@ -140,11 +142,11 @@ export const UpdateUserForm: React.FC<UpdateUserFormProps> = ({
                   <PopoverContent className="w-[200px] p-0">
                     <Command>
                       <CommandInput
-                        placeholder="Search CVs..."
+                        placeholder={t("search-cvs")}
                         className="h-9"
                       />
                       <CommandList>
-                        <CommandEmpty>No cvs found.</CommandEmpty>
+                        <CommandEmpty>{t("no-cvs")}</CommandEmpty>
                         <CommandGroup>
                           {availableCvs.map((cv) => (
                             <CommandItem
@@ -179,7 +181,7 @@ export const UpdateUserForm: React.FC<UpdateUserFormProps> = ({
             name="departmentId"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Department</FormLabel>
+                <FormLabel>{t("department-label")}</FormLabel>
                 <Select
                   onValueChange={(val) =>
                     field.onChange(val === "none" ? "" : val)
@@ -189,13 +191,13 @@ export const UpdateUserForm: React.FC<UpdateUserFormProps> = ({
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue
-                        placeholder="Select department"
+                        placeholder={t("department")}
                         data-testid="select-department-value"
                       />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="none">No department</SelectItem>
+                    <SelectItem value="none">{t("no-department")}</SelectItem>
                     {departments.map((dep) => (
                       <SelectItem key={dep.id} value={dep.id}>
                         {dep.name}
@@ -212,7 +214,7 @@ export const UpdateUserForm: React.FC<UpdateUserFormProps> = ({
             name="positionId"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Position</FormLabel>
+                <FormLabel>{t("position-label")}</FormLabel>
                 <Select
                   onValueChange={(val) =>
                     field.onChange(val === "none" ? "" : val)
@@ -222,13 +224,13 @@ export const UpdateUserForm: React.FC<UpdateUserFormProps> = ({
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue
-                        placeholder="Select position"
+                        placeholder={t("position")}
                         data-testid="select-position-value"
                       />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="none">No position</SelectItem>
+                    <SelectItem value="none">{t("no-position")}</SelectItem>
                     {positions.map((pos) => (
                       <SelectItem key={pos.id} value={pos.id}>
                         {pos.name}
@@ -246,7 +248,7 @@ export const UpdateUserForm: React.FC<UpdateUserFormProps> = ({
           name="role"
           render={({ field }) => (
             <FormItem className="space-y-3">
-              <FormLabel>User role</FormLabel>
+              <FormLabel>{t("role-label")}</FormLabel>
               <FormControl>
                 <RadioGroup
                   onValueChange={field.onChange}
@@ -260,7 +262,9 @@ export const UpdateUserForm: React.FC<UpdateUserFormProps> = ({
                         data-testid="employee-radio-item"
                       />
                     </FormControl>
-                    <FormLabel className="font-normal">Employee</FormLabel>
+                    <FormLabel className="font-normal">
+                      {t("role-employee")}
+                    </FormLabel>
                   </FormItem>
                   <FormItem className="flex items-center gap-3">
                     <FormControl>
@@ -269,7 +273,9 @@ export const UpdateUserForm: React.FC<UpdateUserFormProps> = ({
                         data-testid="admin-radio-item"
                       />
                     </FormControl>
-                    <FormLabel className="font-normal">Admin</FormLabel>
+                    <FormLabel className="font-normal">
+                      {t("role-admin")}
+                    </FormLabel>
                   </FormItem>
                 </RadioGroup>
               </FormControl>
@@ -285,11 +291,11 @@ export const UpdateUserForm: React.FC<UpdateUserFormProps> = ({
               variant="outline"
               data-testid="cancel-button"
             >
-              Cancel
+              {t("cancel")}
             </Button>
           </DialogClose>
           <Button loading={isPenging} type="submit" data-testid="submit-button">
-            Confirm
+            {t("confirm")}
           </Button>
         </div>
       </form>

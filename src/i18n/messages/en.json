@@ -315,5 +315,31 @@
     "user-deleted": "User was deleted",
     "error": "Something went wrong",
     "loading": "Loading..."
+  },
+  "user-form": {
+    "update": "Update User",
+    "create": "Create User",
+    "email": "Email",
+    "password": "Password",
+    "first-name": "First Name",
+    "last-name": "Last Name",
+    "cvs": "Select cvs",
+    "cvs-label": "CVs",
+    "searcg-cvs": "Search CVs...",
+    "department": "Select department",
+    "department-label": "Department",
+    "no-department": "No department",
+    "position": "Select position",
+    "position-label": "Position",
+    "no-position": "No position",
+    "role-label": "User role",
+    "role-employee": "Employee",
+    "role-admin": "Admin",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "user-updated": "User was updated",
+    "user-created": "User was created",
+    "error": "Something went wrong",
+    "loading": "Loading..."
   }
 }

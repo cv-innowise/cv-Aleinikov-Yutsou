@@ -45,6 +45,7 @@ import { createUser } from "../mutations/create-user";
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 interface CreateUserFormProps {
   freeCvs: CvItem[];
@@ -59,12 +60,13 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
 }) => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
+  const t = useTranslations("user-form");
   const form = useForm<yup.InferType<typeof createUserSchema>>({
     resolver: yupResolver(createUserSchema),
     defaultValues: {
       cvsIds: [],
-      role: UserRole.Employee
-    }
+      role: UserRole.Employee,
+    },
   });
 
   const onCvToggle = (cv: CvItem) => () => {
@@ -84,9 +86,9 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
       const promise = createUser(formData);
 
       toast.promise(promise, {
-        success: "User was created",
-        error: "Somethin went wrong",
-        loading: "Loading...",
+        success: t("user-created"),
+        error: t("error"),
+        loading: t("loading"),
       });
       router.refresh();
     });
@@ -95,17 +97,17 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
-        <DialogTitle>Create User</DialogTitle>
+        <DialogTitle>{t("create")}</DialogTitle>
         <FormField
           control={form.control}
           name="auth.email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>{t("email")}</FormLabel>
               <FormControl>
                 <Input
                   type="email"
-                  placeholder="Email"
+                  placeholder={t("email")}
                   {...field}
                   data-testid="user-email-input"
                 />
@@ -119,10 +121,10 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
           name="auth.password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>{t("password")}</FormLabel>
               <FormControl>
                 <PasswordField
-                  placeholder="Password"
+                  placeholder={t("password")}
                   {...field}
                   data-testid="user-password-input"
                 />
@@ -137,10 +139,10 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
             name="profile.first_name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>First name</FormLabel>
+                <FormLabel>{t("first-name")}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="First name"
+                    placeholder={t("first-name")}
                     {...field}
                     value={field.value || ""}
                     data-testid="user-first-name-input"
@@ -155,10 +157,10 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
             name="profile.last_name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Last name</FormLabel>
+                <FormLabel>{t("last-name")}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Last name"
+                    placeholder={t("last-name")}
                     {...field}
                     value={field.value || ""}
                     data-testid="user-last-name-input"
@@ -175,7 +177,7 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
           render={({ field }) => {
             return (
               <FormItem className="flex flex-col">
-                <FormLabel>CVs</FormLabel>
+                <FormLabel>{t("cvs-label")}</FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
                     <FormControl>
@@ -185,7 +187,7 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
                         className={cn("w-[200px] justify-between")}
                         data-testid="select-cvs-button"
                       >
-                        Select cvs
+                        {t("cvs")}
                         <ChevronsUpDown className="opacity-50" />
                       </Button>
                     </FormControl>
@@ -193,11 +195,11 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
                   <PopoverContent className="w-[200px] p-0">
                     <Command>
                       <CommandInput
-                        placeholder="Search CVs..."
+                        placeholder={t("search-cvs")}
                         className="h-9"
                       />
                       <CommandList>
-                        <CommandEmpty>No cvs found.</CommandEmpty>
+                        <CommandEmpty>{t("no-cvs")}</CommandEmpty>
                         <CommandGroup>
                           {freeCvs.map((cv) => (
                             <CommandItem
@@ -232,7 +234,7 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
             name="departmentId"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Department</FormLabel>
+                <FormLabel>{t("department-label")}</FormLabel>
                 <Select
                   onValueChange={(val) =>
                     field.onChange(val === "none" ? "" : val)
@@ -242,13 +244,13 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue
-                        placeholder="Select department"
+                        placeholder={t("department")}
                         data-testid="select-department-value"
                       />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="none">No department</SelectItem>
+                    <SelectItem value="none">{t("no-department")}</SelectItem>
                     {departments.map((dep) => (
                       <SelectItem key={dep.id} value={dep.id}>
                         {dep.name}
@@ -265,7 +267,7 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
             name="positionId"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Position</FormLabel>
+                <FormLabel>{t("position-label")}</FormLabel>
                 <Select
                   onValueChange={(val) =>
                     field.onChange(val === "none" ? "" : val)
@@ -275,13 +277,13 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue
-                        placeholder="Select position"
+                        placeholder={t("position")}
                         data-testid="select-position-value"
                       />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="none">No position</SelectItem>
+                    <SelectItem value="none">{t("no-position")}</SelectItem>
                     {positions.map((pos) => (
                       <SelectItem key={pos.id} value={pos.id}>
                         {pos.name}
@@ -299,7 +301,7 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
           name="role"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>User role</FormLabel>
+              <FormLabel>{t("role-label")}</FormLabel>
               <FormControl>
                 <RadioGroup
                   onValueChange={field.onChange}
@@ -313,7 +315,9 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
                         data-testid="employee-radio-item"
                       />
                     </FormControl>
-                    <FormLabel className="font-normal">Employee</FormLabel>
+                    <FormLabel className="font-normal">
+                      {t("role-employee")}
+                    </FormLabel>
                   </FormItem>
                   <FormItem className="flex items-center gap-3">
                     <FormControl>
@@ -322,7 +326,9 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
                         data-testid="admin-radio-item"
                       />
                     </FormControl>
-                    <FormLabel className="font-normal">Admin</FormLabel>
+                    <FormLabel className="font-normal">
+                      {t("role-admin")}
+                    </FormLabel>
                   </FormItem>
                 </RadioGroup>
               </FormControl>
@@ -338,11 +344,11 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
               variant="outline"
               data-testid="cancel-button"
             >
-              Cancel
+              {t("cancel")}
             </Button>
           </DialogClose>
           <Button loading={isPending} type="submit" data-testid="submit-button">
-            Confirm
+            {t("confirm")}
           </Button>
         </div>
       </form>

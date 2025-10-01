@@ -43,7 +43,7 @@ interface SkillFormProps {
 export const SkillForm: React.FC<SkillFormProps> = ({ skillId }) => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
-    const t = useTranslations("skill-form");
+  const t = useTranslations("skill-form");
   const skill = useGetSkill(skillId);
   const skillCategories = useGetSkillCategories();
   const skillCategoryId = skillCategories.find(

@@ -315,5 +315,31 @@
     "user-deleted": "Der Benutzer wurde gelöscht",
     "error": "Etwas lief schief",
     "loading": "Laden..."
+  },
+  "user-form": {
+    "update": "Benutzer aktualisieren",
+    "create": "Benutzer erstellen",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "first-name": "Vorname",
+    "last-name": "Nachname",
+    "cvs": "Wählen Sie CVS",
+    "cvs-label": "Lebenslauf",
+    "searcg-cvs": "CVS durchsuchen...",
+    "department": "Abteilung auswählen",
+    "department-label": "Abteilung",
+    "no-department": "Keine Abteilung",
+    "position": "Position auswählen",
+    "position-label": "Position",
+    "no-position": "Keine Position",
+    "role-label": "Benutzerrolle",
+    "role-employee": "Mitarbeiterin",
+    "role-admin": "Administratorin",
+    "cancel": "Stornieren",
+    "confirm": "Bestätigen",
+    "user-updated": "Der Benutzer wurde aktualisiert",
+    "user-created": "Der Benutzer wurde erstellt",
+    "error": "Etwas lief schief",
+    "loading": "Laden..."
   }
 }
