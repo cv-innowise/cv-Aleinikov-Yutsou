@@ -7,15 +7,17 @@ import { Dialog, DialogTrigger } from "@/shared/components/ui/dialog";
 import { Button } from "@/shared/components/ui/button";
 import { LanguageForm } from "@/features/language-form";
 import { FCWithSkeleton } from "@/shared/types/fc-with-skeleton";
+import { getTranslations } from "next-intl/server";
 
 export const LanguagesList: FCWithSkeleton<unknown> = async () => {
   const languages = await getLanguages();
   const authUser = await getAuthUser();
+  const t = await getTranslations("languages-list");
   const isAuthUserAdmin = authUser.role === UserRole.Admin;
 
   return (
     <div>
-      <DataTable title="Languages" columns={languagesColumns} data={languages}>
+      <DataTable title={t("languages")} columns={languagesColumns} data={languages}>
         {isAuthUserAdmin && (
           <Dialog>
             <DialogTrigger asChild>
@@ -23,7 +25,7 @@ export const LanguagesList: FCWithSkeleton<unknown> = async () => {
                 className="block ml-auto"
                 data-testid="create-language-button"
               >
-                Create Language
+                {t("create")}
               </Button>
             </DialogTrigger>
             <LanguageForm />

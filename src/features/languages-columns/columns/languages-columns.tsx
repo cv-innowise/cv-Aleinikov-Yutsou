@@ -8,20 +8,20 @@ import { Language } from "@/shared/graphql/languages/languages.types";
 export const languagesColumns: ColumnDef<Language>[] = [
   {
     accessorKey: "name",
-    header: ({ column }) => <SortableColumn column={column} text="Name" />,
+    header: ({ column }) => <SortableColumn column={column} translateKey="name" />,
   },
   {
     accessorKey: "native_name",
     enableGlobalFilter: false,
     header: ({ column }) => (
-      <SortableColumn column={column} text="Native Name" />
+      <SortableColumn column={column} translateKey="native-name" />
     ),
     cell: ({ row }) => <p data-testid="native-name">{row.original.native_name}</p>,
   },
   {
     accessorKey: "iso2",
     enableGlobalFilter: false,
-    header: ({ column }) => <SortableColumn column={column} text="ISO2" />,
+    header: ({ column }) => <SortableColumn column={column} translateKey="iso2" />,
   },
   {
     id: "actions",

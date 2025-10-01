@@ -90,7 +90,9 @@
   "columns": {
     "name": "Имя",
     "description": "Описание",
-    "employee": "Сотрудник"
+    "employee": "Сотрудник",
+    "native-name": "Нативное Имя",
+    "iso2": "ISO2"
   },
   "cvs-list": {
     "cvs": "Резюме",
@@ -107,7 +109,7 @@
     "cancel": "Отмена",
     "continue": "Продолжить",
     "cv-deleted": "Резюме было удалено",
-    "error": "Что -то пошло не так",
+    "error": "Что-то пошло не так",
     "loading": "Загрузка..."
   },
   "cv-form": {
@@ -123,7 +125,7 @@
     "confirm": "Подтвердить",
     "cv-updated": "Резюме было обновлено",
     "cv-created": "Резюме было создано",
-    "error": "Что -то пошло не так",
+    "error": "Что-то пошло не так",
     "loading": "Загрузка..."
   },
   "departments-list": {
@@ -140,7 +142,7 @@
     "cancel": "Отмена",
     "continue": "Продолжить",
     "department-deleted": "Отдел был удален",
-    "error": "Что -то пошло не так",
+    "error": "Что-то пошло не так",
     "loading": "Загрузка..."
   },
   "department-form": {
@@ -153,6 +155,23 @@
     "department-updated": "Отдел был обновлен",
     "department-created": "Отдел был создан",
     "error": "Что -то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "languages-list": {
+    "languages": "Языки",
+    "create-language": "Создать язык"
+  },
+  "language-actions": {
+    "open": "Открыть меню",
+    "actions": "Действия",
+    "update": "Обновить языка",
+    "delete": "Удалить язык",
+    "alert-title": "Вы абсолютно уверен?",
+    "alert-description": "Это действие не может быть отменено. Это навсегда удалит \nязык и удаляет данные с наших серверов.",
+    "cancel": "Отмена",
+    "continue": "Продолжить",
+    "language-deleted": "Язык был удален",
+    "error": "Что-то пошло не так",
     "loading": "Загрузка..."
   }
 }

@@ -89,7 +89,9 @@
   "columns": {
     "name": "Name",
     "description": "Beschreibung",
-    "employee": "Mitarbeiterin"
+    "employee": "Mitarbeiterin",
+    "native-name": "Einheimischer Name",
+    "iso2": "ISO2"
   },
   "cvs-list": {
     "cvs": "Lebenslauf",
@@ -151,6 +153,23 @@
     "confirm": "Bestätigen",
     "department-updated": "Die Abteilung wurde aktualisiert",
     "department-created": "Die Abteilung wurde erstellt",
+    "error": "Etwas lief schief",
+    "loading": "Laden..."
+  },
+  "languages-list": {
+    "languages": "Languages",
+    "create-language": "Create Language"
+  },
+  "language-actions": {
+    "open": "Öffnen Sie das Menü",
+    "actions": "Aktionen",
+    "update": "Sprache aktualisieren",
+    "delete": "Sprache löschen",
+    "alert-title": "Bist du absolut sicher?",
+    "alert-description": "Diese Aktion kann nicht rückgängig gemacht werden. Dadurch wird die Sprache dauerhaft \ngelöscht und die Daten von unseren Servern entfernen.",
+    "cancel": "Stornieren",
+    "continue": "Weitermachen",
+    "language-deleted": "Die Sprache wurde gelöscht",
     "error": "Etwas lief schief",
     "loading": "Laden..."
   }
