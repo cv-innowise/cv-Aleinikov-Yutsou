@@ -28,6 +28,7 @@ import { useGetAuthUser } from "@/shared/lib/hooks/use-get-auth-user";
 import { useTransition } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 interface CvFormProps {
   cvId?: Cv["id"];
@@ -38,6 +39,7 @@ export const CvForm: React.FC<CvFormProps> = ({ cvId }) => {
   const router = useRouter();
   const cv = useGetCv(cvId);
   const authUser = useGetAuthUser();
+  const t = useTranslations("cv-form");
   const form = useForm<yup.InferType<typeof cvSchema>>({
     resolver: yupResolver(cvSchema),
     defaultValues: {
@@ -56,14 +58,11 @@ export const CvForm: React.FC<CvFormProps> = ({ cvId }) => {
         promise = createCv({ userId: authUser.id, ...formData });
       }
 
-      toast.promise(
-        promise,
-        {
-          success: cv ? "CV was updated" : " CV was created",
-          error: "Something went wrong",
-          loading: "Loading...",
-        }
-      );
+      toast.promise(promise, {
+        success: cv ? t("cv-updated") : t("cv-created"),
+        error: t("error"),
+        loading: t("loading"),
+      });
 
       router.refresh();
     });
@@ -72,16 +71,16 @@ export const CvForm: React.FC<CvFormProps> = ({ cvId }) => {
     <DialogContent>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
-          <DialogTitle>{cv ? "Update CV" : "Create CV"}</DialogTitle>
+          <DialogTitle>{cv ? t("update") : t("create")}</DialogTitle>
           <div className="flex gap-x-4 justify-between">
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>{t("name-label")}</FormLabel>
                   <FormControl>
-                    <Input placeholder="CV name" {...field} />
+                    <Input placeholder={t("name")} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -92,10 +91,10 @@ export const CvForm: React.FC<CvFormProps> = ({ cvId }) => {
               name="education"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Education (optional)</FormLabel>
+                  <FormLabel>{t("education-label")}</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Education"
+                      placeholder={t("education")}
                       {...field}
                       value={field.value ?? ""}
                     />
@@ -110,9 +109,9 @@ export const CvForm: React.FC<CvFormProps> = ({ cvId }) => {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Description</FormLabel>
+                <FormLabel>{t("description-label")}</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="CV description" {...field} />
+                  <Textarea placeholder={t("description")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -121,11 +120,11 @@ export const CvForm: React.FC<CvFormProps> = ({ cvId }) => {
           <div className="float-right space-x-4">
             <DialogClose asChild>
               <Button disabled={isLoading} type="button" variant="outline">
-                Cancel
+                {t("cancel")}
               </Button>
             </DialogClose>
             <Button loading={isLoading} type="submit">
-              Confirm
+              {t("confirm")}
             </Button>
           </div>
         </form>

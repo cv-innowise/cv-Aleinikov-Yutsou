@@ -108,5 +108,21 @@
     "cv-deleted": "Lebenslauf wurde gelöscht",
     "error": "Etwas lief schief",
     "loading": "Laden..."
+  },
+  "cv-form": {
+    "update": "CV aktualisieren",
+    "create": "CV erstellen",
+    "name": "CV -Name",
+    "name-label": "Name",
+    "education": "Ausbildung",
+    "education-label": "Bildung (optional)",
+    "description": "Lebenslaufbeschreibung",
+    "description-label": "Beschreibung",
+    "cancel": "Stornieren",
+    "confirm": "Bestätigen",
+    "cv-updated": "Lebenslauf wurde aktualisiert",
+    "cv-created": "Lebenslauf wurde erstellt",
+    "error": "Etwas lief schief",
+    "loading": "Laden..."
   }
 }

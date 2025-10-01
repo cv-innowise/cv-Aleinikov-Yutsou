@@ -108,5 +108,21 @@
     "cv-deleted": "CV was deleted",
     "error": "Something went wrong",
     "loading": "Loading..."
+  },
+  "cv-form":{
+    "update": "Update CV",
+    "create": "Create CV",
+    "name": "CV name",
+    "name-label": "Name",
+    "education": "Education",
+    "education-label": "Education (optional)",
+    "description": "CV description",
+    "description-label": "Description",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "cv-updated": "CV was updated",
+    "cv-created": "CV was created",
+    "error": "Something went wrong",
+    "loading": "Loading..."
   }
 }
