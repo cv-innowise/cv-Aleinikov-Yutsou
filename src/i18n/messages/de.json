@@ -96,7 +96,12 @@
     "domain": "Domain",
     "start-date": "Startdatum",
     "end-date": "Enddatum",
-    "category": "Kategorie"
+    "category": "Kategorie",
+    "first-name": "Vorname",
+    "last-name": "Nachname",
+    "email": "E-Mail",
+    "department": "Abteilung",
+    "position": "Position"
   },
   "cvs-list": {
     "cvs": "Lebenslauf",
@@ -290,6 +295,24 @@
     "confirm": "Bestätigen",
     "skill-updated": "Fähigkeit wurde aktualisiert",
     "skill-created": "Geschicklichkeit wurde geschaffen",
+    "error": "Etwas lief schief",
+    "loading": "Laden..."
+  },
+  "users-list": {
+    "users": "Benutzer",
+    "create-project": "Benutzer erstellen"
+  },
+  "user-actions": {
+    "open": "Öffnen Sie das Menü",
+    "actions": "Aktionen",
+    "profile": "Profil",
+    "update": "Benutzer aktualisieren",
+    "delete": "Benutzer löschen",
+    "alert-title": "Bist du absolut sicher?",
+    "alert-description": "Diese Aktion kann nicht rückgängig gemacht werden. Dadurch wird der Benutzer \ndauerhaft gelöscht und die Daten von unseren Servern entfernt.",
+    "cancel": "Stornieren",
+    "continue": "Weitermachen",
+    "user-deleted": "Der Benutzer wurde gelöscht",
     "error": "Etwas lief schief",
     "loading": "Laden..."
   }

@@ -29,7 +29,7 @@ export const usersColumns: ColumnDef<UserItem>[] = [
   {
     accessorKey: "profile.first_name",
     header: ({ column }) => (
-      <SortableColumn column={column} text="First Name" />
+      <SortableColumn column={column} translateKey="first-name" />
     ),
     cell: ({ row }) => (
       <p data-testid="first-name">{row.original.profile.first_name}</p>
@@ -38,27 +38,27 @@ export const usersColumns: ColumnDef<UserItem>[] = [
 
   {
     accessorKey: "profile.last_name",
-    header: ({ column }) => <SortableColumn column={column} text="Last Name" />,
+    header: ({ column }) => <SortableColumn column={column} translateKey="last-name" />,
   },
 
   {
     accessorKey: "email",
     enableGlobalFilter: false,
-    header: ({ column }) => <SortableColumn column={column} text="Email" />,
+    header: ({ column }) => <SortableColumn column={column} translateKey="email" />,
   },
 
   {
     accessorKey: "department_name",
     enableGlobalFilter: false,
     header: ({ column }) => (
-      <SortableColumn column={column} text="Department" />
+      <SortableColumn column={column} translateKey="department" />
     ),
   },
 
   {
     accessorKey: "position_name",
     enableGlobalFilter: false,
-    header: ({ column }) => <SortableColumn column={column} text="Position" />,
+    header: ({ column }) => <SortableColumn column={column} translateKey="position" />,
   },
 
   {

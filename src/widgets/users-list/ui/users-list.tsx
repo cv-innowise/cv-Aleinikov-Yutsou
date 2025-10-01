@@ -7,14 +7,16 @@ import { Button } from "@/shared/components/ui/button";
 import { UserForm } from "@/features/user-form";
 import { UserRole } from "@/shared/types/cv-graphql";
 import { FCWithSkeleton } from "@/shared/types/fc-with-skeleton";
+import { getTranslations } from "next-intl/server";
 
 export const UsersList: FCWithSkeleton<unknown> = async () => {
   const users = await getUsers();
   const authUser = await getAuthUser();
+  const t = await getTranslations("users-list");
 
   return (
     <div>
-      <DataTable title="Users" columns={usersColumns} data={users}>
+      <DataTable title={t("users")} columns={usersColumns} data={users}>
         {authUser.role === UserRole.Admin && (
           <Dialog>
             <DialogTrigger asChild>
@@ -22,7 +24,7 @@ export const UsersList: FCWithSkeleton<unknown> = async () => {
                 className="block ml-auto"
                 data-testid="create-user-button"
               >
-                Create User
+                {t("create-user")}
               </Button>
             </DialogTrigger>
             <UserForm />

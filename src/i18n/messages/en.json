@@ -96,7 +96,12 @@
     "domain": "Domain",
     "start-date": "Start Date",
     "end-date": "End Date",
-    "category": "Category"
+    "category": "Category",
+    "first-name": "First Name",
+    "last-name": "Last Name",
+    "email": "Email",
+    "department": "Department",
+    "position": "Position"
   },
   "cvs-list": {
     "cvs": "CVs",
@@ -290,6 +295,24 @@
     "confirm": "Confirm",
     "skill-updated": "Skill was updated",
     "skill-created": "Skill was created",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "users-list": {
+    "users": "Users",
+    "create-project": "Create User"
+  },
+  "user-actions": {
+    "open": "Open menu",
+    "actions": "Actions",
+    "profile": "Profile",
+    "update": "Update User",
+    "delete": "Delete User",
+    "alert-title": "Are you absolutely sure?",
+    "alert-description": "This action cannot be undone. This will permanently delete \nthis user and remove the data from our servers.",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "user-deleted": "User was deleted",
     "error": "Something went wrong",
     "loading": "Loading..."
   }
