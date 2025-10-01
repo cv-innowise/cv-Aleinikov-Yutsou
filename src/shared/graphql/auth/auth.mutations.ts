@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-export const SIGNUP_MUTATION = gql`
+const SIGNUP_MUTATION = gql`
   mutation Signup($auth: AuthInput!) {
     signup(auth: $auth) {
       access_token
@@ -12,3 +12,11 @@ export const SIGNUP_MUTATION = gql`
     }
   }
 `;
+
+const FORGOT_PASSWORD_MUTATION = gql`
+  mutation ForgotPassword($auth: ForgotPasswordInput!) {
+    forgotPassword(auth: $auth)
+  }
+`;
+
+export { SIGNUP_MUTATION, FORGOT_PASSWORD_MUTATION };
