@@ -22,6 +22,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { DATA_PER_VIEW } from "../consts";
+import { useTranslations } from "next-intl";
 
 interface DataTableProps<TData, TValue> {
   title: string;
@@ -36,6 +37,7 @@ export function DataTable<TData, TValue>({
   data,
   children,
 }: DataTableProps<TData, TValue>) {
+  const t = useTranslations("data-table");
   const searchParams = useSearchParams();
   const search = searchParams?.get("search") ?? "";
   const sort = [
@@ -94,7 +96,7 @@ export function DataTable<TData, TValue>({
       <h2 className="text-6xl uppercase text-muted-foreground">{title}</h2>
       {children}
       <Input
-        placeholder="Search"
+        placeholder={t("search")}
         defaultValue={search}
         onChange={handleSearch}
         className="max-w-sm"
@@ -149,7 +151,7 @@ export function DataTable<TData, TValue>({
                   className="h-12 text-center"
                   data-testid="loading"
                 >
-                  Loading...
+                  {t("loading")}
                 </TableCell>
               ) : (
                 <TableCell
@@ -158,7 +160,7 @@ export function DataTable<TData, TValue>({
                   className="h-12 text-center"
                   data-testid="no-results"
                 >
-                  No more results
+                  {t("no-results")}
                 </TableCell>
               )}
             </TableRow>
