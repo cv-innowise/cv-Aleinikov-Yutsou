@@ -36,6 +36,27 @@
     "skills": "Fähigkeiten",
     "cvs": "Lebenslauf",
     "languages": "Sprachen",
+    "settings": "Einstellungen"
+  },
+  "theme-switcher": {
+    "toggle": "Thema umschalten",
+    "theme": "Thema",
+    "light": "Licht",
+    "dark": "Dunkel",
+    "system": "System"
+  }
+}
+
+
+    "profile": "Profil",
+    "settings": "Einstellungen",
+    "logout": "Abmelden"
+  },
+  "breadcrumbs": {
+    "users": "Mitarbeiter",
+    "skills": "Fähigkeiten",
+    "cvs": "Lebenslauf",
+    "languages": "Sprachen",
     "settings": "Einstellungen",
     "profile": "Profil"
   },

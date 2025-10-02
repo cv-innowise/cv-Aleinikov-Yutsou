@@ -36,6 +36,7 @@
     "skills": "Skills",
     "cvs": "CVs",
     "languages": "Languages",
+
     "settings": "Settings",
     "profile": "Profile"
   },
@@ -85,5 +86,6 @@
     "language-added": "Language was added",
     "error": "Something went wrong",
     "loading": "Loading..."
+
   }
 }
