@@ -12,4 +12,12 @@ interface SignupResponse {
   signup: AuthResult;
 }
 
-export type { AuthRequest, LoginResponse, SignupResponse };
+interface ForgotPasswordResponse {
+  forgotPassword: null;
+}
+
+interface ForgotPasswordRequest {
+  auth: ForgotPasswordInput;
+}
+
+export type { AuthRequest, LoginResponse, SignupResponse, ForgotPasswordResponse, ForgotPasswordRequest };

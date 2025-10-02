@@ -26,33 +26,35 @@ const deleteCookie = (name: string) => {
   document.cookie = `${name}=; max-age=0; path=/`;
 };
 
-export const getAccessTokenClientSide = () => {
+const getAccessTokenClientSide = () => {
   return getCookie("access_token") as string | undefined;
 };
-export const getRefreshTokenClientSide = () => {
+const getRefreshTokenClientSide = () => {
   return getCookie("refresh_token") as string | undefined;
 };
 
-export const setAccessTokenClientSide = (access_token: string) => {
+const setAccessTokenClientSide = (access_token: string) => {
   setCookie("access_token", access_token);
 };
 
-export const setTokens = (access_token: string, refresh_token: string) => {
+const setTokens = (access_token: string, refresh_token: string) => {
   setCookie("access_token", access_token);
   setCookie("refresh_token", refresh_token);
 };
-export const clearTokens = () => {
+const clearTokens = () => {
   deleteCookie("access_token");
   deleteCookie("refresh_token");
 };
 
-export const setSession = (id: string, email: string, role: string) => {
+const setSession = (id: string, email: string, role: string) => {
   setCookie("session", { id, email, role });
 };
 
-export const removeSession = () => {
+const removeSession = () => {
   deleteCookie("session");
 };
-export const getSession = (): Session => {
+const getSession = (): Session => {
   return getCookie("session") as Session;
 };
+
+export { getAccessTokenClientSide, getRefreshTokenClientSide, setAccessTokenClientSide, setTokens, clearTokens, setSession, removeSession, getSession };

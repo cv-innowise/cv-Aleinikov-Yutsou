@@ -66,9 +66,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
     user: formUser,
     profile: formProfile,
   }: yup.InferType<typeof updateProfileSchema>) => {
-    if (
-      !form.formState.isDirty
-    ) {
+    if (!form.formState.isDirty) {
       toast.error(t("nothing-changed"));
       return;
     }
@@ -91,6 +89,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
         error: t("error"),
         loading: t("loading"),
       });
+      form.reset({ userId, profile: formProfile, user: formUser });
       router.refresh();
     });
   };
