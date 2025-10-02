@@ -37,6 +37,11 @@
         "cvs": "CVs",
         "languages": "Languages",
         "settings": "Settings"
+    },
+    "skill-item": {
+        "add-skill": "Add new skill...",
+        "select-skill": "Select skill...",
+        "search-skill": "Search skills...",
+        "no-skills": "No skills found."
     }
-    
 }

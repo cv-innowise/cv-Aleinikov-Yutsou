@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { SkillItem } from "../ui/skill-item";
 import { skillsByCategoriesMock } from "../mocks/skills-by-categories.mock";
 import { Mastery } from "@/shared/types/cv-graphql";
+import { NextIntlClientProvider } from "next-intl";
+import message from "@/i18n/messages/en.json";
 
 const meta = {
   title: "Example/SkillItem",
@@ -20,6 +22,13 @@ export const SkillItemNotEditable: Story = {
     isDisabled: false,
     onChange: () => {},
   },
+  render: (args) => {
+    return (
+      <NextIntlClientProvider messages={message} locale="en">
+        <SkillItem {...args} />
+      </NextIntlClientProvider>
+    );
+  },
 };
 
 export const EditableSkillItem: Story = {
@@ -31,4 +40,11 @@ export const EditableSkillItem: Story = {
     isDisabled: false,
     onChange: () => {},
   },
-}; 
+  render: (args) => {
+    return (
+      <NextIntlClientProvider messages={message} locale="en">
+        <SkillItem {...args} />
+      </NextIntlClientProvider>
+    );
+  },
+};
