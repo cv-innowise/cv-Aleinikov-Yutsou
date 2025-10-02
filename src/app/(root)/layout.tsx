@@ -1,4 +1,3 @@
-import { LanguageSwitcher } from "@/features/language-switcher";
 import { RouteGuard } from "@/shared/auth/model/route-guard";
 import { SidebarProvider, SidebarTrigger } from "@/shared/components/ui/sidebar";
 import { AppBreadcrumbs } from "@/widgets/app-breadcrumbs";
@@ -18,7 +17,6 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
 
             <AppBreadcrumbs />
 
-            <LanguageSwitcher />
           </header>
           <main className="p-2.5">{children}</main>
         </div>
