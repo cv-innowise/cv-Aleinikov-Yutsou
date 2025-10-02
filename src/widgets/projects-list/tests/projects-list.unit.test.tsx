@@ -12,7 +12,6 @@ import { ProjectsList } from "..";
 import { userEvent } from "@vitest/browser/context";
 import {
   adminUserMock,
-  userMock,
   getAuthUserMock,
 } from "@/shared/lib/queries/mocks/get-auth-user.mock";
 import { deleteProjectMock } from "@/features/projects-columns/mocks/delete-project.mock";

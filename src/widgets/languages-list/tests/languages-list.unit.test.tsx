@@ -6,7 +6,7 @@ import "@/shared/lib/queries/mocks/get-auth-user.mock";
 import "@/shared/lib/queries/mocks/get-languages.mock";
 import { languagesMock } from "@/shared/lib/queries/mocks/get-languages.mock";
 import { beforeEach, describe, expect, test, vi } from "vitest";
-import { screen, waitFor } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { render } from "vitest-browser-react";
 import { LanguagesList } from "..";
 import { userEvent } from "@vitest/browser/context";
