@@ -1,0 +1,44 @@
+{
+    "auth":{
+        "login":{
+            "title":"Willkommen zurück",
+            "subtitle":"Hallo nochmal! Melden Sie sich an, um fortzufahren",
+            "emailPlaceholder":"E-Mail",
+            "passwordPlaceholder":"Passwort",
+            "forgotPassword":"Passwort vergessen?",
+            "submit":"Einloggen"
+        },
+        "signup":{
+            "title":"Registrieren Sie sich jetzt",
+            "subtitle":"Willkommen! Melden Sie sich an, um fortzufahren",
+            "emailPlaceholder":"E-Mail",
+            "passwordPlaceholder":"Passwort",
+            "submit":"Benutzerkonto erstellen",
+            "haveAccount":"Ich habe einen Account"
+        },
+        "navbar":{
+            "login":"Einloggen",
+            "signup":"Melden Sie sich an"
+        }
+    },
+    "sidebar":{
+        "users": "Mitarbeiter",
+        "skills": "Fähigkeiten",
+        "cvs": "Lebenslauf",
+        "languages": "Sprachen",
+
+        "profile": "Profil",
+        "settings": "Einstellungen",
+        "logout": "Abmelden"
+    },
+    "breadcrumbs":{
+       
+        "users": "Mitarbeiter",
+        "skills": "Fähigkeiten",
+        "cvs": "Lebenslauf",
+        "languages": "Sprachen",
+        "settings": "Einstellungen"
+    }
+    
+}
+

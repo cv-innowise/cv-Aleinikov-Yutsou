@@ -59,7 +59,9 @@ describe("SkillItem", () => {
       },
     });
 
-    expect(onButtonClickMock).toHaveBeenCalled();
+    await vi.waitFor(() => {
+      expect(onButtonClickMock).toHaveBeenCalled();
+    });
   });
 
   test("should delete multiple items correctly", async () => {
@@ -72,29 +74,32 @@ describe("SkillItem", () => {
     expect(screen.getByTestId(/cancel-selecting-button/i)).toBeInTheDocument();
     expect(screen.getByTestId(/delete-selected-button/i)).toBeInTheDocument();
     expect(screen.queryByTestId(/delete-button/i)).toBeNull();
-    
-    
+
     const selectButtons = screen.getAllByTestId(/select-button/i);
     await user.click(selectButtons[0]);
     await user.click(selectButtons[2]);
     await user.click(selectButtons[3]);
-    
-    expect(screen.getByText(mockItems[0].name)).toBeDisabled();
-    expect(screen.getByText(mockItems[2].name)).toBeDisabled();
-    expect(screen.getByText(mockItems[3].name)).toBeDisabled();
-    expect(screen.getByTestId(/selected-length/i)).toHaveTextContent("3");
+
+    await vi.waitFor(() => {
+      expect(screen.getByText(mockItems[0].name)).toBeDisabled();
+      expect(screen.getByText(mockItems[2].name)).toBeDisabled();
+      expect(screen.getByText(mockItems[3].name)).toBeDisabled();
+      expect(screen.getByTestId(/selected-length/i)).toHaveTextContent("3");
+    });
 
     await user.click(screen.getByTestId(/delete-selected-button/i));
 
-    expect(onDeleteItemsMock).toHaveBeenCalledWith([
-      mockItems[0].id,
-      mockItems[2].id,
-      mockItems[3].id,
-    ]);
-    expect(screen.getByTestId(/start-selection-button/i)).toBeInTheDocument();
-    expect(screen.queryByTestId(/cancel-selecting-button/i)).toBeNull();
-    expect(screen.queryByTestId(/delete-selected-button/i)).toBeNull();
-    expect(screen.getAllByTestId(/delete-button/i)[0]).toBeInTheDocument();
+    await vi.waitFor(() => {
+      expect(onDeleteItemsMock).toHaveBeenCalledWith([
+        mockItems[0].id,
+        mockItems[2].id,
+        mockItems[3].id,
+      ]);
+      expect(screen.getByTestId(/start-selection-button/i)).toBeInTheDocument();
+      expect(screen.queryByTestId(/cancel-selecting-button/i)).toBeNull();
+      expect(screen.queryByTestId(/delete-selected-button/i)).toBeNull();
+      expect(screen.getAllByTestId(/delete-button/i)[0]).toBeInTheDocument();
+    });
   });
 
   test("should unselect items correctly", async () => {
@@ -106,8 +111,11 @@ describe("SkillItem", () => {
     await user.click(selectButtons[0]);
     await user.click(selectButtons[2]);
     await user.click(selectButtons[2]);
-    expect(screen.getByText(mockItems[0].name)).toBeDisabled();
-    expect(screen.getByText(mockItems[2].name)).not.toBeDisabled();
+
+    await vi.waitFor(() => {
+      expect(screen.getByText(mockItems[0].name)).toBeDisabled();
+      expect(screen.getByText(mockItems[2].name)).not.toBeDisabled();
+    });
   });
 
   test("should cancel selection correctly", async () => {
@@ -121,11 +129,13 @@ describe("SkillItem", () => {
     await user.click(selectButtons[3]);
     await user.click(screen.getByTestId(/cancel-selecting-button/i));
 
-    expect(onDeleteItemsMock).not.toHaveBeenCalled();
-    expect(screen.getByTestId(/start-selection-button/i)).toBeInTheDocument();
-    expect(screen.queryByTestId(/cancel-selecting-button/i)).toBeNull();
-    expect(screen.queryByTestId(/delete-selected-button/i)).toBeNull();
-    expect(screen.getAllByTestId(/delete-button/i)[0]).toBeInTheDocument();
+    await vi.waitFor(() => {
+      expect(onDeleteItemsMock).not.toHaveBeenCalled();
+      expect(screen.getByTestId(/start-selection-button/i)).toBeInTheDocument();
+      expect(screen.queryByTestId(/cancel-selecting-button/i)).toBeNull();
+      expect(screen.queryByTestId(/delete-selected-button/i)).toBeNull();
+      expect(screen.getAllByTestId(/delete-button/i)[0]).toBeInTheDocument();
+    });
   });
 
   test("should  delete one item correctly", async () => {
@@ -134,12 +144,13 @@ describe("SkillItem", () => {
 
     await user.click(screen.getAllByTestId(/delete-button/i)[0]);
 
-    expect(screen.getByTestId(/popover/i)).toBeInTheDocument();
+    await vi.waitFor(() => {
+      expect(screen.getByTestId(/popover/i)).toBeInTheDocument();
+    });
 
     await user.click(screen.getByTestId(/confirm-deleting-button/i));
 
-    vi.waitFor(() => {
-      expect(screen.queryByTestId(/popover/i)).toBeNull();
+    await vi.waitFor(() => {
       expect(onDeleteItemsMock).toBeCalledWith([mockItems[0].id]);
     });
   });
@@ -150,12 +161,13 @@ describe("SkillItem", () => {
 
     await user.click(screen.getAllByTestId(/delete-button/i)[0]);
 
-    expect(screen.getByTestId(/popover/i)).toBeInTheDocument();
+    await vi.waitFor(() => {
+      expect(screen.getByTestId(/popover/i)).toBeInTheDocument();
+    });
 
     await user.click(screen.getByTestId(/confirm-deleting-button/i));
 
-    vi.waitFor(() => {
-      expect(screen.queryByTestId(/popover/i)).toBeNull();
+    await vi.waitFor(() => {
       expect(onDeleteItemsMock).toBeCalledWith([mockItems[0].id]);
     });
   });

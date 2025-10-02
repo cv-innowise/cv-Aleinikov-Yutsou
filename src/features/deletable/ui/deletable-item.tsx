@@ -1,3 +1,5 @@
+"use client";
+
 import {
   PropsWithChildren,
   cloneElement,
@@ -16,7 +18,7 @@ import { Trash } from "lucide-react";
 import { PopoverClose } from "@radix-ui/react-popover";
 
 interface DeletableItemProps {
-  id: number;
+  id: string;
   className?: string;
 }
 
@@ -59,7 +61,7 @@ export const DeletableItem: React.FC<PropsWithChildren<DeletableItemProps>> = ({
         <div
           onClick={onSetSelectedItem}
           className={cn(
-            "absolute top-0 left-0 w-full h-full rounded-lg bg-black opacity-0 hover:opacity-15 transition-opacity",
+            "absolute top-0 left-0 w-full h-full rounded-full bg-black opacity-0 hover:opacity-15 transition-opacity",
             isSelected && "opacity-25 hover:opacity-25"
           )}
           data-testid="select-button"
