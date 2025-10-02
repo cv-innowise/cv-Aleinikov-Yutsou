@@ -37,6 +37,11 @@
         "cvs": "CVs",
         "languages": "Languages",
         "settings": "Settings"
+    },
+    "language-item": {
+        "add-language": "Add new language...",
+        "select-language": "Select language...",
+        "search-language": "Search language...",
+        "no-languages": "No languages found."
     }
-    
 }

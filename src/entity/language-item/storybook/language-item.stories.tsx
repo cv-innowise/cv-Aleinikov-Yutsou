@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { LanguageItem } from "../ui/language-item";
 import { languagesMock } from "../mocks/languages.mock";
 import { Proficiency } from "@/shared/types/language";
+import message from "@/i18n/messages/en.json";
+import { NextIntlClientProvider } from "next-intl";
 
 const meta = {
   title: "Example/LanguageItem",
@@ -18,7 +20,14 @@ export const LanguageItemNotEditable: Story = {
     languages: languagesMock,
     isEditable: false,
     isDisabled: false,
-    onChange: () => { }
+    onChange: () => {},
+  },
+  render: (args) => {
+    return (
+      <NextIntlClientProvider messages={message} locale="en">
+        <LanguageItem {...args} />
+      </NextIntlClientProvider>
+    );
   },
 };
 
@@ -31,4 +40,11 @@ export const EditableLanguageItem: Story = {
     isDisabled: false,
     onChange: (prop) => console.log(prop),
   },
-}; 
+  render: (args) => {
+    return (
+      <NextIntlClientProvider messages={message} locale="en">
+        <LanguageItem {...args} />
+      </NextIntlClientProvider>
+    );
+  },
+};

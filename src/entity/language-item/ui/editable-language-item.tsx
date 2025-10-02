@@ -27,6 +27,7 @@ import { Proficiency } from "@/shared/types/language";
 import { useState } from "react";
 import { cn } from "@/shared/lib/utils";
 import { PROFICIENCY_TEXT_COLOR } from "../consts";
+import { useTranslations } from "next-intl";
 
 export const EditableLanguageItem: React.FC<LanguageItemProps> = ({
   languages,
@@ -35,8 +36,9 @@ export const EditableLanguageItem: React.FC<LanguageItemProps> = ({
   onChange,
   isDisabled,
 }) => {
+  const t =useTranslations("language-item")
   const [selectedLanguage, setSelectedLanguage] = useState<string>(
-    name || "Add new language..."
+    name || t("add-language")
   );
   const [selectedProficiency, setSelectedProficiency] = useState<Proficiency>(
     proficiency || Proficiency.A1
@@ -95,15 +97,15 @@ export const EditableLanguageItem: React.FC<LanguageItemProps> = ({
             )}
             data-testid="language-button"
           >
-            {selectedLanguage || "Select language..."}
+            {selectedLanguage || t("select-language")}
             <ChevronsUpDown className="opacity-50" />
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-[200px] p-0">
           <Command>
-            <CommandInput placeholder="Search language..." className="h-9" />
+            <CommandInput placeholder={t("search-language")} className="h-9" />
             <CommandList>
-              <CommandEmpty>No languages found.</CommandEmpty>
+              <CommandEmpty>{t("no-languages")}</CommandEmpty>
               {languages.map((language) => (
                 <CommandGroup key={language}>
                   <CommandItem value={language} onSelect={onLanguageChage}>
