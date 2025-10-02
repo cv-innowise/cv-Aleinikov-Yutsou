@@ -1,43 +1,90 @@
 {
-    "auth":{
-        "login":{
-            "title":"Добро пожаловать",
-            "subtitle":"Войдите в систему, чтобы продолжить",
-            "emailPlaceholder":"Электронная почта",
-            "passwordPlaceholder":"Пароль",
-            "forgotPassword":"Забыли пароль?",
-            "submit":"Авторизоваться"
-        },
-        "signup":{
-            "title":"Зарегистрироваться сейчас",
-            "subtitle":"Добро пожаловать! Зарегистрируйтесь, чтобы продолжить",
-            "emailPlaceholder":"Электронная почта",
-            "passwordPlaceholder":"Пароль",
-            "submit":"Зарегистрироваться",
-            "haveAccount":"У меня есть аккаунт"
-        },
-        "navbar":{
-            "login":"Авторизоваться",
-            "signup":"Зарегистрироваться"
-        }
+  "auth": {
+    "login": {
+      "title": "Добро пожаловать",
+      "subtitle": "Войдите в систему, чтобы продолжить",
+      "emailPlaceholder": "Электронная почта",
+      "passwordPlaceholder": "Пароль",
+      "forgotPassword": "Забыли пароль?",
+      "submit": "Авторизоваться"
     },
-    "sidebar":{
-        "users": "Сотрудники",
-        "skills": "Навыки",
-        "cvs": "Резюме",
-        "languages": "Языки",
-
-        "profile": "Профиль",
-        "settings": "Настройки",
-        "logout": "Выйти"
+    "signup": {
+      "title": "Зарегистрироваться сейчас",
+      "subtitle": "Добро пожаловать! Зарегистрируйтесь, чтобы продолжить",
+      "emailPlaceholder": "Электронная почта",
+      "passwordPlaceholder": "Пароль",
+      "submit": "Зарегистрироваться",
+      "haveAccount": "У меня есть аккаунт"
     },
-    
-    "breadcrumbs":{
-        
-        "users": "Сотрудники",
-        "skills": "Навыки",
-        "cvs": "Резюме",
-        "languages": "Языки",
-        "settings": "Настройки"
+    "navbar": {
+      "login": "Авторизоваться",
+      "signup": "Зарегистрироваться"
     }
+  },
+  "sidebar": {
+    "users": "Сотрудники",
+    "skills": "Навыки",
+    "cvs": "Резюме",
+    "languages": "Языки",
+
+    "profile": "Профиль",
+    "settings": "Настройки",
+    "logout": "Выйти"
+  },
+
+  "breadcrumbs": {
+    "users": "Сотрудники",
+    "skills": "Навыки",
+    "cvs": "Резюме",
+    "languages": "Языки",
+    "settings": "Настройки",
+    "profile": "Профиль"
+  },
+  "not-found": {
+    "user-not-found": "Извините, пользователь не найден.",
+    "your-profile": "Возможно, вы хотели посмотреть свой профиль?"
+  },
+  "user-profile": {
+    "member-since": "Пользователь с"
+  },
+  "user-nav": {
+    "profile": "Профиль",
+    "languages": "Языки",
+    "skills": "Навыки"
+  },
+  "profile-form": {
+    "first-name": "Имя",
+    "last-name": "Фамилия",
+    "department": "Отделение",
+    "select-department": "Выберите отдел",
+    "no-department": "Нет отдела",
+    "select-position": "Выберите позицию",
+    "no-position": "Нет позиции",
+    "position": "Позиция",
+    "update": "Обновить",
+    "profile-updated": "Профиль был обновлен",
+    "nothing-changed": "Ничего не изменилось",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "skills-preview": {
+    "skills": "Навыки",
+    "delete": "Удалить навыки",
+    "skills-deleted": "Навыки были удалены",
+    "skill-deleted": "Навык был удален",
+    "skill-updated": "Навык был обновлен",
+    "skill-added": "Навык был добавлен",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "languages-preview": {
+    "languages": "Языки",
+    "delete": "Удалить языки",
+    "languages-deleted": "Языки были удалены",
+    "language-deleted": "Язык был удален",
+    "language-updated": "Язык был обновлен",
+    "language-added": "Язык был добавлен",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  }
 }
