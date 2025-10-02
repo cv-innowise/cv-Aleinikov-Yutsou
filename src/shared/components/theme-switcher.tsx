@@ -9,32 +9,42 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/shared/components/ui/dropdown-menu";
+import { useTranslations } from "next-intl";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 export function ThemeSwitcher() {
-  const { setTheme } = useTheme();
+  const t = useTranslations("theme-switcher");
+  const { theme, setTheme } = useTheme();
 
-  const onUpdateTheme = (theme: string) => () => setTheme(theme);
+  const onUpdateTheme = (theme: string) => setTheme(theme);
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button className="p-2 w-full justify-start" variant="outline" size="icon">
-          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="ml-2">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-full">
-        <DropdownMenuItem className="block w-full" onClick={onUpdateTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem className="block w-full" onClick={onUpdateTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem className="block w-full" onClick={onUpdateTheme("system")}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <Select defaultValue={theme} onValueChange={onUpdateTheme}>
+      <SelectTrigger className="w-full">
+          <SelectValue className="capitalize" placeholder={t("toggle")} />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup className="w-full">
+          <SelectLabel>{t("theme")}</SelectLabel>
+          <SelectItem className="block w-full" value="light">
+            {t("light")}
+          </SelectItem>
+          <SelectItem className="block w-full" value="dark">
+            {t("dark")}
+          </SelectItem>
+          <SelectItem className="block w-full" value="system">
+            {t("system")}
+          </SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
   );
 }

@@ -1,42 +1,48 @@
 {
-    "auth":{
-        "login":{
-            "title":"Welcome back",
-            "subtitle":"Hello again! Log in to continue",
-            "emailPlaceholder":"Email",
-            "passwordPlaceholder":"Password",
-            "forgotPassword":"Forgot password?",
-            "submit":"Log In"
-        },
-        "signup":{
-            "title":"Register now",
-            "subtitle":"Welcome! Sign up to continue",
-            "emailPlaceholder":"Email",
-            "passwordPlaceholder":"Password",
-            "submit":"Create account",
-            "haveAccount":"I have an account"
-        },
-        "navbar":{
-            "login":"Log In",
-            "signup":"Sign Up"
-        }
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Hello again! Log in to continue",
+      "emailPlaceholder": "Email",
+      "passwordPlaceholder": "Password",
+      "forgotPassword": "Forgot password?",
+      "submit": "Log In"
     },
-    "sidebar":{
-        "users": "Employees",
-        "skills": "Skills",
-        "cvs": "CVs",
-        "languages": "Languages",
-
-        "profile": "Profile",
-        "settings": "Settings",
-        "logout": "Logout"
+    "signup": {
+      "title": "Register now",
+      "subtitle": "Welcome! Sign up to continue",
+      "emailPlaceholder": "Email",
+      "passwordPlaceholder": "Password",
+      "submit": "Create account",
+      "haveAccount": "I have an account"
     },
-    "breadcrumbs":{ 
-        "users": "Employees",
-        "skills": "Skills",
-        "cvs": "CVs",
-        "languages": "Languages",
-        "settings": "Settings"
+    "navbar": {
+      "login": "Log In",
+      "signup": "Sign Up"
     }
-    
+  },
+  "sidebar": {
+    "users": "Employees",
+    "skills": "Skills",
+    "cvs": "CVs",
+    "languages": "Languages",
+
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "breadcrumbs": {
+    "users": "Employees",
+    "skills": "Skills",
+    "cvs": "CVs",
+    "languages": "Languages",
+    "settings": "Settings"
+  },
+  "theme-switcher": {
+    "toggle": "Toggle theme",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  }
 }
