@@ -36,11 +36,60 @@
     "skills": "Skills",
     "cvs": "CVs",
     "languages": "Languages",
-    "settings": "Settings"
+    "settings": "Settings",
+    "profile": "Profile"
   },
   "data-table": {
     "search": "Search",
     "loading": "Loading...",
     "no-results": "No more results"
+  },
+  "not-found": {
+    "user-not-found": "Sorry, user not found.",
+    "your-profile": "Maybe you've ment to see your profile?"
+  },
+  "user-profile": {
+    "member-since": "A member since"
+  },
+  "user-nav": {
+    "profile": "Profile",
+    "languages": "Languages",
+    "skills": "Skills"
+  },
+  "profile-form": {
+    "first-name": "First name",
+    "last-name": "Last name",
+    "department": "Department",
+    "select-department": "Select department",
+    "no-department": "No department",
+    "select-position": "Select position",
+    "no-position": "No position",
+    "position": "Position",
+    "update": "Update",
+    "profile-updated": "Profile was updated",
+    "nothing-changed": "Nothing was changed",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "skills-preview": {
+    "skills": "Skills",
+    "delete": "Delete skills",
+    "skills-deleted": "Skills were deleted",
+    "skill-deleted": "Skill was deleted",
+    "skill-updated": "Skill was updated",
+    "skill-added": "Skill was added",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "languages-preview": {
+    "languages": "Languages",
+    "delete": "Delete languages",
+    "languages-deleted": "Languages were deleted",
+    "language-deleted": "Language was deleted",
+    "language-updated": "Language was updated",
+    "language-added": "Language was added",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+
   }
 }

@@ -7,11 +7,11 @@ vi.mock("next/navigation", async () => {
     useRouter: vi.fn(() => ({
       push: vi.fn(),
       replace: vi.fn(),
-      refresh: vi.fn()
+      refresh: vi.fn(),
     })),
     useSearchParams: vi.fn(() => ({
       get: vi.fn(),
-      has: vi.fn()
+      has: vi.fn(),
     })),
     usePathname: vi.fn(),
   };

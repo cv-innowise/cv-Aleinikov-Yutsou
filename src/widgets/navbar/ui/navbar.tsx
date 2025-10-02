@@ -1,17 +1,10 @@
 import { Sidebar, SidebarContent, SidebarFooter, SidebarRail } from "@/shared/components/ui/sidebar";
 import { NavMenu } from "./nav-menu";
-import { getSessionServerSide } from "@/shared/lib/cookies";
-import { getClient } from "@/shared/lib/apollo/apollo-client";
 import { UserPopover } from "@/features/user-popover";
-import { UserResponse, USER_BY_ID } from "@/shared/graphql/users";
+import { getAuthUser } from "@/shared/lib/queries/get-auth-user";
 
 export const Navbar = async () => {
-  const session = await getSessionServerSide();
-
-  const { data } = await getClient().query<UserResponse>({
-    query: USER_BY_ID,
-    variables: { userId: session?.id },
-  });
+  const user = await getAuthUser();
 
   return (
     <Sidebar collapsible="icon">
@@ -19,7 +12,7 @@ export const Navbar = async () => {
         <NavMenu />
       </SidebarContent>
       <SidebarFooter>
-        <UserPopover user={data?.user} />
+        <UserPopover user={user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

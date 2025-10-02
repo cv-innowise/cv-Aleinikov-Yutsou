@@ -18,7 +18,7 @@ export const LanguageSwitcher = () => {
 
   return (
     <Select defaultValue={current} onValueChange={onChange}>
-      <SelectTrigger className="w-48">
+      <SelectTrigger className="w-full">
         <SelectValue className="capitalize" placeholder="Language" />
       </SelectTrigger>
       <SelectContent>
