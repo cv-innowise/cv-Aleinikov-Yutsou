@@ -13,7 +13,10 @@ export const updateCv = async (cv: UpdateCvRequest["cv"]) => {
     {
       mutation: UPDATE_CV,
       variables: { cv },
-      refetchQueries: [GET_CVS, GET_CV],
+      refetchQueries: [
+        GET_CVS,
+        { query: GET_CV, variables: { cvId: cv.cvId } },
+      ],
     }
   );
 

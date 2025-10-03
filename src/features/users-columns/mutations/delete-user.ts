@@ -1,7 +1,7 @@
 "use server";
 
 import { DELETE_USER } from "@/shared/graphql/users/users.mutations";
-import { GET_USER, GET_USERS } from "@/shared/graphql/users/users.queries";
+import { GET_USERS } from "@/shared/graphql/users/users.queries";
 import {
   DeleteUserRequest,
   DeleteUserResponse,
@@ -15,7 +15,7 @@ export const deleteUser = async (userId: DeleteUserRequest) => {
   >({
     mutation: DELETE_USER,
     variables: userId,
-    refetchQueries: [GET_USER, GET_USERS],
+    refetchQueries: [GET_USERS],
   });
 
   if (error) {

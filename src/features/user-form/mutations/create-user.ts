@@ -1,7 +1,7 @@
 "use server";
 
 import { CREATE_USER } from "@/shared/graphql/users/users.mutations";
-import { GET_USER, GET_USERS } from "@/shared/graphql/users/users.queries";
+import { GET_USERS } from "@/shared/graphql/users/users.queries";
 import {
   CreateUserRequest,
   CreateUserResponse,
@@ -15,7 +15,7 @@ export const createUser = async (user: CreateUserRequest["user"]) => {
   >({
     mutation: CREATE_USER,
     variables: { user },
-    refetchQueries: [GET_USER, GET_USERS],
+    refetchQueries: [GET_USERS],
   });
 
   if (error) {
