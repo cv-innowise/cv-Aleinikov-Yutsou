@@ -8,6 +8,8 @@ import {
 import { useState } from "react";
 import { mockItems } from "../mocks/items.mock";
 import { Button } from "@/shared/components/ui/button";
+import { NextIntlClientProvider } from "next-intl";
+import message from "@/i18n/messages/en.json";
 
 const meta = {
   title: "Example/Deletable",
@@ -25,21 +27,27 @@ export const Deleteble: Story = {
       );
     };
     return (
-      <Deletable onDeleteItems={onDeleteItems}>
-        <div>
-          <DeletableContent className="flex space-x-2">
-            {items.map((item) => (
-              <DeletableItem key={item.id} id={item.id}>
-                <Button variant="outline" onClick={()=>console.log("asdasd")
-                }>{item.name}</Button>
-              </DeletableItem>
-            ))}
-          </DeletableContent>
-          <DeletableTrigger>
-            <Button>Delete items</Button>
-          </DeletableTrigger>
-        </div>
-      </Deletable>
+      <NextIntlClientProvider messages={message} locale="en">
+        <Deletable onDeleteItems={onDeleteItems}>
+          <div>
+            <DeletableContent className="flex space-x-2">
+              {items.map((item) => (
+                <DeletableItem key={item.id} id={item.id}>
+                  <Button
+                    variant="outline"
+                    onClick={() => console.log("asdasd")}
+                  >
+                    {item.name}
+                  </Button>
+                </DeletableItem>
+              ))}
+            </DeletableContent>
+            <DeletableTrigger>
+              <Button>Delete items</Button>
+            </DeletableTrigger>
+          </div>
+        </Deletable>
+      </NextIntlClientProvider>
     );
   },
 };

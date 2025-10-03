@@ -16,6 +16,7 @@ import {
 import { Button } from "@/shared/components/ui/button";
 import { Trash } from "lucide-react";
 import { PopoverClose } from "@radix-ui/react-popover";
+import { useTranslations } from "next-intl";
 
 interface DeletableItemProps {
   id: string;
@@ -34,6 +35,7 @@ export const DeletableItem: React.FC<PropsWithChildren<DeletableItemProps>> = ({
     addSelectedItem,
     removeSelectedItem,
   } = useContext(DeletableContext);
+  const t = useTranslations("deletable");
   const isSelected =
     selectedItems.find((selectedId) => selectedId === id) !== undefined;
 
@@ -79,7 +81,7 @@ export const DeletableItem: React.FC<PropsWithChildren<DeletableItemProps>> = ({
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-min space-y-2 p-1" data-testid="popover">
-            <p className="text-sm text-center">Delete this?</p>
+            <p className="text-sm text-center">{t("delete-this")}</p>
             <div className="flex space-x-2">
               <PopoverClose asChild>
                 <Button
@@ -87,7 +89,7 @@ export const DeletableItem: React.FC<PropsWithChildren<DeletableItemProps>> = ({
                   variant="ghost"
                   data-testid="cancel-deleting-button"
                 >
-                  No
+                  {t("no")}
                 </Button>
               </PopoverClose>
               <Button
@@ -96,7 +98,7 @@ export const DeletableItem: React.FC<PropsWithChildren<DeletableItemProps>> = ({
                 onClick={onDeleteConfirm}
                 data-testid="confirm-deleting-button"
               >
-                Yes
+                {t("yes")}
               </Button>
             </div>
           </PopoverContent>

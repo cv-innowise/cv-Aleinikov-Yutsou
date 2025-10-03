@@ -53,6 +53,13 @@
     "search-skill": "Поиск навыка...",
     "no-skills": "Навыков не найдено."
   },
+  "deletable": {
+    "delete-this": "Удалить?",
+    "yes": "Да",
+    "no": "Нет",
+    "cancel": "Отмена",
+    "delete": "Удалить"
+  },
   "theme-switcher": {
     "toggle": "Сменить тему",
     "theme": "Тема",
