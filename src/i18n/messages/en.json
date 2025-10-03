@@ -46,6 +46,12 @@
     "search-language": "Search language...",
     "no-languages": "No languages found."
   },
+  "skill-item": {
+    "add-skill": "Add new skill...",
+    "select-skill": "Select skill...",
+    "search-skill": "Search skills...",
+    "no-skills": "No skills found."
+  },
   "theme-switcher": {
     "toggle": "Toggle theme",
     "theme": "Theme",

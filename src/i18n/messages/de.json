@@ -45,6 +45,12 @@
     "search-language": "Sprachsuche...",
     "no-languages": "Sprachen werden nicht gefunden."
   },
+  "skill-item": {
+    "add-skill": "Fügen Sie neue Fähigkeiten hinzu ...",
+    "select-skill": "Wählen Sie Fähigkeiten ...",
+    "search-skill": "Suchfähigkeiten ...",
+    "no-skills": "Keine Fähigkeiten gefunden."
+  },
   "theme-switcher": {
     "toggle": "Thema umschalten",
     "theme": "Thema",

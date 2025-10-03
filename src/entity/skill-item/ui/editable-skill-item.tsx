@@ -21,6 +21,7 @@ import {
 } from "@/shared/components/ui/command";
 import { cn } from "@/shared/lib/utils";
 import { Mastery } from "@/shared/types/cv-graphql";
+import { useTranslations } from "next-intl";
 
 export const EditableSkillItem = ({
   skillsByCategories,
@@ -29,8 +30,9 @@ export const EditableSkillItem = ({
   isDisabled,
   onChange,
 }: SkillItemProps) => {
+  const t = useTranslations("skill-item");
   const [selectedSkill, setSelectedSkill] = useState<string>(
-    name || "Add new skill..."
+    name || t("add-skill")
   );
   const [selectedMastery, setSelectedMastery] = useState<Mastery>(
     mastery || Mastery.Novice
@@ -75,15 +77,15 @@ export const EditableSkillItem = ({
             data-testid="skill-button"
             disabled={isDisabled}
           >
-            {selectedSkill || "Select skill..."}
+            {selectedSkill || t("select-skill")}
             <ChevronsUpDown className="opacity-50" />
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-[200px] p-0">
           <Command>
-            <CommandInput placeholder="Search skills..." className="h-9" />
+            <CommandInput placeholder={t('search-skill')} className="h-9" />
             <CommandList>
-              <CommandEmpty>No skills found.</CommandEmpty>
+              <CommandEmpty>{t("no-skills")}</CommandEmpty>
               {Object.entries(skillsByCategories).map(([name, skills]) => (
                 <CommandGroup key={name}>
                   <span className="text-sm mx-1 text-muted-foreground">

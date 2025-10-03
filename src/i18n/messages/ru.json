@@ -47,6 +47,12 @@
     "search-language": "Поиск языка...",
     "no-languages": "Языки не найдены."
   },
+  "skill-item": {
+    "add-skill": "Добавьте новый навык...",
+    "select-skill": "Выберите навык...",
+    "search-skill": "Поиск навыка...",
+    "no-skills": "Навыков не найдено."
+  },
   "theme-switcher": {
     "toggle": "Сменить тему",
     "theme": "Тема",
