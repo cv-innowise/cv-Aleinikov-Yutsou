@@ -36,9 +36,13 @@
     "skills": "Skills",
     "cvs": "CVs",
     "languages": "Languages",
-
     "settings": "Settings",
     "profile": "Profile"
+  },
+  "data-table": {
+    "search": "Search",
+    "loading": "Loading...",
+    "no-results": "No more results"
   },
   "not-found": {
     "user-not-found": "Sorry, user not found.",
