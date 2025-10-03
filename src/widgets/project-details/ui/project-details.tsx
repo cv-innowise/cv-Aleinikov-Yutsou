@@ -46,7 +46,7 @@ export const ProjectDetails: FCWithSkeleton<ProjectDetailsProps> = async ({
       </span>
       <div className="flex flex-wrap gap-x-2">
         {project.environment.map((item) => (
-          <span className="p-1 text-sm rounded-lg border-primary border-1 shadow-sm">
+          <span key={item} className="p-1 text-sm rounded-lg border-primary border-1 shadow-sm">
             {item}
           </span>
         ))}

@@ -15,7 +15,6 @@ import {
   userMock,
   getAuthUserMock,
 } from "@/shared/lib/queries/mocks/get-auth-user.mock";
-import { Project } from "@/shared/graphql/projects/projects.types";
 
 vi.mock("");
 
