@@ -7,7 +7,7 @@ import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";
 import Link from "next/link";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ForgotPasswordInput } from "cv-graphql";
+import { ForgotPasswordInput } from "@/shared/types/cv-graphql";
 import { forgotPasswordSchema } from "../validation/forgot-password.schema";
 import { useForgotPassword } from "../lib/use-forgot-password";
 

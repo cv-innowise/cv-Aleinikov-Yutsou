@@ -1,4 +1,4 @@
-import type { AuthInput, AuthResult } from "@/shared/types/cv-graphql";
+import type { AuthInput, AuthResult, ForgotPasswordInput } from "@/shared/types/cv-graphql";
 
 interface AuthRequest {
   auth: AuthInput;

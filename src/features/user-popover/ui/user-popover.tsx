@@ -9,7 +9,7 @@ import { LogOut, User, Settings } from "lucide-react";
 import { clearTokens, removeSession } from "@/shared/lib/cookies";
 import { useRouter } from "next/navigation";
 import { cn } from "@/shared/lib/utils";
-import type { User as UserType } from "cv-graphql";
+import type { User as UserType } from "@/shared/types/cv-graphql";
 import { useTranslations } from "next-intl";
 
 interface UserPopoverProps {
