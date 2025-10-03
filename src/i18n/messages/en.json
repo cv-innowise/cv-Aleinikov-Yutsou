@@ -52,6 +52,13 @@
     "search-skill": "Search skills...",
     "no-skills": "No skills found."
   },
+  "deletable": {
+    "delete-this": "Delete this?",
+    "yes": "Yes",
+    "no": "No",
+    "cancel": "Cancel",
+    "delete": "Delete"
+  },
   "theme-switcher": {
     "toggle": "Toggle theme",
     "theme": "Theme",

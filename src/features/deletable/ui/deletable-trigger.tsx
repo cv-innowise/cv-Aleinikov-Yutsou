@@ -4,6 +4,7 @@ import React, { PropsWithChildren, useContext } from "react";
 import { DeletableContext } from "../context";
 import { Button } from "@/shared/components/ui/button";
 import { cn } from "@/shared/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface DeletableTriggerProps {
   className?: string;
@@ -14,6 +15,7 @@ export const DeletableTrigger: React.FC<
 > = ({ className, children }) => {
   const { isSelectable, setIsSelectable, onDeleteItems, selectedItems } =
     useContext(DeletableContext);
+  const t = useTranslations("delatable");
 
   const onDeleteSelected = () => {
     setIsSelectable(false);
@@ -28,14 +30,14 @@ export const DeletableTrigger: React.FC<
           onClick={() => setIsSelectable(false)}
           data-testid="cancel-selecting-button"
         >
-          Cancel
+          {t("cancel")}
         </Button>
         <Button
           onClick={onDeleteSelected}
           disabled={!selectedItems.length}
           data-testid="delete-selected-button"
         >
-          Delete
+          {t("delete")}
           {!!selectedItems.length && (
             <span
               className="block w-4 h-4 ml-2 text-xs rounded-full bg-secondary text-primary"
