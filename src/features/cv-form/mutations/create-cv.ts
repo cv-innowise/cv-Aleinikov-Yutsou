@@ -1,7 +1,7 @@
 "use server";
 
 import { CREATE_CV } from "@/shared/graphql/cvs/cvs.mutations";
-import { GET_CV, GET_CVS } from "@/shared/graphql/cvs/cvs.queries";
+import { GET_CVS } from "@/shared/graphql/cvs/cvs.queries";
 import {
   CreateCvRequest,
   CreateCvResponse,
@@ -13,7 +13,7 @@ export const createCv = async (cv: CreateCvRequest["cv"]) => {
     {
       mutation: CREATE_CV,
       variables: { cv },
-      refetchQueries: [GET_CVS, GET_CV],
+      refetchQueries: [GET_CVS],
     }
   );
 

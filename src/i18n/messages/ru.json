@@ -37,10 +37,21 @@
     "skills": "Навыки",
     "cvs": "Резюме",
     "languages": "Языки",
-
     "settings": "Настройки",
     "profile": "Профиль",
     "projects": "Проекты"
+  },
+  "theme-switcher": {
+    "toggle": "Сменить тему",
+    "theme": "Тема",
+    "light": "Светлая",
+    "dark": "Темная",
+    "system": "Системная"
+  },
+  "data-table": {
+    "search": "Поиск",
+    "loading": "Загрузка...",
+    "no-results": "Больше ничего нет"
   },
   "not-found": {
     "user-not-found": "Извините, пользователь не найден.",
@@ -352,4 +363,3 @@
     "loading": "Загрузка..."
   }
 }
-

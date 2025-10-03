@@ -46,6 +46,11 @@
     "dark": "Dunkel",
     "system": "System"
   },
+  "data-table": {
+    "search": "Suchen",
+    "loading": "Laden...",
+    "no-results": "Keine Ergebnisse mehr"
+  },
   "not-found": {
     "user-not-found": "Entschuldigung, der Benutzer nicht gefunden.",
     "your-profile": "Vielleicht haben Sie Ihr Profil sehen?",

@@ -1,10 +1,7 @@
 "use server";
 
 import { CREATE_PROJECT } from "@/shared/graphql/projects/projects.mutations";
-import {
-  GET_PROJECT,
-  GET_PROJECTS,
-} from "@/shared/graphql/projects/projects.queries";
+import { GET_PROJECTS } from "@/shared/graphql/projects/projects.queries";
 import {
   CreateProjectRequest,
   CreateProjectResponse,
@@ -20,7 +17,7 @@ export const createProject = async (
   >({
     mutation: CREATE_PROJECT,
     variables: { project },
-    refetchQueries: [GET_PROJECT, GET_PROJECTS],
+    refetchQueries: [GET_PROJECTS],
   });
 
   if (error) {

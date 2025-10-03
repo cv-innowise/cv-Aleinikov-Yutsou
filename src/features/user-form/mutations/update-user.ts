@@ -15,7 +15,10 @@ export const updateUser = async (user: UpdateUserRequest["user"]) => {
   >({
     mutation: UPDATE_USER,
     variables: { user },
-    refetchQueries: [GET_USER, GET_USERS],
+    refetchQueries: [
+      { query: GET_USER, variables: { userId: user.userId } },
+      GET_USERS,
+    ],
   });
 
   if (error) {

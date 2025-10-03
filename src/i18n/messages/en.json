@@ -40,6 +40,18 @@
     "profile": "Profile",
     "projects": "Projects"
   },
+  "theme-switcher": {
+    "toggle": "Toggle theme",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "data-table": {
+    "search": "Search",
+    "loading": "Loading...",
+    "no-results": "No more results"
+  },
   "not-found": {
     "user-not-found": "Sorry, user not found.",
     "your-profile": "Maybe you've ment to see your profile?",

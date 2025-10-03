@@ -9,13 +9,21 @@ import {
   UpdateProjectRequest,
   UpdateProjectResponse,
 } from "@/shared/graphql/projects/projects.types";
-import { getClient } from '@/shared/lib/apollo/apollo-client';
+import { getClient } from "@/shared/lib/apollo/apollo-client";
 
-export const updateProject = async (project: UpdateProjectRequest["project"]) => {
-  const { error } = await getClient().mutate<UpdateProjectResponse, UpdateProjectRequest>({
+export const updateProject = async (
+  project: UpdateProjectRequest["project"]
+) => {
+  const { error } = await getClient().mutate<
+    UpdateProjectResponse,
+    UpdateProjectRequest
+  >({
     mutation: UPDATE_PROJECT,
     variables: { project },
-    refetchQueries: [GET_PROJECT, GET_PROJECTS],
+    refetchQueries: [
+      { query: GET_PROJECT, variables: { projectId: project.projectId } },
+      GET_PROJECTS,
+    ],
   });
 
   if (error) {
