@@ -15,7 +15,9 @@ export const uploadAvatar = async (avatar: UploadAvatarRequest["avatar"]) => {
   >({
     mutation: UPLOAD_AVATAR,
     variables: { avatar },
-    refetchQueries: [GET_PROFILE],
+    refetchQueries: [
+      { query: GET_PROFILE, variables: { userId: avatar.userId } },
+    ],
   });
 
   if (error) {
