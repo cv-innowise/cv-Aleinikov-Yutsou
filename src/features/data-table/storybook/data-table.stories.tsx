@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { DataTable } from "../ui/data-table";
 import { PaymentMock, dataMock } from "../mocks/data.mock";
 import { columnsMock } from "../mocks/columns.mock";
+import message from "@/i18n/messages/en.json";
+import { NextIntlClientProvider } from "next-intl";
 
 const meta = {
   title: "Example/DataTable",
@@ -10,12 +12,10 @@ const meta = {
     nextjs: {
       appDirectory: true,
       navigation: {
-        searchParams: {
-
-        },
+        searchParams: {},
       },
     },
-  }
+  },
 } satisfies Meta<typeof DataTable<PaymentMock, PaymentMock>>;
 
 export default meta;
@@ -23,7 +23,15 @@ type Story = StoryObj<typeof meta>;
 
 export const PaymentsTable: Story = {
   args: {
+    title: "Payments",
     data: dataMock,
     columns: columnsMock,
+  },
+  render: (args) => {
+    return (
+      <NextIntlClientProvider messages={message} locale="en">
+        <DataTable {...args} />
+      </NextIntlClientProvider>
+    );
   },
 };

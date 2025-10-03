@@ -37,12 +37,335 @@
     "skills": "Навыки",
     "cvs": "Резюме",
     "languages": "Языки",
-    "settings": "Настройки"
+    "settings": "Настройки",
+    "profile": "Профиль",
+    "projects": "Проекты"
   },
   "language-item": {
     "add-language": "Добавить новый язык...",
     "select-language": "Выберите язык...",
     "search-language": "Поиск языка...",
     "no-languages": "Языки не найдены."
+  },
+  "theme-switcher": {
+    "toggle": "Сменить тему",
+    "theme": "Тема",
+    "light": "Светлая",
+    "dark": "Темная",
+    "system": "Системная"
+  },
+  "data-table": {
+    "search": "Поиск",
+    "loading": "Загрузка...",
+    "no-results": "Больше ничего нет"
+  },
+  "not-found": {
+    "user-not-found": "Извините, пользователь не найден.",
+    "your-profile": "Возможно, вы хотели посмотреть свой профиль?",
+    "project-not-found": "Извините, проект не найден.",
+    "projects": "Пожалуйста, выберите проект из списка доступных."
+  },
+  "project-details": {
+    "update-project": "Обновить проект",
+    "till-now": "До сих пор"
+  },
+  "user-profile": {
+    "member-since": "Пользователь с"
+  },
+  "user-nav": {
+    "profile": "Профиль",
+    "languages": "Языки",
+    "skills": "Навыки"
+  },
+  "profile-form": {
+    "first-name": "Имя",
+    "last-name": "Фамилия",
+    "department": "Отделение",
+    "select-department": "Выберите отдел",
+    "no-department": "Нет отдела",
+    "select-position": "Выберите позицию",
+    "no-position": "Нет позиции",
+    "position": "Позиция",
+    "update": "Обновить",
+    "profile-updated": "Профиль был обновлен",
+    "nothing-changed": "Ничего не изменилось",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "skills-preview": {
+    "skills": "Навыки",
+    "delete": "Удалить навыки",
+    "skills-deleted": "Навыки были удалены",
+    "skill-deleted": "Навык был удален",
+    "skill-updated": "Навык был обновлен",
+    "skill-added": "Навык был добавлен",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "languages-preview": {
+    "languages": "Языки",
+    "delete": "Удалить языки",
+    "languages-deleted": "Языки были удалены",
+    "language-deleted": "Язык был удален",
+    "language-updated": "Язык был обновлен",
+    "language-added": "Язык был добавлен",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "columns": {
+    "name": "Имя",
+    "description": "Описание",
+    "employee": "Сотрудник",
+    "native-name": "Нативное Имя",
+    "iso2": "ISO2",
+    "internal-name": "Полное имя",
+    "domain": "Домен",
+    "start-date": "Дата начала",
+    "end-date": "Дата окончания",
+    "category": "Категории",
+    "first-name": "Имя",
+    "last-name": "Фамилия",
+    "email": "Электронная почта",
+    "department": "Отделение",
+    "position": "Позиция"
+  },
+  "cvs-list": {
+    "cvs": "Резюме",
+    "create-cv": "Создать резюме"
+  },
+  "cv-actions": {
+    "open": "Открыть меню",
+    "actions": "Действия",
+    "details": "Детали резюме",
+    "update": "Обновление резюме",
+    "delete": "Удалить резюме",
+    "alert-title": "Вы абсолютно уверены?",
+    "alert-description": "Это действие не может быть отменено. Это навсегда удалит \nрезюме и удалит данные с наших серверов.",
+    "cancel": "Отмена",
+    "continue": "Продолжить",
+    "cv-deleted": "Резюме было удалено",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "cv-form": {
+    "update": "Обновленить резюме",
+    "create": "Создать резюме",
+    "name": "Название резюме",
+    "name-label": "Название",
+    "education": "Образование",
+    "education-label": "Образование (необязательно)",
+    "description": "Описание резюме",
+    "description-label": "Описание",
+    "cancel": "Отмена",
+    "confirm": "Подтвердить",
+    "cv-updated": "Резюме было обновлено",
+    "cv-created": "Резюме было создано",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "departments-list": {
+    "departments": "Отделы",
+    "create-department": "Создать отдел"
+  },
+  "department-actions": {
+    "open": "Открыть меню",
+    "actions": "Действия",
+    "update": "Обновить отдел",
+    "delete": "Удалить отдел",
+    "alert-title": "Вы абсолютно уверены?",
+    "alert-description": "Это действие не может быть отменено. Это навсегда удалит \nотдел и удалит данные с наших серверов.",
+    "cancel": "Отмена",
+    "continue": "Продолжить",
+    "department-deleted": "Отдел был удален",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "department-form": {
+    "update": "Обновить отдел",
+    "create": "Создать отдел",
+    "name": "Название отделения",
+    "name-label": "Имя",
+    "cancel": "Отмена",
+    "confirm": "Подтвердить",
+    "department-updated": "Отдел был обновлен",
+    "department-created": "Отдел был создан",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "languages-list": {
+    "languages": "Языки",
+    "create-language": "Создать язык"
+  },
+  "language-actions": {
+    "open": "Открыть меню",
+    "actions": "Действия",
+    "update": "Обновить язык",
+    "delete": "Удалить язык",
+    "alert-title": "Вы абсолютно уверены?",
+    "alert-description": "Это действие не может быть отменено. Это навсегда удалит \nязык и удаляет данные с наших серверов.",
+    "cancel": "Отмена",
+    "continue": "Продолжить",
+    "language-deleted": "Язык был удален",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "language-form": {
+    "update": "Обновить язык",
+    "create": "Создать язык",
+    "name": "Имя языка",
+    "name-label": "Имя",
+    "native-name": "Нативное имя языка",
+    "native-name-label": "Нативное имя (необязательное)",
+    "iso2": "Формат ISO2 Язык",
+    "iso2-label": "ISO2",
+    "cancel": "Отмена",
+    "confirm": "Подтвердить",
+    "language-updated": "Язык был обновлен",
+    "language-created": "Язык был создан",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "positions-list": {
+    "positions": "Позиции",
+    "create-position": "Создать позицию"
+  },
+  "position-actions": {
+    "open": "Открыть меню",
+    "actions": "Действия",
+    "update": "Обновить позицию",
+    "delete": "Удалить позицию",
+    "alert-title": "Вы абсолютно уверены?",
+    "alert-description": "Это действие не может быть отменено. Это навсегда удалит \nпозицию и удалит данные с наших серверов.",
+    "cancel": "Отмена",
+    "continue": "Продолжить",
+    "position-deleted": "Позиция была удалена",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "position-form": {
+    "update": "Обновить позицию",
+    "create": "Создать позицию",
+    "name": "Имя позиции",
+    "name-label": "Имя",
+    "cancel": "Отмена",
+    "confirm": "Подтвердить",
+    "position-updated": "Позиция была обновлена",
+    "position-created": "Позиция была создана",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "projects-list": {
+    "projects": "Проекты",
+    "create-skill": "Создать проект"
+  },
+  "project-actions": {
+    "open": "Открыть меню",
+    "actions": "Действия",
+    "details": "Детали проекта",
+    "update": "Обновить проект",
+    "delete": "Удалить проект",
+    "alert-title": "Вы абсолютно уверены?",
+    "alert-description": "Это действие не может быть отменено. Это навсегда удалит \nпроект и удаляет данные с наших серверов.",
+    "cancel": "Отмена",
+    "continue": "Продолжить",
+    "project-deleted": "Проект был удален",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "project-form": {
+    "update": "Обновить проект",
+    "create": "Создать проект",
+    "name": "Название проекта",
+    "name-label": "Название",
+    "domain": "Домен проекта",
+    "domain-label": "Домен",
+    "start-date-label": "Дата начала",
+    "end-date-label": "Дата окончания (необязательно)",
+    "pick-date": "Выберите дату",
+    "description": "Напишите что-нибудь об этом проекте...",
+    "description-label": "Описание",
+    "environment": "Нажмите \"Enter\", чтобы добавить технологию",
+    "environment-label": "Технологии",
+    "cancel": "Отмена",
+    "confirm": "Подтвердить",
+    "project-updated": "Проект был обновлен",
+    "project-created": "Проект был создан",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "skills-list": {
+    "skills": "Навыки",
+    "create-project": "Создать навык"
+  },
+  "skill-actions": {
+    "open": "Открыть меню",
+    "actions": "Действия",
+    "update": "Обновить навык",
+    "delete": "Удалить навык",
+    "alert-title": "Вы абсолютно уверены?",
+    "alert-description": "Это действие не может быть отменено. Это навсегда удалит \nнавык и удалит данные с наших серверов.",
+    "cancel": "Отмена",
+    "continue": "Продолжить",
+    "skill-deleted": "Навык был удален",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "skill-form": {
+    "update": "Обновить навык",
+    "create": "Создать навык",
+    "name": "Название навыка",
+    "name-label": "Название",
+    "category": "Выберите категорию",
+    "category-label": "Категория",
+    "cancel": "Отмена",
+    "confirm": "Подтвердить",
+    "skill-updated": "Навык был обновлен",
+    "skill-created": "Навык был создан",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "users-list": {
+    "users": "Пользователи",
+    "create-user": "Создать пользователя"
+  },
+  "user-actions": {
+    "open": "Открыть меню",
+    "actions": "Действия",
+    "profile": "Профиль",
+    "update": "Обновить пользователя",
+    "delete": "Удалить пользователя",
+    "alert-title": "Вы абсолютно уверены?",
+    "alert-description": "Это действие не может быть отменено. Это навсегда удалит \nпользователя и удаляет данные с наших серверов.",
+    "cancel": "Отмена",
+    "continue": "Продолжить",
+    "user-deleted": "Пользователь был удален",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
+  },
+  "user-form": {
+    "update": "Обновить пользователя",
+    "create": "Создать пользователя",
+    "email": "Электронная почта",
+    "password": "Пароль",
+    "first-name": "Имя",
+    "last-name": "Фамилия",
+    "cvs": "Выберите резюме",
+    "cvs-label": "Резюме",
+    "searcg-cvs": "Поиск резюме...",
+    "department": "Выберите отдел",
+    "department-label": "Отделение",
+    "no-department": "Нет отделения",
+    "position": "Выберите позицию",
+    "position-label": "Позиция",
+    "no-position": "Нет позиции",
+    "role-label": "Роль пользователя",
+    "role-employee": "Сотрудник",
+    "role-admin": "Администратор",
+    "cancel": "Отмена",
+    "confirm": "Подтвердить",
+    "user-updated": "Пользователь был обновлен",
+    "user-created": "Пользователь был создан",
+    "error": "Что-то пошло не так",
+    "loading": "Загрузка..."
   }
 }
