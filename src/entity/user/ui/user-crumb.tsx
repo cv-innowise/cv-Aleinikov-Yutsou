@@ -18,7 +18,7 @@ export const UserCrumb: React.FC<UserCrumbProps> = ({ id, href }) => {
     <>
       <BreadcrumbSeparator />
       <BreadcrumbItem>
-        <BreadcrumbLink href={href}>{label}</BreadcrumbLink>
+        <BreadcrumbLink href={href + "/profile"}>{label}</BreadcrumbLink>
       </BreadcrumbItem>
     </>
   );

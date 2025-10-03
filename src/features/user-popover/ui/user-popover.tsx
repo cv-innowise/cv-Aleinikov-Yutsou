@@ -42,7 +42,7 @@ export const UserPopover: React.FC<UserPopoverProps> = ({ user }) => {
         </SidebarMenuButton>
       </PopoverTrigger>
       <PopoverContent side="top" align="start" className="flex flex-col gap-2.5 p-2">
-        <Link className={itemCls} href={`/users/${user?.id}`}>
+        <Link className={itemCls} href={`/users/${user?.id}/profile`}>
           <User size={24} />
           {t("profile")}
         </Link>

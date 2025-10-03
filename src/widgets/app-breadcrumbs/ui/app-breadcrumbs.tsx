@@ -18,6 +18,10 @@ export const AppBreadcrumbs = () => {
         {parts.map((part, idx) => {
           const href = "/" + parts.slice(0, idx + 1).join("/");
 
+          if (part === "profile" && parts[idx - 2] === "users" && !isNaN(Number(parts[idx - 1]))) {
+            return null;
+          }
+
           if (parts[idx - 1] === "users") {
             return <UserCrumb key={href} id={part} href={href} />;
           }
