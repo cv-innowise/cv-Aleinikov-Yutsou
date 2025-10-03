@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 export const Deleteble: Story = {
   render: () => {
     const [items, setItems] = useState(mockItems);
-    const onDeleteItems = (ids: number[]) => {
+    const onDeleteItems = (ids: string[]) => {
       setItems(
         items.filter((item) => ids.find((id) => id === item.id) === undefined)
       );
