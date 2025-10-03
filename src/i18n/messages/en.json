@@ -1,47 +1,376 @@
 {
-    "auth":{
-        "login":{
-            "title":"Welcome back",
-            "subtitle":"Hello again! Log in to continue",
-            "emailPlaceholder":"Email",
-            "passwordPlaceholder":"Password",
-            "forgotPassword":"Forgot password?",
-            "submit":"Log In"
-        },
-        "signup":{
-            "title":"Register now",
-            "subtitle":"Welcome! Sign up to continue",
-            "emailPlaceholder":"Email",
-            "passwordPlaceholder":"Password",
-            "submit":"Create account",
-            "haveAccount":"I have an account"
-        },
-        "navbar":{
-            "login":"Log In",
-            "signup":"Sign Up"
-        }
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Hello again! Log in to continue",
+      "emailPlaceholder": "Email",
+      "passwordPlaceholder": "Password",
+      "forgotPassword": "Forgot password?",
+      "submit": "Log In"
     },
-    "sidebar":{
-        "users": "Employees",
-        "skills": "Skills",
-        "cvs": "CVs",
-        "languages": "Languages",
-
-        "profile": "Profile",
-        "settings": "Settings",
-        "logout": "Logout"
+    "signup": {
+      "title": "Register now",
+      "subtitle": "Welcome! Sign up to continue",
+      "emailPlaceholder": "Email",
+      "passwordPlaceholder": "Password",
+      "submit": "Create account",
+      "haveAccount": "I have an account"
     },
-    "breadcrumbs":{ 
-        "users": "Employees",
-        "skills": "Skills",
-        "cvs": "CVs",
-        "languages": "Languages",
-        "settings": "Settings"
-    },
-    "skill-item": {
-        "add-skill": "Add new skill...",
-        "select-skill": "Select skill...",
-        "search-skill": "Search skills...",
-        "no-skills": "No skills found."
+    "navbar": {
+      "login": "Log In",
+      "signup": "Sign Up"
     }
+  },
+  "sidebar": {
+    "users": "Employees",
+    "skills": "Skills",
+    "cvs": "CVs",
+    "languages": "Languages",
+
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "breadcrumbs": {
+    "users": "Employees",
+    "skills": "Skills",
+    "cvs": "CVs",
+    "languages": "Languages",
+    "settings": "Settings",
+    "profile": "Profile",
+    "projects": "Projects"
+  },
+  "language-item": {
+    "add-language": "Add new language...",
+    "select-language": "Select language...",
+    "search-language": "Search language...",
+    "no-languages": "No languages found."
+  },
+  "skill-item": {
+    "add-skill": "Add new skill...",
+    "select-skill": "Select skill...",
+    "search-skill": "Search skills...",
+    "no-skills": "No skills found."
+  },
+  "theme-switcher": {
+    "toggle": "Toggle theme",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "data-table": {
+    "search": "Search",
+    "loading": "Loading...",
+    "no-results": "No more results"
+  },
+  "not-found": {
+    "user-not-found": "Sorry, user not found.",
+    "your-profile": "Maybe you've ment to see your profile?",
+    "project-not-found": "Sorry, project not found.",
+    "projects": "Please, select project from available."
+  },
+  "project-details": {
+    "update-project": "Update Project",
+    "till-now": "Till now"
+  },
+  "user-profile": {
+    "member-since": "A member since"
+  },
+  "user-nav": {
+    "profile": "Profile",
+    "languages": "Languages",
+    "skills": "Skills"
+  },
+  "profile-form": {
+    "first-name": "First name",
+    "last-name": "Last name",
+    "department": "Department",
+    "select-department": "Select department",
+    "no-department": "No department",
+    "select-position": "Select position",
+    "no-position": "No position",
+    "position": "Position",
+    "update": "Update",
+    "profile-updated": "Profile was updated",
+    "nothing-changed": "Nothing was changed",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "skills-preview": {
+    "skills": "Skills",
+    "delete": "Delete skills",
+    "skills-deleted": "Skills were deleted",
+    "skill-deleted": "Skill was deleted",
+    "skill-updated": "Skill was updated",
+    "skill-added": "Skill was added",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "languages-preview": {
+    "languages": "Languages",
+    "delete": "Delete languages",
+    "languages-deleted": "Languages were deleted",
+    "language-deleted": "Language was deleted",
+    "language-updated": "Language was updated",
+    "language-added": "Language was added",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "columns": {
+    "name": "Name",
+    "description": "Description",
+    "employee": "Employee",
+    "native-name": "Native Name",
+    "iso2": "ISO2",
+    "internal-name": "Internal Name",
+    "domain": "Domain",
+    "start-date": "Start Date",
+    "end-date": "End Date",
+    "category": "Category",
+    "first-name": "First Name",
+    "last-name": "Last Name",
+    "email": "Email",
+    "department": "Department",
+    "position": "Position"
+  },
+  "cvs-list": {
+    "cvs": "CVs",
+    "create-cv": "Create CV"
+  },
+  "cv-actions": {
+    "open": "Open menu",
+    "actions": "Actions",
+    "details": "CV Details",
+    "update": "Update CV",
+    "delete": "Delete CV",
+    "alert-title": "Are you absolutely sure?",
+    "alert-description": "This action cannot be undone. This will permanently delete \nthis project and remove the data from our servers.",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "cv-deleted": "CV was deleted",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "cv-form": {
+    "update": "Update CV",
+    "create": "Create CV",
+    "name": "CV name",
+    "name-label": "Name",
+    "education": "Education",
+    "education-label": "Education (optional)",
+    "description": "CV description",
+    "description-label": "Description",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "cv-updated": "CV was updated",
+    "cv-created": "CV was created",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "departments-list": {
+    "departments": "Departments",
+    "create-department": "Create Department"
+  },
+  "department-actions": {
+    "open": "Open menu",
+    "actions": "Actions",
+    "update": "Update Department",
+    "delete": "Delete Department",
+    "alert-title": "Are you absolutely sure?",
+    "alert-description": "This action cannot be undone. This will permanently delete \nthis department and remove the data from our servers.",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "department-deleted": "Department was deleted",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "department-form": {
+    "update": "Update Department",
+    "create": "Create Department",
+    "name": "Department name",
+    "name-label": "Name",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "department-updated": "Department  was updated",
+    "department-created": "Department  was created",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "languages-list": {
+    "languages": "Languages",
+    "create-language": "Create Language"
+  },
+  "language-actions": {
+    "open": "Open menu",
+    "actions": "Actions",
+    "update": "Update Language",
+    "delete": "Delete Language",
+    "alert-title": "Are you absolutely sure?",
+    "alert-description": "This action cannot be undone. This will permanently delete \nthis language and remove the data from our servers.",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "language-deleted": "Language was deleted",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "language-form": {
+    "update": "Update Language",
+    "create": "Create Language",
+    "name": "Language name",
+    "name-label": "Name",
+    "native-name": "Language native name",
+    "native-name-label": "Native Name (optional)",
+    "iso2": "Language iso2 format",
+    "iso2-label": "ISO2",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "language-updated": "Language was updated",
+    "language-created": "Language was created",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "positions-list": {
+    "positions": "Positions",
+    "create-position": "Create Position"
+  },
+  "position-actions": {
+    "open": "Open menu",
+    "actions": "Actions",
+    "update": "Update Position",
+    "delete": "Delete Position",
+    "alert-title": "Are you absolutely sure?",
+    "alert-description": "This action cannot be undone. This will permanently delete \nthis position and remove the data from our servers.",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "position-deleted": "Position was deleted",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "position-form": {
+    "update": "Update Position",
+    "create": "Create Position",
+    "name": "Position name",
+    "name-label": "Name",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "position-updated": "Position  was updated",
+    "position-created": "Position was created",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "projects-list": {
+    "projects": "Projects",
+    "create-project": "Create Project"
+  },
+  "project-actions": {
+    "open": "Open menu",
+    "actions": "Actions",
+    "details": "Project Details",
+    "update": "Update Project",
+    "delete": "Delete Project",
+    "alert-title": "Are you absolutely sure?",
+    "alert-description": "This action cannot be undone. This will permanently delete \nthis project and remove the data from our servers.",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "project-deleted": "Project was deleted",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "project-form": {
+    "update": "Update Project",
+    "create": "Create Project",
+    "name": "Project name",
+    "name-label": "Name",
+    "domain": "Project domain",
+    "domain-label": "Domain",
+    "start-date-label": "Start Date",
+    "end-date-label": "End Date (optional)",
+    "pick-date": "Pick a date",
+    "description": "Write something about this project...",
+    "description-label": "Description",
+    "environment": "Press \"Enter\" to add environment",
+    "environment-label": "Environment",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "project-updated": "Project was updated",
+    "project-created": "Project was created",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "skills-list": {
+    "skills": "Skills",
+    "create-skill": "Create Skill"
+  },
+  "skill-actions": {
+    "open": "Open menu",
+    "actions": "Actions",
+    "update": "Update Skill",
+    "delete": "Delete Skill",
+    "alert-title": "Are you absolutely sure?",
+    "alert-description": "This action cannot be undone. This will permanently delete \nthis skill and remove the data from our servers.",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "skill-deleted": "Skill was deleted",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "skill-form": {
+    "update": "Update Skill",
+    "create": "Create Skill",
+    "name": "Skill Name",
+    "name-label": "Name",
+    "category": "Select Category",
+    "category-label": "Category",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "skill-updated": "Skill was updated",
+    "skill-created": "Skill was created",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "users-list": {
+    "users": "Users",
+    "create-user": "Create User"
+  },
+  "user-actions": {
+    "open": "Open menu",
+    "actions": "Actions",
+    "profile": "Profile",
+    "update": "Update User",
+    "delete": "Delete User",
+    "alert-title": "Are you absolutely sure?",
+    "alert-description": "This action cannot be undone. This will permanently delete \nthis user and remove the data from our servers.",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "user-deleted": "User was deleted",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  },
+  "user-form": {
+    "update": "Update User",
+    "create": "Create User",
+    "email": "Email",
+    "password": "Password",
+    "first-name": "First Name",
+    "last-name": "Last Name",
+    "cvs": "Select cvs",
+    "cvs-label": "CVs",
+    "searcg-cvs": "Search CVs...",
+    "department": "Select department",
+    "department-label": "Department",
+    "no-department": "No department",
+    "position": "Select position",
+    "position-label": "Position",
+    "no-position": "No position",
+    "role-label": "User role",
+    "role-employee": "Employee",
+    "role-admin": "Admin",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "user-updated": "User was updated",
+    "user-created": "User was created",
+    "error": "Something went wrong",
+    "loading": "Loading..."
+  }
 }

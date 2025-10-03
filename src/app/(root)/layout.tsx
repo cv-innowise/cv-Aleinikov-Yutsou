@@ -1,4 +1,3 @@
-import { LanguageSwitcher } from "@/features/language-switcher";
 import { RouteGuard } from "@/shared/auth/model/route-guard";
 import { SidebarProvider, SidebarTrigger } from "@/shared/components/ui/sidebar";
 import { AppBreadcrumbs } from "@/widgets/app-breadcrumbs";
@@ -12,15 +11,14 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
     <RouteGuard mode="require-auth">
       <SidebarProvider>
         <Navbar />
-        <div>
+        <div className="w-full h-full">
           <header className="flex items-center gap-4 p-2.5">
             <SidebarTrigger />
 
             <AppBreadcrumbs />
 
-            <LanguageSwitcher />
           </header>
-          <main className="p-2.5">{children}</main>
+          <main className="p-4">{children}</main>
         </div>
       </SidebarProvider>
     </RouteGuard>
