@@ -36,13 +36,19 @@
     "skills": "Skills",
     "cvs": "CVs",
     "languages": "Languages",
-
     "settings": "Settings",
-    "profile": "Profile"
+    "profile": "Profile",
+    "projects": "Projects"
   },
   "not-found": {
     "user-not-found": "Sorry, user not found.",
-    "your-profile": "Maybe you've ment to see your profile?"
+    "your-profile": "Maybe you've ment to see your profile?",
+    "project-not-found": "Sorry, project not found.",
+    "projects": "Please, select project from available."
+  },
+  "project-details": {
+    "update-project": "Update Project",
+    "till-now": "Till now"
   },
   "user-profile": {
     "member-since": "A member since"
