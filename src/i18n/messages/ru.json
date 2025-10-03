@@ -38,7 +38,8 @@
     "cvs": "Резюме",
     "languages": "Языки",
     "settings": "Настройки",
-    "profile": "Профиль"
+    "profile": "Профиль",
+    "projects": "Проекты"
   },
   "theme-switcher": {
     "toggle": "Сменить тему",
@@ -54,7 +55,13 @@
   },
   "not-found": {
     "user-not-found": "Извините, пользователь не найден.",
-    "your-profile": "Возможно, вы хотели посмотреть свой профиль?"
+    "your-profile": "Возможно, вы хотели посмотреть свой профиль?",
+    "project-not-found": "Извините, проект не найден.",
+    "projects": "Пожалуйста, выберите проект из списка доступных."
+  },
+  "project-details": {
+    "update-project": "Обновить проект",
+    "till-now": "До сих пор"
   },
   "user-profile": {
     "member-since": "Пользователь с"

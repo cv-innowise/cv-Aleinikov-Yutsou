@@ -35,9 +35,9 @@
     "skills": "Fähigkeiten",
     "cvs": "Lebenslauf",
     "languages": "Sprachen",
-
     "settings": "Einstellungen",
-    "profile": "Profil"
+    "profile": "Profil",
+    "projects": "Projekte"
   },
   "theme-switcher": {
     "toggle": "Thema umschalten",
@@ -49,13 +49,17 @@
   "data-table": {
     "search": "Suchen",
     "loading": "Laden...",
-    "no-results": "Keine Ergebnisse mehr",
-    "settings": "Einstellungen",
-    "profile": "Profil"
+    "no-results": "Keine Ergebnisse mehr"
   },
   "not-found": {
     "user-not-found": "Entschuldigung, der Benutzer nicht gefunden.",
-    "your-profile": "Vielleicht haben Sie Ihr Profil sehen?"
+    "your-profile": "Vielleicht haben Sie Ihr Profil sehen?",
+    "project-not-found": "Entschuldigung, Projekt nicht gefunden.",
+    "projects": "Bitte wählen Sie Projekt aus verfügbar."
+  },
+  "project-details": {
+    "update-project": "Projekt aktualisieren",
+    "till-now": "Bisher"
   },
   "user-profile": {
     "member-since": "Ein Mitglied seit"
