@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getAccessTokenServerSide, getRefreshTokenServerSide } from "@/shared/lib/cookies";
+import { getAccessTokenServerSide, getRefreshTokenServerSide, getSessionServerSide } from "@/shared/lib/cookies";
 import { isTokenExpired } from "./token-utils";
 
 type Mode = "require-auth" | "guest-only";
@@ -14,8 +14,9 @@ export const RouteGuard: React.FC<RouteGuardProps> = async ({ children, mode }) 
 
   const accessToken = await getAccessTokenServerSide();
   const refreshToken = await getRefreshTokenServerSide();
+  const session = await getSessionServerSide();
 
-  if (!isTokenExpired(accessToken) || !isTokenExpired(refreshToken)) {
+  if ((!isTokenExpired(accessToken) || !isTokenExpired(refreshToken)) && session) {
     isAuthChecked = true;
   }
 
