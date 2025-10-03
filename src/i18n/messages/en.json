@@ -40,6 +40,12 @@
     "profile": "Profile",
     "projects": "Projects"
   },
+  "language-item": {
+    "add-language": "Add new language...",
+    "select-language": "Select language...",
+    "search-language": "Search language...",
+    "no-languages": "No languages found."
+  },
   "theme-switcher": {
     "toggle": "Toggle theme",
     "theme": "Theme",

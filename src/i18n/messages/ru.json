@@ -41,6 +41,12 @@
     "profile": "Профиль",
     "projects": "Проекты"
   },
+  "language-item": {
+    "add-language": "Добавить новый язык...",
+    "select-language": "Выберите язык...",
+    "search-language": "Поиск языка...",
+    "no-languages": "Языки не найдены."
+  },
   "theme-switcher": {
     "toggle": "Сменить тему",
     "theme": "Тема",

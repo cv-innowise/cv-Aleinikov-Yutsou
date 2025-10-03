@@ -39,6 +39,12 @@
     "profile": "Profil",
     "projects": "Projekte"
   },
+  "language-item": {
+    "add-language": "Fügen Sie eine neue Sprache hinzu...",
+    "select-language": "Wählen Sie die Zunge...",
+    "search-language": "Sprachsuche...",
+    "no-languages": "Sprachen werden nicht gefunden."
+  },
   "theme-switcher": {
     "toggle": "Thema umschalten",
     "theme": "Thema",
