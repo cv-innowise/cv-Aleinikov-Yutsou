@@ -40,9 +40,10 @@
     "projects": "Projekte"
   },
   "language-item": {
-    "select-language": "Sprache auswählen...",
-    "search-language": "Suchsprache...",
-    "no-languages": "Keine Sprachen gefunden."
+    "add-language": "Fügen Sie eine neue Sprache hinzu...",
+    "select-language": "Wählen Sie die Zunge...",
+    "search-language": "Sprachsuche...",
+    "no-languages": "Sprachen werden nicht gefunden."
   },
   "theme-switcher": {
     "toggle": "Thema umschalten",
