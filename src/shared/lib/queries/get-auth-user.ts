@@ -6,6 +6,11 @@ import { getSessionServerSide } from "../cookies";
 
 export const getAuthUser = async (): Promise<User> => {
   const session = await getSessionServerSide();
+
+  if (!session?.id) {
+    throw new Error("Session ID is undefined");
+  }
+
   const { data } = await query<UserResponse, UserRequest>({
     query: GET_USER,
     variables: { userId: session?.id },
