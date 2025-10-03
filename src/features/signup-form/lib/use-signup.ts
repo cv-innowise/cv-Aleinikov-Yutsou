@@ -23,7 +23,7 @@ export const useSignup = () => {
 
       successAuth(signup);
 
-      router.push(`/users/${signup.user.id}`);
+      router.push(`/users/${signup.user.id}/profile`);
     },
     onError: (e) => {
       const message = e instanceof Error ? e.message : String(e);

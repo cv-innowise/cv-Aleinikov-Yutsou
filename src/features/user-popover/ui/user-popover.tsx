@@ -9,7 +9,7 @@ import { LogOut, User, Settings } from "lucide-react";
 import { clearTokens, removeSession } from "@/shared/lib/cookies";
 import { useRouter } from "next/navigation";
 import { cn } from "@/shared/lib/utils";
-import type { User as UserType } from "cv-graphql";
+import { User as UserType } from "@/shared/graphql/users";
 import { useTranslations } from "next-intl";
 
 interface UserPopoverProps {
@@ -42,7 +42,7 @@ export const UserPopover: React.FC<UserPopoverProps> = ({ user }) => {
         </SidebarMenuButton>
       </PopoverTrigger>
       <PopoverContent side="top" align="start" className="flex flex-col gap-2.5 p-2">
-        <Link className={itemCls} href={`/users/${user?.id}`}>
+        <Link className={itemCls} href={`/users/${user?.id}/profile`}>
           <User size={24} />
           {t("profile")}
         </Link>
