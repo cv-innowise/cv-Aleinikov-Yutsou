@@ -2,7 +2,6 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarRail } from "@/shared/co
 import { NavMenu } from "./nav-menu";
 import { UserPopover } from "@/features/user-popover";
 import { getAuthUser } from "@/shared/lib/queries/get-auth-user";
-import { User } from "@/shared/types/cv-graphql";
 
 export const Navbar = async () => {
   const user = await getAuthUser();
@@ -13,7 +12,7 @@ export const Navbar = async () => {
         <NavMenu />
       </SidebarContent>
       <SidebarFooter>
-        <UserPopover user={user as User} />
+        <UserPopover user={user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
