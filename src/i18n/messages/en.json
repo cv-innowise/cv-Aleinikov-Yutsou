@@ -40,6 +40,13 @@
     "settings": "Settings",
     "profile": "Profile"
   },
+  "theme-switcher": {
+    "toggle": "Toggle theme",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
   "not-found": {
     "user-not-found": "Sorry, user not found.",
     "your-profile": "Maybe you've ment to see your profile?"
