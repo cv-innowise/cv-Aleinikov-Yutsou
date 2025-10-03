@@ -35,7 +35,9 @@
     "skills": "Fähigkeiten",
     "cvs": "Lebenslauf",
     "languages": "Sprachen",
-    "settings": "Einstellungen"
+
+    "settings": "Einstellungen",
+    "profile": "Profil"
   },
   "theme-switcher": {
     "toggle": "Thema umschalten",

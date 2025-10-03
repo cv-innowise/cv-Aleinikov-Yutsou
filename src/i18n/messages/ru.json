@@ -40,6 +40,13 @@
     "settings": "Настройки",
     "profile": "Профиль"
   },
+  "theme-switcher": {
+    "toggle": "Сменить тему",
+    "theme": "Тема",
+    "light": "Светлая",
+    "dark": "Темная",
+    "system": "Системная"
+  },
   "data-table": {
     "search": "Поиск",
     "loading": "Загрузка...",
