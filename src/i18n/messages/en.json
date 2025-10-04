@@ -182,6 +182,14 @@
       "skills": "Skills",
       "projects": "Projects",
       "preview": "Preview"
+    },
+    "editForm":{
+      "nameLabel": "Name",
+      "educationLabel": "Education",
+      "descriptionLabel": "Description",
+      "submit": "Save changes",
+      "updateSuccess": "CV was updated",
+      "updateError": "Something went wrong"
     }
   },
   "departments-list": {

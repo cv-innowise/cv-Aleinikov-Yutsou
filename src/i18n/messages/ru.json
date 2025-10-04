@@ -183,6 +183,14 @@
       "skills": "Навыки",
       "projects": "Проекты",
       "preview": "Предпросмотр"
+    },
+    "editForm":{
+      "nameLabel": "Название",
+      "educationLabel": "Образование",
+      "descriptionLabel": "Описание",
+      "submit": "Сохранить изменения",
+      "updateSuccess": "Резюме было обновлено",
+      "updateError": "Что-то пошло не так"
     }
   },
   "departments-list": {

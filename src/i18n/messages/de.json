@@ -181,6 +181,14 @@
       "skills": "Fähigkeiten",
       "projects": "Projekte",
       "preview": "Vorschau"
+    },
+    "editForm":{
+      "nameLabel": "Name",
+      "educationLabel": "Education",
+      "descriptionLabel": "Beschreibung",
+      "submit": "Änderungen speichern",
+      "updateSuccess": "Lebenslauf wurde aktualisiert",
+      "updateError": "Etwas lief schief"
     }
   },
   "departments-list": {
