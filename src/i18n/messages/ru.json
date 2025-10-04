@@ -39,7 +39,8 @@
     "languages": "Языки",
     "settings": "Настройки",
     "profile": "Профиль",
-    "projects": "Проекты"
+    "projects": "Проекты",
+    "preview": "Предпросмотр"
   },
   "language-item": {
     "add-language": "Добавить новый язык...",
@@ -175,6 +176,14 @@
     "cv-created": "Резюме было создано",
     "error": "Что-то пошло не так",
     "loading": "Загрузка..."
+  },
+  "cv":{
+    "navigation":{
+      "details": "Детали",
+      "skills": "Навыки",
+      "projects": "Проекты",
+      "preview": "Предпросмотр"
+    }
   },
   "departments-list": {
     "departments": "Отделы",

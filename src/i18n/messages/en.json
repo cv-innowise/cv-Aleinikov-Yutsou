@@ -38,7 +38,8 @@
     "languages": "Languages",
     "settings": "Settings",
     "profile": "Profile",
-    "projects": "Projects"
+    "projects": "Projects",
+    "preview": "Preview"
   },
   "language-item": {
     "add-language": "Add new language...",
@@ -174,6 +175,14 @@
     "cv-created": "CV was created",
     "error": "Something went wrong",
     "loading": "Loading..."
+  },
+  "cv":{
+    "navigation":{
+      "details": "Details",
+      "skills": "Skills",
+      "projects": "Projects",
+      "preview": "Preview"
+    }
   },
   "departments-list": {
     "departments": "Departments",
