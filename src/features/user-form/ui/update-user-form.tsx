@@ -175,7 +175,7 @@ export const UpdateUserForm: React.FC<UpdateUserFormProps> = ({
             );
           }}
         />
-        <div className="flex justify-between">
+        <div className="flex flex-col md:flex-row gap-y-2 justify-between">
           <FormField
             control={form.control}
             name="departmentId"

@@ -133,7 +133,7 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
             </FormItem>
           )}
         />
-        <div className="flex gap-x-4 justify-between">
+        <div className="flex flex-col md:flex-row gap-x-4 gap-y-2 justify-between">
           <FormField
             control={form.control}
             name="profile.first_name"
@@ -228,7 +228,7 @@ export const CreateUserForm: React.FC<CreateUserFormProps> = ({
             );
           }}
         />
-        <div className="flex justify-between">
+        <div className="flex flex-col md:flex-row gap-x-4 gap-y-2 justify-between">
           <FormField
             control={form.control}
             name="departmentId"
