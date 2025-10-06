@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client"
+import { gql } from "@apollo/client";
 
 export const GET_CVS = gql`
   query GetCvs {
@@ -6,7 +6,7 @@ export const GET_CVS = gql`
       id
       name
       description
-      user{
+      user {
         id
         email
       }
@@ -37,6 +37,7 @@ export const GET_CV = gql`
       skills {
         name
         mastery
+        categoryId
       }
       languages {
         name

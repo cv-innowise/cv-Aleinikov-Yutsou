@@ -190,6 +190,10 @@
       "submit": "Save changes",
       "updateSuccess": "CV was updated",
       "updateError": "Something went wrong"
+    },
+    "skills":{
+      "cvNotFound": "CV not found",
+      "yourCV": "Maybe you've ment to see your CV?"
     }
   },
   "departments-list": {

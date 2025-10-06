@@ -189,6 +189,10 @@
       "submit": "Änderungen speichern",
       "updateSuccess": "Lebenslauf wurde aktualisiert",
       "updateError": "Etwas lief schief"
+    },
+    "skills":{
+      "cvNotFound": "Lebenslauf nicht gefunden",
+      "yourCV": "Vielleicht sollst du deinen Lebenslauf sehen?"
     }
   },
   "departments-list": {

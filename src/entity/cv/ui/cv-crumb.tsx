@@ -3,7 +3,8 @@
 import React from "react";
 import { useQuery } from "@apollo/client/react";
 import { BreadcrumbSeparator, BreadcrumbItem, BreadcrumbLink } from "@/shared/components/ui/breadcrumb";
-import { CV_QUERY, CvResponse } from "@/shared/graphql/cv";
+import { GET_CV } from "@/shared/graphql/cvs/cvs.queries";
+import { CvResponse } from "@/shared/graphql/cvs/cvs.types";
 
 interface CvCrumbProps {
   id: string;
@@ -11,9 +12,7 @@ interface CvCrumbProps {
 }
 
 export const CvCrumb: React.FC<CvCrumbProps> = ({ id, href }) => {
-  const { data, error } = useQuery<CvResponse>(CV_QUERY, { variables: { cvId: id } });
-  console.log(error);
-  console.log(data);
+  const { data } = useQuery<CvResponse>(GET_CV, { variables: { cvId: id } });
 
   const label = data?.cv.name || id;
 
