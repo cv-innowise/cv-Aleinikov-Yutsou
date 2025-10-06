@@ -194,6 +194,10 @@
     "skills":{
       "cvNotFound": "CV not found",
       "yourCV": "Maybe you've ment to see your CV?"
+    },
+    "projects":{
+      "title": "Projects",
+      "addNewButton": "Add New Project"
     }
   },
   "departments-list": {
