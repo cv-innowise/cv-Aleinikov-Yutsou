@@ -38,7 +38,9 @@
     "languages": "Languages",
     "settings": "Settings",
     "profile": "Profile",
-    "projects": "Projects"
+    "projects": "Projects",
+    "positions": "Positions",
+    "departments": "Departments"
   },
   "language-item": {
     "add-language": "Add new language...",
@@ -361,6 +363,7 @@
     "password": "Password",
     "first-name": "First Name",
     "last-name": "Last Name",
+    "search-cvs": "Search CVs...",
     "cvs": "Select cvs",
     "cvs-label": "CVs",
     "searcg-cvs": "Search CVs...",

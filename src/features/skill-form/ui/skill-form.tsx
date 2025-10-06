@@ -80,7 +80,7 @@ export const SkillForm: React.FC<SkillFormProps> = ({ skillId }) => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
           <DialogTitle>{skill ? t("update") : t("create")}</DialogTitle>
-          <div className="flex justify-between">
+          <div className="flex flex-col md:flex-row gap-y-2 justify-between">
             <FormField
               control={form.control}
               name="name"
@@ -105,7 +105,7 @@ export const SkillForm: React.FC<SkillFormProps> = ({ skillId }) => {
                     defaultValue={field.value}
                   >
                     <FormControl>
-                      <SelectTrigger>
+                      <SelectTrigger className="w-full">
                         <SelectValue
                           placeholder={t("category")}
                           data-testid="select-category-value"

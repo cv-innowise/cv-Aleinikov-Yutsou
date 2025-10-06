@@ -93,7 +93,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="space-y-4">
-      <h2 className="text-6xl uppercase text-muted-foreground">{title}</h2>
+      <h2 className="text-2xl md:text-4xl sm:text-6xl uppercase text-muted-foreground">{title}</h2>
       {children}
       <Input
         placeholder={t("search")}

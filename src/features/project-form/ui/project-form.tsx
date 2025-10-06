@@ -143,7 +143,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ projectId }) => {
               </FormItem>
             )}
           />
-          <div className="flex gap-x-2 justify-between">
+          <div className="flex flex-col md:flex-row gap-2 justify-between">
             <FormField
               control={form.control}
               name="start_date"

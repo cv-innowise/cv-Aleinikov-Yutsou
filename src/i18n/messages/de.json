@@ -37,7 +37,9 @@
     "languages": "Sprachen",
     "settings": "Einstellungen",
     "profile": "Profil",
-    "projects": "Projekte"
+    "projects": "Projekte",
+    "positions": "Positionen",
+    "departments": "Abteilungen"
   },
   "language-item": {
     "add-language": "Fügen Sie eine neue Sprache hinzu...",
@@ -360,6 +362,7 @@
     "password": "Passwort",
     "first-name": "Vorname",
     "last-name": "Nachname",
+    "search-cvs": "CVS durchsuchen...",
     "cvs": "Wählen Sie CVS",
     "cvs-label": "Lebenslauf",
     "searcg-cvs": "CVS durchsuchen...",
