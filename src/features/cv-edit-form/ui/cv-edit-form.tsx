@@ -1,6 +1,6 @@
 "use client";
 
-import { Form, FormControl, FormField, FormItem, FormLabel } from "@/shared/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/shared/components/ui/form";
 import { Cv } from "@/shared/graphql/cvs/cvs.types";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import { Input } from "@/shared/components/ui/input";
 import { Textarea } from "@/shared/components/ui/textarea";
 import { Button } from "@/shared/components/ui/button";
+import { useState } from "react";
 
 interface CvEditFormProps {
   cv: Cv;
@@ -20,6 +21,7 @@ type FormValues = InferType<typeof cvUpdateSchema>;
 
 export const CvEditForm: React.FC<CvEditFormProps> = ({ cv }) => {
   const t = useTranslations("cv.editForm");
+  const [isLoading, setIsLoading] = useState(false);
   const form = useForm<FormValues>({
     resolver: yupResolver(cvUpdateSchema),
     defaultValues: {
@@ -32,6 +34,7 @@ export const CvEditForm: React.FC<CvEditFormProps> = ({ cv }) => {
   const { isDirty } = form.formState;
 
   const onSubmit = (formData: FormValues) => {
+    setIsLoading(true);
     updateCv({ cvId: cv.id, ...formData })
       .then(() => {
         toast.success(t("updateSuccess"));
@@ -39,7 +42,8 @@ export const CvEditForm: React.FC<CvEditFormProps> = ({ cv }) => {
       })
       .catch(() => {
         toast.error(t("updateError"));
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
   return (
     <Form {...form}>
@@ -53,6 +57,7 @@ export const CvEditForm: React.FC<CvEditFormProps> = ({ cv }) => {
               <FormControl>
                 <Input type="text" placeholder={t("nameLabel")} {...field} />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -66,6 +71,7 @@ export const CvEditForm: React.FC<CvEditFormProps> = ({ cv }) => {
               <FormControl>
                 <Input type="text" placeholder={t("educationLabel")} {...field} value={field.value ?? ""} />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -79,11 +85,12 @@ export const CvEditForm: React.FC<CvEditFormProps> = ({ cv }) => {
               <FormControl>
                 <Textarea placeholder={t("descriptionLabel")} {...field} />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
 
-        <Button disabled={!isDirty} className="self-end-safe" type="submit">
+        <Button loading={isLoading} disabled={!isDirty} className="self-end-safe" type="submit">
           {t("submit")}
         </Button>
       </form>
