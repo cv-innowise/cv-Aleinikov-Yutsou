@@ -4,7 +4,6 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { MoreHorizontal } from "lucide-react";
 import Link from "next/link";
 import { ProjectItem } from "@/shared/graphql/projects/projects.types";
-import { deleteProject } from "../mutations/delete-project";
 import { Dialog, DialogTrigger } from "@/shared/components/ui/dialog";
 import { ProjectForm } from "@/features/project-form";
 import { Suspense, useTransition } from "react";
@@ -13,31 +12,15 @@ import { toast } from "sonner";
 import { useGetAuthUser } from "@/shared/lib/hooks/use-get-auth-user";
 import { UserRole } from "@/shared/types/cv-graphql";
 import { useTranslations } from "next-intl";
+import { DialogContent } from "@radix-ui/react-dialog";
+import { CvProjectForm } from "@/features/cv-project-form/ui/cv-project-form";
 
 interface ActionsProps {
   project: ProjectItem;
 }
 
 export const Actions: React.FC<ActionsProps> = ({ project }) => {
-  const [isPending, startTransition] = useTransition();
-  const router = useRouter();
-  const authUser = useGetAuthUser();
   const t = useTranslations("project-actions");
-  const isAuthUserAdmin = authUser.role === UserRole.Admin;
-
-  const onDeleteProject = () => {
-    startTransition(async () => {
-      const promise = deleteProject({ projectId: project.id });
-
-      toast.promise(promise, {
-        success: t("project-deleted"),
-        error: t("error"),
-        loading: t("loading"),
-      });
-      router.refresh();
-    });
-  };
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -50,23 +33,14 @@ export const Actions: React.FC<ActionsProps> = ({ project }) => {
         <DropdownMenuLabel>{t("actions")}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href={`/projects/${project.id}`} data-testid="project-link">
-            {t("details")}
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild>
           <Dialog>
-            <DialogTrigger disabled={!isAuthUserAdmin || isPending} data-testid="update-project-button" className="hover:bg-accent hover:text-accent-foreground w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50">
-              {t("update")}
-            </DialogTrigger>
-            <Suspense>
-              <ProjectForm projectId={project.id} />
-            </Suspense>
+            <DialogTrigger className="hover:bg-accent hover:text-accent-foreground w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50">{t("update")}</DialogTrigger>
+            <CvProjectForm project={project} />
           </Dialog>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <AlertDialog>
-            <AlertDialogTrigger disabled={!isAuthUserAdmin || isPending} data-testid="delete-project-button" className="text-destructive hover:bg-destructive/10 dark:hover:bg-destructive/20 hover:text-destructive w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50">
+            <AlertDialogTrigger data-testid="delete-project-button" className="text-destructive hover:bg-destructive/10 dark:hover:bg-destructive/20 hover:text-destructive w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50">
               {t("delete")}
             </AlertDialogTrigger>
             <AlertDialogContent datat-testid="alert-dialog">
@@ -76,9 +50,7 @@ export const Actions: React.FC<ActionsProps> = ({ project }) => {
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel data-testid="alert-dialog-close">{t("cancel")}</AlertDialogCancel>
-                <AlertDialogAction onClick={onDeleteProject} data-testid="alert-dialog-confirm">
-                  {t("continue")}
-                </AlertDialogAction>
+                <AlertDialogAction data-testid="alert-dialog-confirm">{t("continue")}</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>

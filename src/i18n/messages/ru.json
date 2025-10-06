@@ -195,6 +195,10 @@
     "skills":{
       "cvNotFound": "Резюме не найдено",
       "yourCV": "Может быть, вы хотели бы увидеть свои резюме?"
+    },
+    "projects":{
+      "title": "Проекты",
+      "addNewButton": "Добавить новый проект"
     }
   },
   "departments-list": {

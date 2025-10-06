@@ -1,5 +1,5 @@
+import { cvProjectsColumns } from "@/features/cv-projects-columns";
 import { DataTable, DataTableSkeleton } from "@/features/data-table";
-import { projectsColumns } from "@/features/projects-columns";
 import { Button } from "@/shared/components/ui/button";
 import { Dialog, DialogTrigger } from "@/shared/components/ui/dialog";
 import { getAuthUser } from "@/shared/lib/queries/get-auth-user";
@@ -15,15 +15,16 @@ interface CvProjectsListProps {
 export const CvProjectsList: FCWithSkeleton<CvProjectsListProps> = async ({ cvId }) => {
   const cv = await getCv(cvId);
   const cvProjects = cv?.projects || [];
-  console.log(cvProjects);
+  console.log(cvProjects[0]);
 
   const authUser = await getAuthUser();
-  const isCanAddNew = authUser.role === UserRole.Admin || authUser.id === cv?.user?.id;
   const t = await getTranslations("cv.projects");
+
+  const isCanAddNew = authUser.role === UserRole.Admin || authUser.id === cv?.user?.id;
 
   return (
     <div className="w-full">
-      <DataTable title={t("title")} columns={projectsColumns} data={cvProjects}>
+      <DataTable title={t("title")} columns={cvProjectsColumns} data={cvProjects}>
         {isCanAddNew && (
           <Dialog>
             <DialogTrigger asChild>
@@ -37,7 +38,11 @@ export const CvProjectsList: FCWithSkeleton<CvProjectsListProps> = async ({ cvId
 };
 
 CvProjectsList.Skeleton = () => {
-  return <DataTableSkeleton />;
+  return (
+    <div className="w-full">
+      <DataTableSkeleton />
+    </div>
+  );
 };
 
 CvProjectsList.Skeleton.displayName = "CvProjectsList.Skeleton";

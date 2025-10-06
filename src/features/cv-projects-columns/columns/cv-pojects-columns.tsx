@@ -5,7 +5,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Actions } from "../ui/actions";
 import { ProjectItem } from "@/shared/graphql/projects/projects.types";
 
-export const projectsColumns: ColumnDef<ProjectItem>[] = [
+export const cvProjectsColumns: ColumnDef<ProjectItem>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => <SortableColumn column={column} translateKey="name" />,

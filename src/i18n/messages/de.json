@@ -193,6 +193,10 @@
     "skills":{
       "cvNotFound": "Lebenslauf nicht gefunden",
       "yourCV": "Vielleicht sollst du deinen Lebenslauf sehen?"
+    },
+    "projects":{
+      "title": "Projekte",
+      "addNewButton": "Neues Projekt hinzufügen"
     }
   },
   "departments-list": {

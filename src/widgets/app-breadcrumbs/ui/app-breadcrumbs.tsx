@@ -6,6 +6,7 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbS
 import { UserCrumb } from "@/entity/user";
 import { CvCrumb } from "@/entity/cv";
 import { useTranslations } from "next-intl";
+import { ProjectCrumb } from "@/entity/project";
 
 export const AppBreadcrumbs = () => {
   const pathname = usePathname();
@@ -27,6 +28,9 @@ export const AppBreadcrumbs = () => {
           }
           if (parts[idx - 1] === "cvs") {
             return <CvCrumb key={href} id={part} href={href} />;
+          }
+          if (parts[idx - 1] === "projects") {
+            return <ProjectCrumb key={href} id={part} href={href} />;
           }
 
           return (
