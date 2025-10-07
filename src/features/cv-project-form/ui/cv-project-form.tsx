@@ -20,6 +20,7 @@ import { useTranslations } from "next-intl";
 import { AddCvProjectInput } from "@/shared/types/cv-graphql";
 import { AddCvProjectRequest, AddCvProjectResponse, Cv } from "@/shared/graphql/cvs/cvs.types";
 import { ADD_CV_PROJECT } from "@/shared/graphql/cvs/cvs.mutations";
+import { useCvProjectForm } from "../lib/use-cv-project-form";
 
 interface CvProjectFormProps {
   selectedProject?: Project;
@@ -40,91 +41,7 @@ type FormTypes = {
 
 export const CvProjectForm: React.FC<CvProjectFormProps> = ({ projects, selectedProject, cvId }) => {
   const t = useTranslations("cv.projects.form");
-  const [addCvProject, { loading: addLoading, error: addError }] = useMutation<AddCvProjectResponse, AddCvProjectRequest>(ADD_CV_PROJECT);
-  const [isPending, startTransition] = useTransition();
-
-  const form = useForm<FormTypes>({
-    defaultValues: {
-      projectId: selectedProject?.id || "",
-      description: "",
-      domain: "",
-      responsibilities: "",
-      roles: "",
-      start_date: null,
-      end_date: null,
-      environment: [],
-    },
-  });
-
-  const [loadProject, { data: projectData, loading: projectLoading, error: projectError }] = useLazyQuery<ProjectResponse>(GET_PROJECT, {
-    fetchPolicy: "network-only",
-  });
-
-  useEffect(() => {
-    const project = projectData?.project;
-    if (project) {
-      form.setValue("description", project.description || "");
-      form.setValue("domain", project.domain || "");
-      form.setValue("start_date", project.start_date ? new Date(project.start_date) : null);
-      form.setValue("end_date", project.end_date ? new Date(project.end_date) : null);
-      form.setValue("environment", project.environment || []);
-    }
-  }, [projectData, form]);
-
-  const onSubmit = (formData: FormTypes) => {
-    const roles =
-      formData.roles
-        ?.split(/[,;\n]/)
-        .map((r) => r.trim())
-        .filter(Boolean) ?? [];
-
-    const responsibilities =
-      formData.responsibilities
-        ?.split(/\n|[,;]+/)
-        .map((r) => r.trim())
-        .filter(Boolean) ?? [];
-
-    const start_date = formData.start_date ? formData.start_date.toISOString() : "";
-    const end_date = formData.end_date ? formData.end_date.toISOString() : "";
-
-    const payload: AddCvProjectInput = {
-      cvId,
-      projectId: formData.projectId,
-      roles,
-      responsibilities,
-      start_date,
-      end_date,
-    };
-
-    startTransition(() => {
-      addCvProject({
-        variables: { project: payload },
-        onCompleted: (res) => {
-          console.log("mutation success", res);
-          form.reset();
-        },
-        onError: (e) => {
-          console.error("mutation error", e);
-        },
-      });
-    });
-  };
-
-  const clearForm = () => {
-    form.reset();
-  };
-
-  const handleProjectChange = (value: string) => {
-    form.reset({
-      projectId: value,
-      description: "",
-      domain: "",
-      start_date: null,
-      end_date: null,
-      environment: [],
-    });
-    loadProject({ variables: { projectId: value } });
-  };
+  const { form, onSubmit, isPending, clearForm, handleProjectChange, projectLoading, projectError } = useCvProjectForm({ cvId, selectedProject, projects });
 
   return (
     <DialogContent>

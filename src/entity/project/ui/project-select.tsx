@@ -34,7 +34,7 @@ export const ProjectSelect: React.FC<ProjectSelectProps> = ({ projects, value, o
         </SelectContent>
       </Select>
       {showClear && (
-        <Button variant="ghost" size="icon" className="rounded hover:bg-muted text-muted-foreground hover:text-foreground transition" onClick={onClear}>
+        <Button type="button" variant="ghost" size="icon" className="rounded hover:bg-muted text-muted-foreground hover:text-foreground transition" onClick={onClear}>
           <X size={14} />
         </Button>
       )}
