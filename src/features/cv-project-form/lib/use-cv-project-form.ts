@@ -1,4 +1,4 @@
-import { Project, ProjectItem, ProjectResponse } from "@/shared/graphql/projects/projects.types";
+import { ProjectResponse } from "@/shared/graphql/projects/projects.types";
 import { useEffect, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { addCvProject } from "../mutation/add-cv-project";
@@ -9,8 +9,7 @@ import { useRouter } from "next/navigation";
 
 interface AddCvProjectInput {
   cvId: string;
-  selectedProject?: Project;
-  projects: ProjectItem[];
+  projectId?: string;
 }
 
 type FormTypes = {
@@ -24,7 +23,7 @@ type FormTypes = {
   environment: string[];
 };
 
-export const useCvProjectForm = ({ cvId, selectedProject }: AddCvProjectInput) => {
+export const useCvProjectForm = ({ cvId, projectId }: AddCvProjectInput) => {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
@@ -32,7 +31,7 @@ export const useCvProjectForm = ({ cvId, selectedProject }: AddCvProjectInput) =
 
   const form = useForm<FormTypes>({
     defaultValues: {
-      projectId: selectedProject?.id || "",
+      projectId: projectId || "",
       description: "",
       domain: "",
       responsibilities: "",
@@ -42,6 +41,15 @@ export const useCvProjectForm = ({ cvId, selectedProject }: AddCvProjectInput) =
       environment: [],
     },
   });
+
+  useEffect(() => {
+    if (projectId) {
+      if (form.getValues("projectId") !== projectId) {
+        form.setValue("projectId", projectId);
+      }
+      loadProject({ variables: { projectId } });
+    }
+  }, [projectId, loadProject, form]);
 
   useEffect(() => {
     const project = projectData?.project;

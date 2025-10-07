@@ -198,6 +198,10 @@
       "title": "Projekte",
       "addNewButton": "Neues Projekt hinzufügen",
       "form": {
+        "title":{
+          "create":"Projekt zum Lebenslauf hinzufügen",
+          "update":"Projekt im Lebenslauf aktualisieren"
+        },
         "project": {
           "label": "Projekt",
           "placeholder": "Projekt auswählen"

@@ -199,6 +199,10 @@
       "title": "Projects",
       "addNewButton": "Add New Project",
       "form":{
+        "title":{
+          "create":"Add Project to CV",
+          "update":"Update Project in CV"
+        },
         "project":{
           "label":"Project",
           "placeholder":"Select project"

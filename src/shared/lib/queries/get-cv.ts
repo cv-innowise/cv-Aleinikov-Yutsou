@@ -1,6 +1,5 @@
 import { query } from "../apollo/apollo-client";
 import { CvRequest, CvResponse } from "@/shared/graphql/cvs/cvs.types";
-
 import { GET_CV } from "@/shared/graphql/cvs/cvs.queries";
 
 export const getCv = async (cvId: string) => {

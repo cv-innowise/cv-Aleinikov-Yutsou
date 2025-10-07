@@ -1,11 +1,9 @@
 "use client";
 
-import { useEffect, useTransition } from "react";
-import { useForm } from "react-hook-form";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { ProjectSelect } from "@/entity/project";
-import { DialogContent } from "@/shared/components/ui/dialog";
+import { DialogContent, DialogTitle } from "@/shared/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/shared/components/ui/form";
 import { Input } from "@/shared/components/ui/input";
 import { Textarea } from "@/shared/components/ui/textarea";
@@ -13,40 +11,24 @@ import { Button } from "@/shared/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/shared/components/ui/popover";
 import { Calendar } from "@/shared/components/ui/calendar";
 import { cn } from "@/shared/lib/utils";
-import { GET_PROJECT } from "@/shared/graphql/projects/projects.queries";
-import { Project, ProjectItem, ProjectResponse } from "@/shared/graphql/projects/projects.types";
-import { useLazyQuery, useMutation } from "@apollo/client/react";
 import { useTranslations } from "next-intl";
-import { AddCvProjectInput } from "@/shared/types/cv-graphql";
-import { AddCvProjectRequest, AddCvProjectResponse, Cv } from "@/shared/graphql/cvs/cvs.types";
-import { ADD_CV_PROJECT } from "@/shared/graphql/cvs/cvs.mutations";
 import { useCvProjectForm } from "../lib/use-cv-project-form";
 
 interface CvProjectFormProps {
-  selectedProject?: Project;
-  projects: ProjectItem[];
   cvId: string;
+  projectId?: string;
 }
 
-type FormTypes = {
-  projectId: string;
-  description: string;
-  domain: string;
-  responsibilities?: string;
-  roles?: string;
-  start_date: Date | null;
-  end_date: Date | null;
-  environment: string[];
-};
-
-export const CvProjectForm: React.FC<CvProjectFormProps> = ({ projects, selectedProject, cvId }) => {
+export const CvProjectForm: React.FC<CvProjectFormProps> = ({ cvId, projectId }) => {
   const t = useTranslations("cv.projects.form");
-  const { form, onSubmit, isPending, clearForm, handleProjectChange, projectLoading, projectError } = useCvProjectForm({ cvId, selectedProject, projects });
+  const { form, onSubmit, isPending, clearForm, handleProjectChange, projectLoading, projectError } = useCvProjectForm({ cvId, projectId });
+  const disabledSelect = !!projectId || projectLoading;
 
   return (
     <DialogContent>
       <Form {...form}>
         <form className="flex flex-col gap-4" onSubmit={form.handleSubmit(onSubmit)}>
+          <DialogTitle className="mb-4">{t(projectId ? "title.update" : "title.create")}</DialogTitle>
           <div className="w-full flex gap-2.5">
             <FormField
               control={form.control}
@@ -55,7 +37,7 @@ export const CvProjectForm: React.FC<CvProjectFormProps> = ({ projects, selected
                 <FormItem className="flex-1">
                   <FormLabel>{t("project.label")}</FormLabel>
                   <FormControl>
-                    <ProjectSelect projects={projects} value={field.value} onClear={clearForm} onChange={handleProjectChange} placeholder={t("project.placeholder")} />
+                    <ProjectSelect disabled={disabledSelect} value={field.value} onClear={clearForm} onChange={handleProjectChange} label={t("project.label")} placeholder={t("project.placeholder")} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

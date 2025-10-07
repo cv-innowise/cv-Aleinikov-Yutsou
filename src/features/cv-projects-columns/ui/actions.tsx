@@ -3,24 +3,25 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/shared/components/ui/alert-dialog";
 import { MoreHorizontal } from "lucide-react";
 import Link from "next/link";
-import { ProjectItem } from "@/shared/graphql/projects/projects.types";
+import { Project, ProjectItem } from "@/shared/graphql/projects/projects.types";
 import { Dialog, DialogTrigger } from "@/shared/components/ui/dialog";
 import { ProjectForm } from "@/features/project-form";
 import { Suspense, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useGetAuthUser } from "@/shared/lib/hooks/use-get-auth-user";
-import { UserRole } from "@/shared/types/cv-graphql";
+import { CvProject, UserRole } from "@/shared/types/cv-graphql";
 import { useTranslations } from "next-intl";
 import { DialogContent } from "@radix-ui/react-dialog";
 import { CvProjectForm } from "@/features/cv-project-form/ui/cv-project-form";
 
 interface ActionsProps {
-  project: ProjectItem;
+  project: ProjectItem & { project: Project };
 }
 
 export const Actions: React.FC<ActionsProps> = ({ project }) => {
   const t = useTranslations("project-actions");
+  const { cvId } = useParams<{ cvId: string }>();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -35,7 +36,7 @@ export const Actions: React.FC<ActionsProps> = ({ project }) => {
         <DropdownMenuItem asChild>
           <Dialog>
             <DialogTrigger className="hover:bg-accent hover:text-accent-foreground w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50">{t("update")}</DialogTrigger>
-            <CvProjectForm project={project} />
+            <CvProjectForm cvId={cvId} projectId={project.project.id} />
           </Dialog>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>

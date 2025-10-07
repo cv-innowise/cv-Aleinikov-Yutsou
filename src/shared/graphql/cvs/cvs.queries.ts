@@ -33,6 +33,11 @@ export const GET_CV = gql`
         end_date
         description
         environment
+        responsibilities
+        roles
+        project {
+          id
+        }
       }
       skills {
         name
