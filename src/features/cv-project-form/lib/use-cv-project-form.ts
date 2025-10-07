@@ -6,10 +6,11 @@ import { toast } from "sonner";
 import { useLazyQuery } from "@apollo/client/react";
 import { GET_PROJECT } from "@/shared/graphql/projects/projects.queries";
 import { useRouter } from "next/navigation";
+import { CvProject } from "@/shared/types/cv-graphql";
 
 interface AddCvProjectInput {
   cvId: string;
-  projectId?: string;
+  cvProject?: CvProject;
 }
 
 type FormTypes = {
@@ -23,7 +24,7 @@ type FormTypes = {
   environment: string[];
 };
 
-export const useCvProjectForm = ({ cvId, projectId }: AddCvProjectInput) => {
+export const useCvProjectForm = ({ cvId, cvProject }: AddCvProjectInput) => {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
@@ -31,27 +32,20 @@ export const useCvProjectForm = ({ cvId, projectId }: AddCvProjectInput) => {
 
   const form = useForm<FormTypes>({
     defaultValues: {
-      projectId: projectId || "",
-      description: "",
-      domain: "",
-      responsibilities: "",
-      roles: "",
-      start_date: null,
-      end_date: null,
-      environment: [],
+      projectId: cvProject?.project.id || "",
+      description: cvProject?.description || "",
+      domain: cvProject?.domain || "",
+      responsibilities: cvProject?.responsibilities?.join("\n") || "",
+      roles: cvProject?.roles?.join("\n") || "",
+      start_date: cvProject?.start_date ? new Date(cvProject.start_date) : null,
+      end_date: cvProject?.end_date ? new Date(cvProject.end_date) : null,
+      environment: cvProject?.environment || [],
     },
   });
 
   useEffect(() => {
-    if (projectId) {
-      if (form.getValues("projectId") !== projectId) {
-        form.setValue("projectId", projectId);
-      }
-      loadProject({ variables: { projectId } });
-    }
-  }, [projectId, loadProject, form]);
+    if (cvProject) return;
 
-  useEffect(() => {
     const project = projectData?.project;
     if (project) {
       form.setValue("description", project.description || "");
@@ -80,19 +74,23 @@ export const useCvProjectForm = ({ cvId, projectId }: AddCvProjectInput) => {
 
     startTransition(async () => {
       try {
-        await addCvProject({
-          cvId,
-          projectId: formData.projectId,
-          roles,
-          responsibilities,
-          start_date,
-          end_date,
-        });
+        if (cvProject) {
+        } else {
+          await addCvProject({
+            cvId,
+            projectId: formData.projectId,
+            roles,
+            responsibilities,
+            start_date,
+            end_date,
+          });
 
-        toast.success("Project added successfully");
-        form.reset();
+          toast.success("Project added successfully");
+          form.reset();
+        }
       } catch (error) {
-        toast.error("Failed to add project");
+        const errorMessage = cvProject ? "Failed to update project" : "Failed to add project";
+        toast.error(errorMessage);
         console.error("Error adding project:", error);
       } finally {
         router.refresh();

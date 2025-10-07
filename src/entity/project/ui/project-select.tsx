@@ -2,7 +2,6 @@ import { Button } from "@/shared/components/ui/button";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/shared/components/ui/select";
 import { GET_PROJECTS } from "@/shared/graphql/projects/projects.queries";
 import { ProjectsResponse } from "@/shared/graphql/projects/projects.types";
-import { cn } from "@/shared/lib/utils";
 import { useQuery } from "@apollo/client/react";
 import { AlertCircle, X } from "lucide-react";
 

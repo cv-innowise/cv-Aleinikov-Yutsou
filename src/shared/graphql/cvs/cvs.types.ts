@@ -1,4 +1,5 @@
-import { Cv as FullCv, User, Project, SkillMastery, CreateCvInput, UpdateCvInput, DeleteCvInput, AddCvSkillInput, UpdateCvSkillInput, DeleteCvSkillInput, AddCvProjectInput, UpdateCvProjectInput, RemoveCvProjectInput, DeleteResult } from "@/shared/types/cv-graphql";
+import { Cv as FullCv, User, Project, SkillMastery, CreateCvInput, UpdateCvInput, DeleteCvInput, AddCvSkillInput, UpdateCvSkillInput, DeleteCvSkillInput, AddCvProjectInput, UpdateCvProjectInput, RemoveCvProjectInput, DeleteResult, CvProject } from "@/shared/types/cv-graphql";
+import { ProjectItem } from "../projects/projects.types";
 
 type CvItem = Pick<FullCv, "id" | "name" | "description"> & {
   user?: {
@@ -12,7 +13,7 @@ type Cv = Omit<FullCv, "created_at" | "user" | "projects" | "skills"> & {
     id: User["id"];
     email: User["email"];
   } | null;
-  projects?: Omit<Project, "project">[] | null;
+  projects?: CvProject[] | null;
   skills: SkillMastery[];
 };
 

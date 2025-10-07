@@ -13,22 +13,23 @@ import { Calendar } from "@/shared/components/ui/calendar";
 import { cn } from "@/shared/lib/utils";
 import { useTranslations } from "next-intl";
 import { useCvProjectForm } from "../lib/use-cv-project-form";
+import { CvProject } from "@/shared/types/cv-graphql";
 
 interface CvProjectFormProps {
   cvId: string;
-  projectId?: string;
+  cvProject?: CvProject;
 }
 
-export const CvProjectForm: React.FC<CvProjectFormProps> = ({ cvId, projectId }) => {
+export const CvProjectForm: React.FC<CvProjectFormProps> = ({ cvId, cvProject }) => {
   const t = useTranslations("cv.projects.form");
-  const { form, onSubmit, isPending, clearForm, handleProjectChange, projectLoading, projectError } = useCvProjectForm({ cvId, projectId });
-  const disabledSelect = !!projectId || projectLoading;
+  const { form, onSubmit, isPending, clearForm, handleProjectChange, projectLoading, projectError } = useCvProjectForm({ cvId, cvProject });
+  const disabledSelect = !!cvProject || projectLoading;
 
   return (
     <DialogContent>
       <Form {...form}>
         <form className="flex flex-col gap-4" onSubmit={form.handleSubmit(onSubmit)}>
-          <DialogTitle className="mb-4">{t(projectId ? "title.update" : "title.create")}</DialogTitle>
+          <DialogTitle className="mb-4">{t(cvProject ? "title.update" : "title.create")}</DialogTitle>
           <div className="w-full flex gap-2.5">
             <FormField
               control={form.control}
@@ -157,7 +158,7 @@ export const CvProjectForm: React.FC<CvProjectFormProps> = ({ cvId, projectId })
               <FormItem>
                 <FormLabel>{t("roles.label")}</FormLabel>
                 <FormControl>
-                  <Input placeholder={t("roles.placeholder")} {...field} />
+                  <Textarea placeholder={t("roles.placeholder")} {...field} className="resize-none" />
                 </FormControl>
               </FormItem>
             )}
@@ -167,7 +168,7 @@ export const CvProjectForm: React.FC<CvProjectFormProps> = ({ cvId, projectId })
 
           <div className="flex justify-end">
             <Button type="submit" disabled={!form.getValues("projectId") || isPending} loading={isPending}>
-              {t("submit.create")}
+              {t(cvProject ? "submit.update" : "submit.create")}
             </Button>
           </div>
         </form>

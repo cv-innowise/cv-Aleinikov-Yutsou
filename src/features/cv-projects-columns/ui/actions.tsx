@@ -10,13 +10,12 @@ import { Suspense, useTransition } from "react";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useGetAuthUser } from "@/shared/lib/hooks/use-get-auth-user";
-import { CvProject, UserRole } from "@/shared/types/cv-graphql";
+import { CvProject } from "@/shared/types/cv-graphql";
 import { useTranslations } from "next-intl";
-import { DialogContent } from "@radix-ui/react-dialog";
 import { CvProjectForm } from "@/features/cv-project-form/ui/cv-project-form";
 
 interface ActionsProps {
-  project: ProjectItem & { project: Project };
+  project: CvProject;
 }
 
 export const Actions: React.FC<ActionsProps> = ({ project }) => {
@@ -36,7 +35,7 @@ export const Actions: React.FC<ActionsProps> = ({ project }) => {
         <DropdownMenuItem asChild>
           <Dialog>
             <DialogTrigger className="hover:bg-accent hover:text-accent-foreground w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50">{t("update")}</DialogTrigger>
-            <CvProjectForm cvId={cvId} projectId={project.project.id} />
+            <CvProjectForm cvId={cvId} cvProject={project} />
           </Dialog>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
