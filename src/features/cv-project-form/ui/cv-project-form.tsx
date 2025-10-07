@@ -18,6 +18,7 @@ import { cn } from "@/shared/lib/utils";
 import { GET_PROJECT } from "@/shared/graphql/projects/projects.queries";
 import { Project, ProjectItem, ProjectResponse } from "@/shared/graphql/projects/projects.types";
 import { useLazyQuery } from "@apollo/client/react";
+import { useTranslations } from "next-intl";
 
 interface CvProjectFormProps {
   selectedProject?: Project;
@@ -37,6 +38,8 @@ type FormTypes = {
 };
 
 export const CvProjectForm: React.FC<CvProjectFormProps> = ({ projects, selectedProject, cvId }) => {
+  const t = useTranslations("cv.projects.form");
+
   const [isPending, startTransition] = useTransition();
 
   const form = useForm<FormTypes>({
@@ -97,9 +100,9 @@ export const CvProjectForm: React.FC<CvProjectFormProps> = ({ projects, selected
               name="projectId"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel>Project</FormLabel>
+                  <FormLabel>{t("project.label")}</FormLabel>
                   <FormControl>
-                    <ProjectSelect projects={projects} value={field.value} onClear={clearForm} onChange={handleProjectChange} placeholder="Select project" />
+                    <ProjectSelect projects={projects} value={field.value} onClear={clearForm} onChange={handleProjectChange} placeholder={t("project.placeholder")} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -110,9 +113,9 @@ export const CvProjectForm: React.FC<CvProjectFormProps> = ({ projects, selected
               name="domain"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel>Domain</FormLabel>
+                  <FormLabel>{t("domain.label")}</FormLabel>
                   <FormControl>
-                    <Input placeholder="Domain" {...field} disabled />
+                    <Input placeholder={t("domain.placeholder")} {...field} disabled />
                   </FormControl>
                 </FormItem>
               )}
@@ -125,12 +128,12 @@ export const CvProjectForm: React.FC<CvProjectFormProps> = ({ projects, selected
               name="start_date"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel>Start Date</FormLabel>
+                  <FormLabel>{t("startDate.label")}</FormLabel>
                   <Popover>
                     <PopoverTrigger asChild>
                       <FormControl>
                         <Button variant="outline" className={cn("pl-3 text-left font-normal", !field.value && "text-muted-foreground")} disabled={!form.getValues("projectId") || projectLoading}>
-                          {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
+                          {field.value ? format(field.value, "PPP") : <span>{t("startDate.placeholder")}</span>}
                           <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                         </Button>
                       </FormControl>
@@ -148,12 +151,12 @@ export const CvProjectForm: React.FC<CvProjectFormProps> = ({ projects, selected
               name="end_date"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel>End Date</FormLabel>
+                  <FormLabel>{t("endDate.label")}</FormLabel>
                   <Popover>
                     <PopoverTrigger asChild>
                       <FormControl>
                         <Button variant="outline" className={cn("pl-3 text-left font-normal", !field.value && "text-muted-foreground")} disabled={!form.getValues("projectId") || projectLoading}>
-                          {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
+                          {field.value ? format(field.value, "PPP") : <span>{t("endDate.placeholder")}</span>}
                           <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                         </Button>
                       </FormControl>
@@ -173,9 +176,9 @@ export const CvProjectForm: React.FC<CvProjectFormProps> = ({ projects, selected
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Description</FormLabel>
+                <FormLabel>{t("description.label")}</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="Project description" {...field} disabled className="resize-none" />
+                  <Textarea placeholder={t("description.placeholder")} {...field} disabled className="resize-none" />
                 </FormControl>
               </FormItem>
             )}
@@ -186,9 +189,9 @@ export const CvProjectForm: React.FC<CvProjectFormProps> = ({ projects, selected
             name="environment"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Environment</FormLabel>
+                <FormLabel>{t("environment.label")}</FormLabel>
                 <div className="flex flex-wrap gap-2 min-h-[2.25rem] items-start rounded-md border px-3 py-2 bg-muted/30">
-                  {field.value.length === 0 && <span className="text-muted-foreground text-sm">No environment</span>}
+                  {field.value.length === 0 && <span className="text-muted-foreground text-sm">{t("environment.noData")}</span>}
                   {field.value.map((env) => (
                     <span key={env} className="text-xs px-2 py-1 rounded bg-secondary border">
                       {env}
@@ -204,9 +207,9 @@ export const CvProjectForm: React.FC<CvProjectFormProps> = ({ projects, selected
             name="responsibilities"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Responsibilities</FormLabel>
+                <FormLabel>{t("responsibilities.label")}</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="List responsibilities" {...field} className="resize-none" />
+                  <Textarea placeholder={t("responsibilities.placeholder")} {...field} className="resize-none" />
                 </FormControl>
               </FormItem>
             )}
@@ -217,9 +220,9 @@ export const CvProjectForm: React.FC<CvProjectFormProps> = ({ projects, selected
             name="roles"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Roles</FormLabel>
+                <FormLabel>{t("roles.label")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Roles in project" {...field} />
+                  <Input placeholder={t("roles.placeholder")} {...field} />
                 </FormControl>
               </FormItem>
             )}
@@ -229,7 +232,7 @@ export const CvProjectForm: React.FC<CvProjectFormProps> = ({ projects, selected
 
           <div className="flex justify-end">
             <Button type="submit" disabled={!form.getValues("projectId") || isPending} loading={isPending}>
-              Save
+              {t("submit.create")}
             </Button>
           </div>
         </form>

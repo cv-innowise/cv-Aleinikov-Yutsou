@@ -196,7 +196,45 @@
     },
     "projects":{
       "title": "Projekte",
-      "addNewButton": "Neues Projekt hinzufügen"
+      "addNewButton": "Neues Projekt hinzufügen",
+      "form": {
+        "project": {
+          "label": "Projekt",
+          "placeholder": "Projekt auswählen"
+        },
+        "domain": {
+          "label": "Domäne",
+          "placeholder": "Projektdomäne"
+        },
+        "startDate": {
+          "label": "Startdatum",
+          "placeholder": "Datum wählen"
+        },
+        "endDate": {
+          "label": "Enddatum",
+          "placeholder": "Datum wählen"
+        },
+        "description": {
+          "label": "Beschreibung",
+          "placeholder": "Projektbeschreibung"
+        },
+        "environment": {
+          "label": "Umgebung",
+          "noData": "Keine Umgebung"
+        },
+        "responsibilities": {
+          "label": "Verantwortlichkeiten",
+          "placeholder": "Ihre Verantwortlichkeiten in diesem Projekt"
+        },
+        "roles": {
+          "label": "Rollen",
+          "placeholder": "Ihre Rollen in diesem Projekt"
+        },
+        "submit": {
+          "create": "Projekt hinzufügen",
+          "update": "Projekt aktualisieren"
+        }
+      }
     }
   },
   "departments-list": {

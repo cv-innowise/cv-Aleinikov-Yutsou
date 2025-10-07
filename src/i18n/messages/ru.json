@@ -198,7 +198,45 @@
     },
     "projects":{
       "title": "Проекты",
-      "addNewButton": "Добавить новый проект"
+      "addNewButton": "Добавить новый проект",
+      "form": {
+        "project": {
+          "label": "Проект",
+          "placeholder": "Выберите проект"
+        },
+        "domain": {
+          "label": "Домен",
+          "placeholder": "Домен проекта"
+        },
+        "startDate": {
+          "label": "Дата начала",
+          "placeholder": "Выберите дату"
+        },
+        "endDate": {
+          "label": "Дата окончания",
+          "placeholder": "Выберите дату"
+        },
+        "description": {
+          "label": "Описание",
+          "placeholder": "Описание проекта"
+        },
+        "environment": {
+          "label": "Окружение",
+          "noData": "Нет окружения"
+        },
+        "responsibilities": {
+          "label": "Обязанности",
+          "placeholder": "Ваши обязанности в этом проекте"
+        },
+        "roles": {
+          "label": "Роли",
+          "placeholder": "Ваши роли в этом проекте"
+        },
+        "submit": {
+          "create": "Добавить проект",
+          "update": "Обновить проект"
+        }
+      }
     }
   },
   "departments-list": {

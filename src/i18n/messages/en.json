@@ -197,7 +197,45 @@
     },
     "projects":{
       "title": "Projects",
-      "addNewButton": "Add New Project"
+      "addNewButton": "Add New Project",
+      "form":{
+        "project":{
+          "label":"Project",
+          "placeholder":"Select project"
+        },
+        "domain":{
+          "label":"Domain",
+          "placeholder":"Project domain"
+        },
+        "startDate":{
+          "label":"Start Date",
+          "placeholder":"Pick a date"
+        },
+        "endDate":{
+          "label":"End Date",
+          "placeholder":"Pick a date"
+        },
+        "description":{
+          "label":"Description",
+          "placeholder":"Project description"
+        },
+        "environment":{
+          "label":"Environment",
+          "noData":"No environment"
+        },
+        "responsibilities":{
+          "label":"Responsibilities",
+          "placeholder":"Your responsibilities in this project"
+        },
+        "roles":{
+          "label":"Roles",
+          "placeholder":"Your roles in this project"
+        },
+        "submit":{
+          "create":"Add Project",
+          "update":"Update Project"
+        }
+      }
     }
   },
   "departments-list": {
