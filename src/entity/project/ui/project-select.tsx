@@ -17,9 +17,9 @@ export const ProjectSelect: React.FC<ProjectSelectProps> = ({ projects, value, o
   const showClear = !!value && !disabled && onClear;
 
   return (
-    <div className="relative">
+    <div className="flex items-center gap-2 ">
       <Select value={value} onValueChange={onChange} disabled={disabled}>
-        <SelectTrigger>
+        <SelectTrigger className="w-full">
           <SelectValue className="capitalize" placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
@@ -34,7 +34,7 @@ export const ProjectSelect: React.FC<ProjectSelectProps> = ({ projects, value, o
         </SelectContent>
       </Select>
       {showClear && (
-        <Button variant="ghost" size="icon" className="absolute inset-y-0 right-1 flex items-center p-1 rounded hover:bg-muted text-muted-foreground hover:text-foreground transition" onClick={onClear}>
+        <Button variant="ghost" size="icon" className="rounded hover:bg-muted text-muted-foreground hover:text-foreground transition" onClick={onClear}>
           <X size={14} />
         </Button>
       )}
