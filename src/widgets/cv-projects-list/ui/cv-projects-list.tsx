@@ -1,3 +1,4 @@
+import { CvProjectForm } from "@/features/cv-project-form/ui/cv-project-form";
 import { cvProjectsColumns } from "@/features/cv-projects-columns";
 import { DataTable, DataTableSkeleton } from "@/features/data-table";
 import { Button } from "@/shared/components/ui/button";
@@ -6,6 +7,7 @@ import { getAuthUser } from "@/shared/lib/queries/get-auth-user";
 import { getCv } from "@/shared/lib/queries/get-cv";
 import { UserRole } from "@/shared/types/cv-graphql";
 import { FCWithSkeleton } from "@/shared/types/fc-with-skeleton";
+import { getProjects } from "@/widgets/projects-list/queries/get-projects";
 import { getTranslations } from "next-intl/server";
 
 interface CvProjectsListProps {
@@ -13,9 +15,9 @@ interface CvProjectsListProps {
 }
 
 export const CvProjectsList: FCWithSkeleton<CvProjectsListProps> = async ({ cvId }) => {
+  const projects = await getProjects();
   const cv = await getCv(cvId);
   const cvProjects = cv?.projects || [];
-  console.log(cvProjects[0]);
 
   const authUser = await getAuthUser();
   const t = await getTranslations("cv.projects");
@@ -30,6 +32,7 @@ export const CvProjectsList: FCWithSkeleton<CvProjectsListProps> = async ({ cvId
             <DialogTrigger asChild>
               <Button className="block ml-auto">{t("addNewButton")}</Button>
             </DialogTrigger>
+            <CvProjectForm projects={projects} cvId={cvId} />
           </Dialog>
         )}
       </DataTable>
