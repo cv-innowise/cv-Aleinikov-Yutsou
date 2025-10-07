@@ -4,7 +4,6 @@ import { useEffect, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
-
 import { ProjectSelect } from "@/entity/project";
 import { DialogContent } from "@/shared/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/shared/components/ui/form";
@@ -14,11 +13,13 @@ import { Button } from "@/shared/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/shared/components/ui/popover";
 import { Calendar } from "@/shared/components/ui/calendar";
 import { cn } from "@/shared/lib/utils";
-
 import { GET_PROJECT } from "@/shared/graphql/projects/projects.queries";
 import { Project, ProjectItem, ProjectResponse } from "@/shared/graphql/projects/projects.types";
-import { useLazyQuery } from "@apollo/client/react";
+import { useLazyQuery, useMutation } from "@apollo/client/react";
 import { useTranslations } from "next-intl";
+import { AddCvProjectInput } from "@/shared/types/cv-graphql";
+import { AddCvProjectRequest, AddCvProjectResponse, Cv } from "@/shared/graphql/cvs/cvs.types";
+import { ADD_CV_PROJECT } from "@/shared/graphql/cvs/cvs.mutations";
 
 interface CvProjectFormProps {
   selectedProject?: Project;
@@ -39,7 +40,7 @@ type FormTypes = {
 
 export const CvProjectForm: React.FC<CvProjectFormProps> = ({ projects, selectedProject, cvId }) => {
   const t = useTranslations("cv.projects.form");
-
+  const [addCvProject, { loading: addLoading, error: addError }] = useMutation<AddCvProjectResponse, AddCvProjectRequest>(ADD_CV_PROJECT);
   const [isPending, startTransition] = useTransition();
 
   const form = useForm<FormTypes>({
@@ -70,8 +71,43 @@ export const CvProjectForm: React.FC<CvProjectFormProps> = ({ projects, selected
     }
   }, [projectData, form]);
 
-  const onSubmit = (data: FormTypes) => {
-    startTransition(() => {});
+  const onSubmit = (formData: FormTypes) => {
+    const roles =
+      formData.roles
+        ?.split(/[,;\n]/)
+        .map((r) => r.trim())
+        .filter(Boolean) ?? [];
+
+    const responsibilities =
+      formData.responsibilities
+        ?.split(/\n|[,;]+/)
+        .map((r) => r.trim())
+        .filter(Boolean) ?? [];
+
+    const start_date = formData.start_date ? formData.start_date.toISOString() : "";
+    const end_date = formData.end_date ? formData.end_date.toISOString() : "";
+
+    const payload: AddCvProjectInput = {
+      cvId,
+      projectId: formData.projectId,
+      roles,
+      responsibilities,
+      start_date,
+      end_date,
+    };
+
+    startTransition(() => {
+      addCvProject({
+        variables: { project: payload },
+        onCompleted: (res) => {
+          console.log("mutation success", res);
+          form.reset();
+        },
+        onError: (e) => {
+          console.error("mutation error", e);
+        },
+      });
+    });
   };
 
   const clearForm = () => {

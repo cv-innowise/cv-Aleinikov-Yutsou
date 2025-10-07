@@ -23,7 +23,7 @@ type DeleteCvRequest = { skill: DeleteCvInput };
 type AddCvSkillRequest = { skill: AddCvSkillInput };
 type UpdateCvSkillRequest = { skill: UpdateCvSkillInput };
 type DeleteCvSkillRequest = { cv: DeleteCvSkillInput };
-type AddCvProjectRequest = { cv: AddCvProjectInput };
+type AddCvProjectRequest = { project: AddCvProjectInput };
 type UpdateCvProjectRequest = { cv: UpdateCvProjectInput };
 type RemoveCvProjectRequest = { cv: RemoveCvProjectInput };
 
