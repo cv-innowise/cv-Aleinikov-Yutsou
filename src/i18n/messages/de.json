@@ -237,6 +237,15 @@
         "submit": {
           "create": "Projekt hinzufügen",
           "update": "Projekt aktualisieren"
+        },
+        "success": {
+          "add": "Projekt erfolgreich hinzugefügt",
+          "update": "Projekt erfolgreich aktualisiert"
+        },
+        "error": {
+          "add": "Beim Hinzufügen des Projekts ist ein Fehler aufgetreten",
+          "update": "Beim Aktualisieren des Projekts ist ein Fehler aufgetreten",
+          "fetchProjects": "Beim Laden der Projekte ist ein Fehler aufgetreten"
         }
       }
     }

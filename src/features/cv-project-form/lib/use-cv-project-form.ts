@@ -8,6 +8,7 @@ import { GET_PROJECT } from "@/shared/graphql/projects/projects.queries";
 import { useRouter } from "next/navigation";
 import { CvProject } from "@/shared/types/cv-graphql";
 import { updateCvProject } from "../mutation/update-cv-project";
+import { useTranslations } from "next-intl";
 
 interface AddCvProjectInput {
   cvId: string;
@@ -26,6 +27,7 @@ type FormTypes = {
 };
 
 export const useCvProjectForm = ({ cvId, cvProject }: AddCvProjectInput) => {
+  const t = useTranslations("cv.projects.form");
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
@@ -84,7 +86,7 @@ export const useCvProjectForm = ({ cvId, cvProject }: AddCvProjectInput) => {
             roles,
             responsibilities,
           });
-          toast.success("Project updated successfully");
+          toast.success(t("success.update"));
         } else {
           await addCvProject({
             cvId,
@@ -95,11 +97,11 @@ export const useCvProjectForm = ({ cvId, cvProject }: AddCvProjectInput) => {
             end_date,
           });
 
-          toast.success(cvProject ? "Project updated successfully" : "Project added successfully");
+          toast.success(t("success.add"));
           form.reset();
         }
       } catch (error) {
-        const errorMessage = cvProject ? "Failed to update project" : "Failed to add project";
+        const errorMessage = t(cvProject ? "error.update" : "error.add");
         toast.error(errorMessage);
         console.error("Error adding project:", error);
       } finally {

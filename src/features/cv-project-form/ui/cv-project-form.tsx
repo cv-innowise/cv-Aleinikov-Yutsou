@@ -164,7 +164,7 @@ export const CvProjectForm: React.FC<CvProjectFormProps> = ({ cvId, cvProject })
             )}
           />
 
-          {projectError && <p className="text-red-500 text-sm">Failed to load project data.</p>}
+          {projectError && <p className="text-red-500 text-sm">{t("error.fetchProjects")}</p>}
 
           <div className="flex justify-end">
             <Button type="submit" disabled={!form.getValues("projectId") || isPending} loading={isPending}>

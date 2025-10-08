@@ -25,9 +25,9 @@ export const Actions: React.FC<ActionsProps> = ({ project }) => {
     startTransition(() => {
       const promise = deleteCvProject({ cvId, projectId: project.project.id });
       toast.promise(promise, {
-        success: "project-deleted",
-        error: "error",
-        loading: "loading",
+        success: t("project-deleted"),
+        error: t("error"),
+        loading: t("loading"),
       });
       router.refresh();
     });

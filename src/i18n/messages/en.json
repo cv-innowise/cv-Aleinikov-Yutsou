@@ -238,6 +238,15 @@
         "submit":{
           "create":"Add Project",
           "update":"Update Project"
+        },
+        "success":{
+          "add":"Project added successfully",
+          "update":"Project updated successfully"
+        },
+        "error":{
+          "add":"Something went wrong while adding project",
+          "update":"Something went wrong while updating project",
+          "fetchProjects":"Something went wrong while fetching projects"
         }
       }
     }
