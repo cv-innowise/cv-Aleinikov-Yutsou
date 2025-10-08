@@ -78,6 +78,12 @@ export const useCvProjectForm = ({ cvId, cvProject }: AddCvProjectInput) => {
     startTransition(async () => {
       try {
         if (cvProject) {
+          console.log("cvId", cvId);
+          console.log("projectId", cvProject.id);
+          console.log("start_date", start_date);
+          console.log("end_date", end_date);
+          console.log("roles", roles);
+          console.log("responsibilities", responsibilities);
           await updateCvProject({
             cvId,
             projectId: formData.projectId,

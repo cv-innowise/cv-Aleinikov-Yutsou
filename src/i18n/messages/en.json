@@ -249,6 +249,15 @@
           "fetchProjects":"Something went wrong while fetching projects"
         }
       }
+      
+    },
+    "preview":{
+        "export": "Export to PDF",
+        "educationLabel":"Education",
+        "languagesLabel":"Languages",
+        "domenLable":"Domains",
+        "descriptionLabel":"Description",
+        "skillsLabel":"Skills"
     }
   },
   "departments-list": {

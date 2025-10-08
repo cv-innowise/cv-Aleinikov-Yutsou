@@ -24,6 +24,17 @@ export const GET_CV = gql`
       user {
         id
         email
+        position_name
+        department {
+          name
+        }
+        profile {
+          full_name
+          languages {
+            name
+            proficiency
+          }
+        }
       }
       projects {
         id
