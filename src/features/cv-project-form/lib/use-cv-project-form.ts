@@ -55,7 +55,7 @@ export const useCvProjectForm = ({ cvId, cvProject }: AddCvProjectInput) => {
       form.setValue("end_date", project.end_date ? new Date(project.end_date) : null);
       form.setValue("environment", project.environment || []);
     }
-  }, [projectData, form]);
+  }, [projectData, form, cvProject]);
 
   const onSubmit = (formData: FormTypes) => {
     const roles =

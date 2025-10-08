@@ -1,5 +1,4 @@
-import { Cv as FullCv, User, Project, SkillMastery, CreateCvInput, UpdateCvInput, DeleteCvInput, AddCvSkillInput, UpdateCvSkillInput, DeleteCvSkillInput, AddCvProjectInput, UpdateCvProjectInput, RemoveCvProjectInput, DeleteResult, CvProject } from "@/shared/types/cv-graphql";
-import { ProjectItem } from "../projects/projects.types";
+import { Cv as FullCv, User, SkillMastery, CreateCvInput, UpdateCvInput, DeleteCvInput, AddCvSkillInput, UpdateCvSkillInput, DeleteCvSkillInput, AddCvProjectInput, UpdateCvProjectInput, RemoveCvProjectInput, DeleteResult, CvProject } from "@/shared/types/cv-graphql";
 
 type CvItem = Pick<FullCv, "id" | "name" | "description"> & {
   user?: {
@@ -26,7 +25,7 @@ type UpdateCvSkillRequest = { skill: UpdateCvSkillInput };
 type DeleteCvSkillRequest = { cv: DeleteCvSkillInput };
 type AddCvProjectRequest = { project: AddCvProjectInput };
 type UpdateCvProjectRequest = { project: UpdateCvProjectInput };
-type RemoveCvProjectRequest = { cv: RemoveCvProjectInput };
+type RemoveCvProjectRequest = { project: RemoveCvProjectInput };
 
 type CvsResponse = { cvs: CvItem[] };
 type CvResponse = { cv: Cv };
