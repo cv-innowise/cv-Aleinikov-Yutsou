@@ -25,7 +25,7 @@ type AddCvSkillRequest = { skill: AddCvSkillInput };
 type UpdateCvSkillRequest = { skill: UpdateCvSkillInput };
 type DeleteCvSkillRequest = { cv: DeleteCvSkillInput };
 type AddCvProjectRequest = { project: AddCvProjectInput };
-type UpdateCvProjectRequest = { cv: UpdateCvProjectInput };
+type UpdateCvProjectRequest = { project: UpdateCvProjectInput };
 type RemoveCvProjectRequest = { cv: RemoveCvProjectInput };
 
 type CvsResponse = { cvs: CvItem[] };

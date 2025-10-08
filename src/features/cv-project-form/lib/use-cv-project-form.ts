@@ -7,6 +7,7 @@ import { useLazyQuery } from "@apollo/client/react";
 import { GET_PROJECT } from "@/shared/graphql/projects/projects.queries";
 import { useRouter } from "next/navigation";
 import { CvProject } from "@/shared/types/cv-graphql";
+import { updateCvProject } from "../mutation/update-cv-project";
 
 interface AddCvProjectInput {
   cvId: string;
@@ -75,6 +76,15 @@ export const useCvProjectForm = ({ cvId, cvProject }: AddCvProjectInput) => {
     startTransition(async () => {
       try {
         if (cvProject) {
+          await updateCvProject({
+            cvId,
+            projectId: formData.projectId,
+            start_date,
+            end_date,
+            roles,
+            responsibilities,
+          });
+          toast.success("Project updated successfully");
         } else {
           await addCvProject({
             cvId,
@@ -85,7 +95,7 @@ export const useCvProjectForm = ({ cvId, cvProject }: AddCvProjectInput) => {
             end_date,
           });
 
-          toast.success("Project added successfully");
+          toast.success(cvProject ? "Project updated successfully" : "Project added successfully");
           form.reset();
         }
       } catch (error) {
