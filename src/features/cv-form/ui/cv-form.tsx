@@ -72,7 +72,7 @@ export const CvForm: React.FC<CvFormProps> = ({ cvId }) => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
           <DialogTitle>{cv ? t("update") : t("create")}</DialogTitle>
-          <div className="flex gap-x-4 justify-between">
+          <div className="flex flex-col md:flex-row gap-x-4 gap-y-2 justify-between">
             <FormField
               control={form.control}
               name="name"

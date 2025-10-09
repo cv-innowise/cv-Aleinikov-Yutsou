@@ -40,7 +40,9 @@
     "settings": "Настройки",
     "profile": "Профиль",
     "projects": "Проекты",
-    "preview": "Предпросмотр"
+    "preview": "Предпросмотр",
+    "positions": "Позиции",
+    "departments": "Отделы"
   },
   "language-item": {
     "add-language": "Добавить новый язык...",
@@ -363,7 +365,7 @@
   },
   "projects-list": {
     "projects": "Проекты",
-    "create-skill": "Создать проект"
+    "create-project": "Создать проект"
   },
   "project-actions": {
     "open": "Открыть меню",
@@ -402,7 +404,7 @@
   },
   "skills-list": {
     "skills": "Навыки",
-    "create-project": "Создать навык"
+    "create-skill": "Создать навык"
   },
   "skill-actions": {
     "open": "Открыть меню",
@@ -456,6 +458,7 @@
     "password": "Пароль",
     "first-name": "Имя",
     "last-name": "Фамилия",
+    "search-cvs": "Поиск резюме...",
     "cvs": "Выберите резюме",
     "cvs-label": "Резюме",
     "searcg-cvs": "Поиск резюме...",
