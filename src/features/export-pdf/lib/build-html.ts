@@ -21,5 +21,23 @@ export async function buildHtmlWithStyles(opts: { html?: string; element?: HTMLE
 
   const css = [...linkCssTexts, ...inlineCssTexts].join("\n").replace(/\/\*![\s\S]*?\*\//g, "");
 
-  return "<!DOCTYPE html><html><head><meta charSet='utf-8'/>" + `<style>${css}</style>` + "</head><body>" + bodyHtml + "</body></html>";
+  const printStyles = `
+    html, body { margin: 0; padding: 0; }
+    @media print {
+      .pdf-page { break-after: page; page-break-after: always; }
+      .pdf-page:last-child { break-after: auto; page-break-after: auto; }
+    }
+  `;
+
+  return `
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8" />
+    <style>${css}\n${printStyles}</style>
+  </head>
+  <body>
+    ${bodyHtml}
+  </body>
+</html>`;
 }
