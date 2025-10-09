@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { ExportPdfButton } from "@/features/export-pdf";
 import { useTranslations } from "next-intl";
 import { CvProjectsInfo } from "./cv-projects-info";
+import { CvSkillsInfo } from "./cv-skills-info";
 
 interface CvPreviewClientProps {
   cv: Cv;
@@ -26,6 +27,7 @@ export const CvPreviewClient: React.FC<CvPreviewClientProps> = ({ cv, skills }) 
       <div ref={ref}>
         <CvProfileInfo skills={skills} cv={cv} />
         <CvProjectsInfo cv={cv} />
+        <CvSkillsInfo skills={skills} cv={cv} />
       </div>
     </div>
   );

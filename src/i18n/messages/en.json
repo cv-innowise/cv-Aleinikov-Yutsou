@@ -262,7 +262,11 @@
         "period": "Period",
         "roles": "Roles",
         "responsibilities": "Responsibilities",
-        "environment": "Environment"
+        "environment": "Environment",
+        "skillsTitle": "Skills",
+        "skillsColumn":"Skill",
+        "experienceYears":"Experience (years)",
+        "lastUsed":"Last Used"
     }
   },
   "departments-list": {

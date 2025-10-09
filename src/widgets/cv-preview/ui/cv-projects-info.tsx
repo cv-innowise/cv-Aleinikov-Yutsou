@@ -33,7 +33,7 @@ export const CvProjectsInfo: React.FC<CvProjectsInfoProps> = ({ cv }) => {
           return (
             <section key={project.id} className="space-y-4 border-b border-border pb-6 last:border-b-0 last:pb-0">
               <header className="flex flex-col gap-1 md:flex-row md:items-end md:justify-between">
-                <h3 className="text-lg font-semibold text-foreground">{project.name}</h3>
+                <h3 className="text-lg font-semibold text-foreground text-primary">{project.name}</h3>
                 <div className="text-sm text-muted-foreground">
                   <span className="font-medium">{t("period", { default: "Period" })}:</span> {formatDate(project.start_date)} — {formatDate(project.end_date)}
                 </div>
