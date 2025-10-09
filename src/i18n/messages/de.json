@@ -264,7 +264,8 @@
       "skillsTitle": "Fähigkeiten",
       "skillsColumn": "Fähigkeit",
       "experienceYears": "Erfahrung (Jahre)",
-      "lastUsed": "Zuletzt verwendet"
+      "lastUsed": "Zuletzt verwendet",
+      "noProjects":"No projects added to this CV yet"
     }
   },
   "departments-list": {

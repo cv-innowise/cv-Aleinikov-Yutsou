@@ -266,7 +266,8 @@
       "skillsTitle": "Навыки",
       "skillsColumn": "Навык",
       "experienceYears": "Опыт (годы)",
-      "lastUsed": "Последнее использование"
+      "lastUsed": "Последнее использование",
+      "noProjects":"В это резюме еще не добавлены проекты"
     }
   },
   "departments-list": {

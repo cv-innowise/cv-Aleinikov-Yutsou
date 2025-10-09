@@ -26,7 +26,7 @@ export const CvProjectForm: React.FC<CvProjectFormProps> = ({ cvId, cvProject })
   const disabledSelect = !!cvProject || projectLoading;
 
   return (
-    <DialogContent>
+    <DialogContent className="overflow-y-auto max-h-screen">
       <Form {...form}>
         <form className="flex flex-col gap-4" onSubmit={form.handleSubmit(onSubmit)}>
           <DialogTitle className="mb-4">{t(cvProject ? "title.update" : "title.create")}</DialogTitle>

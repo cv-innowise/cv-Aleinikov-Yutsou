@@ -266,7 +266,8 @@
         "skillsTitle": "Skills",
         "skillsColumn":"Skill",
         "experienceYears":"Experience (years)",
-        "lastUsed":"Last Used"
+        "lastUsed":"Last Used",
+        "noProjects":"No projects added to this CV yet"
     }
   },
   "departments-list": {
