@@ -1,4 +1,4 @@
-import { Cv as FullCv, User, SkillMastery, CreateCvInput, UpdateCvInput, DeleteCvInput, AddCvSkillInput, UpdateCvSkillInput, DeleteCvSkillInput, AddCvProjectInput, UpdateCvProjectInput, RemoveCvProjectInput, DeleteResult, CvProject } from "@/shared/types/cv-graphql";
+import { Cv as FullCv, User, SkillMastery, CreateCvInput, UpdateCvInput, DeleteCvInput, AddCvSkillInput, UpdateCvSkillInput, DeleteCvSkillInput, AddCvProjectInput, UpdateCvProjectInput, RemoveCvProjectInput, DeleteResult, CvProject, ExportPdfInput } from "@/shared/types/cv-graphql";
 
 type CvItem = Pick<FullCv, "id" | "name" | "description"> & {
   user?: {
@@ -26,6 +26,7 @@ type DeleteCvSkillRequest = { cv: DeleteCvSkillInput };
 type AddCvProjectRequest = { project: AddCvProjectInput };
 type UpdateCvProjectRequest = { project: UpdateCvProjectInput };
 type RemoveCvProjectRequest = { project: RemoveCvProjectInput };
+type ExportPdfRequest = { pdf: ExportPdfInput };
 
 type CvsResponse = { cvs: CvItem[] };
 type CvResponse = { cv: FullCv };
@@ -38,5 +39,6 @@ type DeleteCvSkillResponse = { deleteCvSkill: Cv["id"] };
 type AddCvProjectResponse = { addCvProject: Cv["id"] };
 type UpdateCvProjectResponse = { updateCvProject: Cv["id"] };
 type RemoveCvProjectResponse = { removeCvProject: Cv["id"] };
+type ExportPdfResponse = { exportPdf: string };
 
-export type { CvItem, Cv, CvRequest, CreateCvRequest, UpdateCvRequest, DeleteCvRequest, AddCvSkillRequest, UpdateCvSkillRequest, DeleteCvSkillRequest, AddCvProjectRequest, UpdateCvProjectRequest, RemoveCvProjectRequest, CvsResponse, CvResponse, CreateCvResponse, UpdateCvResponse, DeleteCvResponse, AddCvSkillResponse, UpdateCvSkillResponse, DeleteCvSkillResponse, AddCvProjectResponse, UpdateCvProjectResponse, RemoveCvProjectResponse };
+export type { ExportPdfRequest, ExportPdfResponse, CvItem, Cv, CvRequest, CreateCvRequest, UpdateCvRequest, DeleteCvRequest, AddCvSkillRequest, UpdateCvSkillRequest, DeleteCvSkillRequest, AddCvProjectRequest, UpdateCvProjectRequest, RemoveCvProjectRequest, CvsResponse, CvResponse, CreateCvResponse, UpdateCvResponse, DeleteCvResponse, AddCvSkillResponse, UpdateCvSkillResponse, DeleteCvSkillResponse, AddCvProjectResponse, UpdateCvProjectResponse, RemoveCvProjectResponse };

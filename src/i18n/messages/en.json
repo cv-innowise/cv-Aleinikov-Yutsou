@@ -258,7 +258,11 @@
         "domenLable":"Domains",
         "descriptionLabel":"Description",
         "skillsLabel":"Skills",
-        "cvNotFound": "CV not found"
+        "cvNotFound": "CV not found",
+        "period": "Period",
+        "roles": "Roles",
+        "responsibilities": "Responsibilities",
+        "environment": "Environment"
     }
   },
   "departments-list": {
