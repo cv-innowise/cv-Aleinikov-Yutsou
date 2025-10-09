@@ -250,6 +250,23 @@
           "fetchProjects": "Произошла ошибка при получении проектов"
         }
       }
+    },
+    "preview": {
+      "export": "Экспорт в PDF",
+      "educationLabel": "Образование",
+      "languagesLabel": "Языки",
+      "domenLable": "Домены",
+      "descriptionLabel": "Описание",
+      "skillsLabel": "Навыки",
+      "cvNotFound": "Резюме не найдено",
+      "period": "Период",
+      "roles": "Роли",
+      "responsibilities": "Обязанности",
+      "environment": "Среда",
+      "skillsTitle": "Навыки",
+      "skillsColumn": "Навык",
+      "experienceYears": "Опыт (годы)",
+      "lastUsed": "Последнее использование"
     }
   },
   "departments-list": {

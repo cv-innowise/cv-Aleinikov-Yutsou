@@ -248,6 +248,23 @@
           "fetchProjects": "Beim Laden der Projekte ist ein Fehler aufgetreten"
         }
       }
+    },
+    "preview": {
+      "export": "Als PDF exportieren",
+      "educationLabel": "Ausbildung",
+      "languagesLabel": "Sprachen",
+      "domenLable": "Domänen",
+      "descriptionLabel": "Beschreibung",
+      "skillsLabel": "Fähigkeiten",
+      "cvNotFound": "Lebenslauf nicht gefunden",
+      "period": "Zeitraum",
+      "roles": "Rollen",
+      "responsibilities": "Verantwortlichkeiten",
+      "environment": "Umgebung",
+      "skillsTitle": "Fähigkeiten",
+      "skillsColumn": "Fähigkeit",
+      "experienceYears": "Erfahrung (Jahre)",
+      "lastUsed": "Zuletzt verwendet"
     }
   },
   "departments-list": {
