@@ -147,6 +147,7 @@ export const CvProjectForm: React.FC<CvProjectFormProps> = ({ cvId, cvProject })
                 <FormControl>
                   <Textarea placeholder={t("responsibilities.placeholder")} {...field} className="resize-none" />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -160,6 +161,7 @@ export const CvProjectForm: React.FC<CvProjectFormProps> = ({ cvId, cvProject })
                 <FormControl>
                   <Textarea placeholder={t("roles.placeholder")} {...field} className="resize-none" />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />

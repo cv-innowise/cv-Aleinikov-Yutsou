@@ -24,7 +24,7 @@ export const CvPreviewClient: React.FC<CvPreviewClientProps> = ({ cv, skills }) 
           {t("export")}
         </ExportPdfButton>
       </div>
-      <div ref={ref}>
+      <div className="flex flex-col gap-2.5" ref={ref}>
         <div className="pdf-page">
           <CvProfileInfo skills={skills} cv={cv} />
         </div>

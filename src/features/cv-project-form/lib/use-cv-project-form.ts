@@ -9,22 +9,16 @@ import { useRouter } from "next/navigation";
 import { CvProject } from "@/shared/types/cv-graphql";
 import { updateCvProject } from "../mutation/update-cv-project";
 import { useTranslations } from "next-intl";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { cvProjectSchema } from "../validation/cv-project.schema";
+import { InferType } from "yup";
 
 interface AddCvProjectInput {
   cvId: string;
   cvProject?: CvProject;
 }
 
-type FormTypes = {
-  projectId: string;
-  description: string;
-  domain: string;
-  responsibilities?: string;
-  roles?: string;
-  start_date: Date | null;
-  end_date: Date | null;
-  environment: string[];
-};
+type FormTypes = InferType<typeof cvProjectSchema>;
 
 export const useCvProjectForm = ({ cvId, cvProject }: AddCvProjectInput) => {
   const t = useTranslations("cv.projects.form");
@@ -34,6 +28,7 @@ export const useCvProjectForm = ({ cvId, cvProject }: AddCvProjectInput) => {
   const [loadProject, { data: projectData, loading: projectLoading, error: projectError }] = useLazyQuery<ProjectResponse>(GET_PROJECT);
 
   const form = useForm<FormTypes>({
+    resolver: yupResolver(cvProjectSchema),
     defaultValues: {
       projectId: cvProject?.project.id || "",
       description: cvProject?.description || "",
@@ -78,12 +73,6 @@ export const useCvProjectForm = ({ cvId, cvProject }: AddCvProjectInput) => {
     startTransition(async () => {
       try {
         if (cvProject) {
-          console.log("cvId", cvId);
-          console.log("projectId", cvProject.id);
-          console.log("start_date", start_date);
-          console.log("end_date", end_date);
-          console.log("roles", roles);
-          console.log("responsibilities", responsibilities);
           await updateCvProject({
             cvId,
             projectId: formData.projectId,
@@ -117,7 +106,16 @@ export const useCvProjectForm = ({ cvId, cvProject }: AddCvProjectInput) => {
   };
 
   const clearForm = () => {
-    form.reset();
+    form.reset({
+      projectId: "",
+      description: "",
+      domain: "",
+      responsibilities: "",
+      roles: "",
+      start_date: null,
+      end_date: null,
+      environment: [],
+    });
   };
 
   const handleProjectChange = (value: string) => {
