@@ -257,7 +257,8 @@
         "languagesLabel":"Languages",
         "domenLable":"Domains",
         "descriptionLabel":"Description",
-        "skillsLabel":"Skills"
+        "skillsLabel":"Skills",
+        "cvNotFound": "CV not found"
     }
   },
   "departments-list": {

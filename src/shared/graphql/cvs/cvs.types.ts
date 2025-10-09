@@ -28,7 +28,7 @@ type UpdateCvProjectRequest = { project: UpdateCvProjectInput };
 type RemoveCvProjectRequest = { project: RemoveCvProjectInput };
 
 type CvsResponse = { cvs: CvItem[] };
-type CvResponse = { cv: Cv };
+type CvResponse = { cv: FullCv };
 type CreateCvResponse = { createCv: Cv };
 type UpdateCvResponse = { updateCv: Cv };
 type DeleteCvResponse = { deleteCv: DeleteResult };

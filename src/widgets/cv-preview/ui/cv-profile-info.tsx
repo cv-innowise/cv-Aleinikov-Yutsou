@@ -1,26 +1,13 @@
-import { getSkillCategories } from "@/shared/lib/queries/get-skill-categories";
 import { Cv } from "@/shared/types/cv-graphql";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 interface CvProfileInfoProps {
   cv: Cv;
+  skills: { categoryName: string; skills: string[] }[];
 }
 
-export const CvProfileInfo: React.FC<CvProfileInfoProps> = async ({ cv }) => {
-  const t = await getTranslations("cv.preview");
-  const skillCategorys = await getSkillCategories();
-
-  const categoryMap = cv.skills.reduce<Record<string, { categoryName: string; skills: string[] }>>((acc, skill) => {
-    const categoryName = skillCategorys.find((c) => c.id === skill.categoryId)?.name || "Other";
-    const key = skill.categoryId || categoryName;
-    if (!acc[key]) {
-      acc[key] = { categoryName, skills: [] };
-    }
-    acc[key].skills.push(skill.name);
-    return acc;
-  }, {});
-
-  const groupedSkills = Object.values(categoryMap).sort((a, b) => a.categoryName.localeCompare(b.categoryName));
+export const CvProfileInfo: React.FC<CvProfileInfoProps> = ({ cv, skills }) => {
+  const t = useTranslations("cv.preview");
 
   return (
     <div className="w-full space-y-10 rounded-lg bg-card/60 p-8 shadow-sm ring-1 ring-border backdrop-blur">
@@ -81,11 +68,11 @@ export const CvProfileInfo: React.FC<CvProfileInfoProps> = async ({ cv }) => {
             </section>
           )}
 
-          {groupedSkills.length > 0 && (
+          {skills.length > 0 && (
             <section className="space-y-4">
               <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">{t("skillsLabel")}</h3>
               <div className="space-y-6">
-                {groupedSkills.map(({ categoryName, skills }) => (
+                {skills.map(({ categoryName, skills }) => (
                   <div key={categoryName}>
                     <p className="mb-1 font-medium text-foreground">{categoryName}</p>
                     <p className="text-sm leading-snug text-muted-foreground">
