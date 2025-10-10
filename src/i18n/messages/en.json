@@ -185,6 +185,7 @@
       "projects": "Projects",
       "preview": "Preview"
     },
+    "notFound":"CV not found",
     "editForm":{
       "nameLabel": "Name",
       "educationLabel": "Education",

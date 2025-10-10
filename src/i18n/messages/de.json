@@ -184,6 +184,7 @@
       "projects": "Projekte",
       "preview": "Vorschau"
     },
+    "notFound":"Lebenslauf nicht gefunden",
     "editForm":{
       "nameLabel": "Name",
       "educationLabel": "Education",

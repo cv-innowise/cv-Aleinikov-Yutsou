@@ -186,6 +186,7 @@
       "projects": "Проекты",
       "preview": "Предпросмотр"
     },
+    "notFound":"Резюме не найдено",
     "editForm":{
       "nameLabel": "Название",
       "educationLabel": "Образование",
