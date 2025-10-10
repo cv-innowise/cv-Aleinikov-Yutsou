@@ -1,4 +1,4 @@
-import { CvEditForm } from "@/features/cv-edit-form/ui/cv-edit-form";
+import { CvEditForm } from "@/features/cv-edit-form";
 import { getCv } from "@/shared/lib/queries/get-cv";
 import { getTranslations } from "next-intl/server";
 import React from "react";

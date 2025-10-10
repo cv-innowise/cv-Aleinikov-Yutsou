@@ -15,19 +15,10 @@ interface ProjectSelectProps {
 }
 
 export const ProjectSelect: React.FC<ProjectSelectProps> = ({ value, onChange, placeholder = "Select project", label = "Projects", disabled = false, onClear }) => {
-  const { data, error } = useQuery<ProjectsResponse>(GET_PROJECTS);
+  const { data } = useQuery<ProjectsResponse>(GET_PROJECTS);
   const projects = data?.projects || [];
 
   const showClear = !!value && !disabled && onClear;
-
-  if (error) {
-    return (
-      <div className="flex items-center gap-2 text-destructive text-sm">
-        <AlertCircle size={16} />
-        <span>Failed to load projects</span>
-      </div>
-    );
-  }
 
   return (
     <div className="flex items-center gap-2">

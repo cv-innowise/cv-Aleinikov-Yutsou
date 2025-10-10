@@ -3,10 +3,10 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/shared/components/ui/breadcrumb";
-import { UserCrumb } from "@/entity/user";
-import { CvCrumb } from "@/entity/cv";
 import { useTranslations } from "next-intl";
-import { ProjectCrumb } from "@/entity/project";
+import { UserCrumb } from "./user-crumb";
+import { CvCrumb } from "./cv-crumb";
+import { ProjectCrumb } from "./project-crumb";
 
 export const AppBreadcrumbs = () => {
   const pathname = usePathname();
