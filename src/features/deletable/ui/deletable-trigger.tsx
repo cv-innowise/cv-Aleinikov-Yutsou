@@ -15,7 +15,7 @@ export const DeletableTrigger: React.FC<
 > = ({ className, children }) => {
   const { isSelectable, setIsSelectable, onDeleteItems, selectedItems } =
     useContext(DeletableContext);
-  const t = useTranslations("delatable");
+  const t = useTranslations("deletable");
 
   const onDeleteSelected = () => {
     setIsSelectable(false);
