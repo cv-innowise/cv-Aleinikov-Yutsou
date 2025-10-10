@@ -87,8 +87,8 @@ export const EditableSkillsPreview: React.FC<SkillsPreviewProps> = ({
     let oldMastery: Mastery = Mastery.Novice;
 
     return ({ name, mastery, categoryId }: Partial<SkillMastery>) => {
-      startTransition(() => {
-        if (name) {
+      if (name) {
+        startTransition(async () => {
           const promise = addSkill({
             name,
             categoryId,
@@ -100,16 +100,18 @@ export const EditableSkillsPreview: React.FC<SkillsPreviewProps> = ({
             loading: t("loading"),
           });
           router.refresh();
-        } else if (mastery) {
-          oldMastery = mastery;
-        }
-      });
+        });
+      } else if (mastery) {
+        oldMastery = mastery;
+      }
     };
   };
 
   return (
     <div className="w-full space-y-4">
-      <h2 className="mb-6 uppercase font-black text-4xl tracking-widest">{t("skills")}</h2>
+      <h2 className="mb-6 uppercase font-black text-4xl tracking-widest">
+        {t("skills")}
+      </h2>
       <Deletable onDeleteItems={onDeleteSkills}>
         <DeletableContent className="space-y-4">
           {!!availableSkills.length && (
