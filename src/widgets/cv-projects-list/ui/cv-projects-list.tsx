@@ -20,12 +20,12 @@ export const CvProjectsList: FCWithSkeleton<CvProjectsListProps> = async ({ cvId
   const authUser = await getAuthUser();
   const t = await getTranslations("cv.projects");
 
-  const isCanAddNew = authUser.role === UserRole.Admin || authUser.id === cv?.user?.id;
+  const canAddNew = authUser.role === UserRole.Admin || authUser.id === cv?.user?.id;
 
   return (
     <div className="w-full">
       <DataTable title={t("title")} columns={cvProjectsColumns} data={cvProjects}>
-        {isCanAddNew && (
+        {canAddNew && (
           <Dialog>
             <DialogTrigger asChild>
               <Button className="block ml-auto">{t("addNewButton")}</Button>

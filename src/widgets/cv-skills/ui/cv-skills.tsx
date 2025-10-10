@@ -18,7 +18,11 @@ interface CvSkillsProps {
 }
 
 export const CvSkills: FCWithSkeleton<CvSkillsProps> = async ({ cvId }) => {
-  const [authUser, cv, skills, skillCategories, t] = await Promise.all([getAuthUser(), getCv(cvId), getSkills(), getSkillCategories(), getTranslations("cv.skills")]);
+  const authUser = await getAuthUser();
+  const cv = await getCv(cvId);
+  const skills = await getSkills();
+  const skillCategories = await getSkillCategories();
+  const t = await getTranslations("cv.skills");
 
   if (!cv) {
     return (

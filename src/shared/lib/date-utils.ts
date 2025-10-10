@@ -1,18 +1,28 @@
-function diffInMonths(startIso?: string | null, endIso?: string | null): number {
-  if (!startIso) return 0;
-  const start = new Date(startIso);
-  const end = endIso ? new Date(endIso) : new Date();
-  if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) return 0;
+import { isValid, parseISO, differenceInMonths, format } from "date-fns";
 
-  let months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
-  if (end.getDate() < start.getDate()) months -= 1;
+function diffInMonths(startIso?: string | null, endIso?: string | null): number {
+  if (!startIso) {
+    return 0;
+  }
+  const start = parseISO(startIso);
+  const end = endIso ? parseISO(endIso) : new Date();
+  if (!isValid(start) || !isValid(end)) {
+    return 0;
+  }
+  let months = differenceInMonths(end, start);
+
+  if (end.getDate() < start.getDate()) {
+    months -= 1;
+  }
   return Math.max(0, months);
 }
 
 function formatMonthYear(iso?: string | null): string {
   if (!iso) return "-";
+  const date = parseISO(iso);
+  if (!isValid(date)) return "-";
   try {
-    return new Intl.DateTimeFormat(undefined, { year: "numeric", month: "short" }).format(new Date(iso));
+    return format(date, "LLL yyyy");
   } catch {
     return "-";
   }

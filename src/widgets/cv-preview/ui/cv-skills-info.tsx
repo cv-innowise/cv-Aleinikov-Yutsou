@@ -14,7 +14,7 @@ export const CvSkillsInfo: React.FC<CvSkillsInfoProps> = ({ cv }) => {
   const stats = buildSkillStats(cv);
 
   return (
-    <div className="w-full space-y-6 rounded-lg bg-card/60 p-8 shadow-sm ring-1 ring-border backdrop-blur">
+    <div className="pdf-page w-full space-y-6 rounded-lg bg-card/60 p-8 shadow-sm ring-1 ring-border backdrop-blur">
       <h2 className="text-xl font-semibold text-foreground capitalize text-primary">{t("skillsTitle", { default: "Skills" })}</h2>
 
       <div className="overflow-x-auto rounded-md ring-1 ring-border">

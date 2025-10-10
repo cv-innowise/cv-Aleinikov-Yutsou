@@ -32,8 +32,6 @@ export const CvEditForm: React.FC<CvEditFormProps> = ({ cv }) => {
     },
   });
 
-  const { isDirty } = form.formState;
-
   const onSubmit = (formData: FormValues) => {
     startTransition(() => {
       updateCv({ cvId: cv.id, ...formData })
@@ -91,7 +89,7 @@ export const CvEditForm: React.FC<CvEditFormProps> = ({ cv }) => {
           )}
         />
 
-        <Button loading={isPending} disabled={!isDirty} className="self-end-safe" type="submit">
+        <Button loading={isPending} disabled={!form.formState.isDirty} className="self-end-safe" type="submit">
           {t("submit")}
         </Button>
       </form>

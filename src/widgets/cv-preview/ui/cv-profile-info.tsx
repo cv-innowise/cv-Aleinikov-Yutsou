@@ -10,7 +10,7 @@ export const CvProfileInfo: React.FC<CvProfileInfoProps> = ({ cv, skills }) => {
   const t = useTranslations("cv.preview");
 
   return (
-    <div className="w-full space-y-10 rounded-lg bg-card/60 p-8 shadow-sm ring-1 ring-border backdrop-blur">
+    <div className="pdf-page w-full space-y-10 rounded-lg bg-card/60 p-8 shadow-sm ring-1 ring-border backdrop-blur">
       <div className="flex flex-col gap-1 border-b border-border pb-4 md:flex-row md:items-end md:justify-between">
         <div>
           <h1 className="text-2xl font-semibold text-foreground">{cv.user?.profile.full_name}</h1>

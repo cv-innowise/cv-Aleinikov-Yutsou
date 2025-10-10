@@ -23,7 +23,7 @@ export const CvProjectsInfo: React.FC<CvProjectsInfoProps> = ({ cv }) => {
   const projects = cv.projects ?? [];
 
   return (
-    <div className="w-full space-y-10 rounded-lg bg-card/60 p-8 shadow-sm ring-1 ring-border backdrop-blur">
+    <div className="pdf-page w-full space-y-10 rounded-lg bg-card/60 p-8 shadow-sm ring-1 ring-border backdrop-blur">
       <div className="space-y-8">
         {projects.map((project) => {
           const roles = project.roles ?? [];
