@@ -256,6 +256,7 @@
     },
     "preview": {
       "export": "Экспорт в PDF",
+      "failedExport":"Не удалось экспортировать PDF",
       "educationLabel": "Образование",
       "languagesLabel": "Языки",
       "domenLable": "Домены",

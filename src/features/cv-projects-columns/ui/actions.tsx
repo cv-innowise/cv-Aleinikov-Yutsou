@@ -8,7 +8,7 @@ import { useParams, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { CvProject } from "@/shared/types/cv-graphql";
 import { useTranslations } from "next-intl";
-import { CvProjectForm } from "@/features/cv-project-form/ui/cv-project-form";
+import { CvProjectForm } from "@/features/cv-project-form";
 import { deleteCvProject } from "../mutation/delete-cv-project";
 
 interface ActionsProps {

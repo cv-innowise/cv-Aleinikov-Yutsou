@@ -49,7 +49,7 @@ const DELETE_CV_SKILL = gql`
 `;
 
 const ADD_CV_PROJECT = gql`
-  mutation AddCvSkill($project: AddCvProjectInput!) {
+  mutation AddCvProject($project: AddCvProjectInput!) {
     addCvProject(project: $project) {
       id
     }

@@ -256,6 +256,7 @@
     },
     "preview":{
         "export": "Export to PDF",
+        "failedExport":"Failed to export PDF",
         "educationLabel":"Education",
         "languagesLabel":"Languages",
         "domenLable":"Domains",

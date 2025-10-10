@@ -254,6 +254,7 @@
     },
     "preview": {
       "export": "Als PDF exportieren",
+      "failedExport":"Fehler beim Exportieren des PDFs",
       "educationLabel": "Ausbildung",
       "languagesLabel": "Sprachen",
       "domenLable": "Domänen",

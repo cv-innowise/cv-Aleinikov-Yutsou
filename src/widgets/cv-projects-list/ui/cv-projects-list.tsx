@@ -1,4 +1,4 @@
-import { CvProjectForm } from "@/features/cv-project-form/ui/cv-project-form";
+import { CvProjectForm } from "@/features/cv-project-form";
 import { DataTable, DataTableSkeleton } from "@/features/data-table";
 import { Button } from "@/shared/components/ui/button";
 import { Dialog, DialogTrigger } from "@/shared/components/ui/dialog";

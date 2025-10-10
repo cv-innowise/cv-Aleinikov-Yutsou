@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import { Input } from "@/shared/components/ui/input";
 import { Textarea } from "@/shared/components/ui/textarea";
 import { Button } from "@/shared/components/ui/button";
-import { useState } from "react";
+import { useTransition } from "react";
 
 interface CvEditFormProps {
   cv: Cv;
@@ -21,7 +21,8 @@ type FormValues = InferType<typeof cvUpdateSchema>;
 
 export const CvEditForm: React.FC<CvEditFormProps> = ({ cv }) => {
   const t = useTranslations("cv.editForm");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isPending, startTransition] = useTransition();
+
   const form = useForm<FormValues>({
     resolver: yupResolver(cvUpdateSchema),
     defaultValues: {
@@ -34,16 +35,16 @@ export const CvEditForm: React.FC<CvEditFormProps> = ({ cv }) => {
   const { isDirty } = form.formState;
 
   const onSubmit = (formData: FormValues) => {
-    setIsLoading(true);
-    updateCv({ cvId: cv.id, ...formData })
-      .then(() => {
-        toast.success(t("updateSuccess"));
-        form.reset(formData);
-      })
-      .catch(() => {
-        toast.error(t("updateError"));
-      })
-      .finally(() => setIsLoading(false));
+    startTransition(() => {
+      updateCv({ cvId: cv.id, ...formData })
+        .then(() => {
+          toast.success(t("updateSuccess"));
+          form.reset(formData);
+        })
+        .catch(() => {
+          toast.error(t("updateError"));
+        });
+    });
   };
   return (
     <Form {...form}>
@@ -90,7 +91,7 @@ export const CvEditForm: React.FC<CvEditFormProps> = ({ cv }) => {
           )}
         />
 
-        <Button loading={isLoading} disabled={!isDirty} className="self-end-safe" type="submit">
+        <Button loading={isPending} disabled={!isDirty} className="self-end-safe" type="submit">
           {t("submit")}
         </Button>
       </form>
