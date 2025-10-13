@@ -39,6 +39,7 @@
     "settings": "Settings",
     "profile": "Profile",
     "projects": "Projects",
+    "preview": "Preview",
     "positions": "Positions",
     "departments": "Departments"
   },
@@ -176,6 +177,102 @@
     "cv-created": "CV was created",
     "error": "Something went wrong",
     "loading": "Loading..."
+  },
+  "cv":{
+    "navigation":{
+      "details": "Details",
+      "skills": "Skills",
+      "projects": "Projects",
+      "preview": "Preview"
+    },
+    "notFound":"CV not found",
+    "editForm":{
+      "nameLabel": "Name",
+      "educationLabel": "Education",
+      "descriptionLabel": "Description",
+      "submit": "Save changes",
+      "updateSuccess": "CV was updated",
+      "updateError": "Something went wrong"
+    },
+    "skills":{
+      "cvNotFound": "CV not found",
+      "yourCV": "Maybe you've ment to see your CV?"
+    },
+    "projects":{
+      "title": "Projects",
+      "addNewButton": "Add New Project",
+      "form":{
+        "title":{
+          "create":"Add Project to CV",
+          "update":"Update Project in CV"
+        },
+        "project":{
+          "label":"Project",
+          "placeholder":"Select project"
+        },
+        "domain":{
+          "label":"Domain",
+          "placeholder":"Project domain"
+        },
+        "startDate":{
+          "label":"Start Date",
+          "placeholder":"Pick a date"
+        },
+        "endDate":{
+          "label":"End Date",
+          "placeholder":"Pick a date"
+        },
+        "description":{
+          "label":"Description",
+          "placeholder":"Project description"
+        },
+        "environment":{
+          "label":"Environment",
+          "noData":"No environment"
+        },
+        "responsibilities":{
+          "label":"Responsibilities",
+          "placeholder":"Your responsibilities in this project"
+        },
+        "roles":{
+          "label":"Roles",
+          "placeholder":"Your roles in this project"
+        },
+        "submit":{
+          "create":"Add Project",
+          "update":"Update Project"
+        },
+        "success":{
+          "add":"Project added successfully",
+          "update":"Project updated successfully"
+        },
+        "error":{
+          "add":"Something went wrong while adding project",
+          "update":"Something went wrong while updating project",
+          "fetchProjects":"Something went wrong while fetching projects"
+        }
+      }
+      
+    },
+    "preview":{
+        "export": "Export to PDF",
+        "failedExport":"Failed to export PDF",
+        "educationLabel":"Education",
+        "languagesLabel":"Languages",
+        "domenLable":"Domains",
+        "descriptionLabel":"Description",
+        "skillsLabel":"Skills",
+        "cvNotFound": "CV not found",
+        "period": "Period",
+        "roles": "Roles",
+        "responsibilities": "Responsibilities",
+        "environment": "Environment",
+        "skillsTitle": "Skills",
+        "skillsColumn":"Skill",
+        "experienceYears":"Experience (years)",
+        "lastUsed":"Last Used",
+        "noProjects":"No projects added to this CV yet"
+    }
   },
   "departments-list": {
     "departments": "Departments",

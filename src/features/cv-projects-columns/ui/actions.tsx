@@ -2,33 +2,28 @@ import { Button } from "@/shared/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/shared/components/ui/dropdown-menu";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/shared/components/ui/alert-dialog";
 import { MoreHorizontal } from "lucide-react";
-import Link from "next/link";
-import { ProjectItem } from "@/shared/graphql/projects/projects.types";
-import { deleteProject } from "../mutations/delete-project";
 import { Dialog, DialogTrigger } from "@/shared/components/ui/dialog";
-import { ProjectForm } from "@/features/project-form";
-import { Suspense, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useTransition } from "react";
+import { useParams, useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { useGetAuthUser } from "@/shared/lib/hooks/use-get-auth-user";
-import { UserRole } from "@/shared/types/cv-graphql";
+import { CvProject } from "@/shared/types/cv-graphql";
 import { useTranslations } from "next-intl";
+import { CvProjectForm } from "@/features/cv-project-form";
+import { deleteCvProject } from "../mutation/delete-cv-project";
 
 interface ActionsProps {
-  project: ProjectItem;
+  project: CvProject;
 }
 
 export const Actions: React.FC<ActionsProps> = ({ project }) => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
-  const authUser = useGetAuthUser();
   const t = useTranslations("project-actions");
-  const isAuthUserAdmin = authUser.role === UserRole.Admin;
+  const { cvId } = useParams<{ cvId: string }>();
 
-  const onDeleteProject = () => {
-    startTransition(async () => {
-      const promise = deleteProject({ projectId: project.id });
-
+  const onDeleteCvProject = () => {
+    startTransition(() => {
+      const promise = deleteCvProject({ cvId, projectId: project.project.id });
       toast.promise(promise, {
         success: t("project-deleted"),
         error: t("error"),
@@ -50,23 +45,16 @@ export const Actions: React.FC<ActionsProps> = ({ project }) => {
         <DropdownMenuLabel>{t("actions")}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href={`/projects/${project.id}`} data-testid="project-link">
-            {t("details")}
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild>
           <Dialog>
-            <DialogTrigger disabled={!isAuthUserAdmin || isPending} data-testid="update-project-button" className="hover:bg-accent hover:text-accent-foreground w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50">
+            <DialogTrigger disabled={isPending} className="hover:bg-accent hover:text-accent-foreground w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50">
               {t("update")}
             </DialogTrigger>
-            <Suspense>
-              <ProjectForm projectId={project.id} />
-            </Suspense>
+            <CvProjectForm cvId={cvId} cvProject={project} />
           </Dialog>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <AlertDialog>
-            <AlertDialogTrigger disabled={!isAuthUserAdmin || isPending} data-testid="delete-project-button" className="text-destructive hover:bg-destructive/10 dark:hover:bg-destructive/20 hover:text-destructive w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50">
+            <AlertDialogTrigger disabled={isPending} data-testid="delete-project-button" className="text-destructive hover:bg-destructive/10 dark:hover:bg-destructive/20 hover:text-destructive w-full flex cursor-default rounded-sm px-2 py-1.5 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50">
               {t("delete")}
             </AlertDialogTrigger>
             <AlertDialogContent datat-testid="alert-dialog">
@@ -76,7 +64,7 @@ export const Actions: React.FC<ActionsProps> = ({ project }) => {
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel data-testid="alert-dialog-close">{t("cancel")}</AlertDialogCancel>
-                <AlertDialogAction onClick={onDeleteProject} data-testid="alert-dialog-confirm">
+                <AlertDialogAction onClick={onDeleteCvProject} data-testid="alert-dialog-confirm">
                   {t("continue")}
                 </AlertDialogAction>
               </AlertDialogFooter>

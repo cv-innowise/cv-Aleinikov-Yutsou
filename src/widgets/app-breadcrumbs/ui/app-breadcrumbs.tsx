@@ -3,9 +3,10 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/shared/components/ui/breadcrumb";
-import { UserCrumb } from "@/entity/user";
-import { CvCrumb } from "@/entity/cv";
 import { useTranslations } from "next-intl";
+import { UserCrumb } from "./user-crumb";
+import { CvCrumb } from "./cv-crumb";
+import { ProjectCrumb } from "./project-crumb";
 
 export const AppBreadcrumbs = () => {
   const pathname = usePathname();
@@ -27,6 +28,9 @@ export const AppBreadcrumbs = () => {
           }
           if (parts[idx - 1] === "cvs") {
             return <CvCrumb key={href} id={part} href={href} />;
+          }
+          if (parts[idx - 1] === "projects") {
+            return <ProjectCrumb key={href} id={part} href={href} />;
           }
 
           return (

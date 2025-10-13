@@ -3,9 +3,9 @@
 import { SortableColumn } from "@/shared/components/sortable-column";
 import { ColumnDef } from "@tanstack/react-table";
 import { Actions } from "../ui/actions";
-import { ProjectItem } from "@/shared/graphql/projects/projects.types";
+import { CvProject } from "@/shared/types/cv-graphql";
 
-export const projectsColumns: ColumnDef<ProjectItem>[] = [
+export const cvProjectsColumns: ColumnDef<CvProject>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => <SortableColumn column={column} translateKey="name" />,

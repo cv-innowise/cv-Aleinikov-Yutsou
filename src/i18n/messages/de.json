@@ -38,6 +38,7 @@
     "settings": "Einstellungen",
     "profile": "Profil",
     "projects": "Projekte",
+    "preview": "Vorschau",
     "positions": "Positionen",
     "departments": "Abteilungen"
   },
@@ -175,6 +176,101 @@
     "cv-created": "Lebenslauf wurde erstellt",
     "error": "Etwas lief schief",
     "loading": "Laden..."
+  },
+  "cv":{
+    "navigation":{
+      "details": "Details",
+      "skills": "Fähigkeiten",
+      "projects": "Projekte",
+      "preview": "Vorschau"
+    },
+    "notFound":"Lebenslauf nicht gefunden",
+    "editForm":{
+      "nameLabel": "Name",
+      "educationLabel": "Education",
+      "descriptionLabel": "Beschreibung",
+      "submit": "Änderungen speichern",
+      "updateSuccess": "Lebenslauf wurde aktualisiert",
+      "updateError": "Etwas lief schief"
+    },
+    "skills":{
+      "cvNotFound": "Lebenslauf nicht gefunden",
+      "yourCV": "Vielleicht sollst du deinen Lebenslauf sehen?"
+    },
+    "projects":{
+      "title": "Projekte",
+      "addNewButton": "Neues Projekt hinzufügen",
+      "form": {
+        "title":{
+          "create":"Projekt zum Lebenslauf hinzufügen",
+          "update":"Projekt im Lebenslauf aktualisieren"
+        },
+        "project": {
+          "label": "Projekt",
+          "placeholder": "Projekt auswählen"
+        },
+        "domain": {
+          "label": "Domäne",
+          "placeholder": "Projektdomäne"
+        },
+        "startDate": {
+          "label": "Startdatum",
+          "placeholder": "Datum wählen"
+        },
+        "endDate": {
+          "label": "Enddatum",
+          "placeholder": "Datum wählen"
+        },
+        "description": {
+          "label": "Beschreibung",
+          "placeholder": "Projektbeschreibung"
+        },
+        "environment": {
+          "label": "Umgebung",
+          "noData": "Keine Umgebung"
+        },
+        "responsibilities": {
+          "label": "Verantwortlichkeiten",
+          "placeholder": "Ihre Verantwortlichkeiten in diesem Projekt"
+        },
+        "roles": {
+          "label": "Rollen",
+          "placeholder": "Ihre Rollen in diesem Projekt"
+        },
+        "submit": {
+          "create": "Projekt hinzufügen",
+          "update": "Projekt aktualisieren"
+        },
+        "success": {
+          "add": "Projekt erfolgreich hinzugefügt",
+          "update": "Projekt erfolgreich aktualisiert"
+        },
+        "error": {
+          "add": "Beim Hinzufügen des Projekts ist ein Fehler aufgetreten",
+          "update": "Beim Aktualisieren des Projekts ist ein Fehler aufgetreten",
+          "fetchProjects": "Beim Laden der Projekte ist ein Fehler aufgetreten"
+        }
+      }
+    },
+    "preview": {
+      "export": "Als PDF exportieren",
+      "failedExport":"Fehler beim Exportieren des PDFs",
+      "educationLabel": "Ausbildung",
+      "languagesLabel": "Sprachen",
+      "domenLable": "Domänen",
+      "descriptionLabel": "Beschreibung",
+      "skillsLabel": "Fähigkeiten",
+      "cvNotFound": "Lebenslauf nicht gefunden",
+      "period": "Zeitraum",
+      "roles": "Rollen",
+      "responsibilities": "Verantwortlichkeiten",
+      "environment": "Umgebung",
+      "skillsTitle": "Fähigkeiten",
+      "skillsColumn": "Fähigkeit",
+      "experienceYears": "Erfahrung (Jahre)",
+      "lastUsed": "Zuletzt verwendet",
+      "noProjects":"No projects added to this CV yet"
+    }
   },
   "departments-list": {
     "departments": "Abteilungen",

@@ -40,6 +40,7 @@
     "settings": "Настройки",
     "profile": "Профиль",
     "projects": "Проекты",
+    "preview": "Предпросмотр",
     "positions": "Позиции",
     "departments": "Отделы"
   },
@@ -177,6 +178,101 @@
     "cv-created": "Резюме было создано",
     "error": "Что-то пошло не так",
     "loading": "Загрузка..."
+  },
+  "cv":{
+    "navigation":{
+      "details": "Детали",
+      "skills": "Навыки",
+      "projects": "Проекты",
+      "preview": "Предпросмотр"
+    },
+    "notFound":"Резюме не найдено",
+    "editForm":{
+      "nameLabel": "Название",
+      "educationLabel": "Образование",
+      "descriptionLabel": "Описание",
+      "submit": "Сохранить изменения",
+      "updateSuccess": "Резюме было обновлено",
+      "updateError": "Что-то пошло не так"
+    },
+    "skills":{
+      "cvNotFound": "Резюме не найдено",
+      "yourCV": "Может быть, вы хотели бы увидеть свои резюме?"
+    },
+    "projects":{
+      "title": "Проекты",
+      "addNewButton": "Добавить новый проект",
+      "form": {
+        "title":{
+          "create":"Добавить проект в резюме",
+          "update":"Обновление проекта в резюме"
+        },
+        "project": {
+          "label": "Проект",
+          "placeholder": "Выберите проект"
+        },
+        "domain": {
+          "label": "Домен",
+          "placeholder": "Домен проекта"
+        },
+        "startDate": {
+          "label": "Дата начала",
+          "placeholder": "Выберите дату"
+        },
+        "endDate": {
+          "label": "Дата окончания",
+          "placeholder": "Выберите дату"
+        },
+        "description": {
+          "label": "Описание",
+          "placeholder": "Описание проекта"
+        },
+        "environment": {
+          "label": "Окружение",
+          "noData": "Нет окружения"
+        },
+        "responsibilities": {
+          "label": "Обязанности",
+          "placeholder": "Ваши обязанности в этом проекте"
+        },
+        "roles": {
+          "label": "Роли",
+          "placeholder": "Ваши роли в этом проекте"
+        },
+        "submit": {
+          "create": "Добавить проект",
+          "update": "Обновить проект"
+        },
+        "success": {
+          "add": "Проект успешно добавлен",
+          "update": "Проект успешно обновлён"
+        },
+        "error": {
+          "add": "Произошла ошибка при добавлении проекта",
+          "update": "Произошла ошибка при обновлении проекта",
+          "fetchProjects": "Произошла ошибка при получении проектов"
+        }
+      }
+    },
+    "preview": {
+      "export": "Экспорт в PDF",
+      "failedExport":"Не удалось экспортировать PDF",
+      "educationLabel": "Образование",
+      "languagesLabel": "Языки",
+      "domenLable": "Домены",
+      "descriptionLabel": "Описание",
+      "skillsLabel": "Навыки",
+      "cvNotFound": "Резюме не найдено",
+      "period": "Период",
+      "roles": "Роли",
+      "responsibilities": "Обязанности",
+      "environment": "Среда",
+      "skillsTitle": "Навыки",
+      "skillsColumn": "Навык",
+      "experienceYears": "Опыт (годы)",
+      "lastUsed": "Последнее использование",
+      "noProjects":"В это резюме еще не добавлены проекты"
+    }
   },
   "departments-list": {
     "departments": "Отделы",

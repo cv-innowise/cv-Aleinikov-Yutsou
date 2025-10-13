@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-export const CREATE_CV = gql`
+const CREATE_CV = gql`
   mutation CreateCv($cv: CreateCvInput!) {
     createCv(cv: $cv) {
       id
@@ -8,7 +8,7 @@ export const CREATE_CV = gql`
   }
 `;
 
-export const UPDATE_CV = gql`
+const UPDATE_CV = gql`
   mutation UpdateCv($cv: UpdateCvInput!) {
     updateCv(cv: $cv) {
       id
@@ -16,7 +16,7 @@ export const UPDATE_CV = gql`
   }
 `;
 
-export const DELETE_CV = gql`
+const DELETE_CV = gql`
   mutation DeleteCv($cv: DeleteCvInput!) {
     deleteCv(cv: $cv) {
       affected
@@ -24,7 +24,7 @@ export const DELETE_CV = gql`
   }
 `;
 
-export const ADD_CV_SKILL = gql`
+const ADD_CV_SKILL = gql`
   mutation AddCvSkill($skill: AddCvSkillInput!) {
     addCvSkill(skill: $skill) {
       id
@@ -32,7 +32,7 @@ export const ADD_CV_SKILL = gql`
   }
 `;
 
-export const UPDATE_CV_SKILL = gql`
+const UPDATE_CV_SKILL = gql`
   mutation UpdateCvSkill($skill: UpdateCvSkillInput!) {
     updateCvSkill(skill: $skill) {
       id
@@ -40,7 +40,7 @@ export const UPDATE_CV_SKILL = gql`
   }
 `;
 
-export const DELETE_CV_SKILL = gql`
+const DELETE_CV_SKILL = gql`
   mutation DeleteCvSkill($skill: DeleteCvSkillInput!) {
     deleteCvSkill(skill: $skill) {
       id
@@ -48,26 +48,34 @@ export const DELETE_CV_SKILL = gql`
   }
 `;
 
-export const ADD_CV_PROJECT = gql`
-  mutation AddCvSkill($skill: AddCvSkillInput!) {
-    addCvSkill(skill: $skill) {
+const ADD_CV_PROJECT = gql`
+  mutation AddCvProject($project: AddCvProjectInput!) {
+    addCvProject(project: $project) {
       id
     }
   }
 `;
 
-export const UPDATE_CV_PROJECT = gql`
-  mutation UpdateCvSkill($skill: UpdateCvSkillInput!) {
-    updateCvSkill(skill: $skill) {
+const UPDATE_CV_PROJECT = gql`
+  mutation UpdateCvProject($project: UpdateCvProjectInput!) {
+    updateCvProject(project: $project) {
       id
     }
   }
 `;
 
-export const REMOVE_CV_PROJECT = gql`
-  mutation DeleteCvSkill($skill: DeleteCvSkillInput!) {
-    deleteCvSkill(skill: $skill) {
+const REMOVE_CV_PROJECT = gql`
+  mutation DeleteCvProject($project: RemoveCvProjectInput!) {
+    removeCvProject(project: $project) {
       id
     }
   }
 `;
+
+const EXPORT_PDF = gql`
+  mutation ExportCvToPdf($pdf: ExportPdfInput!) {
+    exportPdf(pdf: $pdf)
+  }
+`;
+
+export { EXPORT_PDF, CREATE_CV, UPDATE_CV, DELETE_CV, ADD_CV_SKILL, UPDATE_CV_SKILL, DELETE_CV_SKILL, ADD_CV_PROJECT, UPDATE_CV_PROJECT, REMOVE_CV_PROJECT };

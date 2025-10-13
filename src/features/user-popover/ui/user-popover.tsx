@@ -26,7 +26,7 @@ export const UserPopover: React.FC<UserPopoverProps> = ({ user }) => {
     router.push("/login");
   };
 
-  const itemCls = "flex items-center gap-2 hover:bg-secondary/80 p-1.5 rounded-md";
+  const itemCls = "flex items-center gap-2 hover:bg-secondary/80 p-1.5 text-sm rounded-md";
   const userName = user?.profile.full_name || user?.email;
   const avatarUrl = user?.profile.avatar;
 
@@ -41,17 +41,17 @@ export const UserPopover: React.FC<UserPopoverProps> = ({ user }) => {
           <p className="truncate font-medium">{userName}</p>
         </SidebarMenuButton>
       </PopoverTrigger>
-      <PopoverContent side="top" align="start" className="flex flex-col gap-2.5 p-2">
+      <PopoverContent side="top" align="start" className="flex flex-col gap-1.5 p-2">
         <Link className={itemCls} href={`/users/${user?.id}/profile`}>
-          <User size={24} />
+          <User size={18} />
           {t("profile")}
         </Link>
         <Link className={itemCls} href="/settings">
-          <Settings size={24} />
+          <Settings size={18} />
           {t("settings")}
         </Link>
         <button onClick={onLogout} className={cn(itemCls, "cursor-pointer")}>
-          <LogOut className="text-primary" size={24} />
+          <LogOut className="text-primary" size={18} />
           {t("logout")}
         </button>
       </PopoverContent>
