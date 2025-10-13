@@ -1,5 +1,11 @@
 import { ForgotPasswordForm } from "@/features/forgot-password-form";
 
+export const metadata = {
+  title: "Forgot Password",
+  description: "Reset your password by receiving an email with instructions.",
+  keywords: ["forgot password", "reset password", "CV Platform"],
+};
+
 const ForgotPasswordPage = () => {
   return (
     <div className="flex flex-col w-full justify-center items-center px-4">
