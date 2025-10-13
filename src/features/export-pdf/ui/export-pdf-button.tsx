@@ -50,7 +50,7 @@ export const ExportPdfButton: React.FC<ExportPdfButtonProps> = ({ filename, chil
       const nameWithExt = safeName.toLowerCase().endsWith(".pdf") ? safeName : `${safeName}.pdf`;
 
       downloadBase64Pdf(nameWithExt, pdfBase64);
-    } catch (e) {
+    } catch {
       toast.error(t("failedExport"));
     }
   };

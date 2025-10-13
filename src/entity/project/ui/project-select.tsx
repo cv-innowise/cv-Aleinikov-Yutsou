@@ -3,7 +3,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 import { GET_PROJECTS } from "@/shared/graphql/projects/projects.queries";
 import { ProjectsResponse } from "@/shared/graphql/projects/projects.types";
 import { useQuery } from "@apollo/client/react";
-import { AlertCircle, X } from "lucide-react";
+import { X } from "lucide-react";
 
 interface ProjectSelectProps {
   value?: string;
