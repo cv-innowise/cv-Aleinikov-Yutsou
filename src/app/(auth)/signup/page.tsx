@@ -1,6 +1,12 @@
 import { SignupForm } from "@/features/signup-form";
 import { getTranslations } from "next-intl/server";
 
+export const metadata = {
+  title: "Sign Up",
+  description: "Create an account to access CV Platform.",
+  keywords: ["sign up", "register", "create account", "CV Platform"],
+};
+
 const SignupPage = async () => {
   const t = await getTranslations("auth.signup");
   return (

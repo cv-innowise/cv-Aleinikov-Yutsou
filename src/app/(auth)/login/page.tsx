@@ -1,6 +1,12 @@
 import { LoginForm } from "@/features/login-form";
 import { getTranslations } from "next-intl/server";
 
+export const metadata = {
+  title: "Login",
+  description: "Sign in to access your account on CV Platform.",
+  keywords: ["login", "sign in", "authentication", "CV Platform"],
+};
+
 const LoginPage = async () => {
   const t = await getTranslations("auth.login");
   return (
